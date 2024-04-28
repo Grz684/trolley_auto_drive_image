@@ -1,0 +1,14 @@
+{
+  "ros.distro": "foxy",
+  "ros.rosSetupScript": "/opt/ros/foxy/install/setup.bash",
+  "ros.isolateEnvironment": "false",
+  "python.autoComplete.extraPaths": [
+    "/opt/ros/foxy/lib/python3.8/site-packages"
+  ],
+  "python.analysis.extraPaths": [
+    "/opt/ros/foxy/lib/python3.8/site-packages"
+  ],
+  "terminal.integrated.env.linux": {
+    "DISPLAY": ":0",
+  },
+}
