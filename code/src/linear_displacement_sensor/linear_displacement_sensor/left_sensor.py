@@ -7,15 +7,16 @@ import rclpy
 from pymodbus.client.sync import ModbusSerialClient as ModbusClient
 from rclpy import Future
 from rclpy.node import Node
-from std_msgs.msg import Float64, String, Int8
 from time import sleep
+from linear_sensor_msgs.msg import LinearSensorData
+from rclpy.qos import qos_profile_sensor_data
 
 
 class LeftSensor(Node):
     def __init__(self):
         super().__init__('left_sensor')
         self.timer_period_sec = 0.1
-        self.current_left_angle = self.create_publisher(Int8, 'left_angle', 3)
+        self.current_left_angle = self.create_publisher(LinearSensorData, 'left_angle', qos_profile=qos_profile_sensor_data)
         self.zero_position = 0
         self.left_port = "/dev/usb_port_3"
         self.debug = False
@@ -56,7 +57,8 @@ class LeftSensor(Node):
             return L
 
     def process_and_publish_distance(self):
-        left_angle = Int8()
+        left_angle = LinearSensorData()
+        left_angle.header.stamp = self.get_clock().now().to_msg()
 
         # 左转到底122mm，右转到底22mm，中间值为72（已舍弃该参数，仅作参考）
 

@@ -28,24 +28,38 @@ class LidarDataHandler(Node):
         self.draw_count = 0
         self.sensors_health_count = 0
         self.motor_activate = False
-        # self.auto_stop_flag = True
-        # 存储最新的激光数据
-        self.front_latest_lidar_data = None
-        self.back_latest_lidar_data = None
-        self.left_angle = None
-        self.right_angle = None
+        
+        self.mode_state_machine = ModeStateMachine()
+        self.utils = Utils()
+
+        self.receive_debug = 0
+        self.stop_adjust_count = 0
+        self.stop_flag = False
+
+        self.init_pid_controller()
+        self.init_channels()
+        self.init_display_subscription()
+
+        # 创建定时器，每0.1秒触发一次数据处理并发布油缸运动方向
+        self.timer_period_sec = 0.1
+        self.timer = self.create_timer(self.timer_period_sec, self.process_and_drive)
+
+        # 退出机制
+        # self.future = Future()
+
+    def init_pid_controller(self):
         # 初始化pid控制器和数据处理工具
         self.kp = 8
         self.ki = 0
         self.kd = 0
         self.use_pid = 0
         self.pid_controller = PIDController(self.kp, self.ki, self.kd, 1)
-        self.utils = Utils()
-        # self.stop_distance = 0.5  # 停止距离
-        self.timer_period_sec = 0.1  # 每轮处理间隔0.1s
-        self.receive_debug = 0
-        self.stop_count = 0
 
+    def init_display_subscription(self):
+        self.front_latest_lidar_data = None
+        self.back_latest_lidar_data = None
+        self.left_angle = None
+        self.right_angle = None
         # lidar1为前雷达，lidar2为后雷达，测距器1在左，测距器2在右
         self.lidar_sub1 = self.create_subscription(
             PointCloud2,
@@ -63,23 +77,20 @@ class LidarDataHandler(Node):
             Int8,
             'left_angle',
             self.left_angle_callback,
-            3
+            qos_profile=qos_profile_sensor_data
         )
         self.right_angle_sub = self.create_subscription(
             Int8,
             'right_angle',
             self.right_angle_callback,
-            3
+            qos_profile=qos_profile_sensor_data
         )
 
-        # 创建定时器，每0.1秒触发一次数据处理并发布油缸运动方向
-        self.timer = self.create_timer(self.timer_period_sec, self.process_and_drive)
-
+    def init_channels(self):
         # --------------digital_switch-------------
         self.active_state = 0
         self.inactive_state = 1
         self.sn = 231202311
-        self.mode_state_machine = ModeStateMachine()
         # 控制电机正转/反转
         self.motor_f_output_channel = 0
         self.motor_b_output_channel = 1
@@ -97,10 +108,6 @@ class LidarDataHandler(Node):
         self.front_lidar_mask_close_channel = 7
         self.back_lidar_mask_open_channel = 8
         self.back_lidar_mask_close_channel = 9
-
-        # 退出机制
-        # self.future = Future()
-        self.stop_flag = False
 
         # Scan device
         serial_numbers = (c_int * 20)()
@@ -231,7 +238,7 @@ class LidarDataHandler(Node):
                     self.reset_pid_controller()
 
                 elif control_stop_input_state.value == self.active_state:
-                    self.stop_count = 0
+                    self.stop_adjust_count = 0
                     data = {'target': 'main_program', 'main_program_state': '停止模式'}
                     event = PlotUpdateEvent(data)
                     QApplication.postEvent(self.window, event)
@@ -404,11 +411,11 @@ class LidarDataHandler(Node):
             left_cylinder_target_direction = self.get_target_direction(target_angle, self.left_angle)
             right_cylinder_target_direction = self.get_target_direction(target_angle, self.right_angle)
             if self.mode_state_machine.state == 0:
-                if self.stop_count == 20:
+                if self.stop_adjust_count == 20:
                     left_cylinder_target_direction = 0
                     right_cylinder_target_direction = 0
                 else:
-                    self.stop_count = self.stop_count + 1
+                    self.stop_adjust_count = self.stop_adjust_count + 1
 
             if self.receive_debug:
                 print(f'Published left oil cylinder direction: {left_cylinder_target_direction},'

@@ -3,12 +3,24 @@
   "ros.rosSetupScript": "/opt/ros/foxy/install/setup.bash",
   "ros.isolateEnvironment": "false",
   "python.autoComplete.extraPaths": [
-    "/opt/ros/foxy/lib/python3.8/site-packages"
+    "/opt/ros/foxy/lib/python3.8/site-packages",
+    "/home/user/trolley_auto_dirve_image/code/install/linear_sensor_msgs/lib/python3.8/site-packages",
   ],
   "python.analysis.extraPaths": [
-    "/opt/ros/foxy/lib/python3.8/site-packages"
+    "/opt/ros/foxy/lib/python3.8/site-packages",
+    "/home/user/trolley_auto_dirve_image/code/install/linear_sensor_msgs/lib/python3.8/site-packages",
   ],
   "terminal.integrated.env.linux": {
     "DISPLAY": ":0",
+  },
+  "files.associations": {
+    "array": "cpp",
+    "deque": "cpp",
+    "list": "cpp",
+    "string": "cpp",
+    "unordered_map": "cpp",
+    "vector": "cpp",
+    "string_view": "cpp",
+    "initializer_list": "cpp"
   },
 }

@@ -12,8 +12,8 @@ apt install -y apt-utils && \
 apt install -y fonts-wqy-zenhei && \
 apt install -y ros-foxy-sensor-msgs-py && \
 rosdep install --from-paths src -y --ignore-src && \
-colcon build --symlink-install --packages-select lidar_data_handler linear_displacement_sensor && \
-colcon build --packages-select lidar_msgs ros2_lidar
+colcon build --packages-select lidar_msgs ros2_lidar linear_sensor_msgs && \
+colcon build --symlink-install --packages-select lidar_data_handler linear_displacement_sensor
 EXPOSE 2368/udp 2369/udp
 STOPSIGNAL SIGINT
 ENTRYPOINT source install/setup.bash && /usr/bin/python3 /opt/ros/foxy/bin/ros2 launch lidar_data_handler trolley_auto_drive_launch.py

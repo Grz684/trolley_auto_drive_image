@@ -1,0 +1,16 @@
+{
+  "python.autoComplete.extraPaths": [
+    "/opt/ros/foxy/lib/python3.8/site-packages",
+    "/code/install/linear_sensor_msgs/lib/python3.8/site-packages",
+    "/code/install/linear_displacement_sensor/lib/python3.8/site-packages",
+    "/code/install/lidar_msgs/lib/python3.8/site-packages",
+    "/code/install/lidar_data_handler/lib/python3.8/site-packages"
+  ],
+  "python.analysis.extraPaths": [
+    "/opt/ros/foxy/lib/python3.8/site-packages",
+    "/code/install/linear_sensor_msgs/lib/python3.8/site-packages",
+    "/code/install/linear_displacement_sensor/lib/python3.8/site-packages",
+    "/code/install/lidar_msgs/lib/python3.8/site-packages",
+    "/code/install/lidar_data_handler/lib/python3.8/site-packages"
+  ],
+}
