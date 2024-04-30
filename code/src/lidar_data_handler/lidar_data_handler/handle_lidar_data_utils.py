@@ -98,7 +98,7 @@ class Utils:
         A, B, _ = positive_x
         
         # 计算旋转角度
-        theta = np.arctan2(-A, B)  # 使用 arctan2 以便处理 A 或 B 为零的情况
+        theta = np.arctan(-A, B)  # 使用 arctan2 以便处理 A 或 B 为零的情况
 
         # 旋转矩阵
         T = np.array([
