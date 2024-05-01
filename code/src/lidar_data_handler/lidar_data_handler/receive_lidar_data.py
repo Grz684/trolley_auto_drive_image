@@ -4,8 +4,10 @@ import threading
 import traceback
 import time
 import numpy as np
-
+from linear_sensor_msgs.msg import LinearSensorData
+import message_filters
 import rclpy
+import rclpy.time
 from sensor_msgs.msg import PointCloud2
 import sensor_msgs_py.point_cloud2 as pc2
 from rclpy.node import Node
@@ -25,27 +27,79 @@ class LidarDataHandler(Node):
     def __init__(self, gui):
         super().__init__('lidar_data_handler')
         self.window = gui
-        self.draw_count = 0
+
+        self.init_draw_count()
         self.sensors_health_count = 0
+        # 可用于调试
         self.motor_activate = False
+        self.sensor_is_ready = False
         
         self.mode_state_machine = ModeStateMachine()
         self.utils = Utils()
 
         self.receive_debug = 0
         self.stop_adjust_count = 0
-        self.stop_flag = False
+        self.error_state_flag = False
 
         self.init_pid_controller()
         self.init_channels()
-        self.init_display_subscription()
+        self.init_synchronizer()
 
-        # 创建定时器，每0.1秒触发一次数据处理并发布油缸运动方向
+        # 创建定时器，每0.1秒触发一次数据处理
         self.timer_period_sec = 0.1
-        self.timer = self.create_timer(self.timer_period_sec, self.process_and_drive)
+        self.timer = self.create_timer(self.timer_period_sec, self.set_motor)
+
+        self.check_timer = None
+        self.last_sync_time = self.get_clock().now()
+        self.check_sensor_duration = 2
 
         # 退出机制
         # self.future = Future()
+        self.angle2state = {0: "前轮正中", 1: "前轮右转", -1: "前轮左转"}
+
+    def init_draw_count(self):
+        self.draw_all_count = 0
+        self.draw_back_lidar_count = 0
+        self.draw_front_lidar_count = 0
+        self.draw_left_angle_count = 0
+        self.draw_right_angle_count = 0
+
+    def init_synchronizer(self):
+        self.front_lidar_sub = message_filters.Subscriber(
+          self,
+          PointCloud2,
+          '/front_lidar/cloud',
+          qos_profile=qos_profile_sensor_data
+        )
+
+        self.back_lidar_sub = message_filters.Subscriber(
+          self,
+          PointCloud2,
+          '/back_lidar/cloud',
+          qos_profile=qos_profile_sensor_data
+        )
+
+        # 初始化当前左车桥转向角和右车桥转向角订阅者，以距离代替角度
+        self.left_angle_sub = message_filters.Subscriber(
+            self,
+            LinearSensorData,
+            'left_angle',
+            qos_profile=qos_profile_sensor_data
+        )
+        self.right_angle_sub = message_filters.Subscriber(
+            self,
+            LinearSensorData,
+            'right_angle',
+            qos_profile=qos_profile_sensor_data
+        )
+        self.all_sensors_ats = message_filters.ApproximateTimeSynchronizer([self.front_lidar_sub, self.back_lidar_sub, self.left_angle_sub, self.right_angle_sub], 10, self.timer_period_sec)
+        self.all_sensors_ats.registerCallback(self.steer_when_drive)
+        self.linear_sensors_ats = message_filters.ApproximateTimeSynchronizer([self.left_angle_sub, self.right_angle_sub], 10, self.timer_period_sec)
+        self.linear_sensors_ats.registerCallback(self.steer_when_stop)
+        self.front_lidar_sub.registerCallback(self.error_state_front_lidar_callback)
+        self.back_lidar_sub.registerCallback(self.error_state_back_lidar_callback)
+        self.left_angle_sub.registerCallback(self.error_state_left_angle_callback)
+        self.right_angle_sub.registerCallback(self.error_state_right_angle_callback)
 
     def init_pid_controller(self):
         # 初始化pid控制器和数据处理工具
@@ -54,37 +108,6 @@ class LidarDataHandler(Node):
         self.kd = 0
         self.use_pid = 0
         self.pid_controller = PIDController(self.kp, self.ki, self.kd, 1)
-
-    def init_display_subscription(self):
-        self.front_latest_lidar_data = None
-        self.back_latest_lidar_data = None
-        self.left_angle = None
-        self.right_angle = None
-        # lidar1为前雷达，lidar2为后雷达，测距器1在左，测距器2在右
-        self.lidar_sub1 = self.create_subscription(
-            PointCloud2,
-            '/front_lidar/cloud',
-            self.lidar_callback1,
-            qos_profile_sensor_data)
-        self.lidar_sub2 = self.create_subscription(
-            PointCloud2,
-            '/back_lidar/cloud',
-            self.lidar_callback2,
-            qos_profile_sensor_data)
-
-        # 初始化当前左车桥转向角和右车桥转向角订阅者，以距离代替角度
-        self.left_angle_sub = self.create_subscription(
-            Int8,
-            'left_angle',
-            self.left_angle_callback,
-            qos_profile=qos_profile_sensor_data
-        )
-        self.right_angle_sub = self.create_subscription(
-            Int8,
-            'right_angle',
-            self.right_angle_callback,
-            qos_profile=qos_profile_sensor_data
-        )
 
     def init_channels(self):
         # --------------digital_switch-------------
@@ -125,23 +148,6 @@ class LidarDataHandler(Node):
     def reset_pid_controller(self):
         if self.mode_state_machine.state == 1 or self.mode_state_machine.state == -1:
             self.pid_controller = PIDController(self.kp, self.ki, self.kd, self.mode_state_machine.state)
-
-    def left_angle_callback(self, msg):
-        self.left_angle = msg.data
-
-    def right_angle_callback(self, msg):
-        self.right_angle = msg.data
-
-    def lidar_callback1(self, msg):
-        points_array = np.array(list(pc2.read_points(msg, field_names=("x", "y"), skip_nans=True)), dtype=np.float32)
-        self.front_latest_lidar_data = points_array
-
-        # points = msg.points
-        # self.front_latest_lidar_data = [(point.x, point.y) for point in points]
-
-    def lidar_callback2(self, msg):
-        points_array = np.array(list(pc2.read_points(msg, field_names=("x", "y"), skip_nans=True)), dtype=np.float32)
-        self.back_latest_lidar_data = points_array
 
     def control_left_oil_cylinder(self, direction):
         if direction == 1:
@@ -206,84 +212,93 @@ class LidarDataHandler(Node):
                 # self.future.set_result(None)  # 触发主循环结束
             print("Reset to Stop")
 
-    def set_mode(self):
-        control_b_input_state = c_int()
-        control_f_input_state = c_int()
-        control_stop_input_state = c_int()
-        ret1 = IO_ReadPin(self.sn, self.control_b_input_channel, byref(control_b_input_state))
-        ret2 = IO_ReadPin(self.sn, self.control_f_input_channel, byref(control_f_input_state))
-        ret3 = IO_ReadPin(self.sn, self.control_stop_input_channel, byref(control_stop_input_state))
-        if 0 > ret1 or 0 > ret2 or 0 > ret3:
-            print("error input")
-            # self.future.set_result(None)  # 触发主循环结束
-        else:
-            mode_exchange = False
+    def set_motor(self):
+        if not self.error_state_flag:
+            control_b_input_state = c_int()
+            control_f_input_state = c_int()
+            control_stop_input_state = c_int()
+            ret1 = IO_ReadPin(self.sn, self.control_b_input_channel, byref(control_b_input_state))
+            ret2 = IO_ReadPin(self.sn, self.control_f_input_channel, byref(control_f_input_state))
+            ret3 = IO_ReadPin(self.sn, self.control_stop_input_channel, byref(control_stop_input_state))
+            if 0 > ret1 or 0 > ret2 or 0 > ret3:
+                print("error input")
+                # self.future.set_result(None)  # 触发主循环结束
+            else:
+                mode_exchange = False
 
-            obtain_all_sensors_data_flag = (self.front_latest_lidar_data is not None
-                                            and self.back_latest_lidar_data is not None
-                                            and self.left_angle is not None
-                                            and self.right_angle is not None)
-
-            if control_f_input_state.value == self.active_state:
-                mode_exchange = self.mode_state_machine.transition_to_forward()
-            elif control_b_input_state.value == self.active_state:
-                mode_exchange = self.mode_state_machine.transition_to_backward()
-            elif control_stop_input_state.value == self.active_state:
-                mode_exchange = self.mode_state_machine.reset_to_stop()
-                
-            if mode_exchange:
-                if control_f_input_state.value == self.active_state or control_b_input_state.value == self.active_state:
-                    self.open_lidar_mask()
-                    self.motor_activate = True
-                    self.reset_pid_controller()
-
+                if control_f_input_state.value == self.active_state:
+                    mode_exchange = self.mode_state_machine.transition_to_forward()
+                elif control_b_input_state.value == self.active_state:
+                    mode_exchange = self.mode_state_machine.transition_to_backward()
                 elif control_stop_input_state.value == self.active_state:
-                    self.stop_adjust_count = 0
-                    data = {'target': 'main_program', 'main_program_state': '停止模式'}
-                    event = PlotUpdateEvent(data)
-                    QApplication.postEvent(self.window, event)
-                    self.sensors_health_count = 0
-                    self.motor_activate = False
-                    self.control_motor(self.mode_state_machine.state)
-
-                    # 关闭雷达罩子时保证左右油缸静止
-                    self.control_left_oil_cylinder(0)
-                    self.control_right_oil_cylinder(0)
-                    self.close_lidar_mask()
-
-            # 启动前检查传感器数据是否到位
-            if self.motor_activate:
-                if obtain_all_sensors_data_flag:
-                    print("传感器数据正常，启动电机")
-                    if self.mode_state_machine.state == 1:
-                        data = {'target': 'main_program', 'main_program_state': '前进模式'}
-                    elif self.mode_state_machine.state == -1:
-                        data = {'target': 'main_program', 'main_program_state': '后退模式'}
-                    event = PlotUpdateEvent(data)
-                    QApplication.postEvent(self.window, event)
-                    self.motor_activate = False
-                    self.sensors_health_count = 0
-                    self.control_motor(self.mode_state_machine.state)
-                else:
-                    self.sensors_health_count += 1
-                    if self.sensors_health_count > 20:
-                        self.stop()
-                        self.stop_flag = True
-
-            # 运行过程中检查传感器数据是否到位
-            if self.mode_state_machine.state != 0 and self.motor_activate is False:
-                if obtain_all_sensors_data_flag:
-                    self.sensors_health_count = 0
-                else:
-                    self.sensors_health_count += 1
-                    if self.sensors_health_count > 20:
-                        self.stop()
-                        self.stop_flag = True
-
+                    mode_exchange = self.mode_state_machine.reset_to_stop()
                     
+                # 如果状态转换成功
+                if mode_exchange:
+                    # 前进或后退模式
+                    if control_f_input_state.value == self.active_state or control_b_input_state.value == self.active_state:
+                        # 打开雷达罩子
+                        self.open_lidar_mask()
+                        # 是否开启电机有待观察
+                        self.motor_activate = True
+                        # 重置pid控制器
+                        self.reset_pid_controller()
+
+                    # 停止模式
+                    elif control_stop_input_state.value == self.active_state:
+                        # 重置传感器状态检查器
+                        self.check_timer.cancel()
+                        # 重置停止调整计数器
+                        self.stop_adjust_count = 0
+
+                        data = {'target': 'main_program', 'main_program_state': '停止模式'}
+                        event = PlotUpdateEvent(data)
+                        QApplication.postEvent(self.window, event)
+
+                        self.sensors_health_count = 0
+                        self.motor_activate = False
+                        self.sensor_is_ready = False
+
+                        self.control_motor(self.mode_state_machine.state)
+
+                        # 关闭雷达罩子时保证左右油缸静止
+                        self.control_left_oil_cylinder(0)
+                        self.control_right_oil_cylinder(0)
+                        self.close_lidar_mask()
+
+                # 启动前检查传感器数据是否到位
+                if self.motor_activate:
+                    if self.sensor_is_ready:
+                        if self.receive_debug:
+                            print("传感器数据正常，启动电机")
+                        if self.mode_state_machine.state == 1:
+                            data = {'target': 'main_program', 'main_program_state': '前进模式'}
+                        elif self.mode_state_machine.state == -1:
+                            data = {'target': 'main_program', 'main_program_state': '后退模式'}
+                        event = PlotUpdateEvent(data)
+                        QApplication.postEvent(self.window, event)
+                        self.motor_activate = False
+                        self.sensors_health_count = 0
+                        self.control_motor(self.mode_state_machine.state)
+                        # 为运行过程执行定期传感器检查
+                        self.last_sync_time = self.get_clock().now()
+                        self.check_timer = self.create_timer(self.timer_period_sec, self.check_sensor_data)
+                    else:
+                        self.sensors_health_count += 1
+                        if self.sensors_health_count > 20:
+                            self.error_state_handler()
+                            self.error_state_flag = True
+
+    def check_sensor_data(self):
+        if self.receive_debug:
+            print("check sensor data, last sync time:", self.last_sync_time)
+        if self.get_clock().now() - self.last_sync_time > rclpy.time.Duration(seconds=self.check_sensor_duration):
+            self.error_state_handler()
+            self.error_state_flag = True
 
     def open_lidar_mask(self):
-        self.get_logger().info("开启雷达罩子，给电3s")
+        if self.receive_debug:
+            self.get_logger().info("开启雷达罩子，给电3s")
         ret1 = IO_WritePin(self.sn, self.front_lidar_mask_open_channel, self.active_state)
         ret2 = IO_WritePin(self.sn, self.front_lidar_mask_close_channel, self.inactive_state)
         ret3 = IO_WritePin(self.sn, self.back_lidar_mask_open_channel, self.active_state)
@@ -299,7 +314,8 @@ class LidarDataHandler(Node):
             print("error")
 
     def close_lidar_mask(self):
-        self.get_logger().info("关闭雷达罩子，给电3s")
+        if self.receive_debug:
+            self.get_logger().info("关闭雷达罩子，给电3s")
         ret1 = IO_WritePin(self.sn, self.front_lidar_mask_open_channel, self.inactive_state)
         ret2 = IO_WritePin(self.sn, self.front_lidar_mask_close_channel, self.active_state)
         ret3 = IO_WritePin(self.sn, self.back_lidar_mask_open_channel, self.inactive_state)
@@ -314,81 +330,47 @@ class LidarDataHandler(Node):
         if 0 > ret1 or 0 > ret2 or 0 > ret3 or 0 > ret4:
             print("error")
 
-    def display_lidar_data(self):
-        front_middle_diff = None
-        back_middle_diff = None
-        # 检查是否有新的激光数据
-        if self.front_latest_lidar_data is not None:
-            front_middle_diff, forward_front_diff, f_t_points, f_t_refer_points, f_average_y_upper_line, \
-                f_average_y_lower_line, f_average_x_upper_line = self.utils.get_diff(self.front_latest_lidar_data)
-        if self.back_latest_lidar_data is not None:
-            back_middle_diff, backward_front_diff, b_t_points, b_t_refer_points, b_average_y_upper_line, \
-                b_average_y_lower_line, b_average_x_upper_line = self.utils.get_diff(self.back_latest_lidar_data)
-            
-        if self.front_latest_lidar_data is not None and self.back_latest_lidar_data is not None:
-            # 雷达数据可视化
-            data = {'target': 'all', 'f_t_points': f_t_points, 'f_t_refer_points': f_t_refer_points,
-                        'f_average_y_upper_line': f_average_y_upper_line, 'f_average_y_lower_line': f_average_y_lower_line,
-                        'f_average_x_upper_line': f_average_x_upper_line, 'b_t_points': b_t_points, 
-                        'b_t_refer_points': b_t_refer_points, 'b_average_y_upper_line': b_average_y_upper_line, 
-                        'b_average_y_lower_line': b_average_y_lower_line, 'b_average_x_upper_line': b_average_x_upper_line}
-        elif self.front_latest_lidar_data is not None and self.back_latest_lidar_data is None:
-            # 雷达数据可视化
-            front_middle_diff, forward_front_diff, f_t_points, f_t_refer_points, f_average_y_upper_line, \
-                f_average_y_lower_line, f_average_x_upper_line = self.utils.get_diff(self.front_latest_lidar_data)
-            data = {'target': 'front', 'f_t_points': f_t_points, 'f_t_refer_points': f_t_refer_points,
-                        'f_average_y_upper_line': f_average_y_upper_line, 'f_average_y_lower_line': f_average_y_lower_line,
-                        'f_average_x_upper_line': f_average_x_upper_line}
-        elif self.front_latest_lidar_data is None and self.back_latest_lidar_data is not None:
-            # 雷达数据可视化
-            back_middle_diff, backward_front_diff, b_t_points, b_t_refer_points, b_average_y_upper_line, \
-                b_average_y_lower_line, b_average_x_upper_line = self.utils.get_diff(self.back_latest_lidar_data)
-            data = {'target': 'back', 'b_t_points': b_t_points, 'b_t_refer_points': b_t_refer_points,
-                        'b_average_y_upper_line': b_average_y_upper_line, 'b_average_y_lower_line': b_average_y_lower_line,
-                        'b_average_x_upper_line': b_average_x_upper_line}
-        else:
-            data = {'target': 'none'}
+    def steer_when_drive(self, front_lidar_msg, back_lidar_msg, left_angle_msg, right_angle_msg):
+        if not self.error_state_flag and self.mode_state_machine.state != 0:
+            left_angle = left_angle_msg.data
+            right_angle = right_angle_msg.data
+            front_lidar_points = np.array(list(pc2.read_points(front_lidar_msg, field_names=("x", "y"), skip_nans=True)), dtype=np.float32)
+            back_lidar_points = np.array(list(pc2.read_points(back_lidar_msg, field_names=("x", "y"), skip_nans=True)), dtype=np.float32)
+            if front_lidar_points.size == 0 or back_lidar_points.size == 0:
+                pass
+            else:
+                if self.sensor_is_ready is False:
+                    self.sensor_is_ready = True
 
-        event = PlotUpdateEvent(data)
-        QApplication.postEvent(self.window, event)
+                self.last_sync_time = self.get_clock().now()
 
-        return front_middle_diff, back_middle_diff
-    
-    def display_linear_data(self):
-        angle2state = {0: "前轮正中", 1: "前轮右转", -1: "前轮左转"}
-        if self.left_angle is not None and self.right_angle is not None:
-            data = {'target': 'oil_state', 'left_oil_state': angle2state[self.left_angle],
-                    'right_oil_state': angle2state[self.right_angle]}
-        elif self.left_angle is None and self.right_angle is not None:
-            data = {'target': 'oil_state', 'left_oil_state': "未知", 'right_oil_state': angle2state[self.right_angle]}
-        elif self.left_angle is not None and self.right_angle is None:
-            data = {'target': 'oil_state', 'left_oil_state': angle2state[self.left_angle], 'right_oil_state': "未知"}
-        else:
-            data = {'target': 'oil_state', 'left_oil_state': "未知", 'right_oil_state': "未知"}
-        
-        event = PlotUpdateEvent(data)
-        QApplication.postEvent(self.window, event)
+                if self.receive_debug:
+                    print("-----------------------")
+                    print(f"current mode:{self.mode_state_machine.state}")
 
-    def process_and_drive(self):
-        self.draw_count += 1
-        get_draw_data = False
-        if self.draw_count == 10:
-            front_middle_diff, back_middle_diff = self.display_lidar_data()
-            self.display_linear_data()
-            get_draw_data = True
-            self.draw_count = 0
+                front_middle_diff, forward_front_diff, f_t_points, f_t_refer_points, f_average_y_upper_line, \
+                    f_average_y_lower_line, f_average_x_upper_line = self.utils.get_diff(front_lidar_points)
+                back_middle_diff, backward_front_diff, b_t_points, b_t_refer_points, b_average_y_upper_line, \
+                    b_average_y_lower_line, b_average_x_upper_line = self.utils.get_diff(back_lidar_points)
+                # 每秒绘图
+                self.draw_all_count += 1
+                if self.draw_all_count == 10:
+                    # 更新雷达数据
+                    data = {'target': 'all', 'f_t_points': f_t_points, 'f_t_refer_points': f_t_refer_points,
+                            'f_average_y_upper_line': f_average_y_upper_line, 'f_average_y_lower_line': f_average_y_lower_line,
+                            'f_average_x_upper_line': f_average_x_upper_line, 'b_t_points': b_t_points, 
+                            'b_t_refer_points': b_t_refer_points, 'b_average_y_upper_line': b_average_y_upper_line, 
+                            'b_average_y_lower_line': b_average_y_lower_line, 'b_average_x_upper_line': b_average_x_upper_line}
+                    event = PlotUpdateEvent(data)
+                    QApplication.postEvent(self.window, event)
+                    # 更新拉线传感器数据
+                    data = {'target': 'both_oil', 'left_state': self.angle2state[left_angle],
+                            'right_state': self.angle2state[right_angle]}
+                    event = PlotUpdateEvent(data)
+                    QApplication.postEvent(self.window, event)
 
-        if not self.stop_flag:
-            self.set_mode()
-            if self.receive_debug:
-                print("-----------------------")
-                print(f"current mode:{self.mode_state_machine.state}")
-            # 检查是否有新的激光数据
-            if self.front_latest_lidar_data is not None and self.back_latest_lidar_data is not None:
-                if not get_draw_data:
-                    front_middle_diff, *_ = self.utils.get_diff(self.front_latest_lidar_data)
-                    back_middle_diff, *_ = self.utils.get_diff(self.back_latest_lidar_data)
-
+                    self.draw_all_count = 0
+                    
                 if self.receive_debug:
                     print(f"front_middle_diff:{float(front_middle_diff)}, back_middle_diff:{-float(back_middle_diff)}")
 
@@ -397,37 +379,90 @@ class LidarDataHandler(Node):
                 else:
                     target_angle = self.pid_controller.bang_handle_drive_state(front_middle_diff, back_middle_diff)
 
-                if self.mode_state_machine.state == 0:
-                    target_angle = int(0)
-
                 if self.receive_debug:
-                    print(f"target_angle:{target_angle}, current_left_angle:{self.left_angle}, "
-                          f"current_right_angle:{self.right_angle}")
+                    print(f"target_angle:{target_angle}, current_left_angle:{left_angle}, "
+                        f"current_right_angle:{right_angle}")
 
-                self.steer_to_target_angle_dis(target_angle)
+                self.steer_to_target_angle_dis(target_angle, left_angle, right_angle)
 
-    def steer_to_target_angle_dis(self, target_angle):
-        if self.left_angle is not None and self.right_angle is not None:
-            left_cylinder_target_direction = self.get_target_direction(target_angle, self.left_angle)
-            right_cylinder_target_direction = self.get_target_direction(target_angle, self.right_angle)
-            if self.mode_state_machine.state == 0:
-                if self.stop_adjust_count == 20:
-                    left_cylinder_target_direction = 0
-                    right_cylinder_target_direction = 0
-                else:
-                    self.stop_adjust_count = self.stop_adjust_count + 1
+    def steer_when_stop(self, left_angle_msg, right_angle_msg):
+        if not self.error_state_flag and self.mode_state_machine.state == 0:
+            target_angle = int(0)
+            left_angle = left_angle_msg.data
+            right_angle = right_angle_msg.data
+            # 更新拉线传感器数据
+            data = {'target': 'both_oil', 'left_state': self.angle2state[left_angle],
+                    'right_state': self.angle2state[right_angle]}
+            event = PlotUpdateEvent(data)
+            QApplication.postEvent(self.window, event)
+            self.steer_to_target_angle_dis(target_angle, left_angle, right_angle)
 
-            if self.receive_debug:
-                print(f'Published left oil cylinder direction: {left_cylinder_target_direction},'
-                    f'Published right oil cylinder direction: {right_cylinder_target_direction}')
+    def error_state_left_angle_callback(self, msg):
+        if self.error_state_flag:
+            self.draw_left_angle_count += 1
+            if self.draw_left_angle_count == 10:
+                left_angle = msg.data
+                data = {'target': 'left_oil', 'state': self.angle2state[left_angle]}
+                event = PlotUpdateEvent(data)
+                QApplication.postEvent(self.window, event)
+                self.draw_left_angle_count = 0
 
-            self.control_left_oil_cylinder(left_cylinder_target_direction)
-            self.control_right_oil_cylinder(right_cylinder_target_direction)
-            # 清空数据，避免重复处理
-            self.right_angle = None
-            self.left_angle = None
-            self.front_latest_lidar_data = None
-            self.back_latest_lidar_data = None
+    def error_state_right_angle_callback(self, msg):
+        if self.error_state_flag:
+            self.draw_right_angle_count += 1
+            if self.draw_right_angle_count == 10:
+                right_angle = msg.data
+                data = {'target': 'right_oil', 'state': self.angle2state[right_angle]}
+                event = PlotUpdateEvent(data)
+                QApplication.postEvent(self.window, event)
+                self.draw_right_angle_count = 0
+
+    def error_state_front_lidar_callback(self, msg):
+        if self.error_state_flag:
+            self.draw_front_lidar_count += 1
+            if self.draw_front_lidar_count == 10:
+                front_lidar_points = np.array(list(pc2.read_points(msg, field_names=("x", "y"), skip_nans=True)), dtype=np.float32)
+
+                _, _, f_t_points, f_t_refer_points, f_average_y_upper_line, \
+                        f_average_y_lower_line, f_average_x_upper_line = self.utils.get_diff(front_lidar_points)
+                data = {'target': 'front', 'f_t_points': f_t_points, 'f_t_refer_points': f_t_refer_points,
+                        'f_average_y_upper_line': f_average_y_upper_line, 'f_average_y_lower_line': f_average_y_lower_line,
+                        'f_average_x_upper_line': f_average_x_upper_line}
+                event = PlotUpdateEvent(data)
+                QApplication.postEvent(self.window, event)
+                self.draw_front_lidar_count = 0
+
+    def error_state_back_lidar_callback(self, msg):
+        if self.error_state_flag:
+            self.draw_back_lidar_count += 1
+            if self.draw_back_lidar_count == 10:
+                back_lidar_points = np.array(list(pc2.read_points(msg, field_names=("x", "y"), skip_nans=True)), dtype=np.float32)
+
+                _, _, b_t_points, b_t_refer_points, b_average_y_upper_line, \
+                        b_average_y_lower_line, b_average_x_upper_line = self.utils.get_diff(back_lidar_points)
+                data = {'target': 'back', 'b_t_points': b_t_points, 'b_t_refer_points': b_t_refer_points,
+                        'b_average_y_upper_line': b_average_y_upper_line, 'b_average_y_lower_line': b_average_y_lower_line,
+                        'b_average_x_upper_line': b_average_x_upper_line}
+                event = PlotUpdateEvent(data)
+                QApplication.postEvent(self.window, event)
+                self.draw_back_lidar_count = 0
+
+    def steer_to_target_angle_dis(self, target_angle, left_angle, right_angle):
+        left_cylinder_target_direction = self.get_target_direction(target_angle, left_angle)
+        right_cylinder_target_direction = self.get_target_direction(target_angle, right_angle)
+        if self.mode_state_machine.state == 0:
+            if self.stop_adjust_count == 20:
+                left_cylinder_target_direction = 0
+                right_cylinder_target_direction = 0
+            else:
+                self.stop_adjust_count = self.stop_adjust_count + 1
+
+        if self.receive_debug:
+            print(f'Published left oil cylinder direction: {left_cylinder_target_direction},'
+                f'Published right oil cylinder direction: {right_cylinder_target_direction}')
+
+        self.control_left_oil_cylinder(left_cylinder_target_direction)
+        self.control_right_oil_cylinder(right_cylinder_target_direction)
 
     @staticmethod
     def get_target_direction(target_angle, current_angle):
@@ -447,10 +482,17 @@ class LidarDataHandler(Node):
             # 目标向右，向右打方向，向左顶油缸
             return int(-1)
 
-    def stop(self):
+    def error_state_handler(self):
         print("主程序停止")
+        # 清除一次过往图像
+        data = {'target': 'clear'}
+        event = PlotUpdateEvent(data)
+        QApplication.postEvent(self.window, event)
+        # 停止计时器
+        self.timer.cancel()
+        self.check_timer.cancel()
         # 停止一切驱动输出
-        for i in range(6):
+        for i in range(10):
             IO_WritePin(self.sn, i, self.inactive_state)
 
         data = {'target': 'main_program', 'main_program_state': '运行故障'}
@@ -475,7 +517,7 @@ def main():
             # rclpy.spin_until_future_complete(lidar_data_handler, lidar_data_handler.future)
             rclpy.spin(lidar_data_handler)
         except Exception as e:
-            lidar_data_handler.stop()
+            lidar_data_handler.error_state_handler()
             lidar_data_handler.destroy_node()
             rclpy.shutdown()
             app.quit()

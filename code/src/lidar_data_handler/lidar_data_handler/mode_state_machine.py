@@ -3,6 +3,7 @@ from .public.gpio import *
 
 class ModeStateMachine:
     def __init__(self):
+        # 可用于调试
         self.state = 0
 
     def transition_to_forward(self):

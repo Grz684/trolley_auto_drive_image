@@ -95,19 +95,26 @@ class MainWindow(QtWidgets.QMainWindow):
         elif data['target'] == "front":
             self.draw_lidar_result(self.graphWidget_frontLidar, data['f_t_points'], data['f_t_refer_points'], data['f_average_y_upper_line'],
                         data['f_average_y_lower_line'], data['f_average_x_upper_line'])
-            self.graphWidget_backLidar.clear()
         elif data['target'] == "back":
             self.draw_lidar_result(self.graphWidget_backLidar, data['b_t_points'], data['b_t_refer_points'], data['b_average_y_upper_line'],
                         data['b_average_y_lower_line'], data['b_average_x_upper_line'])
-            self.graphWidget_frontLidar.clear()
-        elif data['target'] == "none":
-            print("display no lidar")
+        elif data['target'] == "clear":
+            print("clear all graphs")
             self.graphWidget_frontLidar.clear()
             self.graphWidget_backLidar.clear()
+            self.ui.left_oil_state.setText("未知")
+            self.ui.right_oil_state.setText("未知")
 
-        elif data['target'] == "oil_state":
-            self.ui.left_oil_state.setText(data['left_oil_state'])
-            self.ui.right_oil_state.setText(data['right_oil_state'])
+        elif data['target'] == "both_oil":
+            self.ui.left_oil_state.setText(data['left_state'])
+            self.ui.right_oil_state.setText(data['right_state'])
+
+        elif data['target'] == "left_oil":
+            self.ui.left_oil_state.setText(data['state'])
+
+        elif data['target'] == "right_oil":
+            self.ui.right_oil_state.setText(data['state'])
+        
         elif data['target'] == "main_program":
             self.ui.main_program_state.setText(data['main_program_state'])
 
