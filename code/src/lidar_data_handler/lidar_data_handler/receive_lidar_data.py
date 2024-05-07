@@ -41,13 +41,13 @@ class LidarDataHandler(Node):
         self.stop_adjust_count = 0
         self.error_state_flag = False
 
-        self.init_pid_controller()
-        self.init_channels()
-        self.init_synchronizer()
-
         # 创建定时器，每0.1秒触发一次数据处理
         self.timer_period_sec = 0.1
         self.timer = self.create_timer(self.timer_period_sec, self.set_motor)
+
+        self.init_pid_controller()
+        self.init_channels()
+        self.init_synchronizer()
 
         self.check_timer = None
         self.last_sync_time = self.get_clock().now()
