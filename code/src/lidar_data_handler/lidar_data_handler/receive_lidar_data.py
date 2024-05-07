@@ -251,6 +251,11 @@ class LidarDataHandler(Node):
                         # 重置停止调整计数器
                         self.stop_adjust_count = 0
 
+                        # 清除一次过往图像
+                        data = {'target': 'clear'}
+                        event = PlotUpdateEvent(data)
+                        QApplication.postEvent(self.window, event)
+
                         data = {'target': 'main_program', 'main_program_state': '停止模式'}
                         event = PlotUpdateEvent(data)
                         QApplication.postEvent(self.window, event)
@@ -422,14 +427,16 @@ class LidarDataHandler(Node):
             self.draw_front_lidar_count += 1
             if self.draw_front_lidar_count == 10:
                 front_lidar_points = np.array(list(pc2.read_points(msg, field_names=("x", "y"), skip_nans=True)), dtype=np.float32)
-
-                _, _, f_t_points, f_t_refer_points, f_average_y_upper_line, \
-                        f_average_y_lower_line, f_average_x_upper_line = self.utils.get_diff(front_lidar_points)
-                data = {'target': 'front', 'f_t_points': f_t_points, 'f_t_refer_points': f_t_refer_points,
-                        'f_average_y_upper_line': f_average_y_upper_line, 'f_average_y_lower_line': f_average_y_lower_line,
-                        'f_average_x_upper_line': f_average_x_upper_line}
-                event = PlotUpdateEvent(data)
-                QApplication.postEvent(self.window, event)
+                if front_lidar_points.size == 0:
+                    pass
+                else:
+                    _, _, f_t_points, f_t_refer_points, f_average_y_upper_line, \
+                            f_average_y_lower_line, f_average_x_upper_line = self.utils.get_diff(front_lidar_points)
+                    data = {'target': 'front', 'f_t_points': f_t_points, 'f_t_refer_points': f_t_refer_points,
+                            'f_average_y_upper_line': f_average_y_upper_line, 'f_average_y_lower_line': f_average_y_lower_line,
+                            'f_average_x_upper_line': f_average_x_upper_line}
+                    event = PlotUpdateEvent(data)
+                    QApplication.postEvent(self.window, event)
                 self.draw_front_lidar_count = 0
 
     def error_state_back_lidar_callback(self, msg):
@@ -437,14 +444,16 @@ class LidarDataHandler(Node):
             self.draw_back_lidar_count += 1
             if self.draw_back_lidar_count == 10:
                 back_lidar_points = np.array(list(pc2.read_points(msg, field_names=("x", "y"), skip_nans=True)), dtype=np.float32)
-
-                _, _, b_t_points, b_t_refer_points, b_average_y_upper_line, \
-                        b_average_y_lower_line, b_average_x_upper_line = self.utils.get_diff(back_lidar_points)
-                data = {'target': 'back', 'b_t_points': b_t_points, 'b_t_refer_points': b_t_refer_points,
-                        'b_average_y_upper_line': b_average_y_upper_line, 'b_average_y_lower_line': b_average_y_lower_line,
-                        'b_average_x_upper_line': b_average_x_upper_line}
-                event = PlotUpdateEvent(data)
-                QApplication.postEvent(self.window, event)
+                if back_lidar_points.size == 0:
+                    pass
+                else:
+                    _, _, b_t_points, b_t_refer_points, b_average_y_upper_line, \
+                            b_average_y_lower_line, b_average_x_upper_line = self.utils.get_diff(back_lidar_points)
+                    data = {'target': 'back', 'b_t_points': b_t_points, 'b_t_refer_points': b_t_refer_points,
+                            'b_average_y_upper_line': b_average_y_upper_line, 'b_average_y_lower_line': b_average_y_lower_line,
+                            'b_average_x_upper_line': b_average_x_upper_line}
+                    event = PlotUpdateEvent(data)
+                    QApplication.postEvent(self.window, event)
                 self.draw_back_lidar_count = 0
 
     def steer_to_target_angle_dis(self, target_angle, left_angle, right_angle):
@@ -511,22 +520,6 @@ def main():
     # 创建节点
     lidar_data_handler = LidarDataHandler(window)
 
-    def run_ros_node():
-        try:
-            # 保持节点活动
-            # rclpy.spin_until_future_complete(lidar_data_handler, lidar_data_handler.future)
-            rclpy.spin(lidar_data_handler)
-        except Exception as e:
-            lidar_data_handler.error_state_handler()
-            lidar_data_handler.destroy_node()
-            rclpy.shutdown()
-            app.quit()
-            print(f"Caught an exception: {e}")
-            traceback.print_exc()
-            
-    ros_thread = threading.Thread(target=run_ros_node)
-    ros_thread.start()
-
     # 信号处理函数,参数是必须的！
     def signal_handler(signum, frame):
         print("停止所有驱动输出!!!")
@@ -545,6 +538,22 @@ def main():
     # 注册 SIGINT 和 SIGTERM 信号处理器【必要】
     signal.signal(signal.SIGTERM, signal_handler)
     signal.signal(signal.SIGINT, signal_handler)
+
+    def run_ros_node():
+        try:
+            # 保持节点活动
+            # rclpy.spin_until_future_complete(lidar_data_handler, lidar_data_handler.future)
+            rclpy.spin(lidar_data_handler)
+        except Exception as e:
+            lidar_data_handler.error_state_handler()
+            lidar_data_handler.destroy_node()
+            rclpy.shutdown()
+            app.quit()
+            print(f"Caught an exception: {e}")
+            traceback.print_exc()
+            
+    ros_thread = threading.Thread(target=run_ros_node)
+    ros_thread.start()
 
     # .exec_()为qt事件循环函数，在.quit方法后退出
     exit_code = app.exec_()
