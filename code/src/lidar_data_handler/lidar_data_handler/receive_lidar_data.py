@@ -5,8 +5,10 @@ import traceback
 import time
 import numpy as np
 from linear_sensor_msgs.msg import LinearSensorData
+from rclpy.executors import SingleThreadedExecutor
 import message_filters
 import rclpy
+import rclpy.signals
 import rclpy.time
 from sensor_msgs.msg import PointCloud2
 import sensor_msgs_py.point_cloud2 as pc2
@@ -514,46 +516,41 @@ def main():
     window = MainWindow()
     window.show()
 
-    # Create and start the ROS2 thread
-    # 初始化ROS节点
     rclpy.init()
-    # 创建节点
     lidar_data_handler = LidarDataHandler(window)
+
+    def run_ros_node():
+        try:
+            # 初始化ROS节点
+            rclpy.spin(lidar_data_handler)
+        except Exception as e:
+            print(f"Caught an exception: {e}")
+            traceback.print_exc()
+        finally:
+            print("停止所有驱动输出!!!")
+            # sn = 231202311
+            # inactive_state = 1
+            for i in range(16):
+                ret = IO_WritePin(lidar_data_handler.sn, i, lidar_data_handler.inactive_state)
+                if ret < 0:
+                    print(f"Failed to close IO{i}")
+            
+    ros_thread = threading.Thread(target=run_ros_node)
+    ros_thread.start()
 
     # 信号处理函数,参数是必须的！
     def signal_handler(signum, frame):
-        print("停止所有驱动输出!!!")
-        # sn = 231202311
-        # inactive_state = 1
-        for i in range(16):
-            ret = IO_WritePin(lidar_data_handler.sn, i, lidar_data_handler.inactive_state)
-            if ret < 0:
-                print(f"Failed to close IO{i}")
         # 结束qt事件循环
         app.quit()
         # 解除节点资源
         lidar_data_handler.destroy_node()
         rclpy.shutdown()
 
-    # 注册 SIGINT 和 SIGTERM 信号处理器【必要】
-    signal.signal(signal.SIGTERM, signal_handler)
     signal.signal(signal.SIGINT, signal_handler)
 
-    def run_ros_node():
-        try:
-            # 保持节点活动
-            # rclpy.spin_until_future_complete(lidar_data_handler, lidar_data_handler.future)
-            rclpy.spin(lidar_data_handler)
-        except Exception as e:
-            lidar_data_handler.error_state_handler()
-            lidar_data_handler.destroy_node()
-            rclpy.shutdown()
-            app.quit()
-            print(f"Caught an exception: {e}")
-            traceback.print_exc()
-            
-    ros_thread = threading.Thread(target=run_ros_node)
-    ros_thread.start()
+    timer = QTimer()
+    timer.start(100)  # You may change this if you wish.
+    timer.timeout.connect(lambda: None)  # Let the interpreter run each 100 ms.
 
     # .exec_()为qt事件循环函数，在.quit方法后退出
     exit_code = app.exec_()
@@ -561,7 +558,6 @@ def main():
     ros_thread.join()
     print("终止ros2节点运行")
     sys.exit(exit_code)
-
 
 if __name__ == '__main__':
     main()

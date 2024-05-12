@@ -93,21 +93,13 @@ def main(args=None):
     rclpy.init(args=args)
     left_sensor = LeftSensor()
 
-    # 信号处理函数,参数是必须的！
-    def signal_handler(signum, frame):
-        # 解除节点资源
-        print("左拉线传感器关闭")
-        left_sensor.destroy_node()
-        rclpy.shutdown()
-
-    # 注册 SIGINT 和 SIGTERM 信号处理器【必要】
-    # signal.signal(signal.SIGTERM, signal_handler)
-    signal.signal(signal.SIGINT, signal_handler)
-
     try:
         rclpy.spin(left_sensor)
+    except KeyboardInterrupt:
+        print("左拉线传感器关闭")
     except Exception as e:
         print(f"Caught exception: {e}")
+    finally:
         left_sensor.destroy_node()
         rclpy.shutdown()
 
