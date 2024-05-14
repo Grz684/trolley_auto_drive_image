@@ -1,2 +1,2 @@
 std_msgs/Header header
-Float32 data
+float32 data
