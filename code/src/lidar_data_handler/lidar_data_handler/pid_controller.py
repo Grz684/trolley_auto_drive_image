@@ -72,10 +72,15 @@ class PIDController:
     def pid_handle_drive_state(self, front_middle_diff, back_middle_diff):
         adjustment = self.get_adjustment(front_middle_diff, back_middle_diff)
         # target_angle与adjustment（修正量）同号
-        target_angle = self.update(adjustment, self.dt)
-        if target_angle > 0 and target_angle > 25:
-            target_angle = 25
-        if target_angle < 0 and target_angle < -25:
-            target_angle = -25
+        if abs(adjustment) < self.tolerate_adjustment:
+            # 在容忍范围内，保持轮胎正中
+            target_angle = 0
+        else:
+            target_angle = self.update(adjustment, self.dt)
+            # 不要超过映射量程
+            if target_angle > 0 and target_angle > 50:
+                target_angle = 50
+            if target_angle < 0 and target_angle < -50:
+                target_angle = -50
 
-        return target_angle
+            return target_angle

@@ -64,21 +64,22 @@ class LeftSensor(Node):
 
         left_angle_dis = self.get_dis(self.left_client)
 
-        if left_angle_dis != -100:
-            if self.mid_lower_bound <= left_angle_dis <= self.mid_upper_bound:
-                left_angle.data = 0
-            elif left_angle_dis < self.mid_lower_bound:
-                # 当前偏右
-                left_angle.data = -1
-            else:
-                # 当前偏左
-                left_angle.data = 1
+        # if left_angle_dis != -100:
+        #     if self.mid_lower_bound <= left_angle_dis <= self.mid_upper_bound:
+        #         left_angle.data = 0
+        #     elif left_angle_dis < self.mid_lower_bound:
+        #         # 当前偏右
+        #         left_angle.data = -1
+        #     else:
+        #         # 当前偏左
+        #         left_angle.data = 1
 
-            if self.debug:
-                print(f"current_left_angle_dis: {left_angle_dis}mm")
-                print(f"current_left_angle: {left_angle.data}")
+        left_angle.data = float(left_angle_dis)
 
-            self.current_left_angle.publish(left_angle)
+        if self.debug:
+            print(f"current_left_angle_dis: {left_angle_dis}mm")
+
+        self.current_left_angle.publish(left_angle)
 
     def destroy_node(self):
         try:

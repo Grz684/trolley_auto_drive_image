@@ -67,20 +67,22 @@ class RightSensor(Node):
 
         right_angle_dis = self.get_dis(self.right_client)
 
-        if right_angle_dis != -100:
-            if self.mid_lower_bound <= right_angle_dis <= self.mid_upper_bound:
-                right_angle.data = 0
-            elif right_angle_dis < self.mid_lower_bound:
-                # 当前偏右
-                right_angle.data = -1
-            else:
-                # 当前偏左
-                right_angle.data = 1
-            if self.debug:
-                print(f"current_right_angle_dis: {right_angle_dis}mm")
-                print(f"current_right_angle: {right_angle.data}")
+        # if right_angle_dis != -100:
+        #     if self.mid_lower_bound <= right_angle_dis <= self.mid_upper_bound:
+        #         right_angle.data = 0
+        #     elif right_angle_dis < self.mid_lower_bound:
+        #         # 当前偏右
+        #         right_angle.data = -1
+        #     else:
+        #         # 当前偏左
+        #         right_angle.data = 1
 
-            self.current_right_angle.publish(right_angle)
+        right_angle.data = float(right_angle_dis)
+
+        if self.debug:
+            print(f"current_right_angle_dis: {right_angle_dis}mm")
+
+        self.current_right_angle.publish(right_angle)
 
     def destroy_node(self):
         try:

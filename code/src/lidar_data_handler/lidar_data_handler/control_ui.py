@@ -106,14 +106,14 @@ class MainWindow(QtWidgets.QMainWindow):
             self.ui.right_oil_state.setText("未知")
 
         elif data['target'] == "both_oil":
-            self.ui.left_oil_state.setText(data['left_state'])
-            self.ui.right_oil_state.setText(data['right_state'])
+            self.ui.left_oil_state.setText(data['left_state']+" mm")
+            self.ui.right_oil_state.setText(data['right_state']+" mm")
 
         elif data['target'] == "left_oil":
-            self.ui.left_oil_state.setText(data['state'])
+            self.ui.left_oil_state.setText(data['state']+" mm")
 
         elif data['target'] == "right_oil":
-            self.ui.right_oil_state.setText(data['state'])
+            self.ui.right_oil_state.setText(data['state']+" mm")
         
         elif data['target'] == "main_program":
             self.ui.main_program_state.setText(data['main_program_state'])

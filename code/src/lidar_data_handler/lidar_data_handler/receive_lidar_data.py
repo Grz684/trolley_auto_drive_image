@@ -57,7 +57,7 @@ class LidarDataHandler(Node):
 
         # 退出机制
         # self.future = Future()
-        self.angle2state = {0: "前轮正中", 1: "前轮右转", -1: "前轮左转"}
+        # self.angle2state = {0: "前轮正中", 1: "前轮右转", -1: "前轮左转"}
 
     def init_draw_count(self):
         self.draw_all_count = 0
@@ -108,8 +108,14 @@ class LidarDataHandler(Node):
         self.kp = 8
         self.ki = 0
         self.kd = 0
-        self.use_pid = 0
+        self.use_pid = 1
         self.pid_controller = PIDController(self.kp, self.ki, self.kd, 1)
+        # bound值都是需要实机确认的
+        self.mid_lower_bound = 75
+        self.mid_upper_bound = 85
+        self.mid_bound = 80
+        self.left_bound = 40
+        self.right_bound = 120
 
     def init_channels(self):
         # --------------digital_switch-------------
@@ -153,14 +159,14 @@ class LidarDataHandler(Node):
 
     def control_left_oil_cylinder(self, direction):
         if direction == 1:
-            # 油缸左伸
+            # 左油缸收缩
             ret1 = IO_WritePin(self.sn, self.cylinder_ll_output_channel, self.active_state)
             ret2 = IO_WritePin(self.sn, self.cylinder_lr_output_channel, self.inactive_state)
             if 0 > ret1 or 0 > ret2:
                 print("error")
                 # self.future.set_result(None)  # 触发主循环结束
         elif direction == -1:
-            # 油缸右伸
+            # 左油缸拉伸
             ret1 = IO_WritePin(self.sn, self.cylinder_ll_output_channel, self.inactive_state)
             ret2 = IO_WritePin(self.sn, self.cylinder_lr_output_channel, self.active_state)
             if 0 > ret1 or 0 > ret2:
@@ -339,8 +345,8 @@ class LidarDataHandler(Node):
 
     def steer_when_drive(self, front_lidar_msg, back_lidar_msg, left_angle_msg, right_angle_msg):
         if not self.error_state_flag and self.mode_state_machine.state != 0:
-            left_angle = left_angle_msg.data
-            right_angle = right_angle_msg.data
+            left_angle_dis = left_angle_msg.data
+            right_angle_dis = right_angle_msg.data
             front_lidar_points = np.array(list(pc2.read_points(front_lidar_msg, field_names=("x", "y"), skip_nans=True)), dtype=np.float32)
             back_lidar_points = np.array(list(pc2.read_points(back_lidar_msg, field_names=("x", "y"), skip_nans=True)), dtype=np.float32)
             if front_lidar_points.size == 0 or back_lidar_points.size == 0:
@@ -371,8 +377,8 @@ class LidarDataHandler(Node):
                     event = PlotUpdateEvent(data)
                     QApplication.postEvent(self.window, event)
                     # 更新拉线传感器数据
-                    data = {'target': 'both_oil', 'left_state': self.angle2state[left_angle],
-                            'right_state': self.angle2state[right_angle]}
+                    data = {'target': 'both_oil', 'left_state': str(left_angle_dis),
+                            'right_state': str(right_angle_dis)}
                     event = PlotUpdateEvent(data)
                     QApplication.postEvent(self.window, event)
 
@@ -387,29 +393,30 @@ class LidarDataHandler(Node):
                     target_angle = self.pid_controller.bang_handle_drive_state(front_middle_diff, back_middle_diff)
 
                 if self.receive_debug:
-                    print(f"target_angle:{target_angle}, current_left_angle:{left_angle}, "
-                        f"current_right_angle:{right_angle}")
+                    print(f"target_angle:{target_angle}, current_left_angle:{left_angle_dis}, "
+                        f"current_right_angle:{right_angle_dis}")
 
-                self.steer_to_target_angle_dis(target_angle, left_angle, right_angle)
+                self.steer_to_target_angle_dis(target_angle, left_angle_dis, right_angle_dis)
 
     def steer_when_stop(self, left_angle_msg, right_angle_msg):
         if not self.error_state_flag and self.mode_state_machine.state == 0:
-            target_angle = int(0)
-            left_angle = left_angle_msg.data
-            right_angle = right_angle_msg.data
+            # 按停止键调整轮胎居中
+            target_angle = 0
+            left_angle_dis = left_angle_msg.data
+            right_angle_dis = right_angle_msg.data
             # 更新拉线传感器数据
-            data = {'target': 'both_oil', 'left_state': self.angle2state[left_angle],
-                    'right_state': self.angle2state[right_angle]}
+            data = {'target': 'both_oil', 'left_state': str(left_angle_dis),
+                    'right_state': str(right_angle_dis)}
             event = PlotUpdateEvent(data)
             QApplication.postEvent(self.window, event)
-            self.steer_to_target_angle_dis(target_angle, left_angle, right_angle)
+            self.steer_to_target_angle_dis(target_angle, left_angle_dis, right_angle_dis)
 
     def error_state_left_angle_callback(self, msg):
         if self.error_state_flag:
             self.draw_left_angle_count += 1
             if self.draw_left_angle_count == 10:
-                left_angle = msg.data
-                data = {'target': 'left_oil', 'state': self.angle2state[left_angle]}
+                left_angle_dis = msg.data
+                data = {'target': 'left_oil', 'state': str(left_angle_dis)}
                 event = PlotUpdateEvent(data)
                 QApplication.postEvent(self.window, event)
                 self.draw_left_angle_count = 0
@@ -418,8 +425,8 @@ class LidarDataHandler(Node):
         if self.error_state_flag:
             self.draw_right_angle_count += 1
             if self.draw_right_angle_count == 10:
-                right_angle = msg.data
-                data = {'target': 'right_oil', 'state': self.angle2state[right_angle]}
+                right_angle_dis = msg.data
+                data = {'target': 'right_oil', 'state': str(right_angle_dis)}
                 event = PlotUpdateEvent(data)
                 QApplication.postEvent(self.window, event)
                 self.draw_right_angle_count = 0
@@ -458,9 +465,9 @@ class LidarDataHandler(Node):
                     QApplication.postEvent(self.window, event)
                 self.draw_back_lidar_count = 0
 
-    def steer_to_target_angle_dis(self, target_angle, left_angle, right_angle):
-        left_cylinder_target_direction = self.get_target_direction(target_angle, left_angle)
-        right_cylinder_target_direction = self.get_target_direction(target_angle, right_angle)
+    def steer_to_target_angle_dis(self, target_angle, left_angle_dis, right_angle_dis):
+        left_cylinder_target_direction = self.get_target_direction(target_angle, left_angle_dis)
+        right_cylinder_target_direction = self.get_target_direction(target_angle, right_angle_dis)
         if self.mode_state_machine.state == 0:
             if self.stop_adjust_count == 20:
                 left_cylinder_target_direction = 0
@@ -475,23 +482,40 @@ class LidarDataHandler(Node):
         self.control_left_oil_cylinder(left_cylinder_target_direction)
         self.control_right_oil_cylinder(right_cylinder_target_direction)
 
-    @staticmethod
-    def get_target_direction(target_angle, current_angle):
-        if target_angle == 0:
-            if current_angle == 0:
-                return int(0)
-            elif current_angle == -1:
-                # 向左打方向，向右顶油缸
-                return int(-1)
-            elif current_angle == 1:
-                # 向右打方向，向左顶油缸
-                return int(1)
-        elif target_angle == 1:
-            # 目标向左，向左打方向，向右顶油缸
+    def get_target_direction(self, target_angle, current_angle_dis):
+        # 先把current_angle（拉线长度）映射到target_angle的量程（-50~50）
+        # current_angle_dis较小时，轮胎朝左；current_angle_dis较大时，轮胎朝右
+        if self.mid_lower_bound <= current_angle_dis <= self.mid_upper_bound:
+            current_angle = 0
+        elif current_angle_dis < self.mid_lower_bound:
+            current_angle = (self.mid_bound - current_angle_dis)/(self.mid_bound-self.left_bound)*50
+        else:
+            current_angle = (self.mid_bound - current_angle_dis)/(self.right_bound-self.mid_bound)*50
+
+        if current_angle == target_angle:
+            return int(0)
+        elif current_angle < target_angle:
+            # 当前过右偏了，往左打方向（current和target都可理解为轮胎角度）
             return int(1)
-        elif target_angle == -1:
-            # 目标向右，向右打方向，向左顶油缸
+        else:
             return int(-1)
+
+        # direction为1是收缩，为-1是拉伸
+        # if target_angle == 0:
+        #     if current_angle == 0:
+        #         return int(0)
+        #     elif current_angle == -1:
+        #         # 向右打方向
+        #         return int(-1)
+        #     elif current_angle == 1:
+        #         # 向左打方向
+        #         return int(1)
+        # elif target_angle == 1:
+        #     # 目标向左，油缸收缩
+        #     return int(1)
+        # elif target_angle == -1:
+        #     # 目标向右，油缸拉伸
+        #     return int(-1)
 
     def error_state_handler(self):
         print("主程序停止")

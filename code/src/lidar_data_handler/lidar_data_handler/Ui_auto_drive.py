@@ -85,9 +85,9 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.left_oil.setText(_translate("MainWindow", "左车桥状态："))
+        self.left_oil.setText(_translate("MainWindow", "左车桥拉线传感器状态："))
         self.main_program_state.setText(_translate("MainWindow", "停止模式"))
         self.left_oil_state.setText(_translate("MainWindow", "未知"))
-        self.right_oil.setText(_translate("MainWindow", "右车桥状态："))
+        self.right_oil.setText(_translate("MainWindow", "右车桥拉线传感器状态："))
         self.main_program.setText(_translate("MainWindow", "主程序状态："))
         self.right_oil_state.setText(_translate("MainWindow", "未知"))
