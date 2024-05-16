@@ -3,7 +3,7 @@ SHELL ["/bin/bash","-c"]
 COPY code /code/
 WORKDIR /code
 ENV DEBIAN_FRONTEND noninteractive
-ENV DISPLAY=:0
+ENV DISPLAY=:1
 RUN sed -i 's/archive.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list && \
 sed -i 's/security.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list
 RUN source /opt/ros/foxy/setup.bash && \

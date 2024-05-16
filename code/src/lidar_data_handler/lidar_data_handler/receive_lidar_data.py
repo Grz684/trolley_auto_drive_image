@@ -39,7 +39,7 @@ class LidarDataHandler(Node):
         self.mode_state_machine = ModeStateMachine()
         self.utils = Utils()
 
-        self.receive_debug = 0
+        self.receive_debug = 1
         self.stop_adjust_count = 0
         self.error_state_flag = False
 
@@ -105,17 +105,17 @@ class LidarDataHandler(Node):
 
     def init_pid_controller(self):
         # 初始化pid控制器和数据处理工具
-        self.kp = 8
+        self.kp = 100
         self.ki = 0
         self.kd = 0
         self.use_pid = 1
         self.pid_controller = PIDController(self.kp, self.ki, self.kd, 1)
         # bound值都是需要实机确认的
-        self.mid_lower_bound = 75
-        self.mid_upper_bound = 85
-        self.mid_bound = 80
-        self.left_bound = 40
-        self.right_bound = 120
+        self.mid_lower_bound = 82
+        self.mid_upper_bound = 92
+        self.mid_bound = 87
+        self.left_bound = 23
+        self.right_bound = 126
 
     def init_channels(self):
         # --------------digital_switch-------------
@@ -235,10 +235,16 @@ class LidarDataHandler(Node):
                 mode_exchange = False
 
                 if control_f_input_state.value == self.active_state:
+                    if self.receive_debug:
+                        print("按前进键")
                     mode_exchange = self.mode_state_machine.transition_to_forward()
                 elif control_b_input_state.value == self.active_state:
+                    if self.receive_debug:
+                        print("按后退键")
                     mode_exchange = self.mode_state_machine.transition_to_backward()
                 elif control_stop_input_state.value == self.active_state:
+                    if self.receive_debug:
+                        print("按停止键")
                     mode_exchange = self.mode_state_machine.reset_to_stop()
                     
                 # 如果状态转换成功
@@ -246,14 +252,18 @@ class LidarDataHandler(Node):
                     # 前进或后退模式
                     if control_f_input_state.value == self.active_state or control_b_input_state.value == self.active_state:
                         # 打开雷达罩子
-                        self.open_lidar_mask()
+                        # self.open_lidar_mask()
                         # 是否开启电机有待观察
+                        if self.receive_debug:
+                            print("运动")
                         self.motor_activate = True
                         # 重置pid控制器
                         self.reset_pid_controller()
 
                     # 停止模式
                     elif control_stop_input_state.value == self.active_state:
+                        if self.receive_debug:
+                            print("停止")
                         # 重置传感器状态检查器
                         self.check_timer.cancel()
                         # 重置停止调整计数器
@@ -277,7 +287,7 @@ class LidarDataHandler(Node):
                         # 关闭雷达罩子时保证左右油缸静止
                         self.control_left_oil_cylinder(0)
                         self.control_right_oil_cylinder(0)
-                        self.close_lidar_mask()
+                        # self.close_lidar_mask()
 
                 # 启动前检查传感器数据是否到位
                 if self.motor_activate:

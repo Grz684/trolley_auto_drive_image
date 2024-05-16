@@ -11,7 +11,7 @@
     "/home/user/trolley_auto_dirve_image/code/install/linear_sensor_msgs/lib/python3.8/site-packages",
   ],
   "terminal.integrated.env.linux": {
-    "DISPLAY": ":0",
+    "DISPLAY": ":1",
   },
   "files.associations": {
     "array": "cpp",

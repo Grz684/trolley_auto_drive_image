@@ -74,6 +74,7 @@ class MainWindow(QtWidgets.QMainWindow):
     def draw_lidar_result(graphWidget, t_points, t_refer_points, average_y_upper_line, average_y_lower_line, average_x_upper_line):
         # Clear the existing graph
         graphWidget.clear()
+        print("绘图")
 
         # Plot transformed original points
         if t_points.size > 0:
