@@ -265,7 +265,8 @@ class LidarDataHandler(Node):
                         if self.receive_debug:
                             print("停止")
                         # 重置传感器状态检查器
-                        self.check_timer.cancel()
+                        if self.check_timer is not None:
+                            self.check_timer.cancel()
                         # 重置停止调整计数器
                         self.stop_adjust_count = 0
 
@@ -534,8 +535,10 @@ class LidarDataHandler(Node):
         event = PlotUpdateEvent(data)
         QApplication.postEvent(self.window, event)
         # 停止计时器
-        self.timer.cancel()
-        self.check_timer.cancel()
+        if self.timer is not None:
+            self.timer.cancel()
+        if self.check_timer is not None:
+            self.check_timer.cancel()
         # 停止一切驱动输出
         for i in range(10):
             IO_WritePin(self.sn, i, self.inactive_state)
