@@ -4,14 +4,14 @@ import math
 import cv2
 import numpy as np
 # from matplotlib import pyplot as plt
-
+from scipy.optimize import minimize
 
 class Utils:
     def __init__(self):
         self.draw_count = 0
-        self.bias = 0.1  # 允许偏执量，墙上的坑最大可能有多深（m），可调整参数
+        self.bias = 0.5  # 偏执范围，用来给最小外接矩形纠偏的
         self.front_wall_points_lower_bound = 30
-        self.utils_debug = 0
+        self.utils_debug = 1
         # self.draw = False
         # self.max_angle = 20
 
@@ -25,69 +25,119 @@ class Utils:
         y_upper = refer_points[1, 1]
         x_upper = refer_points[1, 0]
 
-        # 分类存储各类点
-        cross = []
-        ignore = []
-        y_upper_line = []  # line1
-        y_lower_line = []  # line2
-        x_upper_line = []  # line3
+        # 使用布尔索引来分类存储各类点
+        belong_to_y_upper_line = (points[:, 1] >= y_upper - self.bias) & (points[:, 1] <= y_upper)
+        belong_to_y_lower_line = (points[:, 1] >= 0) & (points[:, 1] <= self.bias)
+        belong_to_x_upper_line = (points[:, 0] >= x_upper - self.bias) & (points[:, 0] <= x_upper)
 
-        for point in points:
-            x, y = point
-            belong_to_y_upper_line = y_upper - self.bias <= y <= y_upper + self.bias
-            belong_to_y_lower_line = -self.bias <= y <= self.bias
-            belong_to_x_upper_line = x_upper - self.bias <= x <= x_upper + self.bias
-            if (belong_to_y_lower_line and belong_to_x_upper_line) or (
-                    belong_to_y_upper_line and belong_to_x_upper_line):
-                cross.append((x, y))
-            elif belong_to_y_upper_line:
-                y_upper_line.append((x, y))
-            elif belong_to_y_lower_line:
-                y_lower_line.append((x, y))
-            elif belong_to_x_upper_line:
-                x_upper_line.append((x, y))
-            else:
-                ignore.append((x, y))
+        # 交叉点
+        cross = points[(belong_to_y_lower_line & belong_to_x_upper_line) | (belong_to_y_upper_line & belong_to_x_upper_line)]
+
+        # Y上方的线
+        y_upper_line = points[belong_to_y_upper_line & ~belong_to_x_upper_line]
+
+        # Y下方的线
+        y_lower_line = points[belong_to_y_lower_line & ~belong_to_x_upper_line]
+
+        # X上方的线
+        x_upper_line = points[belong_to_x_upper_line & ~belong_to_y_upper_line & ~belong_to_y_lower_line]
+
+        # 被忽略的点
+        ignore = points[~(belong_to_y_upper_line | belong_to_y_lower_line | belong_to_x_upper_line)]
 
         if self.utils_debug:
             print("all points:", len(ignore) + len(cross) + len(y_lower_line) + len(y_upper_line) + len(x_upper_line))
             print("valid points:", len(cross) + len(y_lower_line) + len(y_upper_line) + len(x_upper_line))
 
-        if len(x_upper_line) < self.front_wall_points_lower_bound:
-            average_x_upper_line = -1
-        else:
-            average_x_upper_line = self.fit_line(np.array(x_upper_line), "x", x_upper)
-            if self.utils_debug:
-                print(f"The weighted average of the x_upper_line is: {average_x_upper_line}")
+        # if len(x_upper_line) < self.front_wall_points_lower_bound:
+        #     average_x_upper_line = -1
+        # else:
+        #     average_x_upper_line = self.fit_line(x_upper_line, "x", x_upper)
+        #     if self.utils_debug:
+        #         print(f"The weighted average of the x_upper_line is: {average_x_upper_line}")
+        average_x_upper_line = -1
 
-        average_y_upper_line = self.fit_line(np.array(y_upper_line), "y", y_upper)
-        average_y_lower_line = self.fit_line(np.array(y_lower_line), "y", 0)
+        # 拟合两个不同的直线方程
+        average_y_upper_line = self.fit_line(y_upper_line, "y", y_upper)
+        average_y_lower_line = self.fit_line(y_lower_line, "y", 0)
+
+        # average_y_upper_line, average_y_lower_line = self.fit_both_line(y_upper_line, y_lower_line, y_upper)
 
         if self.utils_debug:
-            print(f"The weighted average of the y_upper_line is: {average_y_upper_line}")
-            print(f"The weighted average of the y_lower_line is: {average_y_lower_line}")
+            print(f"the y_upper_line is: {average_y_upper_line}")
+            print(f"the y_lower_line is: {average_y_lower_line}")
 
         return average_y_upper_line, average_y_lower_line, average_x_upper_line
 
     @staticmethod
     def fit_line(points_array, axis, bound):
-        if axis == "x":
-            # 提取所有x坐标到一个NumPy数组
-            x_values = points_array[:, 0]
-            # 计算平均值
-            weighted_average_distance = np.mean(x_values)
-        elif axis == "y":
-            # 提取所有y坐标到一个NumPy数组
-            if len(points_array) == 0:
-                y_values = bound
+        if axis == "y":
+            if points_array.shape[0] >= 2:
+                # 提取x和y坐标
+                x = points_array[:, 0]
+                y = points_array[:, 1]
+
+                # 使用polyfit进行线性拟合，1表示一次多项式（线性拟合）
+                coefficients = np.polyfit(x, y, 1)
+
+                # 生成拟合线的系数
+                a, b = coefficients
+                fitted_line = a, -1, b
             else:
-                y_values = points_array[:, 1]
-            # 计算平均值
-            weighted_average_distance = np.mean(y_values)
+                fitted_line = 0, -1, bound
+
+            # # 提取所有y坐标到一个NumPy数组
+            # if len(points_array) == 0:
+            #     y_values = bound
+            # else:
+            #     y_values = points_array[:, 1]
+            # # 计算平均值
+            # weighted_average_distance = np.mean(y_values)
         else:
             raise ValueError("fit_line函数axis参数赋值错误")
 
-        return weighted_average_distance
+        return fitted_line
+    
+    @staticmethod
+    def fit_both_line(y_upper_line, y_lower_line, y_upper):
+        # 拟合两个同斜率的直线方程
+        if y_upper_line.shape[0] >= 2 and y_lower_line.shape[0] >= 2:
+            y_upper_line_x = y_upper_line[:, 0]
+            y_upper_line_y = y_upper_line[:, 1]
+            y_lower_line_x = y_lower_line[:, 0]
+            y_lower_line_y = y_lower_line[:, 1]
+
+            # 初始拟合来获取初始参数
+            m_init_upper, c1_init = np.polyfit(y_upper_line_x, y_upper_line_y, 1)
+            m_init_lower, c2_init = np.polyfit(y_lower_line_x, y_lower_line_y, 1)
+            m_init = (m_init_upper + m_init_lower) / 2  # 取平均斜率作为初始斜率
+
+            # 定义损失函数
+            def loss(params):
+                m, c1, c2 = params
+                residuals_upper = y_upper_line_y - (m * y_upper_line_x + c1)
+                residuals_lower = y_lower_line_y - (m * y_lower_line_x + c2)
+                return np.sum(residuals_upper**2) + np.sum(residuals_lower**2)
+
+            # 初始参数猜测
+            initial_params = [m_init, c1_init, c2_init]
+
+            # 最小化损失函数
+            result = minimize(loss, initial_params, method='BFGS')
+
+            # 输出结果
+            if result.success:
+                m, c1, c2 = result.x
+                average_y_upper_line = m, -1, c1
+                average_y_lower_line = m, -1, c2
+            else:
+                raise ValueError("优化未成功")
+            
+        else:
+            average_y_upper_line = 0, -1, y_upper
+            average_y_lower_line = 0, -1, 0
+
+        return average_y_upper_line, average_y_lower_line
 
     @staticmethod
     def transform_to_new_coords_matrix(points_np, original_point, positive_x):
@@ -251,11 +301,18 @@ class Utils:
         # 坐标系变换
         t_refer_points = self.transform_to_new_coords_matrix(refer_points, original_point, positive_x)
         t_points = self.transform_to_new_coords_matrix(points_np, original_point, positive_x)
-        t_box = self.transform_to_new_coords_matrix(box, original_point, positive_x)
+        # t_box = self.transform_to_new_coords_matrix(box, original_point, positive_x)
 
         # 计算雷达坐标原点到左侧、右侧、前方墙壁的拟合距离
         average_y_upper_line, average_y_lower_line, average_x_upper_line = self.segment_points_and_refit_line(
             t_points, t_refer_points)
+        
+        t_refer_points_2 = self.transform_to_new_coords_matrix(t_refer_points, t_refer_points[0], average_y_upper_line)
+        t_points_2 = self.transform_to_new_coords_matrix(t_points, t_refer_points[0], average_y_upper_line)
+
+        left_distance = self.distance_to_point(t_refer_points[0], average_y_upper_line)
+        right_distance = self.distance_to_point(t_refer_points[0], average_y_lower_line)
+        front_distance = average_x_upper_line
 
         # 使用matplotlib显示结果
         # self.draw_count += 1
@@ -265,7 +322,7 @@ class Utils:
         #                                average_x_upper_line)
         #     self.draw_count = 0
 
-        return t_points, t_refer_points, average_y_upper_line, average_y_lower_line, average_x_upper_line
+        return t_points_2, t_refer_points_2, left_distance, right_distance, front_distance
 
     # @staticmethod
     # def draw_lidar_result(t_points, t_box, t_refer_points, average_y_upper_line, average_y_lower_line,
@@ -287,21 +344,23 @@ class Utils:
     #     # self.draw = False
 
     def get_diff(self, coordinates):
-        t_points, t_refer_points, average_y_upper_line, \
-            average_y_lower_line, average_x_upper_line = self.get_tri_directional_distance(coordinates)
+        t_points, t_refer_points, left_distance, right_distance, front_distance = self.get_tri_directional_distance(coordinates)
         
-        left_distance = average_y_upper_line - t_refer_points[0][1]
-        right_distance = t_refer_points[0][1] - average_y_lower_line
-        if average_x_upper_line == -1:
-            front_distance = -1
-        else:
-            front_distance = average_x_upper_line - t_refer_points[0][0]
+        # if average_x_upper_line == -1:
+        #     front_distance = -1
+        # else:
+        #     front_distance = average_x_upper_line - t_refer_points[0][0]
 
         mid_distance = (left_distance + right_distance) / 2
         middle_diff = mid_distance - left_distance  # middle_diff为正，则偏左
         front_diff = front_distance
-        return middle_diff, front_diff, t_points, t_refer_points, average_y_upper_line, \
-            average_y_lower_line, average_x_upper_line
+
+        average_y_upper = left_distance
+        average_y_lower = -right_distance
+        average_x_upper = front_distance
+
+        return middle_diff, front_diff, t_points, t_refer_points, average_y_upper, \
+            average_y_lower, average_x_upper
 
     def import_saved_data_and_sim(self, file_name):
         # 初始化一个空列表来存储坐标

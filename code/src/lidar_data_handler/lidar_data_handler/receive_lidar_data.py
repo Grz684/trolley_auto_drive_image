@@ -563,6 +563,11 @@ def main():
         except Exception as e:
             print(f"Caught an exception: {e}")
             traceback.print_exc()
+            # 结束qt事件循环
+            app.quit()
+            # 解除节点资源
+            lidar_data_handler.destroy_node()
+            rclpy.shutdown()
         finally:
             print("停止所有驱动输出!!!")
             # sn = 231202311

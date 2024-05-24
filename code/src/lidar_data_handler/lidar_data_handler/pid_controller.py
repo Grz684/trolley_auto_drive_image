@@ -18,7 +18,7 @@ class PIDController:
             self.L = 10
         else:
             self.L = 10
-        self.tolerate_adjustment = 0.1
+        self.tolerate_adjustment = 0.05
 
     def update(self, error, dt):
         """
