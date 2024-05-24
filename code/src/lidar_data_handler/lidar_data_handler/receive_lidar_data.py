@@ -135,10 +135,8 @@ class LidarDataHandler(Node):
         self.control_b_input_channel = 1
         self.control_stop_input_channel = 2
         # 雷达罩子
-        self.front_lidar_mask_open_channel = 6
-        self.front_lidar_mask_close_channel = 7
-        self.back_lidar_mask_open_channel = 8
-        self.back_lidar_mask_close_channel = 9
+        self.lidar_mask_open_channel = 6
+        self.lidar_mask_close_channel = 7
 
         # Scan device
         serial_numbers = (c_int * 20)()
@@ -323,35 +321,27 @@ class LidarDataHandler(Node):
     def open_lidar_mask(self):
         if self.receive_debug:
             self.get_logger().info("开启雷达罩子，给电3s")
-        ret1 = IO_WritePin(self.sn, self.front_lidar_mask_open_channel, self.active_state)
-        ret2 = IO_WritePin(self.sn, self.front_lidar_mask_close_channel, self.inactive_state)
-        ret3 = IO_WritePin(self.sn, self.back_lidar_mask_open_channel, self.active_state)
-        ret4 = IO_WritePin(self.sn, self.back_lidar_mask_close_channel, self.inactive_state)
-        if 0 > ret1 or 0 > ret2 or 0 > ret3 or 0 > ret4:
+        ret1 = IO_WritePin(self.sn, self.lidar_mask_open_channel, self.active_state)
+        ret2 = IO_WritePin(self.sn, self.lidar_mask_close_channel, self.inactive_state)
+        if 0 > ret1 or 0 > ret2:
             print("error")
         time.sleep(1.5)
-        ret1 = IO_WritePin(self.sn, self.front_lidar_mask_open_channel, self.inactive_state)
-        ret2 = IO_WritePin(self.sn, self.front_lidar_mask_close_channel, self.inactive_state)
-        ret3 = IO_WritePin(self.sn, self.back_lidar_mask_open_channel, self.inactive_state)
-        ret4 = IO_WritePin(self.sn, self.back_lidar_mask_close_channel, self.inactive_state)
-        if 0 > ret1 or 0 > ret2 or 0 > ret3 or 0 > ret4:
+        ret1 = IO_WritePin(self.sn, self.lidar_mask_open_channel, self.inactive_state)
+        ret2 = IO_WritePin(self.sn, self.lidar_mask_close_channel, self.inactive_state)
+        if 0 > ret1 or 0 > ret2:
             print("error")
 
     def close_lidar_mask(self):
         if self.receive_debug:
             self.get_logger().info("关闭雷达罩子，给电3s")
-        ret1 = IO_WritePin(self.sn, self.front_lidar_mask_open_channel, self.inactive_state)
-        ret2 = IO_WritePin(self.sn, self.front_lidar_mask_close_channel, self.active_state)
-        ret3 = IO_WritePin(self.sn, self.back_lidar_mask_open_channel, self.inactive_state)
-        ret4 = IO_WritePin(self.sn, self.back_lidar_mask_close_channel, self.active_state)
-        if 0 > ret1 or 0 > ret2 or 0 > ret3 or 0 > ret4:
+        ret1 = IO_WritePin(self.sn, self.lidar_mask_open_channel, self.inactive_state)
+        ret2 = IO_WritePin(self.sn, self.lidar_mask_close_channel, self.active_state)
+        if 0 > ret1 or 0 > ret2:
             print("error")
         time.sleep(1.5)
-        ret1 = IO_WritePin(self.sn, self.front_lidar_mask_open_channel, self.inactive_state)
-        ret2 = IO_WritePin(self.sn, self.front_lidar_mask_close_channel, self.inactive_state)
-        ret3 = IO_WritePin(self.sn, self.back_lidar_mask_open_channel, self.inactive_state)
-        ret4 = IO_WritePin(self.sn, self.back_lidar_mask_close_channel, self.inactive_state)
-        if 0 > ret1 or 0 > ret2 or 0 > ret3 or 0 > ret4:
+        ret1 = IO_WritePin(self.sn, self.lidar_mask_open_channel, self.inactive_state)
+        ret2 = IO_WritePin(self.sn, self.lidar_mask_close_channel, self.inactive_state)
+        if 0 > ret1 or 0 > ret2:
             print("error")
 
     def steer_when_drive(self, front_lidar_msg, back_lidar_msg, left_angle_msg, right_angle_msg):

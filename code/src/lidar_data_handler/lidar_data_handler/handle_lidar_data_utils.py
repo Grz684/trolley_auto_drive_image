@@ -9,7 +9,7 @@ from scipy.optimize import minimize
 class Utils:
     def __init__(self):
         self.draw_count = 0
-        self.bias = 0.5  # 偏执范围，用来给最小外接矩形纠偏的
+        self.bias = 0.6  # 偏执范围，用来给最小外接矩形纠偏的
         self.front_wall_points_lower_bound = 30
         self.utils_debug = 0
         # self.draw = False
@@ -46,8 +46,8 @@ class Utils:
         ignore = points[~(belong_to_y_upper_line | belong_to_y_lower_line | belong_to_x_upper_line)]
 
         if self.utils_debug:
-            print("all points:", len(ignore) + len(cross) + len(y_lower_line) + len(y_upper_line) + len(x_upper_line))
-            print("valid points:", len(cross) + len(y_lower_line) + len(y_upper_line) + len(x_upper_line))
+            print("all points:", len(points))
+            print("valid points:", len(y_lower_line) + len(y_upper_line))
 
         # if len(x_upper_line) < self.front_wall_points_lower_bound:
         #     average_x_upper_line = -1
@@ -57,11 +57,11 @@ class Utils:
         #         print(f"The weighted average of the x_upper_line is: {average_x_upper_line}")
         average_x_upper_line = -1
 
-        # 拟合两个不同的直线方程
-        average_y_upper_line = self.fit_line(y_upper_line, "y", y_upper)
-        average_y_lower_line = self.fit_line(y_lower_line, "y", 0)
+        # #v 拟合两个不同的直线方程
+        # average_y_upper_line = self.fit_line(y_upper_line, "y", y_upper)
+        # average_y_lower_line = self.fit_line(y_lower_line, "y", 0)
 
-        # average_y_upper_line, average_y_lower_line = self.fit_both_line(y_upper_line, y_lower_line, y_upper)
+        average_y_upper_line, average_y_lower_line = Utils.fit_both_line(y_upper_line, y_lower_line, y_upper)
 
         if self.utils_debug:
             print(f"the y_upper_line is: {average_y_upper_line}")
@@ -99,6 +99,37 @@ class Utils:
         return fitted_line
     
     @staticmethod
+    def fit_two_lines(y_upper_line, y_lower_line):
+        # 合并数据集
+        x1 = y_upper_line[:, 0]
+        y1 = y_upper_line[:, 1]
+        x2 = y_lower_line[:, 0]
+        y2 = y_lower_line[:, 1]
+        x_combined = np.concatenate([x1, x2])
+        y_combined = np.concatenate([y1, y2])
+
+        # 为合并的数据构建设计矩阵
+        A = np.vstack([x_combined, np.ones(len(x_combined))]).T
+
+        # 使用最小二乘法求解共同的斜率
+        m, _ = np.linalg.lstsq(A, y_combined, rcond=None)[0]
+
+        # 为每组数据单独计算截距
+        c1 = np.mean(y1) - m * np.mean(x1)
+        c2 = np.mean(y2) - m * np.mean(x2)
+
+        average_y_upper_line = m, -1, c1
+        average_y_lower_line = m, -1, c2
+
+        return average_y_upper_line, average_y_lower_line
+    
+    @staticmethod
+    def standardize(data):
+        mean = np.mean(data, axis=0)
+        std = np.std(data, axis=0)
+        return (data - mean) / std, mean, std
+    
+    @staticmethod
     def fit_both_line(y_upper_line, y_lower_line, y_upper):
         # 拟合两个同斜率的直线方程
         if y_upper_line.shape[0] >= 2 and y_lower_line.shape[0] >= 2:
@@ -107,31 +138,70 @@ class Utils:
             y_lower_line_x = y_lower_line[:, 0]
             y_lower_line_y = y_lower_line[:, 1]
 
+            # 标准化数据
+            # y_upper_line_x, mean_x_upper, std_x_upper = Utils.standardize(y_upper_line[:, 0])
+            # y_upper_line_y, mean_y_upper, std_y_upper = Utils.standardize(y_upper_line[:, 1])
+            # y_lower_line_x, mean_x_lower, std_x_lower = Utils.standardize(y_lower_line[:, 0])
+            # y_lower_line_y, mean_y_lower, std_y_lower = Utils.standardize(y_lower_line[:, 1])
+
             # 初始拟合来获取初始参数
             m_init_upper, c1_init = np.polyfit(y_upper_line_x, y_upper_line_y, 1)
             m_init_lower, c2_init = np.polyfit(y_lower_line_x, y_lower_line_y, 1)
-            m_init = (m_init_upper + m_init_lower) / 2  # 取平均斜率作为初始斜率
+            m_init = (m_init_upper + m_init_lower) / 2
 
             # 定义损失函数
             def loss(params):
                 m, c1, c2 = params
                 residuals_upper = y_upper_line_y - (m * y_upper_line_x + c1)
                 residuals_lower = y_lower_line_y - (m * y_lower_line_x + c2)
-                return np.sum(residuals_upper**2) + np.sum(residuals_lower**2)
+
+                # 计算残差平方和
+                loss_residuals = np.sum(residuals_upper**2) + np.sum(residuals_lower**2)
+
+                # # L2正则项
+                # lambda_reg = 0.01  # 正则化系数，根据需要调整
+                # loss_regularization = lambda_reg * (m**2 + c1**2 + c2**2)
+                
+                # # 总损失 = 残差损失 + 正则化损失
+                # total_loss = loss_residuals + loss_regularization
+                return loss_residuals
+                # return np.sum(residuals_upper**2) + np.sum(residuals_lower**2)
+
+            def analytical_gradient(params):
+                m, c1, c2 = params
+                grad_m = -2 * np.sum((y_upper_line_y - (m * y_upper_line_x + c1)) * y_upper_line_x) \
+                        -2 * np.sum((y_lower_line_y - (m * y_lower_line_x + c2)) * y_lower_line_x)
+                grad_c1 = -2 * np.sum(y_upper_line_y - (m * y_upper_line_x + c1))
+                grad_c2 = -2 * np.sum(y_lower_line_y - (m * y_lower_line_x + c2))
+                return np.array([grad_m, grad_c1, grad_c2])
 
             # 初始参数猜测
-            initial_params = [m_init, c1_init, c2_init]
+            # initial_params = [m_init, c1_init, c2_init]
+            # initial_params = [m_init, (c1_init + c2_init) / 2, (c1_init + c2_init) / 2]
+            initial_params = [0, y_upper, 0]
 
             # 最小化损失函数
-            result = minimize(loss, initial_params, method='BFGS')
+            result = minimize(
+                loss, initial_params,
+                method='BFGS',  # 使用共轭梯度法
+                jac=analytical_gradient,
+                options={'disp': True, 'gtol': 1e-5, 'maxiter': 100}
+            )
+            print("优化情况:", result.message)
+            print("最终损失值:", result.fun)
+            print("优化结果：", result.x)
+            print("迭代次数:", result.nit)
+            print("是否成功：", result.success)
+            print("梯度估计:", result.jac)
+            print("函数调用次数:", result.nfev)
+            print("梯度调用次数:", result.njev)
 
             # 输出结果
-            if result.success:
-                m, c1, c2 = result.x
-                average_y_upper_line = m, -1, c1
-                average_y_lower_line = m, -1, c2
-            else:
-                raise ValueError("优化未成功")
+            m, c1, c2 = result.x
+            # average_y_upper_line = m, -1, c1 * std_y_upper + mean_y_upper
+            # average_y_lower_line = m, -1, c2 * std_y_lower + mean_y_lower
+            average_y_upper_line = m, -1, c1
+            average_y_lower_line = m, -1, c2
             
         else:
             average_y_upper_line = 0, -1, y_upper
