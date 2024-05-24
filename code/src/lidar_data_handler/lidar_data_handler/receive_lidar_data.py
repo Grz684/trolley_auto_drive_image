@@ -252,7 +252,7 @@ class LidarDataHandler(Node):
                     # 前进或后退模式
                     if control_f_input_state.value == self.active_state or control_b_input_state.value == self.active_state:
                         # 打开雷达罩子
-                        # self.open_lidar_mask()
+                        self.open_lidar_mask()
                         # 是否开启电机有待观察
                         if self.receive_debug:
                             print("运动")
@@ -288,7 +288,7 @@ class LidarDataHandler(Node):
                         # 关闭雷达罩子时保证左右油缸静止
                         self.control_left_oil_cylinder(0)
                         self.control_right_oil_cylinder(0)
-                        # self.close_lidar_mask()
+                        self.close_lidar_mask()
 
                 # 启动前检查传感器数据是否到位
                 if self.motor_activate:
@@ -329,7 +329,7 @@ class LidarDataHandler(Node):
         ret4 = IO_WritePin(self.sn, self.back_lidar_mask_close_channel, self.inactive_state)
         if 0 > ret1 or 0 > ret2 or 0 > ret3 or 0 > ret4:
             print("error")
-        time.sleep(3)
+        time.sleep(1.5)
         ret1 = IO_WritePin(self.sn, self.front_lidar_mask_open_channel, self.inactive_state)
         ret2 = IO_WritePin(self.sn, self.front_lidar_mask_close_channel, self.inactive_state)
         ret3 = IO_WritePin(self.sn, self.back_lidar_mask_open_channel, self.inactive_state)
@@ -346,7 +346,7 @@ class LidarDataHandler(Node):
         ret4 = IO_WritePin(self.sn, self.back_lidar_mask_close_channel, self.active_state)
         if 0 > ret1 or 0 > ret2 or 0 > ret3 or 0 > ret4:
             print("error")
-        time.sleep(3)
+        time.sleep(1.5)
         ret1 = IO_WritePin(self.sn, self.front_lidar_mask_open_channel, self.inactive_state)
         ret2 = IO_WritePin(self.sn, self.front_lidar_mask_close_channel, self.inactive_state)
         ret3 = IO_WritePin(self.sn, self.back_lidar_mask_open_channel, self.inactive_state)

@@ -11,7 +11,7 @@ class Utils:
         self.draw_count = 0
         self.bias = 0.5  # 偏执范围，用来给最小外接矩形纠偏的
         self.front_wall_points_lower_bound = 30
-        self.utils_debug = 1
+        self.utils_debug = 0
         # self.draw = False
         # self.max_angle = 20
 
