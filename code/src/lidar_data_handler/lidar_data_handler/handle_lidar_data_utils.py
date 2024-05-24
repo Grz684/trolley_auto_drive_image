@@ -185,16 +185,18 @@ class Utils:
                 loss, initial_params,
                 method='BFGS',  # 使用共轭梯度法
                 jac=analytical_gradient,
-                options={'disp': True, 'gtol': 1e-5, 'maxiter': 100}
+                options={'disp': False, 'gtol': 1e-5, 'maxiter': 100}
             )
-            print("优化情况:", result.message)
-            print("最终损失值:", result.fun)
-            print("优化结果：", result.x)
-            print("迭代次数:", result.nit)
-            print("是否成功：", result.success)
-            print("梯度估计:", result.jac)
-            print("函数调用次数:", result.nfev)
-            print("梯度调用次数:", result.njev)
+
+            if Utils.utils_debug:
+                print("优化情况:", result.message)
+                print("最终损失值:", result.fun)
+                print("优化结果：", result.x)
+                print("迭代次数:", result.nit)
+                print("是否成功：", result.success)
+                print("梯度估计:", result.jac)
+                print("函数调用次数:", result.nfev)
+                print("梯度调用次数:", result.njev)
 
             # 输出结果
             m, c1, c2 = result.x
