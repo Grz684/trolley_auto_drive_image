@@ -108,7 +108,7 @@ class LidarDataHandler(Node):
         self.kp = 100
         self.ki = 0
         self.kd = 0
-        self.use_pid = 1
+        self.use_pid = 0
         self.pid_controller = PIDController(self.kp, self.ki, self.kd, 1)
         # bound值都是需要实机确认的
         self.mid_lower_bound = 82
@@ -467,8 +467,10 @@ class LidarDataHandler(Node):
                 self.draw_back_lidar_count = 0
 
     def steer_to_target_angle_dis(self, target_angle, left_angle_dis, right_angle_dis):
-        left_cylinder_target_direction = self.get_target_direction(target_angle, left_angle_dis)
-        right_cylinder_target_direction = self.get_target_direction(target_angle, right_angle_dis)
+        # left_cylinder_target_direction = self.get_target_direction(target_angle, left_angle_dis)
+        # right_cylinder_target_direction = self.get_target_direction(target_angle, right_angle_dis)
+        left_cylinder_target_direction = self.state1_get_target_direction(target_angle, left_angle_dis)
+        right_cylinder_target_direction = self.state2_get_target_direction(target_angle, right_angle_dis)
         if self.mode_state_machine.state == 0:
             if self.stop_adjust_count == 20:
                 left_cylinder_target_direction = 0
@@ -517,6 +519,61 @@ class LidarDataHandler(Node):
         # elif target_angle == -1:
         #     # 目标向右，油缸拉伸
         #     return int(-1)
+
+    @staticmethod
+    def state1_get_target_direction(target_angle, current_angle_dis):
+        if 75 <= current_angle_dis <= 85:
+            current_angle = 0
+        elif current_angle_dis < 75:
+            # 当前偏右
+            current_angle = -1
+        else:
+            # 当前偏左
+            current_angle = 1
+
+        if target_angle == 0:
+            if current_angle == 0:
+                return int(0)
+            elif current_angle == -1:
+                # 向左打方向，向右顶油缸
+                return int(-1)
+            elif current_angle == 1:
+                # 向右打方向，向左顶油缸
+                return int(1)
+        elif target_angle == 1:
+            # 目标向左，向左打方向，向右顶油缸
+            return int(-1)
+        elif target_angle == -1:
+            # 目标向右，向右打方向，向左顶油缸
+            return int(1)
+
+
+    @staticmethod
+    def state2_get_target_direction(target_angle, current_angle_dis):
+        if 75 <= current_angle_dis <= 85:
+            current_angle = 0
+        elif current_angle_dis < 75:
+            # 当前偏右
+            current_angle = -1
+        else:
+            # 当前偏左
+            current_angle = 1
+
+        if target_angle == 0:
+            if current_angle == 0:
+                return int(0)
+            elif current_angle == -1:
+                # 向左打方向，向右顶油缸
+                return int(-1)
+            elif current_angle == 1:
+                # 向右打方向，向左顶油缸
+                return int(1)
+        elif target_angle == 1:
+            # 目标向左，向左打方向，向右顶油缸
+            return int(1)
+        elif target_angle == -1:
+            # 目标向右，向右打方向，向左顶油缸
+            return int(-1)
 
     def error_state_handler(self):
         print("主程序停止")
