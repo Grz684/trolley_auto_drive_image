@@ -111,17 +111,17 @@ class LidarDataHandler(Node):
         self.use_pid = 1
         self.pid_controller = PIDController(self.kp, self.ki, self.kd, 1)
         # bound值都是需要实机确认的
-        self.right_mid_lower_bound = 76
-        self.right_mid_upper_bound = 86
-        self.right_mid_bound = 81
-        self.right_left_bound = 27
-        self.right_right_bound = 132
+        self.right_mid_lower_bound = 75
+        self.right_mid_upper_bound = 85
+        self.right_mid_bound = 80
+        self.right_left_bound = 30
+        self.right_right_bound = 130
 
         self.left_mid_lower_bound = 75
         self.left_mid_upper_bound = 85
         self.left_mid_bound = 80
-        self.left_left_bound = 140
-        self.left_right_bound = 35
+        self.left_left_bound = 30
+        self.left_right_bound = 130
 
     def init_channels(self):
         # --------------digital_switch-------------
@@ -475,8 +475,8 @@ class LidarDataHandler(Node):
     def steer_to_target_angle_dis(self, target_angle, left_angle_dis, right_angle_dis):
         # left_cylinder_target_direction = self.get_target_direction(target_angle, left_angle_dis)
         # right_cylinder_target_direction = self.get_target_direction(target_angle, right_angle_dis)
-        left_cylinder_target_direction = self.state1_get_target_direction(target_angle, left_angle_dis)
-        right_cylinder_target_direction = self.state2_get_target_direction(target_angle, right_angle_dis)
+        left_cylinder_target_direction = self.left_get_target_direction(target_angle, left_angle_dis)
+        right_cylinder_target_direction = self.right_get_target_direction(target_angle, right_angle_dis)
         if self.mode_state_machine.state == 0:
             if self.stop_adjust_count == 20:
                 left_cylinder_target_direction = 0
@@ -509,42 +509,43 @@ class LidarDataHandler(Node):
         else:
             return int(-1)
 
-        # direction为1是收缩，为-1是拉伸
-        # if target_angle == 0:
-        #     if current_angle == 0:
-        #         return int(0)
-        #     elif current_angle == -1:
-        #         # 向右打方向
-        #         return int(-1)
-        #     elif current_angle == 1:
-        #         # 向左打方向
-        #         return int(1)
-        # elif target_angle == 1:
-        #     # 目标向左，油缸收缩
-        #     return int(1)
-        # elif target_angle == -1:
-        #     # 目标向右，油缸拉伸
-        #     return int(-1)
+    # def state1_get_target_direction(self, target_angle, current_angle_dis):
+    #     # 先把current_angle（拉线长度）映射到target_angle的量程（-50~50）
+    #     # current_angle_dis较小时，轮胎朝右；current_angle_dis较大时，轮胎朝左
+    #     if self.left_mid_lower_bound <= current_angle_dis <= self.left_mid_upper_bound:
+    #         current_angle = 0
+    #     elif current_angle_dis < self.left_mid_lower_bound:
+    #         current_angle = (self.left_mid_bound - current_angle_dis)/(self.left_right_bound-self.left_mid_bound)*50
+    #     else:
+    #         current_angle = (self.left_mid_bound - current_angle_dis)/(self.left_mid_bound-self.left_left_bound)*50
 
-    def state1_get_target_direction(self, target_angle, current_angle_dis):
+    #     if current_angle == target_angle:
+    #         return int(0)
+    #     elif current_angle < target_angle:
+    #         # 当前过右偏了，往左打方向（current和target都可理解为轮胎角度）
+    #         return int(-1)
+    #     else:
+    #         return int(1)
+
+    def left_get_target_direction(self, target_angle, current_angle_dis):
         # 先把current_angle（拉线长度）映射到target_angle的量程（-50~50）
-        # current_angle_dis较小时，轮胎朝右；current_angle_dis较大时，轮胎朝左
+        # current_angle_dis较小时，轮胎朝左；current_angle_dis较大时，轮胎朝右
         if self.left_mid_lower_bound <= current_angle_dis <= self.left_mid_upper_bound:
             current_angle = 0
         elif current_angle_dis < self.left_mid_lower_bound:
-            current_angle = (self.left_mid_bound - current_angle_dis)/(self.left_right_bound-self.left_mid_bound)*50
-        else:
             current_angle = (self.left_mid_bound - current_angle_dis)/(self.left_mid_bound-self.left_left_bound)*50
+        else:
+            current_angle = (self.left_mid_bound - current_angle_dis)/(self.left_right_bound-self.left_mid_bound)*50
 
         if current_angle == target_angle:
             return int(0)
         elif current_angle < target_angle:
             # 当前过右偏了，往左打方向（current和target都可理解为轮胎角度）
-            return int(-1)
-        else:
             return int(1)
+        else:
+            return int(-1)
 
-    def state2_get_target_direction(self, target_angle, current_angle_dis):
+    def right_get_target_direction(self, target_angle, current_angle_dis):
         # 先把current_angle（拉线长度）映射到target_angle的量程（-50~50）
         # current_angle_dis较小时，轮胎朝左；current_angle_dis较大时，轮胎朝右
         if self.right_mid_lower_bound <= current_angle_dis <= self.right_mid_upper_bound:
