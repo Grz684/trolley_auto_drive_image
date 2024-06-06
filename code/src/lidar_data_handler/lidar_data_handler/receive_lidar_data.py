@@ -108,7 +108,7 @@ class LidarDataHandler(Node):
         self.kp = 100
         self.ki = 0
         self.kd = 0
-        self.use_pid = 0
+        self.use_pid = 1
         self.pid_controller = PIDController(self.kp, self.ki, self.kd, 1)
         # bound值都是需要实机确认的
         self.right_mid_lower_bound = 76
