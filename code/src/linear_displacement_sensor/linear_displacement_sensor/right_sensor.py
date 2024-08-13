@@ -20,9 +20,6 @@ class RightSensor(Node):
         self.zero_position = 0
         self.right_port = "/dev/usb_port_10"
         self.debug = False
-        # 角度传感器预设值，需校准确定
-        self.mid_lower_bound = 75
-        self.mid_upper_bound = 85
 
         # 配置MODBUS串行客户端，使用COM4端口
         self.right_client = ModbusClient(method='rtu', port=self.right_port, baudrate=9600, stopbits=1, bytesize=8,
@@ -35,11 +32,6 @@ class RightSensor(Node):
             print("Failed to connect to the sensor")
             exit()
 
-        # 角度传感器预设值，需校准确定
-        self.mid_dis = 53
-        self.max_angle = 20
-        self.max_range = 125
-
         # 创建定时器，每0.5秒发布一次数据
         self.timer = self.create_timer(self.timer_period_sec, self.process_and_publish_distance)
 
@@ -48,7 +40,7 @@ class RightSensor(Node):
         response = client.read_holding_registers(0x0000, 2, unit=1)
         if response.isError():
             print("Error reading the encoder value:", response)
-            return -100
+            return None
         else:
             # 将两个16位寄存器的值合并为一个32位的值
             high_register = response.registers[0]
@@ -60,29 +52,19 @@ class RightSensor(Node):
             return L
 
     def process_and_publish_distance(self):
-        right_angle = LinearSensorData()
-        right_angle.header.stamp = self.get_clock().now().to_msg()
-
         # 左转到底122mm，右转到底22mm，中间值为72（已舍弃该参数，仅作参考）
 
         right_angle_dis = self.get_dis(self.right_client)
 
-        # if right_angle_dis != -100:
-        #     if self.mid_lower_bound <= right_angle_dis <= self.mid_upper_bound:
-        #         right_angle.data = 0
-        #     elif right_angle_dis < self.mid_lower_bound:
-        #         # 当前偏右
-        #         right_angle.data = -1
-        #     else:
-        #         # 当前偏左
-        #         right_angle.data = 1
+        if right_angle_dis is not None:
+            right_angle = LinearSensorData()
+            right_angle.header.stamp = self.get_clock().now().to_msg()
+            right_angle.data = float(right_angle_dis)
 
-        right_angle.data = float(right_angle_dis)
+            if self.debug:
+                print(f"current_right_angle_dis: {right_angle_dis}mm")
 
-        if self.debug:
-            print(f"current_right_angle_dis: {right_angle_dis}mm")
-
-        self.current_right_angle.publish(right_angle)
+            self.current_right_angle.publish(right_angle)
 
     def destroy_node(self):
         try:

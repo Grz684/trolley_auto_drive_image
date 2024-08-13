@@ -22,13 +22,54 @@ from .public.librockmong import *
 from .public.usb_device import *
 from .public.gpio import *
 from .control_ui import *
+from PyQt5.QtCore import QThread, pyqtSignal
+import json
 
+class DIO_Error(Exception):
+    pass
+
+class LidarDataHandlerThread(QThread):
+    dio_error = pyqtSignal(int)
+
+    def __init__(self, window):
+        super().__init__()
+        self.window = window
+
+    def run(self):
+        try:
+            self.lidar_data_handler = LidarDataHandler()
+            rclpy.spin(self.lidar_data_handler)
+        except DIO_Error as e:
+            self.lidar_data_handler.destroy_node()
+            rclpy.shutdown()
+            print(f"Caught an dio exception: {e}")
+            self.dio_error.emit(1)
+
+        except Exception as e:
+            self.lidar_data_handler.destroy_node()
+            rclpy.shutdown()
+            print(f"Caught an exception: {e}")
+            traceback.print_exc()
+        finally:
+            print("停止所有驱动输出!!!")
+            for i in range(16):
+                ret = IO_WritePin(self.lidar_data_handler.sn, i, self.lidar_data_handler.inactive_state)
+                if ret < 0:
+                    print(f"Failed to close IO")
+                    break
+
+    def stop(self):
+        self.lidar_data_handler.destroy_node()
+        rclpy.shutdown()
+        self.quit()
+        self.wait()
 
 class LidarDataHandler(Node):
+    plotUpdateSignal = pyqtSignal(dict)
 
-    def __init__(self, gui):
+    def __init__(self):
         super().__init__('lidar_data_handler')
-        self.window = gui
+        self.config_file = 'settings.json'
 
         self.init_draw_count()
         self.sensors_health_count = 0
@@ -123,6 +164,8 @@ class LidarDataHandler(Node):
         self.left_left_bound = 30
         self.left_right_bound = 130
 
+        self.load_limits()
+
     def init_channels(self):
         # --------------digital_switch-------------
         self.active_state = 0
@@ -148,14 +191,11 @@ class LidarDataHandler(Node):
         serial_numbers = (c_int * 20)()
         ret = UsbDevice_Scan(byref(serial_numbers))
         if 0 > ret:
-            print("Error: %d" % ret)
-            exit()
+            raise DIO_Error("DIO Init Error 1")
         elif ret == 0:
-            print("No device!")
-            exit()
+            raise DIO_Error("DIO Init Error 2")
         elif self.sn not in list(serial_numbers):
-            print("No target device")
-            exit()
+            raise DIO_Error("DIO Init Error 3")
 
     def reset_pid_controller(self):
         if self.mode_state_machine.state == 1 or self.mode_state_machine.state == -1:
@@ -167,62 +207,53 @@ class LidarDataHandler(Node):
             ret1 = IO_WritePin(self.sn, self.cylinder_ll_output_channel, self.active_state)
             ret2 = IO_WritePin(self.sn, self.cylinder_lr_output_channel, self.inactive_state)
             if 0 > ret1 or 0 > ret2:
-                print("error")
-                # self.future.set_result(None)  # 触发主循环结束
+                raise DIO_Error("Control Left Oil Cylinder Error")
         elif direction == -1:
             # 左油缸拉伸
             ret1 = IO_WritePin(self.sn, self.cylinder_ll_output_channel, self.inactive_state)
             ret2 = IO_WritePin(self.sn, self.cylinder_lr_output_channel, self.active_state)
             if 0 > ret1 or 0 > ret2:
-                print("error")
-                # self.future.set_result(None)  # 触发主循环结束
+                raise DIO_Error("Control Left Oil Cylinder Error")
         else:
             ret1 = IO_WritePin(self.sn, self.cylinder_ll_output_channel, self.inactive_state)
             ret2 = IO_WritePin(self.sn, self.cylinder_lr_output_channel, self.inactive_state)
             if 0 > ret1 or 0 > ret2:
-                print("error")
-                # self.future.set_result(None)  # 触发主循环结束
+                raise DIO_Error("Control Left Oil Cylinder Error")
 
     def control_right_oil_cylinder(self, direction):
         if direction == 1:
             ret1 = IO_WritePin(self.sn, self.cylinder_rl_output_channel, self.active_state)
             ret2 = IO_WritePin(self.sn, self.cylinder_rr_output_channel, self.inactive_state)
             if 0 > ret1 or 0 > ret2:
-                print("error")
-                # self.future.set_result(None)  # 触发主循环结束
+                raise DIO_Error("Control Right Oil Cylinder Error")
         elif direction == -1:
             ret1 = IO_WritePin(self.sn, self.cylinder_rl_output_channel, self.inactive_state)
             ret2 = IO_WritePin(self.sn, self.cylinder_rr_output_channel, self.active_state)
             if 0 > ret1 or 0 > ret2:
-                print("error")
-                # self.future.set_result(None)  # 触发主循环结束
+                raise DIO_Error("Control Right Oil Cylinder Error")
         else:
             ret1 = IO_WritePin(self.sn, self.cylinder_rl_output_channel, self.inactive_state)
             ret2 = IO_WritePin(self.sn, self.cylinder_rr_output_channel, self.inactive_state)
             if 0 > ret1 or 0 > ret2:
-                print("error")
-                # self.future.set_result(None)  # 触发主循环结束
+                raise DIO_Error("Control Right Oil Cylinder Error")
 
     def control_motor(self, mode):
         if mode == 1:
             ret1 = IO_WritePin(self.sn, self.motor_f_output_channel, self.active_state)
             ret2 = IO_WritePin(self.sn, self.motor_b_output_channel, self.inactive_state)
             if 0 > ret1 or 0 > ret2:
-                print("error")
-                # self.future.set_result(None)  # 触发主循环结束
+                raise DIO_Error("Control Motor Error")
         elif mode == -1:
             ret1 = IO_WritePin(self.sn, self.motor_f_output_channel, self.inactive_state)
             ret2 = IO_WritePin(self.sn, self.motor_b_output_channel, self.active_state)
             if 0 > ret1 or 0 > ret2:
-                print("error")
-                # self.future.set_result(None)  # 触发主循环结束
+                raise DIO_Error("Control Motor Error")
         elif mode == 0:
             ret1 = IO_WritePin(self.sn, self.motor_f_output_channel, self.inactive_state)
             ret2 = IO_WritePin(self.sn, self.motor_b_output_channel, self.inactive_state)
             if 0 > ret1 or 0 > ret2:
-                print("error")
-                # self.future.set_result(None)  # 触发主循环结束
-            print("Reset to Stop")
+                raise DIO_Error("Control Motor Error")
+            # print("Reset to Stop")
 
     def set_motor(self):
         if not self.error_state_flag:
@@ -233,8 +264,7 @@ class LidarDataHandler(Node):
             ret2 = IO_ReadPin(self.sn, self.control_f_input_channel, byref(control_f_input_state))
             ret3 = IO_ReadPin(self.sn, self.control_stop_input_channel, byref(control_stop_input_state))
             if 0 > ret1 or 0 > ret2 or 0 > ret3:
-                print("error input")
-                # self.future.set_result(None)  # 触发主循环结束
+                raise DIO_Error("Read Control Input Error")
             else:
                 mode_exchange = False
 
@@ -276,12 +306,10 @@ class LidarDataHandler(Node):
 
                         # 清除一次过往图像
                         data = {'target': 'clear'}
-                        event = PlotUpdateEvent(data)
-                        QApplication.postEvent(self.window, event)
+                        self.plotUpdateSignal.emit(data)
 
                         data = {'target': 'main_program', 'main_program_state': '停止模式'}
-                        event = PlotUpdateEvent(data)
-                        QApplication.postEvent(self.window, event)
+                        self.plotUpdateSignal.emit(data)
 
                         self.sensors_health_count = 0
                         self.motor_activate = False
@@ -303,8 +331,8 @@ class LidarDataHandler(Node):
                             data = {'target': 'main_program', 'main_program_state': '前进模式'}
                         elif self.mode_state_machine.state == -1:
                             data = {'target': 'main_program', 'main_program_state': '后退模式'}
-                        event = PlotUpdateEvent(data)
-                        QApplication.postEvent(self.window, event)
+                        self.plotUpdateSignal.emit(data)
+
                         self.motor_activate = False
                         self.sensors_health_count = 0
                         self.control_motor(self.mode_state_machine.state)
@@ -330,12 +358,12 @@ class LidarDataHandler(Node):
         ret1 = IO_WritePin(self.sn, self.lidar_mask_open_channel, self.active_state)
         ret2 = IO_WritePin(self.sn, self.lidar_mask_close_channel, self.inactive_state)
         if 0 > ret1 or 0 > ret2:
-            print("error")
+            raise DIO_Error("Open Lidar Mask Error")
         time.sleep(1.5)
         ret1 = IO_WritePin(self.sn, self.lidar_mask_open_channel, self.inactive_state)
         ret2 = IO_WritePin(self.sn, self.lidar_mask_close_channel, self.inactive_state)
         if 0 > ret1 or 0 > ret2:
-            print("error")
+            raise DIO_Error("Open Lidar Mask Error")
 
     def close_lidar_mask(self):
         if self.receive_debug:
@@ -343,12 +371,12 @@ class LidarDataHandler(Node):
         ret1 = IO_WritePin(self.sn, self.lidar_mask_open_channel, self.inactive_state)
         ret2 = IO_WritePin(self.sn, self.lidar_mask_close_channel, self.active_state)
         if 0 > ret1 or 0 > ret2:
-            print("error")
+            raise DIO_Error("Close Lidar Mask Error")
         time.sleep(1.5)
         ret1 = IO_WritePin(self.sn, self.lidar_mask_open_channel, self.inactive_state)
         ret2 = IO_WritePin(self.sn, self.lidar_mask_close_channel, self.inactive_state)
         if 0 > ret1 or 0 > ret2:
-            print("error")
+            raise DIO_Error("Close Lidar Mask Error")
 
     def steer_when_drive(self, front_lidar_msg, back_lidar_msg, left_angle_msg, right_angle_msg):
         if not self.error_state_flag and self.mode_state_machine.state != 0:
@@ -381,18 +409,22 @@ class LidarDataHandler(Node):
                             'f_average_x_upper_line': f_average_x_upper_line, 'b_t_points': b_t_points, 
                             'b_t_refer_points': b_t_refer_points, 'b_average_y_upper_line': b_average_y_upper_line, 
                             'b_average_y_lower_line': b_average_y_lower_line, 'b_average_x_upper_line': b_average_x_upper_line}
-                    event = PlotUpdateEvent(data)
-                    QApplication.postEvent(self.window, event)
+                    self.plotUpdateSignal.emit(data)
                     # 更新拉线传感器数据
-                    data = {'target': 'both_oil', 'left_state': str(left_angle_dis),
+                    data = {'target': 'both_bridge', 'left_state': str(left_angle_dis),
                             'right_state': str(right_angle_dis)}
-                    event = PlotUpdateEvent(data)
-                    QApplication.postEvent(self.window, event)
+                    self.plotUpdateSignal.emit(data)
 
                     self.draw_all_count = 0
                     
                 if self.receive_debug:
                     print(f"front_middle_diff:{float(front_middle_diff)}, back_middle_diff:{-float(back_middle_diff)}")
+
+                data = {'target': 'front_lidar_offset', 'offset': float(front_middle_diff)}
+                self.plotUpdateSignal.emit(data)
+
+                data = {'target': 'back_lidar_offset', 'offset': -float(back_middle_diff)}
+                self.plotUpdateSignal.emit(data)
 
                 if self.use_pid:
                     target_angle = self.pid_controller.pid_handle_drive_state(front_middle_diff, back_middle_diff)
@@ -412,10 +444,9 @@ class LidarDataHandler(Node):
             left_angle_dis = left_angle_msg.data
             right_angle_dis = right_angle_msg.data
             # 更新拉线传感器数据
-            data = {'target': 'both_oil', 'left_state': str(left_angle_dis),
+            data = {'target': 'both_bridge', 'left_state': str(left_angle_dis),
                     'right_state': str(right_angle_dis)}
-            event = PlotUpdateEvent(data)
-            QApplication.postEvent(self.window, event)
+            self.plotUpdateSignal.emit(data)
             self.steer_to_target_angle_dis(target_angle, left_angle_dis, right_angle_dis)
 
     def error_state_left_angle_callback(self, msg):
@@ -423,9 +454,8 @@ class LidarDataHandler(Node):
             self.draw_left_angle_count += 1
             if self.draw_left_angle_count == 10:
                 left_angle_dis = msg.data
-                data = {'target': 'left_oil', 'state': str(left_angle_dis)}
-                event = PlotUpdateEvent(data)
-                QApplication.postEvent(self.window, event)
+                data = {'target': 'left_bridge', 'state': str(left_angle_dis)}
+                self.plotUpdateSignal.emit(data)
                 self.draw_left_angle_count = 0
 
     def error_state_right_angle_callback(self, msg):
@@ -433,9 +463,8 @@ class LidarDataHandler(Node):
             self.draw_right_angle_count += 1
             if self.draw_right_angle_count == 10:
                 right_angle_dis = msg.data
-                data = {'target': 'right_oil', 'state': str(right_angle_dis)}
-                event = PlotUpdateEvent(data)
-                QApplication.postEvent(self.window, event)
+                data = {'target': 'right_bridge', 'state': str(right_angle_dis)}
+                self.plotUpdateSignal.emit(data)
                 self.draw_right_angle_count = 0
 
     def error_state_front_lidar_callback(self, msg):
@@ -446,13 +475,16 @@ class LidarDataHandler(Node):
                 if front_lidar_points.size == 0:
                     pass
                 else:
-                    _, _, f_t_points, f_t_refer_points, f_average_y_upper_line, \
+                    front_middle_diff, forward_front_diff, f_t_points, f_t_refer_points, f_average_y_upper_line, \
                             f_average_y_lower_line, f_average_x_upper_line = self.utils.get_diff(front_lidar_points)
                     data = {'target': 'front', 'f_t_points': f_t_points, 'f_t_refer_points': f_t_refer_points,
                             'f_average_y_upper_line': f_average_y_upper_line, 'f_average_y_lower_line': f_average_y_lower_line,
                             'f_average_x_upper_line': f_average_x_upper_line}
-                    event = PlotUpdateEvent(data)
-                    QApplication.postEvent(self.window, event)
+                    self.plotUpdateSignal.emit(data)
+
+                    data = {'target': 'front_lidar_offset', 'offset': float(front_middle_diff)}
+                    self.plotUpdateSignal.emit(data)
+
                 self.draw_front_lidar_count = 0
 
     def error_state_back_lidar_callback(self, msg):
@@ -463,13 +495,16 @@ class LidarDataHandler(Node):
                 if back_lidar_points.size == 0:
                     pass
                 else:
-                    _, _, b_t_points, b_t_refer_points, b_average_y_upper_line, \
+                    back_middle_diff, backward_front_diff, b_t_points, b_t_refer_points, b_average_y_upper_line, \
                             b_average_y_lower_line, b_average_x_upper_line = self.utils.get_diff(back_lidar_points)
                     data = {'target': 'back', 'b_t_points': b_t_points, 'b_t_refer_points': b_t_refer_points,
                             'b_average_y_upper_line': b_average_y_upper_line, 'b_average_y_lower_line': b_average_y_lower_line,
                             'b_average_x_upper_line': b_average_x_upper_line}
-                    event = PlotUpdateEvent(data)
-                    QApplication.postEvent(self.window, event)
+                    self.plotUpdateSignal.emit(data)
+
+                    data = {'target': 'back_lidar_offset', 'offset': -float(back_middle_diff)}
+                    self.plotUpdateSignal.emit(data)
+
                 self.draw_back_lidar_count = 0
 
     def steer_to_target_angle_dis(self, target_angle, left_angle_dis, right_angle_dis):
@@ -567,72 +602,95 @@ class LidarDataHandler(Node):
         print("主程序停止")
         # 清除一次过往图像
         data = {'target': 'clear'}
-        event = PlotUpdateEvent(data)
-        QApplication.postEvent(self.window, event)
+        self.plotUpdateSignal.emit(data)
         # 停止计时器
         if self.timer is not None:
             self.timer.cancel()
         if self.check_timer is not None:
             self.check_timer.cancel()
         # 停止一切驱动输出
-        for i in range(10):
-            IO_WritePin(self.sn, i, self.inactive_state)
+        for i in range(16):
+            ret = IO_WritePin(self.sn, i, self.inactive_state)
+            if ret<0:
+                raise DIO_Error("停止驱动失败")
 
         data = {'target': 'main_program', 'main_program_state': '运行故障'}
-        event = PlotUpdateEvent(data)
-        QApplication.postEvent(self.window, event)
+        self.plotUpdateSignal.emit(data)
+
+    def updateSettings(self, data):
+        if data['target'] == "left_settings":
+            self.left_left_bound = data["left_bridge_status"]
+            self.right_left_bound = data["right_bridge_status"]
+        elif data['target'] == "center_settings":
+            self.left_mid_bound = data["left_bridge_status"]
+            self.right_mid_bound = data["right_bridge_status"]
+        elif data['target'] == "right_settings":
+            self.left_right_bound = data["left_bridge_status"]
+            self.right_right_bound = data["right_bridge_status"]
+
+        self.save_limits()
+
+        data = {'target':'left_bridge_settings', 'settings':(self.left_left_bound, self.left_mid_bound, self.left_right_bound)}
+        self.plotUpdateSignal.emit(data)
+
+        data = {'target':'right_bridge_settings', 'settings':(self.right_left_bound, self.right_mid_bound, self.right_right_bound)}
+        self.plotUpdateSignal.emit(data)
+
+    def load_limits(self):
+        if os.path.exists(self.config_file):
+            with open(self.config_file, 'r') as f:
+                limits = json.load(f)
+            self.left_left_bound = limits['left_left_bound']
+            self.right_left_bound = limits['right_left_bound']
+            self.left_mid_bound = limits['left_mid_bound']
+            self.right_mid_bound = limits['right_mid_bound']
+            self.left_right_bound = limits['left_right_bound']
+            self.right_right_bound = limits['right_right_bound']
+
+            data = {'target':'left_bridge_settings', 'settings':(self.left_left_bound, self.left_mid_bound, self.left_right_bound)}
+            self.plotUpdateSignal.emit(data)
+
+            data = {'target':'right_bridge_settings', 'settings':(self.right_left_bound, self.right_mid_bound, self.right_right_bound)}
+            self.plotUpdateSignal.emit(data)
+
+    def save_limits(self):
+        limits = {
+            'left_left_bound': self.left_left_bound,
+            'right_left_bound': self.right_left_bound,
+            'left_mid_bound': self.left_mid_bound,
+            'right_mid_bound': self.right_mid_bound,
+            'left_right_bound': self.left_right_bound,
+            'right_right_bound': self.right_right_bound
+        }
+        with open(self.config_file, 'w') as f:
+            json.dump(limits, f)
+            
 
 def main():
-    # --------------display_screen-------------
     app = QApplication(sys.argv)
     window = MainWindow()
     window.show()
 
     rclpy.init()
-    lidar_data_handler = LidarDataHandler(window)
+    lidar_data_handler_thread = LidarDataHandlerThread()
 
-    def run_ros_node():
-        try:
-            # 初始化ROS节点
-            rclpy.spin(lidar_data_handler)
-        except Exception as e:
-            print(f"Caught an exception: {e}")
-            traceback.print_exc()
-            # 结束qt事件循环
-            app.quit()
-            # 解除节点资源
-            lidar_data_handler.destroy_node()
-            rclpy.shutdown()
-        finally:
-            print("停止所有驱动输出!!!")
-            # sn = 231202311
-            # inactive_state = 1
-            for i in range(16):
-                ret = IO_WritePin(lidar_data_handler.sn, i, lidar_data_handler.inactive_state)
-                if ret < 0:
-                    print(f"Failed to close IO{i}")
-            
-    ros_thread = threading.Thread(target=run_ros_node)
-    ros_thread.start()
+    # 连接UI和ROS节点
+    window.settingsSignal.connect(lidar_data_handler_thread.lidar_data_handler.updateSettings)
+    lidar_data_handler_thread.lidar_data_handler.plotUpdateSignal.connect(window.update_plot_data)
+    lidar_data_handler_thread.dio_error.connect(window.display_error_window)
+
+    lidar_data_handler_thread.start()
 
     # 信号处理函数,参数是必须的！
     def signal_handler(signum, frame):
-        # 结束qt事件循环
+        lidar_data_handler_thread.stop()
         app.quit()
-        # 解除节点资源
-        lidar_data_handler.destroy_node()
-        rclpy.shutdown()
 
     signal.signal(signal.SIGINT, signal_handler)
 
-    timer = QTimer()
-    timer.start(100)  # You may change this if you wish.
-    timer.timeout.connect(lambda: None)  # Let the interpreter run each 100 ms.
-
-    # .exec_()为qt事件循环函数，在.quit方法后退出
     exit_code = app.exec_()
     print("退出qt事件循环")
-    ros_thread.join()
+    lidar_data_handler_thread.stop()
     print("终止ros2节点运行")
     sys.exit(exit_code)
 
