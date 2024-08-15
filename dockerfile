@@ -1,4 +1,4 @@
-FROM osrf/ros:foxy-desktop
+FROM registry.cn-hangzhou.aliyuncs.com/fute_cq/ros2:foxy
 SHELL ["/bin/bash","-c"]
 COPY code /code/
 WORKDIR /code

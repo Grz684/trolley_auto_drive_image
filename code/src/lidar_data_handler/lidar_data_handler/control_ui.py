@@ -1,7 +1,7 @@
 import sys
 import numpy as np
 from PyQt5 import QtWidgets
-from Ui_auto_drive import Ui_MainWindow  # 假设这是您的UI类文件名
+from .Ui_auto_drive import Ui_MainWindow  # 假设这是您的UI类文件名
 from PyQt5.QtCore import QTimer, QEvent
 from PyQt5.QtCore import pyqtSignal, Qt
 from PyQt5.QtWidgets import QDialog
@@ -163,22 +163,22 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def left_turn_button_pressed(self):
         print("Left turn button pressed")
-        left_bridge_status = self.ui.left_bridge_status.text().split()[0]  # 获取左桥状态的数值部分
-        right_bridge_status = self.ui.right_bridge_status.text().split()[0]  # 获取右桥状态的数值部分
+        left_bridge_status = float(self.ui.left_bridge_status.text().split()[0])  # 获取左桥状态的数值部分
+        right_bridge_status = float(self.ui.right_bridge_status.text().split()[0])  # 获取右桥状态的数值部分
         settings = {"target": "left_settings", "left_bridge_status": left_bridge_status, "right_bridge_status": right_bridge_status}
         self.settingsSignal.emit(settings)
 
     def center_button_pressed(self):
         print("Center button pressed")
-        left_bridge_status = self.ui.left_bridge_status.text().split()[0]  # 获取左桥状态的数值部分
-        right_bridge_status = self.ui.right_bridge_status.text().split()[0]  # 获取右桥状态的数值部分
+        left_bridge_status = float(self.ui.left_bridge_status.text().split()[0])  # 获取左桥状态的数值部分
+        right_bridge_status = float(self.ui.right_bridge_status.text().split()[0])  # 获取右桥状态的数值部分
         settings = {"target": "center_settings", "left_bridge_status": left_bridge_status, "right_bridge_status": right_bridge_status}
         self.settingsSignal.emit(settings)
 
     def right_turn_button_pressed(self):
         print("Right turn button pressed")
-        left_bridge_status = self.ui.left_bridge_status.text().split()[0]  # 获取左桥状态的数值部分
-        right_bridge_status = self.ui.right_bridge_status.text().split()[0]  # 获取右桥状态的数值部分
+        left_bridge_status = float(self.ui.left_bridge_status.text().split()[0])  # 获取左桥状态的数值部分
+        right_bridge_status = float(self.ui.right_bridge_status.text().split()[0])  # 获取右桥状态的数值部分
         settings = {"target": "right_settings", "left_bridge_status": left_bridge_status, "right_bridge_status": right_bridge_status}
         self.settingsSignal.emit(settings)
 

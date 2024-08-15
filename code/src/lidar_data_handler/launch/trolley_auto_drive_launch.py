@@ -111,15 +111,28 @@ def generate_launch_description():
     )
 
     # TODO make lifecycle transition to shutdown before SIGINT
-    shutdown_event = RegisterEventHandler(
+    front_shutdown_event = RegisterEventHandler(
         OnShutdown(
             on_shutdown=[
                 EmitEvent(event=ChangeState(
-                  lifecycle_node_matcher=matches_node_name(node_name=node_name),
-                  transition_id=lifecycle_msgs.msg.Transition.TRANSITION_ACTIVE_SHUTDOWN,
+                lifecycle_node_matcher=matches_node_name(node_name='/front_lidar/lidar_driver'),
+                transition_id=lifecycle_msgs.msg.Transition.TRANSITION_ACTIVE_SHUTDOWN,
                 )),
                 LogInfo(
-                    msg="[LifecycleLaunch] lidar driver node is exiting."),
+                    msg="[LifecycleLaunch] front lidar driver node is exiting."),
+            ],
+        )
+    )
+
+    back_shutdown_event = RegisterEventHandler(
+        OnShutdown(
+            on_shutdown=[
+                EmitEvent(event=ChangeState(
+                lifecycle_node_matcher=matches_node_name(node_name='/back_lidar/lidar_driver'),
+                transition_id=lifecycle_msgs.msg.Transition.TRANSITION_ACTIVE_SHUTDOWN,
+                )),
+                LogInfo(
+                    msg="[LifecycleLaunch] back lidar driver node is exiting."),
             ],
         )
     )
@@ -135,7 +148,8 @@ def generate_launch_description():
         front_configure_event,
         back_activate_event,
         back_configure_event,
-        shutdown_event,
+        front_shutdown_event,
+        back_shutdown_event,
         TimerAction(
             period=3.0,  # 3秒后启动主程序节点
             actions=[handler_node]

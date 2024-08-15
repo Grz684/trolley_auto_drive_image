@@ -59,10 +59,10 @@ class RightSensor(Node):
         if right_angle_dis is not None:
             right_angle = LinearSensorData()
             right_angle.header.stamp = self.get_clock().now().to_msg()
-            right_angle.data = float(right_angle_dis)
+            right_angle.data = round(float(right_angle_dis), 2)  # 保留两位小数
 
             if self.debug:
-                print(f"current_right_angle_dis: {right_angle_dis}mm")
+                print(f"current_right_angle_dis: {right_angle.data:.2f}mm")  # 在打印时也保留两位小数
 
             self.current_right_angle.publish(right_angle)
 
