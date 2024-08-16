@@ -14,10 +14,10 @@ import pyqtgraph as pg
 class MainWindow(QtWidgets.QMainWindow):
     settingsSignal = pyqtSignal(dict)
 
-    def __init__(self):
+    def __init__(self, ros2_thread):
         super().__init__()
         self.ui = Ui_MainWindow()
-        self.ui.setupUi(self)
+        self.ui.setupUi(self, ros2_thread)
 
         # 连接控制按钮的信号
         self.ui.left_turn_button.pressed.connect(self.left_turn_button_pressed)
@@ -39,8 +39,19 @@ class MainWindow(QtWidgets.QMainWindow):
 
         layout = QVBoxLayout()
 
-        message_label = QLabel("数字开关异常，请检查后重新启动")
-        
+        if data == "dio":
+            message_label = QLabel("数字开关异常，请检查后重新启动")
+        elif data == "sensor":
+            message_label = QLabel("传感器异常，请检查后重新启动")
+        elif data == "program":
+            message_label = QLabel("主程序报错，请检查后重新启动")
+        elif data == "settings":
+            message_label = QLabel("角度传感器状态异常，无法设定")
+        elif data == "left_settings":
+            message_label = QLabel("请检查两侧车桥轮胎是否全部向最左")
+        elif data == "right_settings":
+            message_label = QLabel("请检查两侧车桥轮胎是否全部向最右")
+
         message_label.setAlignment(Qt.AlignCenter)
         message_label.setFont(QFont("Arial", 18, QFont.Bold))  # 消息字体大小
         message_label.setStyleSheet("color: #4CAF50;")  # 绿色文本
@@ -90,11 +101,17 @@ class MainWindow(QtWidgets.QMainWindow):
             self.draw_lidar_result(self.ui.back_lidar_widget, data['b_t_points'], data['b_t_refer_points'], data['b_average_y_upper_line'],
                         data['b_average_y_lower_line'], data['b_average_x_upper_line'])
         elif data['target'] == "front":
-            self.draw_lidar_result(self.ui.front_lidar_widget, data['f_t_points'], data['f_t_refer_points'], data['f_average_y_upper_line'],
-                        data['f_average_y_lower_line'], data['f_average_x_upper_line'])
+            if data['f_t_points'] is not None:
+                self.draw_lidar_result(self.ui.front_lidar_widget, data['f_t_points'], data['f_t_refer_points'], data['f_average_y_upper_line'],
+                            data['f_average_y_lower_line'], data['f_average_x_upper_line'])
+            else:
+                self.ui.front_lidar_widget.clear()
         elif data['target'] == "back":
-            self.draw_lidar_result(self.ui.back_lidar_widget, data['b_t_points'], data['b_t_refer_points'], data['b_average_y_upper_line'],
-                        data['b_average_y_lower_line'], data['b_average_x_upper_line'])
+            if data['b_t_points'] is not None:  
+                self.draw_lidar_result(self.ui.back_lidar_widget, data['b_t_points'], data['b_t_refer_points'], data['b_average_y_upper_line'],
+                            data['b_average_y_lower_line'], data['b_average_x_upper_line'])
+            else:
+                self.ui.back_lidar_widget.clear()
         elif data['target'] == "clear":
             print("clear all graphs")
             self.ui.front_lidar_widget.clear()
@@ -105,31 +122,43 @@ class MainWindow(QtWidgets.QMainWindow):
             self.ui.back_lidar_offset.setText("未知")
 
         elif data['target'] == "both_bridge":
-            self.ui.left_bridge_status.setText(str(data['left_state']) + " mm")
-            self.ui.right_bridge_status.setText(str(data['right_state']) + " mm")
+            self.ui.left_bridge_status.setText(f"{data['left_state']:.2f} mm")
+            self.ui.right_bridge_status.setText(f"{data['right_state']:.2f} mm")
 
         elif data['target'] == "left_bridge":
-            self.ui.left_bridge_status.setText(str(data['state']) + " mm")
+            if data['state'] is not None:   
+                self.ui.left_bridge_status.setText(f"{data['state']:.2f} mm")
+            else:
+                self.ui.left_bridge_status.setText("未知")
 
         elif data['target'] == "right_bridge":
-            self.ui.right_bridge_status.setText(str(data['state']) + " mm")
+            if data['state'] is not None:       
+                self.ui.right_bridge_status.setText(f"{data['state']:.2f} mm")
+            else:
+                self.ui.right_bridge_status.setText("未知")
         
         elif data['target'] == "main_program":
             self.ui.main_program_status.setText(data['main_program_state'])
 
         elif data['target'] == "front_lidar_offset":
-            self.ui.front_lidar_offset.setText(str(data['offset']) + " m")
+            if data['offset'] is not None:  
+                self.ui.front_lidar_offset.setText(f"{data['offset']:.2f} m")
+            else:
+                self.ui.front_lidar_offset.setText("未知")
 
         elif data['target'] == "back_lidar_offset":
-            self.ui.back_lidar_offset.setText(str(data['offset']) + " m")
+            if data['offset'] is not None:  
+                self.ui.back_lidar_offset.setText(f"{data['offset']:.2f} m")
+            else:
+                self.ui.back_lidar_offset.setText("未知")
 
         elif data['target'] == "left_bridge_settings":
             left_turn, center, right_turn = data['settings']
-            self.ui.left_bridge_settings.setText(f"左转: {left_turn} mm / 居中: {center} mm / 右转: {right_turn} mm")
+            self.ui.left_bridge_settings.setText(f"左转: {left_turn:.2f} mm / 居中: {center:.2f} mm / 右转: {right_turn:.2f} mm")
 
         elif data['target'] == "right_bridge_settings":
             left_turn, center, right_turn = data['settings']
-            self.ui.right_bridge_settings.setText(f"左转: {left_turn} mm / 居中: {center} mm / 右转: {right_turn} mm")
+            self.ui.right_bridge_settings.setText(f"左转: {left_turn:.2f} mm / 居中: {center:.2f} mm / 右转: {right_turn:.2f} mm")
 
     @staticmethod
     def draw_lidar_result(graphWidget, t_points, t_refer_points, average_y_upper_line, average_y_lower_line, average_x_upper_line):
@@ -163,24 +192,34 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def left_turn_button_pressed(self):
         print("Left turn button pressed")
-        left_bridge_status = float(self.ui.left_bridge_status.text().split()[0])  # 获取左桥状态的数值部分
-        right_bridge_status = float(self.ui.right_bridge_status.text().split()[0])  # 获取右桥状态的数值部分
-        settings = {"target": "left_settings", "left_bridge_status": left_bridge_status, "right_bridge_status": right_bridge_status}
-        self.settingsSignal.emit(settings)
+        if self.ui.left_bridge_status.text() == "未知" or self.ui.right_bridge_status.text() == "未知":
+            self.display_error_window("settings")
+        else:
+            left_bridge_status = float(self.ui.left_bridge_status.text().split()[0])  # 获取左桥状态的数值部分
+            right_bridge_status = float(self.ui.right_bridge_status.text().split()[0])  # 获取右桥状态的数值部分
+            settings = {"target": "left_settings", "left_bridge_status": left_bridge_status, "right_bridge_status": right_bridge_status}
+            self.settingsSignal.emit(settings)
 
     def center_button_pressed(self):
         print("Center button pressed")
-        left_bridge_status = float(self.ui.left_bridge_status.text().split()[0])  # 获取左桥状态的数值部分
-        right_bridge_status = float(self.ui.right_bridge_status.text().split()[0])  # 获取右桥状态的数值部分
-        settings = {"target": "center_settings", "left_bridge_status": left_bridge_status, "right_bridge_status": right_bridge_status}
-        self.settingsSignal.emit(settings)
+        if self.ui.left_bridge_status.text() == "未知" or self.ui.right_bridge_status.text() == "未知":
+            self.display_error_window("settings")
+        else:
+            # left_bridge_status = float(self.ui.left_bridge_status.text().split()[0])  # 获取左桥状态的数值部分
+            # right_bridge_status = float(self.ui.right_bridge_status.text().split()[0])  # 获取右桥状态的数值部分
+            # settings = {"target": "center_settings", "left_bridge_status": left_bridge_status, "right_bridge_status": right_bridge_status}
+            settings = {"target": "center_settings"}
+            self.settingsSignal.emit(settings)
 
     def right_turn_button_pressed(self):
         print("Right turn button pressed")
-        left_bridge_status = float(self.ui.left_bridge_status.text().split()[0])  # 获取左桥状态的数值部分
-        right_bridge_status = float(self.ui.right_bridge_status.text().split()[0])  # 获取右桥状态的数值部分
-        settings = {"target": "right_settings", "left_bridge_status": left_bridge_status, "right_bridge_status": right_bridge_status}
-        self.settingsSignal.emit(settings)
+        if self.ui.left_bridge_status.text() == "未知" or self.ui.right_bridge_status.text() == "未知":
+            self.display_error_window("settings")
+        else:   
+            left_bridge_status = float(self.ui.left_bridge_status.text().split()[0])  # 获取左桥状态的数值部分
+            right_bridge_status = float(self.ui.right_bridge_status.text().split()[0])  # 获取右桥状态的数值部分
+            settings = {"target": "right_settings", "left_bridge_status": left_bridge_status, "right_bridge_status": right_bridge_status}
+            self.settingsSignal.emit(settings)
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

@@ -49,6 +49,10 @@ class LeftSensor(Node):
             # 计算单圈角度
             resolution = 1024  # 单圈分辨率,根据实际值修改
             angle = raw_value * 360 / resolution
+
+            # 将角度限制在-180到180度之间
+            if angle > 180:
+                angle = angle - 360
             
             return angle
 
@@ -58,7 +62,7 @@ class LeftSensor(Node):
         if left_angle_dis is not None:
             left_angle = LinearSensorData()
             left_angle.header.stamp = self.get_clock().now().to_msg()
-            left_angle.data = round(float(left_angle_dis), 2)  # 保留两位小数
+            left_angle.data = float(left_angle_dis)
 
             logger.debug("当前左车桥角度传感器数据: %.2f度", left_angle.data)
 
@@ -74,7 +78,7 @@ class LeftSensor(Node):
             result = self.left_client.write_register(address=8, value=1, unit=1)
             
             if not result.isError():
-                logger.info("零点设置命令已发送")
+                logger.info("零点设置命令已完成")
         except Exception as e:
             logger.error("设置零点时发生错误: %s", e)
 

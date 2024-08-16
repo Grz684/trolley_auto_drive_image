@@ -72,7 +72,7 @@ class LongPressButton(QtWidgets.QPushButton):
             self.original_text = text
 
 class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
+    def setupUi(self, MainWindow, ros2_thread):
         MainWindow.setObjectName("MainWindow")
         MainWindow.showFullScreen()
         
@@ -154,7 +154,9 @@ class Ui_MainWindow(object):
         left_bridge_layout = QtWidgets.QVBoxLayout(left_bridge_widget)
         left_bridge_layout.setSpacing(2)
         self.left_bridge_label = QtWidgets.QLabel("左车桥:")
-        self.left_bridge_settings = QtWidgets.QLabel("左转: 30 / 居中: 80 / 右转: 130")
+        self.left_bridge_settings = QtWidgets.QLabel(f"左转: {ros2_thread.lidar_data_handler.left_left_bound}" 
+                                                     f" / 居中: {ros2_thread.lidar_data_handler.left_mid_bound}" 
+                                                     f" / 右转: {ros2_thread.lidar_data_handler.left_right_bound}")
         left_bridge_layout.addWidget(self.left_bridge_label)
         left_bridge_layout.addWidget(self.left_bridge_settings)
         self.settings_layout.addWidget(left_bridge_widget)
@@ -171,7 +173,9 @@ class Ui_MainWindow(object):
         right_bridge_layout = QtWidgets.QVBoxLayout(right_bridge_widget)
         right_bridge_layout.setSpacing(2)
         self.right_bridge_label = QtWidgets.QLabel("右车桥:")
-        self.right_bridge_settings = QtWidgets.QLabel("左转: 30 / 居中: 80 / 右转: 130")
+        self.right_bridge_settings = QtWidgets.QLabel(f"左转: {ros2_thread.lidar_data_handler.right_left_bound}" 
+                                                     f" / 居中: {ros2_thread.lidar_data_handler.right_mid_bound}" 
+                                                     f" / 右转: {ros2_thread.lidar_data_handler.right_right_bound}")
         right_bridge_layout.addWidget(self.right_bridge_label)
         right_bridge_layout.addWidget(self.right_bridge_settings)
         self.settings_layout.addWidget(right_bridge_widget)
@@ -179,7 +183,7 @@ class Ui_MainWindow(object):
         self.lower_layout.addWidget(self.settings_group)
         
         # 控制按钮框
-        self.control_group = QtWidgets.QGroupBox("控制")
+        self.control_group = QtWidgets.QGroupBox("重新设定角度值")
         self.control_group.setStyleSheet("""
             QGroupBox { font-size: 16pt; font-weight: bold; }
             QPushButton { 
@@ -196,9 +200,9 @@ class Ui_MainWindow(object):
         """)
         self.control_layout = QtWidgets.QVBoxLayout(self.control_group)
         self.control_layout.setSpacing(15)
-        self.left_turn_button = LongPressButton("左转值重新设定")
-        self.center_button = LongPressButton("居中值重新设定")
-        self.right_turn_button = LongPressButton("右转值重新设定")
+        self.left_turn_button = LongPressButton("步骤2：左转值重新设定")
+        self.center_button = LongPressButton("步骤1：居中值重新设定")
+        self.right_turn_button = LongPressButton("步骤3：右转值重新设定")
         self.control_layout.addWidget(self.center_button)
         self.control_layout.addWidget(self.left_turn_button)
         self.control_layout.addWidget(self.right_turn_button)

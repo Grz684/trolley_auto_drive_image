@@ -13,7 +13,7 @@ import rclpy.time
 from sensor_msgs.msg import PointCloud2
 import sensor_msgs_py.point_cloud2 as pc2
 from rclpy.node import Node
-from std_msgs.msg import Int8
+from std_msgs.msg import Int8, Empty
 from .handle_lidar_data_utils import Utils
 from .pid_controller import PIDController
 from .mode_state_machine import ModeStateMachine
@@ -26,7 +26,7 @@ from PyQt5.QtCore import QThread, pyqtSignal
 import json
 import logging
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 class DIO_Error(Exception):
@@ -40,13 +40,16 @@ class LidarDataHandlerThread(QThread):
         super().__init__()
         self._is_stopped = False
         try:
+            rclpy.init()
             self.lidar_data_handler = LidarDataHandler(self)
         except DIO_Error as e:
             logger.error("Caught an dio exception: %s", e)
             data = {'target': 'clear'}
             self.plotUpdateSignal.emit(data)
             self.display_error.emit("dio")
-            
+            # 显示运行故障
+            data = {'target': 'main_program', 'main_program_state': '运行故障'}
+            self.plotUpdateSignal.emit(data)
     def run(self):
         try:
             rclpy.spin(self.lidar_data_handler)
@@ -55,12 +58,18 @@ class LidarDataHandlerThread(QThread):
             data = {'target': 'clear'}
             self.plotUpdateSignal.emit(data)
             self.display_error.emit("dio")
+            # 显示运行故障
+            data = {'target': 'main_program', 'main_program_state': '运行故障'}
+            self.plotUpdateSignal.emit(data)
         except Exception as e:
             # 在需要输出的地方使用
             logger.error("Caught an exception: %s\n%s", e, traceback.format_exc())
             data = {'target': 'clear'}
             self.plotUpdateSignal.emit(data)
             self.display_error.emit("program")
+            # 显示运行故障
+            data = {'target': 'main_program', 'main_program_state': '程序报错'}
+            self.plotUpdateSignal.emit(data)
         finally:
             logger.info("停止所有驱动输出!!!")
             for i in range(16):
@@ -99,6 +108,7 @@ class LidarDataHandler(Node):
         # 创建定时器，每0.1秒触发一次数据处理
         self.timer_period_sec = 0.1
         self.timer = self.create_timer(self.timer_period_sec, self.set_motor)
+        self.reset_publisher = self.create_publisher(Empty, 'reset_encoder', 10)
 
         self.init_pid_controller()
         self.init_channels()
@@ -108,9 +118,16 @@ class LidarDataHandler(Node):
         self.last_sync_time = self.get_clock().now()
         self.check_sensor_duration = 2
 
-        # 退出机制
-        # self.future = Future()
-        # self.angle2state = {0: "前轮正中", 1: "前轮右转", -1: "前轮左转"}
+        self.sensor_last_update = {
+            'left_angle': None,
+            'right_angle': None,
+            'front_lidar': None,
+            'back_lidar': None
+        }
+        self.sensor_timeout = 2.0  # 2秒超时
+        
+        # 创建定时器来检查传感器超时，每秒检查一次
+        self.sensor_check_timer = self.create_timer(1.0, self.check_sensor_timeout)
 
     def init_draw_count(self):
         self.draw_all_count = 0
@@ -164,17 +181,15 @@ class LidarDataHandler(Node):
         self.use_pid = 1
         self.pid_controller = PIDController(self.kp, self.ki, self.kd, 1)
         # bound值都是需要实机确认的
-        self.right_mid_lower_bound = 75
-        self.right_mid_upper_bound = 85
-        self.right_mid_bound = 80
-        self.right_left_bound = 30
-        self.right_right_bound = 130
+        self.angle_tollerance = 1
 
-        self.left_mid_lower_bound = 75
-        self.left_mid_upper_bound = 85
-        self.left_mid_bound = 80
-        self.left_left_bound = 30
-        self.left_right_bound = 130
+        self.right_mid_bound = 0
+        self.right_left_bound = 20
+        self.right_right_bound = -20
+
+        self.left_mid_bound = 0
+        self.left_left_bound = 20
+        self.left_right_bound = -20
 
         self.load_limits()
 
@@ -347,15 +362,17 @@ class LidarDataHandler(Node):
                     else:
                         self.sensors_health_count += 1
                         if self.sensors_health_count > 20:
-                            self.error_state_handler()
-                            self.error_state_flag = True
+                            if not self.error_state_flag:
+                                self.error_state_handler()
+                                self.error_state_flag = True
 
     def check_sensor_data(self):
         logger.debug("check sensor data, last sync time: %s", str(self.last_sync_time))
 
         if self.get_clock().now() - self.last_sync_time > rclpy.time.Duration(seconds=self.check_sensor_duration):
-            self.error_state_handler()
-            self.error_state_flag = True
+            if not self.error_state_flag:
+                self.error_state_handler()
+                self.error_state_flag = True
 
     def open_lidar_mask(self):
         logger.info("开启雷达罩子，给电3s")
@@ -413,8 +430,8 @@ class LidarDataHandler(Node):
                             'b_average_y_lower_line': b_average_y_lower_line, 'b_average_x_upper_line': b_average_x_upper_line}
                     self.thread.plotUpdateSignal.emit(data)
                     # 更新拉线传感器数据
-                    data = {'target': 'both_bridge', 'left_state': str(left_angle_dis),
-                            'right_state': str(right_angle_dis)}
+                    data = {'target': 'both_bridge', 'left_state': float(left_angle_dis),
+                            'right_state': float(right_angle_dis)}
                     self.thread.plotUpdateSignal.emit(data)
 
                     self.draw_all_count = 0
@@ -438,36 +455,79 @@ class LidarDataHandler(Node):
 
     def steer_when_stop(self, left_angle_msg, right_angle_msg):
         if not self.error_state_flag and self.mode_state_machine.state == 0:
+            current_time = self.get_clock().now()
+            
+            # 更新左角度传感器的最后更新时间
+            self.sensor_last_update['left_angle'] = current_time
+            # 更新右角度传感器的最后更新时间
+            self.sensor_last_update['right_angle'] = current_time
+
             # 按停止键调整轮胎居中
             target_angle = 0
             left_angle_dis = left_angle_msg.data
             right_angle_dis = right_angle_msg.data
+            
             # 更新拉线传感器数据
-            data = {'target': 'both_bridge', 'left_state': str(left_angle_dis),
-                    'right_state': str(right_angle_dis)}
+            data = {'target': 'both_bridge', 'left_state': float(left_angle_dis),
+                    'right_state': float(right_angle_dis)}
             self.thread.plotUpdateSignal.emit(data)
             self.steer_to_target_angle_dis(target_angle, left_angle_dis, right_angle_dis)
 
+    def check_sensor_timeout(self):
+        current_time = self.get_clock().now()
+        for sensor, last_update in self.sensor_last_update.items():
+            if last_update is None or (current_time - last_update).nanoseconds / 1e9 > self.sensor_timeout:
+                if self.error_state_flag:  # 错误状态
+                    if sensor == 'left_angle':
+                        data = {'target': 'left_bridge', 'state': None}
+                    elif sensor == 'right_angle':
+                        data = {'target': 'right_bridge', 'state': None}
+                    elif sensor == 'front_lidar':
+                        data = {'target': 'front', 'f_t_points': None, 'f_t_refer_points': None,
+                                'f_average_y_upper_line': None, 'f_average_y_lower_line': None,
+                                'f_average_x_upper_line': None}
+                        self.thread.plotUpdateSignal.emit(data)
+                        data = {'target': 'front_lidar_offset', 'offset': None}
+                    elif sensor == 'back_lidar':
+                        data = {'target': 'back', 'b_t_points': None, 'b_t_refer_points': None,
+                                'b_average_y_upper_line': None, 'b_average_y_lower_line': None,
+                                'b_average_x_upper_line': None}
+                        self.thread.plotUpdateSignal.emit(data)
+                        data = {'target': 'back_lidar_offset', 'offset': None}
+                    self.thread.plotUpdateSignal.emit(data)
+                elif self.mode_state_machine.state == 0:  # 停止模式
+                    if sensor in ['left_angle', 'right_angle']:
+                        logger.error("停止模式下传感器数据超时")
+                        if not self.error_state_flag:
+                            self.error_state_handler()
+                            self.error_state_flag = True
+
     def error_state_left_angle_callback(self, msg):
         if self.error_state_flag:
+            current_time = self.get_clock().now()
+            self.sensor_last_update['left_angle'] = current_time
             self.draw_left_angle_count += 1
             if self.draw_left_angle_count == 10:
                 left_angle_dis = msg.data
-                data = {'target': 'left_bridge', 'state': str(left_angle_dis)}
+                data = {'target': 'left_bridge', 'state': float(left_angle_dis)}
                 self.thread.plotUpdateSignal.emit(data)
                 self.draw_left_angle_count = 0
 
     def error_state_right_angle_callback(self, msg):
         if self.error_state_flag:
+            current_time = self.get_clock().now()
+            self.sensor_last_update['right_angle'] = current_time
             self.draw_right_angle_count += 1
             if self.draw_right_angle_count == 10:
                 right_angle_dis = msg.data
-                data = {'target': 'right_bridge', 'state': str(right_angle_dis)}
+                data = {'target': 'right_bridge', 'state': float(right_angle_dis)}
                 self.thread.plotUpdateSignal.emit(data)
                 self.draw_right_angle_count = 0
 
     def error_state_front_lidar_callback(self, msg):
         if self.error_state_flag:
+            current_time = self.get_clock().now()
+            self.sensor_last_update['front_lidar'] = current_time
             self.draw_front_lidar_count += 1
             if self.draw_front_lidar_count == 10:
                 front_lidar_points = np.array(list(pc2.read_points(msg, field_names=("x", "y"), skip_nans=True)), dtype=np.float32)
@@ -488,6 +548,8 @@ class LidarDataHandler(Node):
 
     def error_state_back_lidar_callback(self, msg):
         if self.error_state_flag:
+            current_time = self.get_clock().now()
+            self.sensor_last_update['back_lidar'] = current_time
             self.draw_back_lidar_count += 1
             if self.draw_back_lidar_count == 10:
                 back_lidar_points = np.array(list(pc2.read_points(msg, field_names=("x", "y"), skip_nans=True)), dtype=np.float32)
@@ -507,8 +569,6 @@ class LidarDataHandler(Node):
                 self.draw_back_lidar_count = 0
 
     def steer_to_target_angle_dis(self, target_angle, left_angle_dis, right_angle_dis):
-        # left_cylinder_target_direction = self.get_target_direction(target_angle, left_angle_dis)
-        # right_cylinder_target_direction = self.get_target_direction(target_angle, right_angle_dis)
         left_cylinder_target_direction = self.left_get_target_direction(target_angle, left_angle_dis)
         right_cylinder_target_direction = self.right_get_target_direction(target_angle, right_angle_dis)
         if self.mode_state_machine.state == 0:
@@ -524,74 +584,32 @@ class LidarDataHandler(Node):
         self.control_left_oil_cylinder(left_cylinder_target_direction)
         self.control_right_oil_cylinder(right_cylinder_target_direction)
 
-    def get_target_direction(self, target_angle, current_angle_dis):
-        # 先把current_angle（拉线长度）映射到target_angle的量程（-50~50）
-        # current_angle_dis较小时，轮胎朝左；current_angle_dis较大时，轮胎朝右
-        if self.right_mid_lower_bound <= current_angle_dis <= self.right_mid_upper_bound:
+    def left_get_target_direction(self, target_angle, current_angle):
+        if -self.angle_tollerance <= current_angle <= self.angle_tollerance:
             current_angle = 0
-        elif current_angle_dis < self.right_mid_lower_bound:
-            current_angle = (self.right_mid_bound - current_angle_dis)/(self.right_mid_bound-self.right_left_bound)*50
+        elif current_angle < 0:
+            current_angle = -current_angle/self.left_right_bound*50
         else:
-            current_angle = (self.right_mid_bound - current_angle_dis)/(self.right_right_bound-self.right_mid_bound)*50
+            current_angle = current_angle/self.left_left_bound*50
 
         if current_angle == target_angle:
             return int(0)
         elif current_angle < target_angle:
-            # 当前过右偏了，往左打方向（current和target都可理解为轮胎角度）
             return int(1)
         else:
             return int(-1)
 
-    # def state1_get_target_direction(self, target_angle, current_angle_dis):
-    #     # 先把current_angle（拉线长度）映射到target_angle的量程（-50~50）
-    #     # current_angle_dis较小时，轮胎朝右；current_angle_dis较大时，轮胎朝左
-    #     if self.left_mid_lower_bound <= current_angle_dis <= self.left_mid_upper_bound:
-    #         current_angle = 0
-    #     elif current_angle_dis < self.left_mid_lower_bound:
-    #         current_angle = (self.left_mid_bound - current_angle_dis)/(self.left_right_bound-self.left_mid_bound)*50
-    #     else:
-    #         current_angle = (self.left_mid_bound - current_angle_dis)/(self.left_mid_bound-self.left_left_bound)*50
-
-    #     if current_angle == target_angle:
-    #         return int(0)
-    #     elif current_angle < target_angle:
-    #         # 当前过右偏了，往左打方向（current和target都可理解为轮胎角度）
-    #         return int(-1)
-    #     else:
-    #         return int(1)
-
-    def left_get_target_direction(self, target_angle, current_angle_dis):
-        # 先把current_angle（拉线长度）映射到target_angle的量程（-50~50）
-        # current_angle_dis较小时，轮胎朝左；current_angle_dis较大时，轮胎朝右
-        if self.left_mid_lower_bound <= current_angle_dis <= self.left_mid_upper_bound:
+    def right_get_target_direction(self, target_angle, current_angle):
+        if -self.angle_tollerance <= current_angle <= self.angle_tollerance:
             current_angle = 0
-        elif current_angle_dis < self.left_mid_lower_bound:
-            current_angle = (self.left_mid_bound - current_angle_dis)/(self.left_mid_bound-self.left_left_bound)*50
+        elif current_angle < 0:
+            current_angle = -current_angle/self.right_right_bound*50
         else:
-            current_angle = (self.left_mid_bound - current_angle_dis)/(self.left_right_bound-self.left_mid_bound)*50
+            current_angle = current_angle/self.right_left_bound*50
 
         if current_angle == target_angle:
             return int(0)
         elif current_angle < target_angle:
-            # 当前过右偏了，往左打方向（current和target都可理解为轮胎角度）
-            return int(1)
-        else:
-            return int(-1)
-
-    def right_get_target_direction(self, target_angle, current_angle_dis):
-        # 先把current_angle（拉线长度）映射到target_angle的量程（-50~50）
-        # current_angle_dis较小时，轮胎朝左；current_angle_dis较大时，轮胎朝右
-        if self.right_mid_lower_bound <= current_angle_dis <= self.right_mid_upper_bound:
-            current_angle = 0
-        elif current_angle_dis < self.right_mid_lower_bound:
-            current_angle = (self.right_mid_bound - current_angle_dis)/(self.right_mid_bound-self.right_left_bound)*50
-        else:
-            current_angle = (self.right_mid_bound - current_angle_dis)/(self.right_right_bound-self.right_mid_bound)*50
-
-        if current_angle == target_angle:
-            return int(0)
-        elif current_angle < target_angle:
-            # 当前过右偏了，往左打方向（current和target都可理解为轮胎角度）
             return int(1)
         else:
             return int(-1)
@@ -619,14 +637,20 @@ class LidarDataHandler(Node):
 
     def updateSettings(self, data):
         if data['target'] == "left_settings":
-            self.left_left_bound = data["left_bridge_status"]
-            self.right_left_bound = data["right_bridge_status"]
+            if data["left_bridge_status"] < 0 or data["right_bridge_status"] < 0:
+                self.thread.display_error.emit("left_settings")
+            else:
+                self.left_left_bound = data["left_bridge_status"]
+                self.right_left_bound = data["right_bridge_status"]
         elif data['target'] == "center_settings":
-            self.left_mid_bound = data["left_bridge_status"]
-            self.right_mid_bound = data["right_bridge_status"]
+            msg = Empty()
+            self.reset_publisher.publish(msg)
         elif data['target'] == "right_settings":
-            self.left_right_bound = data["left_bridge_status"]
-            self.right_right_bound = data["right_bridge_status"]
+            if data["left_bridge_status"] > 0 or data["right_bridge_status"] > 0:
+                self.thread.display_error.emit("right_settings")
+            else:
+                self.left_right_bound = data["left_bridge_status"]
+                self.right_right_bound = data["right_bridge_status"]
 
         self.save_limits()
 
@@ -668,11 +692,9 @@ class LidarDataHandler(Node):
 
 def main():
     app = QApplication(sys.argv)
-    window = MainWindow()
-    window.show()
 
-    rclpy.init()
     lidar_data_handler_thread = LidarDataHandlerThread()
+    window = MainWindow(lidar_data_handler_thread)
 
     # 连接UI和ROS节点
     window.settingsSignal.connect(lidar_data_handler_thread.lidar_data_handler.updateSettings)
@@ -688,6 +710,7 @@ def main():
 
     signal.signal(signal.SIGINT, signal_handler)
 
+    window.showFullScreen()
     exit_code = app.exec_()
     logger.info("退出qt事件循环")
     lidar_data_handler_thread.stop()
