@@ -35,21 +35,28 @@ class DIO_Error(Exception):
 class LidarDataHandlerThread(QThread):
     display_error = pyqtSignal(str)
     plotUpdateSignal = pyqtSignal(dict)
+    initializationError = pyqtSignal(str)
 
     def __init__(self):
         super().__init__()
         self._is_stopped = False
+        self.lidar_data_handler = None
+
+    def initialize(self):
         try:
             rclpy.init()
             self.lidar_data_handler = LidarDataHandler(self)
         except DIO_Error as e:
-            logger.error("Caught an dio exception: %s", e)
-            data = {'target': 'clear'}
-            self.plotUpdateSignal.emit(data)
-            self.display_error.emit("dio")
-            # 显示运行故障
-            data = {'target': 'main_program', 'main_program_state': '运行故障'}
-            self.plotUpdateSignal.emit(data)
+            logger.error("Caught a DIO exception: %s", e)
+            self.initializationError.emit("dio")
+
+    def handle_initialization_error(self):
+        data = {'target': 'clear'}
+        self.plotUpdateSignal.emit(data)
+        self.display_error.emit("dio")
+        data = {'target': 'main_program', 'main_program_state': '运行故障'}
+        self.plotUpdateSignal.emit(data)
+
     def run(self):
         try:
             rclpy.spin(self.lidar_data_handler)
@@ -124,7 +131,7 @@ class LidarDataHandler(Node):
             'front_lidar': None,
             'back_lidar': None
         }
-        self.sensor_timeout = 2.0  # 2秒超时
+        self.sensor_timeout = 5.0  # 5秒超时
         
         # 创建定时器来检查传感器超时，每秒检查一次
         self.sensor_check_timer = self.create_timer(1.0, self.check_sensor_timeout)
@@ -342,6 +349,10 @@ class LidarDataHandler(Node):
                         self.control_left_oil_cylinder(0)
                         self.control_right_oil_cylinder(0)
                         self.close_lidar_mask()
+
+                        # 更新停止状态下传感器最后更新时间
+                        self.sensor_last_update['left_angle'] = self.get_clock().now()
+                        self.sensor_last_update['right_angle'] = self.get_clock().now()
 
                 # 启动前检查传感器数据是否到位
                 if self.motor_activate:
@@ -694,14 +705,22 @@ def main():
     app = QApplication(sys.argv)
 
     lidar_data_handler_thread = LidarDataHandlerThread()
-    window = MainWindow(lidar_data_handler_thread)
+    window = MainWindow()
 
-    # 连接UI和ROS节点
-    window.settingsSignal.connect(lidar_data_handler_thread.lidar_data_handler.updateSettings)
+    # 连接初始化错误信号
+    lidar_data_handler_thread.initializationError.connect(lidar_data_handler_thread.handle_initialization_error)
+
+    # 连接其他信号
     lidar_data_handler_thread.plotUpdateSignal.connect(window.update_plot_data)
     lidar_data_handler_thread.display_error.connect(window.display_error_window)
 
-    lidar_data_handler_thread.start()
+    # 初始化 LidarDataHandler
+    lidar_data_handler_thread.initialize()
+
+    # 只有在初始化成功时才连接设置信号
+    if lidar_data_handler_thread.lidar_data_handler is not None:
+        window.settingsSignal.connect(lidar_data_handler_thread.lidar_data_handler.updateSettings)
+        lidar_data_handler_thread.start()
 
     # 信号处理函数,参数是必须的！
     def signal_handler(signum, frame):

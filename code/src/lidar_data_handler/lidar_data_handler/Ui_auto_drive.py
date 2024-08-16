@@ -72,7 +72,7 @@ class LongPressButton(QtWidgets.QPushButton):
             self.original_text = text
 
 class Ui_MainWindow(object):
-    def setupUi(self, MainWindow, ros2_thread):
+    def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.showFullScreen()
         
@@ -154,9 +154,9 @@ class Ui_MainWindow(object):
         left_bridge_layout = QtWidgets.QVBoxLayout(left_bridge_widget)
         left_bridge_layout.setSpacing(2)
         self.left_bridge_label = QtWidgets.QLabel("左车桥:")
-        self.left_bridge_settings = QtWidgets.QLabel(f"左转: {ros2_thread.lidar_data_handler.left_left_bound}" 
-                                                     f" / 居中: {ros2_thread.lidar_data_handler.left_mid_bound}" 
-                                                     f" / 右转: {ros2_thread.lidar_data_handler.left_right_bound}")
+        self.left_bridge_settings = QtWidgets.QLabel(f"左转: {20} °" 
+                                                     f" / 居中: {0} °" 
+                                                     f" / 右转: {-20} °")
         left_bridge_layout.addWidget(self.left_bridge_label)
         left_bridge_layout.addWidget(self.left_bridge_settings)
         self.settings_layout.addWidget(left_bridge_widget)
@@ -173,9 +173,9 @@ class Ui_MainWindow(object):
         right_bridge_layout = QtWidgets.QVBoxLayout(right_bridge_widget)
         right_bridge_layout.setSpacing(2)
         self.right_bridge_label = QtWidgets.QLabel("右车桥:")
-        self.right_bridge_settings = QtWidgets.QLabel(f"左转: {ros2_thread.lidar_data_handler.right_left_bound}" 
-                                                     f" / 居中: {ros2_thread.lidar_data_handler.right_mid_bound}" 
-                                                     f" / 右转: {ros2_thread.lidar_data_handler.right_right_bound}")
+        self.right_bridge_settings = QtWidgets.QLabel(f"左转: {20} °" 
+                                                     f" / 居中: {0} °" 
+                                                     f" / 右转: {-20} °")
         right_bridge_layout.addWidget(self.right_bridge_label)
         right_bridge_layout.addWidget(self.right_bridge_settings)
         self.settings_layout.addWidget(right_bridge_widget)

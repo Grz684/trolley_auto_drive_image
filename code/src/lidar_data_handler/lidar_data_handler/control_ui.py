@@ -14,10 +14,10 @@ import pyqtgraph as pg
 class MainWindow(QtWidgets.QMainWindow):
     settingsSignal = pyqtSignal(dict)
 
-    def __init__(self, ros2_thread):
+    def __init__(self):
         super().__init__()
         self.ui = Ui_MainWindow()
-        self.ui.setupUi(self, ros2_thread)
+        self.ui.setupUi(self)
 
         # 连接控制按钮的信号
         self.ui.left_turn_button.pressed.connect(self.left_turn_button_pressed)
@@ -122,18 +122,18 @@ class MainWindow(QtWidgets.QMainWindow):
             self.ui.back_lidar_offset.setText("未知")
 
         elif data['target'] == "both_bridge":
-            self.ui.left_bridge_status.setText(f"{data['left_state']:.2f} mm")
-            self.ui.right_bridge_status.setText(f"{data['right_state']:.2f} mm")
+            self.ui.left_bridge_status.setText(f"{data['left_state']:.2f} °")
+            self.ui.right_bridge_status.setText(f"{data['right_state']:.2f} °")
 
         elif data['target'] == "left_bridge":
             if data['state'] is not None:   
-                self.ui.left_bridge_status.setText(f"{data['state']:.2f} mm")
+                self.ui.left_bridge_status.setText(f"{data['state']:.2f} °")
             else:
                 self.ui.left_bridge_status.setText("未知")
 
         elif data['target'] == "right_bridge":
             if data['state'] is not None:       
-                self.ui.right_bridge_status.setText(f"{data['state']:.2f} mm")
+                self.ui.right_bridge_status.setText(f"{data['state']:.2f} °")
             else:
                 self.ui.right_bridge_status.setText("未知")
         
@@ -154,11 +154,11 @@ class MainWindow(QtWidgets.QMainWindow):
 
         elif data['target'] == "left_bridge_settings":
             left_turn, center, right_turn = data['settings']
-            self.ui.left_bridge_settings.setText(f"左转: {left_turn:.2f} mm / 居中: {center:.2f} mm / 右转: {right_turn:.2f} mm")
+            self.ui.left_bridge_settings.setText(f"左转: {left_turn:.2f} ° / 居中: {center:.2f} ° / 右转: {right_turn:.2f} °")
 
         elif data['target'] == "right_bridge_settings":
             left_turn, center, right_turn = data['settings']
-            self.ui.right_bridge_settings.setText(f"左转: {left_turn:.2f} mm / 居中: {center:.2f} mm / 右转: {right_turn:.2f} mm")
+            self.ui.right_bridge_settings.setText(f"左转: {left_turn:.2f} ° / 居中: {center:.2f} ° / 右转: {right_turn:.2f} °")
 
     @staticmethod
     def draw_lidar_result(graphWidget, t_points, t_refer_points, average_y_upper_line, average_y_lower_line, average_x_upper_line):
