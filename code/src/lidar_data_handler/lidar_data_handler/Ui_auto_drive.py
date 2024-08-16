@@ -74,13 +74,26 @@ class LongPressButton(QtWidgets.QPushButton):
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.showFullScreen()
+        MainWindow.setFixedSize(800, 480)
         
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         
+        # 计算缩放比例
+        scale_factor = min(800 / 1280, 480 / 800)
+        
+        # 创建一个QGraphicsView和QGraphicsScene来实现缩放
+        self.view = QtWidgets.QGraphicsView(self.centralwidget)
+        self.view.setGeometry(0, 0, 800, 480)
+        self.scene = QtWidgets.QGraphicsScene()
+        self.view.setScene(self.scene)
+        
+        # 创建一个QWidget作为所有UI元素的容器
+        self.container = QtWidgets.QWidget()
+        self.container.setFixedSize(1280, 800)
+        
         # 主布局
-        self.main_layout = QtWidgets.QVBoxLayout(self.centralwidget)
+        self.main_layout = QtWidgets.QVBoxLayout(self.container)
         
         # 上半部分：雷达点云图
         self.upper_layout = QtWidgets.QHBoxLayout()
@@ -208,9 +221,13 @@ class Ui_MainWindow(object):
         self.control_layout.addWidget(self.right_turn_button)
         self.lower_layout.addWidget(self.control_group)
         
-        # 设置下半部分各框的大小策略
-        for widget in [self.status_group, self.settings_group, self.control_group]:
-            widget.setSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        # 将容器添加到场景中并应用缩放
+        self.proxy = self.scene.addWidget(self.container)
+        self.proxy.setTransform(QtGui.QTransform().scale(scale_factor, scale_factor))
+        
+        # 禁用滚动条
+        self.view.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.view.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         
         MainWindow.setCentralWidget(self.centralwidget)
 
