@@ -41,6 +41,11 @@ class LidarDataHandlerThread(QThread):
         super().__init__()
         self._is_stopped = False
         self.lidar_data_handler = None
+        self.sn = 231202311
+        self.run_indicator_channel = 15
+        self.fault_indicator_channel = 14
+        self.active_state = 0
+        self.inactive_state = 1
 
     def initialize(self):
         try:
@@ -59,6 +64,9 @@ class LidarDataHandlerThread(QThread):
 
     def run(self):
         try:
+            ret = IO_WritePin(self.sn, self.run_indicator_channel, self.active_state)
+            if 0 > ret:
+                raise DIO_Error("运行指示灯初始化失败")
             rclpy.spin(self.lidar_data_handler)
         except DIO_Error as e:
             logger.error("Caught an dio exception: %s", e)
@@ -77,6 +85,12 @@ class LidarDataHandlerThread(QThread):
             # 显示运行故障
             data = {'target': 'main_program', 'main_program_state': '程序报错'}
             self.plotUpdateSignal.emit(data)
+
+            ret1 = IO_WritePin(self.sn, self.run_indicator_channel, self.inactive_state)
+            ret2 = IO_WritePin(self.sn, self.fault_indicator_channel, self.active_state)
+            if 0 > ret1 or 0 > ret2:
+                logger.error("错误指示灯初始化失败")
+
         finally:
             logger.info("停止所有驱动输出!!!")
             for i in range(16):
@@ -223,6 +237,9 @@ class LidarDataHandler(Node):
         # 雷达罩子
         self.lidar_mask_open_channel = 6
         self.lidar_mask_close_channel = 7
+        # 运行指示灯和错误指示灯
+        self.run_indicator_channel = 15
+        self.fault_indicator_channel = 14
 
         # Scan device
         serial_numbers = (c_int * 20)()
@@ -639,10 +656,16 @@ class LidarDataHandler(Node):
         if self.check_timer is not None:
             self.check_timer.cancel()
         # 停止一切驱动输出
-        for i in range(16):
+        for i in range(10):
             ret = IO_WritePin(self.sn, i, self.inactive_state)
             if ret<0:
                 raise DIO_Error("停止驱动失败")
+
+        # 关闭运行指示灯并打开错误指示灯
+        ret1 = IO_WritePin(self.sn, self.run_indicator_channel, self.inactive_state)
+        ret2 = IO_WritePin(self.sn, self.fault_indicator_channel, self.active_state)
+        if 0 > ret1 or 0 > ret2:
+            raise DIO_Error("错误指示灯初始化失败")
 
         data = {'target': 'main_program', 'main_program_state': '运行故障'}
         self.thread.plotUpdateSignal.emit(data)
