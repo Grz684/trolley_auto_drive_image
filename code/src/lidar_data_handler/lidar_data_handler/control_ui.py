@@ -1,8 +1,9 @@
 import sys
 import numpy as np
-from PyQt5 import QtWidgets, QtCore, QtGui
+from PyQt5 import QtWidgets
 from .Ui_auto_drive import Ui_MainWindow  # 假设这是您的UI类文件名
-from PyQt5.QtCore import QTimer, QEvent, pyqtSignal, Qt
+from PyQt5.QtCore import QTimer, QEvent
+from PyQt5.QtCore import pyqtSignal, Qt
 from PyQt5.QtWidgets import QDialog
 from PyQt5.QtWidgets import (QApplication, QLabel, QPushButton,
 QVBoxLayout, QDesktopWidget)
@@ -12,12 +13,12 @@ import pyqtgraph as pg
 
 class MainWindow(QtWidgets.QMainWindow):
     settingsSignal = pyqtSignal(dict)
-    scale_factor = min(800 / 1280, 480 / 800)  # 将 scale_factor 定义为类属性
 
     def __init__(self):
         super().__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        self.no_failure_flag = True
 
         # 连接控制按钮的信号
         self.ui.left_turn_button.pressed.connect(self.left_turn_button_pressed)
@@ -28,9 +29,13 @@ class MainWindow(QtWidgets.QMainWindow):
         dialog = QDialog(self)
         dialog.setWindowTitle("提示消息")
         
-        # 设置对话框大小为屏幕的四分之一，并应用缩放
-        dialog_width = int(400 * self.scale_factor)
-        dialog_height = int(240 * self.scale_factor)
+        # 获取屏幕尺寸
+        screen = QDesktopWidget().screenNumber(QDesktopWidget().cursor().pos())
+        screen_size = QDesktopWidget().screenGeometry(screen).size()
+        
+        # 设置对话框大小为屏幕的四分之一
+        dialog_width = screen_size.width() // 2
+        dialog_height = screen_size.height() // 2
         dialog.resize(dialog_width, dialog_height)
 
         layout = QVBoxLayout()
@@ -45,15 +50,20 @@ class MainWindow(QtWidgets.QMainWindow):
             message_label = QLabel("角度传感器状态异常，无法设定")
         elif data == "left_settings":
             message_label = QLabel("请检查两侧车桥轮胎是否全部向最左")
+            self.ui.left_turn_button.set_success(False)
+            self.no_failure_flag = False
         elif data == "right_settings":
             message_label = QLabel("请检查两侧车桥轮胎是否全部向最右")
-
+            self.ui.right_turn_button.set_success(False)
+            self.no_failure_flag = False
+            
         message_label.setAlignment(Qt.AlignCenter)
-        message_label.setFont(QFont("Arial", int(18 * self.scale_factor), QFont.Bold))
-        message_label.setStyleSheet("color: #4CAF50;")
+        message_label.setFont(QFont("Arial", 14, QFont.Bold))  # 消息字体大小
+        message_label.setStyleSheet("color: #4CAF50;")  # 绿色文本
 
+        # 创建确定按钮
         ok_button = QPushButton("确定")
-        ok_button.setFont(QFont("Arial", int(16 * self.scale_factor)))
+        ok_button.setFont(QFont("Arial", 12))  # 增大按钮字体
         ok_button.setStyleSheet("""
             QPushButton {
                 background-color: #4CAF50;
@@ -68,6 +78,7 @@ class MainWindow(QtWidgets.QMainWindow):
         """)
         ok_button.clicked.connect(dialog.accept)
 
+        # 将部件添加到布局中
         layout.addStretch(1)
         layout.addWidget(message_label)
         layout.addStretch(1)
@@ -76,6 +87,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
         dialog.setLayout(layout)
 
+        # 设置对话框的样式
         dialog.setStyleSheet("""
             QDialog {
                 background-color: #f0f0f0;
@@ -84,6 +96,7 @@ class MainWindow(QtWidgets.QMainWindow):
             }
         """)
 
+        # 显示对话框
         dialog.exec_()
 
     def update_plot_data(self, data):
@@ -152,47 +165,55 @@ class MainWindow(QtWidgets.QMainWindow):
             left_turn, center, right_turn = data['settings']
             self.ui.right_bridge_settings.setText(f"左转: {left_turn:.2f} ° / 居中: {center:.2f} ° / 右转: {right_turn:.2f} °")
 
-    @classmethod
-    def draw_lidar_result(cls, graphWidget, t_points, t_refer_points, average_y_upper_line, average_y_lower_line, average_x_upper_line):
+    @staticmethod
+    def draw_lidar_result(graphWidget, t_points, t_refer_points, average_y_upper_line, average_y_lower_line, average_x_upper_line):
+        # Clear the existing graph
         graphWidget.clear()
 
-        # 应用缩放到点的大小
-        point_size = 5 * cls.scale_factor
-        ref_point_size = 20 * cls.scale_factor
-
+        # Plot transformed original points
         if t_points.size > 0:
-            t_points_x = t_points[:, 0]
+            t_points_x = t_points[:, 0]  # Assuming t_points is a Nx2 array
             t_points_y = t_points[:, 1]
-            graphWidget.plot(t_points_x, t_points_y, pen=None, symbol='o', symbolPen=None, symbolSize=point_size, symbolBrush=('b'))
+            graphWidget.plot(t_points_x, t_points_y, pen=None, symbol='o', symbolPen=None, symbolSize=3, symbolBrush=('b'))
 
+        # Plot transformed reference points
         if t_refer_points.size > 0:
-            t_refer_x = t_refer_points[0, 0]
+            t_refer_x = t_refer_points[0, 0]  # Assuming t_refer_points is a Nx2 array
             t_refer_y = t_refer_points[0, 1]
-            graphWidget.plot([t_refer_x], [t_refer_y], pen=None, symbol='o', symbolSize=ref_point_size, symbolBrush=('g'))
+            graphWidget.plot([t_refer_x], [t_refer_y], pen=None, symbol='o', symbolSize=10, symbolBrush=('g'))
 
+        # Get the view range
         view_range = graphWidget.viewRect()
         x_min, x_max = view_range.left(), view_range.right()
         y_min, y_max = view_range.top(), view_range.bottom()
 
+        # Draw horizontal lines
         for line_param in [average_y_upper_line, average_y_lower_line]:
             graphWidget.plot([x_min, x_max], [line_param, line_param], pen=pg.mkPen('g', width=2))
 
+        # Draw a vertical line if applicable
         if average_x_upper_line != -1:
             graphWidget.plot([average_x_upper_line, average_x_upper_line], [y_min, y_max], pen=pg.mkPen('g', width=2))
 
     def left_turn_button_pressed(self):
         print("Left turn button pressed")
         if self.ui.left_bridge_status.text() == "未知" or self.ui.right_bridge_status.text() == "未知":
+            self.ui.left_turn_button.set_success(False)
             self.display_error_window("settings")
         else:
             left_bridge_status = float(self.ui.left_bridge_status.text().split()[0])  # 获取左桥状态的数值部分
             right_bridge_status = float(self.ui.right_bridge_status.text().split()[0])  # 获取右桥状态的数值部分
             settings = {"target": "left_settings", "left_bridge_status": left_bridge_status, "right_bridge_status": right_bridge_status}
             self.settingsSignal.emit(settings)
+            if self.no_failure_flag:
+                self.ui.left_turn_button.set_success(True)
+            else:
+                self.no_failure_flag = True
 
     def center_button_pressed(self):
         print("Center button pressed")
         if self.ui.left_bridge_status.text() == "未知" or self.ui.right_bridge_status.text() == "未知":
+            self.ui.center_button.set_success(False)
             self.display_error_window("settings")
         else:
             # left_bridge_status = float(self.ui.left_bridge_status.text().split()[0])  # 获取左桥状态的数值部分
@@ -200,16 +221,25 @@ class MainWindow(QtWidgets.QMainWindow):
             # settings = {"target": "center_settings", "left_bridge_status": left_bridge_status, "right_bridge_status": right_bridge_status}
             settings = {"target": "center_settings"}
             self.settingsSignal.emit(settings)
+            if self.no_failure_flag:
+                self.ui.center_button.set_success(True)
+            else:
+                self.no_failure_flag = True
 
     def right_turn_button_pressed(self):
         print("Right turn button pressed")
         if self.ui.left_bridge_status.text() == "未知" or self.ui.right_bridge_status.text() == "未知":
+            self.ui.right_turn_button.set_success(False)
             self.display_error_window("settings")
         else:   
             left_bridge_status = float(self.ui.left_bridge_status.text().split()[0])  # 获取左桥状态的数值部分
             right_bridge_status = float(self.ui.right_bridge_status.text().split()[0])  # 获取右桥状态的数值部分
             settings = {"target": "right_settings", "left_bridge_status": left_bridge_status, "right_bridge_status": right_bridge_status}
             self.settingsSignal.emit(settings)
+            if self.no_failure_flag:
+                self.ui.right_turn_button.set_success(True)
+            else:
+                self.no_failure_flag = True
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

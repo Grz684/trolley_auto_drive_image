@@ -88,8 +88,10 @@ class LidarDataHandlerThread(QThread):
     def stop(self):
         if not self._is_stopped:
             self._is_stopped = True
-            self.lidar_data_handler.destroy_node()
-            rclpy.shutdown()
+            if self.lidar_data_handler:
+                self.lidar_data_handler.destroy_node()
+            if rclpy.ok():
+                rclpy.shutdown()
             self.quit()
             self.wait()
 
@@ -125,13 +127,14 @@ class LidarDataHandler(Node):
         self.last_sync_time = self.get_clock().now()
         self.check_sensor_duration = 2
 
+        current_time = self.get_clock().now()
         self.sensor_last_update = {
-            'left_angle': None,
-            'right_angle': None,
-            'front_lidar': None,
-            'back_lidar': None
+            'left_angle': current_time,
+            'right_angle': current_time,
+            'front_lidar': current_time,
+            'back_lidar': current_time
         }
-        self.sensor_timeout = 5.0  # 5秒超时
+        self.sensor_timeout = 2.0  # 错误或停止状态下2秒超时
         
         # 创建定时器来检查传感器超时，每秒检查一次
         self.sensor_check_timer = self.create_timer(1.0, self.check_sensor_timeout)

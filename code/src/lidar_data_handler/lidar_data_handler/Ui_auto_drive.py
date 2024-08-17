@@ -13,7 +13,7 @@ class LongPressButton(QtWidgets.QPushButton):
                 color: black;
                 padding: 10px;
                 border-radius: 5px;
-                font-size: 14pt;
+                font-size: 10pt;
             }
         """)
         self.press_start_time = 0
@@ -44,16 +44,52 @@ class LongPressButton(QtWidgets.QPushButton):
         self.progress = min(100, int(elapsed / self.press_duration * 100))
         if self.progress == 100 and not self.is_success:
             self.is_success = True
-            self.setText("设定成功")
-            self.pressed.emit()  # 立即发出信号
+            self.pressed.emit()  # 发出信号
             self.timer.stop()  # 停止定时器
             QtCore.QTimer.singleShot(1000, self.reset_button)  # 1秒后重置按钮
         self.update()
+
+    def set_success(self, is_success):
+        if is_success:
+            self.setText("设定成功")
+            self.setStyleSheet("""
+                QPushButton {
+                    background-color: #4CAF50;
+                    color: white;
+                    border: none;
+                    padding: 10px;
+                    border-radius: 5px;
+                    font-size: 10pt;
+                }
+            """)
+        else:
+            self.setText("设定失败")
+            self.setStyleSheet("""
+                QPushButton {
+                    background-color: #FF0000;
+                    color: white;
+                    border: none;
+                    padding: 10px;
+                    border-radius: 5px;
+                    font-size: 10pt;
+                }
+            """)
+        QtCore.QTimer.singleShot(1000, self.reset_button)  # 1秒后重置按钮
 
     def reset_button(self):
         self.progress = 0
         self.setText(self.original_text)
         self.is_success = False
+        self.setStyleSheet("""
+            QPushButton {
+                background-color: #e0e0e0;
+                border: none;
+                color: black;
+                padding: 10px;
+                border-radius: 5px;
+                font-size: 10pt;
+            }
+        """)
         self.update()
 
     def paintEvent(self, event):
@@ -74,26 +110,13 @@ class LongPressButton(QtWidgets.QPushButton):
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.setFixedSize(800, 480)
+        MainWindow.showFullScreen()
         
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         
-        # 计算缩放比例
-        scale_factor = min(800 / 1280, 480 / 800)
-        
-        # 创建一个QGraphicsView和QGraphicsScene来实现缩放
-        self.view = QtWidgets.QGraphicsView(self.centralwidget)
-        self.view.setGeometry(0, 0, 800, 480)
-        self.scene = QtWidgets.QGraphicsScene()
-        self.view.setScene(self.scene)
-        
-        # 创建一个QWidget作为所有UI元素的容器
-        self.container = QtWidgets.QWidget()
-        self.container.setFixedSize(1280, 800)
-        
         # 主布局
-        self.main_layout = QtWidgets.QVBoxLayout(self.container)
+        self.main_layout = QtWidgets.QVBoxLayout(self.centralwidget)
         
         # 上半部分：雷达点云图
         self.upper_layout = QtWidgets.QHBoxLayout()
@@ -102,9 +125,9 @@ class Ui_MainWindow(object):
         # 后雷达点云图
         self.back_lidar_widget = pg.PlotWidget()
         self.back_lidar_widget.setBackground('w')
-        self.back_lidar_widget.setTitle("后雷达点云图", color="k", size="14pt")
-        self.back_lidar_widget.setLabel('left', "洞壁方向→→", **{'font-size': '12pt'})
-        self.back_lidar_widget.setLabel('bottom', "←←掌子面方向", **{'font-size': '12pt'})
+        self.back_lidar_widget.setTitle("后雷达点云图", color="k", size="11pt")
+        self.back_lidar_widget.setLabel('left', "洞壁方向→→", **{'font-size': '10pt'})
+        self.back_lidar_widget.setLabel('bottom', "←←掌子面方向", **{'font-size': '10pt'})
         self.back_lidar_widget.getAxis('left').setPen(pg.mkPen(color='k', width=1))
         self.back_lidar_widget.getAxis('bottom').setPen(pg.mkPen(color='k', width=1))
         self.back_lidar_widget.invertX()  # 翻转X轴
@@ -117,9 +140,9 @@ class Ui_MainWindow(object):
         # 前雷达点云图
         self.front_lidar_widget = pg.PlotWidget()
         self.front_lidar_widget.setBackground('w')
-        self.front_lidar_widget.setTitle("前雷达点云图", color="k", size="14pt")
-        self.front_lidar_widget.setLabel('left', "洞壁方向→→", **{'font-size': '12pt'})
-        self.front_lidar_widget.setLabel('bottom', "洞口方向→→", **{'font-size': '12pt'})
+        self.front_lidar_widget.setTitle("前雷达点云图", color="k", size="11pt")
+        self.front_lidar_widget.setLabel('left', "洞壁方向→→", **{'font-size': '10pt'})
+        self.front_lidar_widget.setLabel('bottom', "洞口方向→→", **{'font-size': '10pt'})
         self.front_lidar_widget.getAxis('left').setPen(pg.mkPen(color='k', width=1))
         self.front_lidar_widget.getAxis('bottom').setPen(pg.mkPen(color='k', width=1))
         self.upper_layout.addWidget(self.front_lidar_widget)
@@ -133,7 +156,7 @@ class Ui_MainWindow(object):
         
         # 状态显示框
         self.status_group = QtWidgets.QGroupBox("状态显示")
-        self.status_group.setStyleSheet("QGroupBox { font-size: 16pt; font-weight: bold; } QLabel { font-size: 14pt; }")
+        self.status_group.setStyleSheet("QGroupBox { font-size: 11pt; font-weight: bold; } QLabel { font-size: 10pt; }")
         self.status_layout = QtWidgets.QFormLayout(self.status_group)
         self.status_layout.setVerticalSpacing(10)
         self.left_bridge_status = QtWidgets.QLabel("未知")
@@ -152,11 +175,11 @@ class Ui_MainWindow(object):
         self.settings_group = QtWidgets.QGroupBox("设定值")
         self.settings_group.setStyleSheet("""
             QGroupBox { 
-                font-size: 16pt; 
+                font-size: 11pt; 
                 font-weight: bold; 
             }
             QLabel { 
-                font-size: 14pt; 
+                font-size: 10pt; 
             }
         """)
         self.settings_layout = QtWidgets.QVBoxLayout(self.settings_group)
@@ -198,9 +221,9 @@ class Ui_MainWindow(object):
         # 控制按钮框
         self.control_group = QtWidgets.QGroupBox("重新设定角度值")
         self.control_group.setStyleSheet("""
-            QGroupBox { font-size: 16pt; font-weight: bold; }
+            QGroupBox { font-size: 11pt; font-weight: bold; }
             QPushButton { 
-                font-size: 14pt; 
+                font-size: 10pt; 
                 padding: 10px; 
                 background-color: #4CAF50; 
                 color: white; 
@@ -221,13 +244,9 @@ class Ui_MainWindow(object):
         self.control_layout.addWidget(self.right_turn_button)
         self.lower_layout.addWidget(self.control_group)
         
-        # 将容器添加到场景中并应用缩放
-        self.proxy = self.scene.addWidget(self.container)
-        self.proxy.setTransform(QtGui.QTransform().scale(scale_factor, scale_factor))
-        
-        # 禁用滚动条
-        self.view.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
-        self.view.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        # 设置下半部分各框的大小策略
+        for widget in [self.status_group, self.settings_group, self.control_group]:
+            widget.setSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         
         MainWindow.setCentralWidget(self.centralwidget)
 
