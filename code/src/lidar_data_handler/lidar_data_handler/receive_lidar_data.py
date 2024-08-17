@@ -148,7 +148,7 @@ class LidarDataHandler(Node):
             'front_lidar': current_time,
             'back_lidar': current_time
         }
-        self.sensor_timeout = 2.0  # 错误或停止状态下2秒超时
+        self.sensor_timeout = 4.0  # 错误或停止状态下2秒超时
         
         # 创建定时器来检查传感器超时，每秒检查一次
         self.sensor_check_timer = self.create_timer(1.0, self.check_sensor_timeout)
