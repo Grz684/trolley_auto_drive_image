@@ -674,7 +674,7 @@ class LidarDataHandler(Node):
 
     def updateSettings(self, data):
         if data['target'] == "left_settings":
-            if data["left_bridge_status"] < 0 or data["right_bridge_status"] < 0:
+            if data["left_bridge_status"] <= 0 or data["right_bridge_status"] <= 0:
                 self.thread.display_error.emit("left_settings")
             else:
                 self.left_left_bound = data["left_bridge_status"]
@@ -683,7 +683,7 @@ class LidarDataHandler(Node):
             msg = Empty()
             self.reset_publisher.publish(msg)
         elif data['target'] == "right_settings":
-            if data["left_bridge_status"] > 0 or data["right_bridge_status"] > 0:
+            if data["left_bridge_status"] >= 0 or data["right_bridge_status"] >= 0:
                 self.thread.display_error.emit("right_settings")
             else:
                 self.left_right_bound = data["left_bridge_status"]
