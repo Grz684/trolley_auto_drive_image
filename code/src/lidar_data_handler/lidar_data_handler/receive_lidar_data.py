@@ -698,21 +698,26 @@ class LidarDataHandler(Node):
         self.thread.plotUpdateSignal.emit(data)
 
     def load_limits(self):
-        if os.path.exists(self.config_file):
+        if os.path.exists(self.config_file) and os.path.getsize(self.config_file) > 0:
             with open(self.config_file, 'r') as f:
-                limits = json.load(f)
-            self.left_left_bound = limits['left_left_bound']
-            self.right_left_bound = limits['right_left_bound']
-            self.left_mid_bound = limits['left_mid_bound']
-            self.right_mid_bound = limits['right_mid_bound']
-            self.left_right_bound = limits['left_right_bound']
-            self.right_right_bound = limits['right_right_bound']
+                try:
+                    limits = json.load(f)
+                    self.left_left_bound = limits['left_left_bound']
+                    self.right_left_bound = limits['right_left_bound']
+                    self.left_mid_bound = limits['left_mid_bound']
+                    self.right_mid_bound = limits['right_mid_bound']
+                    self.left_right_bound = limits['left_right_bound']
+                    self.right_right_bound = limits['right_right_bound']
 
-            data = {'target':'left_bridge_settings', 'settings':(self.left_left_bound, self.left_mid_bound, self.left_right_bound)}
-            self.thread.plotUpdateSignal.emit(data)
+                    data = {'target':'left_bridge_settings', 'settings':(self.left_left_bound, self.left_mid_bound, self.left_right_bound)}
+                    self.thread.plotUpdateSignal.emit(data)
 
-            data = {'target':'right_bridge_settings', 'settings':(self.right_left_bound, self.right_mid_bound, self.right_right_bound)}
-            self.thread.plotUpdateSignal.emit(data)
+                    data = {'target':'right_bridge_settings', 'settings':(self.right_left_bound, self.right_mid_bound, self.right_right_bound)}
+                    self.thread.plotUpdateSignal.emit(data)
+                except json.JSONDecodeError:
+                    logger.error("配置文件格式不正确")
+        else:
+            logger.info("配置文件不存在或为空")
 
     def save_limits(self):
         limits = {
@@ -725,6 +730,8 @@ class LidarDataHandler(Node):
         }
         with open(self.config_file, 'w') as f:
             json.dump(limits, f)
+            f.flush()
+            os.fsync(f.fileno())
             
 
 def main():
