@@ -1,0 +1,6 @@
+{
+  "package_name": "linear_sensor_msgs",
+  "non_idl_tuples": [
+    "/home/grz/trolley_auto_drive_image/code/src/linear_sensor_msgs:msg/LinearSensorData.msg"
+  ]
+}

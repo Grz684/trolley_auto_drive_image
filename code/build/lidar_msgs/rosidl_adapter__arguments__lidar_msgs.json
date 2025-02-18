@@ -1,0 +1,7 @@
+{
+  "package_name": "lidar_msgs",
+  "non_idl_tuples": [
+    "/home/grz/trolley_auto_drive_image/code/src/ole2d_ros2_driver/lidar_msgs:srv/GetMetadata.srv",
+    "/home/grz/trolley_auto_drive_image/code/src/ole2d_ros2_driver/lidar_msgs:msg/Metadata.msg"
+  ]
+}

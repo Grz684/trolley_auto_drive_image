@@ -151,7 +151,7 @@ def generate_launch_description():
         front_shutdown_event,
         back_shutdown_event,
         TimerAction(
-            period=3.0,  # 3秒后启动主程序节点
+            period=5.0,  # 5秒后启动主程序节点
             actions=[handler_node]
         )
     ])

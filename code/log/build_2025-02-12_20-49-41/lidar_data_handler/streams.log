@@ -1,0 +1,27 @@
+[1.186s] Invoking command in '/home/grz/trolley_auto_drive_image/code/build/lidar_data_handler': PYTHONPATH=/home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build --no-deps symlink_data
+[1.519s] running develop
+[1.696s] running egg_info
+[1.696s] creating lidar_data_handler.egg-info
+[1.696s] writing lidar_data_handler.egg-info/PKG-INFO
+[1.697s] writing dependency_links to lidar_data_handler.egg-info/dependency_links.txt
+[1.697s] writing entry points to lidar_data_handler.egg-info/entry_points.txt
+[1.697s] writing requirements to lidar_data_handler.egg-info/requires.txt
+[1.697s] writing top-level names to lidar_data_handler.egg-info/top_level.txt
+[1.699s] writing manifest file 'lidar_data_handler.egg-info/SOURCES.txt'
+[1.746s] reading manifest file 'lidar_data_handler.egg-info/SOURCES.txt'
+[1.747s] writing manifest file 'lidar_data_handler.egg-info/SOURCES.txt'
+[1.799s] running build_ext
+[1.799s] Creating /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/site.py
+[1.802s] Creating /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar-data-handler.egg-link (link to .)
+[1.803s] Installing lidar_data_handler script to /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/lidar_data_handler
+[1.803s] 
+[1.804s] Installed /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler
+[1.804s] running symlink_data
+[1.804s] creating /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/share/ament_index
+[1.804s] creating /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/share/ament_index/resource_index
+[1.805s] creating /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/share/ament_index/resource_index/packages
+[1.805s] symbolically linking /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/resource/lidar_data_handler -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/share/ament_index/resource_index/packages
+[1.805s] symbolically linking /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/package.xml -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/share/lidar_data_handler
+[1.805s] creating /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/share/lidar_data_handler/launch
+[1.806s] symbolically linking /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/launch/trolley_auto_drive_launch.py -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/share/lidar_data_handler/launch
+[1.859s] Invoked command in '/home/grz/trolley_auto_drive_image/code/build/lidar_data_handler' returned '0': PYTHONPATH=/home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build --no-deps symlink_data

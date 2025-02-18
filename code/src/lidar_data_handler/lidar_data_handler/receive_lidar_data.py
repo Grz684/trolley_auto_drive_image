@@ -137,21 +137,23 @@ class LidarDataHandler(Node):
         self.init_channels()
         self.init_synchronizer()
 
-        self.check_timer = None
-        self.last_sync_time = self.get_clock().now()
-        self.check_sensor_duration = 2
+        self.drive_last_sync_time = time.time()
+        self.stop_last_sync_time = time.time()
+        self.sensor_when_normal_timeout = 2.0
 
-        current_time = self.get_clock().now()
+        current_time = time.time()
         self.sensor_last_update = {
             'left_angle': current_time,
             'right_angle': current_time,
             'front_lidar': current_time,
             'back_lidar': current_time
         }
-        self.sensor_timeout = 4.0  # 错误或停止状态下2秒超时
+        self.sensor_when_error_timeout = 2.0  # 错误或停止状态下2秒超时
         
-        # 创建定时器来检查传感器超时，每秒检查一次
-        self.sensor_check_timer = self.create_timer(1.0, self.check_sensor_timeout)
+        self.check_sensor_when_error_timer = self.create_timer(1.0, self.check_sensor_timeout)
+
+        self.check_sensor_when_drive_timer = self.create_timer(0.5, self.check_sensor_data_when_drive)
+        self.check_sensor_when_stop_timer = self.create_timer(0.5, self.check_sensor_data_when_stop)
 
     def init_draw_count(self):
         self.draw_all_count = 0
@@ -188,9 +190,9 @@ class LidarDataHandler(Node):
             'right_angle',
             qos_profile=qos_profile_sensor_data
         )
-        self.all_sensors_ats = message_filters.ApproximateTimeSynchronizer([self.front_lidar_sub, self.back_lidar_sub, self.left_angle_sub, self.right_angle_sub], 10, self.timer_period_sec)
+        self.all_sensors_ats = message_filters.ApproximateTimeSynchronizer([self.front_lidar_sub, self.back_lidar_sub, self.left_angle_sub, self.right_angle_sub], 10, self.timer_period_sec*2)
         self.all_sensors_ats.registerCallback(self.steer_when_drive)
-        self.linear_sensors_ats = message_filters.ApproximateTimeSynchronizer([self.left_angle_sub, self.right_angle_sub], 10, self.timer_period_sec)
+        self.linear_sensors_ats = message_filters.ApproximateTimeSynchronizer([self.left_angle_sub, self.right_angle_sub], 10, self.timer_period_sec*2)
         self.linear_sensors_ats.registerCallback(self.steer_when_stop)
         self.front_lidar_sub.registerCallback(self.error_state_front_lidar_callback)
         self.back_lidar_sub.registerCallback(self.error_state_back_lidar_callback)
@@ -322,13 +324,13 @@ class LidarDataHandler(Node):
                 mode_exchange = False
 
                 if control_f_input_state.value == self.active_state:
-                    logger.info("按前进键")
+                    # logger.info("按前进键")
                     mode_exchange = self.mode_state_machine.transition_to_forward()
                 elif control_b_input_state.value == self.active_state:
-                    logger.info("按后退键")
+                    # logger.info("按后退键")
                     mode_exchange = self.mode_state_machine.transition_to_backward()
                 elif control_stop_input_state.value == self.active_state:
-                    logger.info("按停止键")
+                    # logger.info("按停止键")
                     mode_exchange = self.mode_state_machine.reset_to_stop()
                     
                 # 如果状态转换成功
@@ -336,10 +338,11 @@ class LidarDataHandler(Node):
                     # 前进或后退模式
                     if control_f_input_state.value == self.active_state or control_b_input_state.value == self.active_state:
                         # 打开雷达罩子
-                        self.open_lidar_mask()
+                        # self.open_lidar_mask()
                         # 是否开启电机有待观察
                         logger.info("电机待启动")
                         self.motor_activate = True
+                        self.drive_last_sync_time = time.time()
                         # 重置pid控制器
                         self.reset_pid_controller()
 
@@ -347,8 +350,8 @@ class LidarDataHandler(Node):
                     elif control_stop_input_state.value == self.active_state:
                         logger.info("电机停止")
                         # 重置传感器状态检查器
-                        if self.check_timer is not None:
-                            self.check_timer.cancel()
+                        # if self.check_timer is not None:
+                        #     self.check_timer.cancel()
                         # 重置停止调整计数器
                         self.stop_adjust_count = 0
 
@@ -368,11 +371,12 @@ class LidarDataHandler(Node):
                         # 关闭雷达罩子时保证左右油缸静止
                         self.control_left_oil_cylinder(0)
                         self.control_right_oil_cylinder(0)
-                        self.close_lidar_mask()
+                        # self.close_lidar_mask()
 
                         # 更新停止状态下传感器最后更新时间
-                        self.sensor_last_update['left_angle'] = self.get_clock().now()
-                        self.sensor_last_update['right_angle'] = self.get_clock().now()
+                        # self.sensor_last_update['left_angle'] = time.time()
+                        # self.sensor_last_update['right_angle'] = time.time()
+                        self.stop_last_sync_time = time.time()
 
                 # 启动前检查传感器数据是否到位
                 if self.motor_activate:
@@ -387,21 +391,40 @@ class LidarDataHandler(Node):
                         self.motor_activate = False
                         self.sensors_health_count = 0
                         self.control_motor(self.mode_state_machine.state)
-                        # 为运行过程执行定期传感器检查
-                        self.last_sync_time = self.get_clock().now()
-                        self.check_timer = self.create_timer(self.timer_period_sec, self.check_sensor_data)
-                    else:
-                        self.sensors_health_count += 1
-                        if self.sensors_health_count > 20:
-                            if not self.error_state_flag:
-                                self.error_state_handler()
-                                self.error_state_flag = True
+                        
+                    # else:
+                    #     self.sensors_health_count += 1
+                    #     if self.sensors_health_count > 40:
+                    #         if not self.error_state_flag:
+                    #             logger.error("启动时传感器超时")
+                    #             self.error_state_handler()
+                    #             self.error_state_flag = True
 
-    def check_sensor_data(self):
-        logger.debug("check sensor data, last sync time: %s", str(self.last_sync_time))
+    def check_sensor_data_when_drive(self):
+        if not self.error_state_flag and self.mode_state_machine.state != 0:
+            logger.debug("check sensor data when drive, last sync time: %s", str(self.drive_last_sync_time))
 
-        if self.get_clock().now() - self.last_sync_time > rclpy.time.Duration(seconds=self.check_sensor_duration):
-            if not self.error_state_flag:
+            if time.time() - self.drive_last_sync_time > self.sensor_when_normal_timeout:
+                logger.error("传感器运行时超时")
+                current = time.time()
+                for sensor, last_time in self.sensor_last_update.items():
+                    diff = current - last_time
+                    logger.info(f"{sensor} 上次更新: {float(diff)}秒前")
+
+                self.error_state_handler()
+                self.error_state_flag = True
+
+    def check_sensor_data_when_stop(self):
+        if not self.error_state_flag and self.mode_state_machine.state == 0:
+            logger.debug("check sensor data when stop, last sync time: %s", str(self.stop_last_sync_time))
+
+            if time.time() - self.stop_last_sync_time > self.sensor_when_normal_timeout:
+                logger.error("传感器停止时超时")
+                current = time.time()
+                for sensor, last_time in self.sensor_last_update.items():
+                    diff = current - last_time
+                    logger.info(f"{sensor} 上次更新: {float(diff)}秒前")
+
                 self.error_state_handler()
                 self.error_state_flag = True
 
@@ -441,7 +464,7 @@ class LidarDataHandler(Node):
                 if self.sensor_is_ready is False:
                     self.sensor_is_ready = True
 
-                self.last_sync_time = self.get_clock().now()
+                self.drive_last_sync_time = time.time()
 
                 logger.debug("-----------------------")
                 logger.debug("current mode:%s", self.mode_state_machine.state)
@@ -486,12 +509,13 @@ class LidarDataHandler(Node):
 
     def steer_when_stop(self, left_angle_msg, right_angle_msg):
         if not self.error_state_flag and self.mode_state_machine.state == 0:
-            current_time = self.get_clock().now()
+            # current_time = time.time()
             
-            # 更新左角度传感器的最后更新时间
-            self.sensor_last_update['left_angle'] = current_time
-            # 更新右角度传感器的最后更新时间
-            self.sensor_last_update['right_angle'] = current_time
+            # # 更新左角度传感器的最后更新时间
+            # self.sensor_last_update['left_angle'] = current_time
+            # # 更新右角度传感器的最后更新时间
+            # self.sensor_last_update['right_angle'] = current_time
+            self.stop_last_sync_time = time.time()
 
             # 按停止键调整轮胎居中
             target_angle = 0
@@ -505,10 +529,10 @@ class LidarDataHandler(Node):
             self.steer_to_target_angle_dis(target_angle, left_angle_dis, right_angle_dis)
 
     def check_sensor_timeout(self):
-        current_time = self.get_clock().now()
-        for sensor, last_update in self.sensor_last_update.items():
-            if last_update is None or (current_time - last_update).nanoseconds / 1e9 > self.sensor_timeout:
-                if self.error_state_flag:  # 错误状态
+        if self.error_state_flag:  # 错误状态
+            current_time = time.time()
+            for sensor, last_update in self.sensor_last_update.items():
+                if last_update is None or current_time - last_update > self.sensor_when_error_timeout:
                     if sensor == 'left_angle':
                         data = {'target': 'left_bridge', 'state': None}
                     elif sensor == 'right_angle':
@@ -526,17 +550,17 @@ class LidarDataHandler(Node):
                         self.thread.plotUpdateSignal.emit(data)
                         data = {'target': 'back_lidar_offset', 'offset': None}
                     self.thread.plotUpdateSignal.emit(data)
-                elif self.mode_state_machine.state == 0:  # 停止模式
-                    if sensor in ['left_angle', 'right_angle']:
-                        logger.error("停止模式下传感器数据超时")
-                        if not self.error_state_flag:
-                            self.error_state_handler()
-                            self.error_state_flag = True
+                # elif self.mode_state_machine.state == 0:  # 停止模式
+                #     if sensor in ['left_angle', 'right_angle']:
+                #         logger.error("停止模式下传感器数据超时")
+                #         if not self.error_state_flag:
+                #             self.error_state_handler()
+                #             self.error_state_flag = True
 
     def error_state_left_angle_callback(self, msg):
+        current_time = time.time()
+        self.sensor_last_update['left_angle'] = current_time
         if self.error_state_flag:
-            current_time = self.get_clock().now()
-            self.sensor_last_update['left_angle'] = current_time
             self.draw_left_angle_count += 1
             if self.draw_left_angle_count == 10:
                 left_angle_dis = msg.data
@@ -545,9 +569,9 @@ class LidarDataHandler(Node):
                 self.draw_left_angle_count = 0
 
     def error_state_right_angle_callback(self, msg):
+        current_time = time.time()
+        self.sensor_last_update['right_angle'] = current_time
         if self.error_state_flag:
-            current_time = self.get_clock().now()
-            self.sensor_last_update['right_angle'] = current_time
             self.draw_right_angle_count += 1
             if self.draw_right_angle_count == 10:
                 right_angle_dis = msg.data
@@ -556,9 +580,9 @@ class LidarDataHandler(Node):
                 self.draw_right_angle_count = 0
 
     def error_state_front_lidar_callback(self, msg):
+        current_time = time.time()
+        self.sensor_last_update['front_lidar'] = current_time
         if self.error_state_flag:
-            current_time = self.get_clock().now()
-            self.sensor_last_update['front_lidar'] = current_time
             self.draw_front_lidar_count += 1
             if self.draw_front_lidar_count == 10:
                 front_lidar_points = np.array(list(pc2.read_points(msg, field_names=("x", "y"), skip_nans=True)), dtype=np.float32)
@@ -578,9 +602,9 @@ class LidarDataHandler(Node):
                 self.draw_front_lidar_count = 0
 
     def error_state_back_lidar_callback(self, msg):
+        current_time = time.time()
+        self.sensor_last_update['back_lidar'] = current_time
         if self.error_state_flag:
-            current_time = self.get_clock().now()
-            self.sensor_last_update['back_lidar'] = current_time
             self.draw_back_lidar_count += 1
             if self.draw_back_lidar_count == 10:
                 back_lidar_points = np.array(list(pc2.read_points(msg, field_names=("x", "y"), skip_nans=True)), dtype=np.float32)
@@ -653,8 +677,18 @@ class LidarDataHandler(Node):
         # 停止计时器
         if self.timer is not None:
             self.timer.cancel()
-        if self.check_timer is not None:
-            self.check_timer.cancel()
+
+        if self.check_sensor_when_stop_timer is not None:
+            self.check_sensor_when_stop_timer.cancel()
+
+        if self.check_sensor_when_drive_timer is not None:
+            self.check_sensor_when_drive_timer.cancel()
+
+        if self.check_sensor_when_error_timer is not None:
+            self.check_sensor_when_error_timer.cancel()
+
+        # if self.check_timer is not None:
+        #     self.check_timer.cancel()
         # 停止一切驱动输出
         for i in range(10):
             ret = IO_WritePin(self.sn, i, self.inactive_state)

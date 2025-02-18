@@ -6,7 +6,7 @@ class PIDController:
         self.pid_debug = 0
 
         # 单位为m,s,度
-        self.truck_length = 12
+        self.truck_length = 4
         self.mode = mode
         self.dt = 0.1
 
@@ -15,9 +15,9 @@ class PIDController:
 
         # 待调整参数L, tolerate-adjustment
         if self.mode == 1:
-            self.L = 10
+            self.L = 3
         else:
-            self.L = 10
+            self.L = 3
         self.tolerate_adjustment = 0.05
 
     def update(self, error, dt):

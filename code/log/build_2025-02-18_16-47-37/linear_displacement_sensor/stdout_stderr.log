@@ -1,0 +1,16 @@
+running develop
+running egg_info
+writing linear_displacement_sensor.egg-info/PKG-INFO
+writing dependency_links to linear_displacement_sensor.egg-info/dependency_links.txt
+writing entry points to linear_displacement_sensor.egg-info/entry_points.txt
+writing requirements to linear_displacement_sensor.egg-info/requires.txt
+writing top-level names to linear_displacement_sensor.egg-info/top_level.txt
+reading manifest file 'linear_displacement_sensor.egg-info/SOURCES.txt'
+writing manifest file 'linear_displacement_sensor.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/grz/trolley_auto_drive_image/code/install/linear_displacement_sensor/lib/python3.8/site-packages/linear-displacement-sensor.egg-link (link to .)
+Installing left_sensor script to /home/grz/trolley_auto_drive_image/code/install/linear_displacement_sensor/lib/linear_displacement_sensor
+Installing right_sensor script to /home/grz/trolley_auto_drive_image/code/install/linear_displacement_sensor/lib/linear_displacement_sensor
+
+Installed /home/grz/trolley_auto_drive_image/code/build/linear_displacement_sensor
+running symlink_data

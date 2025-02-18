@@ -1,0 +1,4 @@
+[console_scripts]
+left_sensor = linear_displacement_sensor.left_sensor:main
+right_sensor = linear_displacement_sensor.right_sensor:main
+

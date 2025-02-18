@@ -1,0 +1,213 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"hasInstallRule" : true,
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15
+					]
+				},
+				{
+					"build" : "linear_sensor_msgs__py",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "/home/grz/trolley_auto_drive_image/code/build/linear_sensor_msgs/linear_sensor_msgs__py",
+					"targetIndexes" : 
+					[
+						2
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "linear_sensor_msgs",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "linear_sensor_msgs::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-linear_sensor_msgs-ad9c4520ce2190c2d1c1.json",
+					"name" : "linear_sensor_msgs",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "linear_sensor_msgs__cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-linear_sensor_msgs__cpp-b202967bf48681572683.json",
+					"name" : "linear_sensor_msgs__cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "linear_sensor_msgs__py::@a3a9c5badfda53bf0bfb",
+					"jsonFile" : "target-linear_sensor_msgs__py-b0057adba6cb2904182a.json",
+					"name" : "linear_sensor_msgs__py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "linear_sensor_msgs__python::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-linear_sensor_msgs__python-9308a9c9982584199bb1.json",
+					"name" : "linear_sensor_msgs__python",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "linear_sensor_msgs__rosidl_generator_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-linear_sensor_msgs__rosidl_generator_c-b6f485b5de9dd587db48.json",
+					"name" : "linear_sensor_msgs__rosidl_generator_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "linear_sensor_msgs__rosidl_typesupport_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-linear_sensor_msgs__rosidl_typesupport_c-62521d66dc9e709f02f0.json",
+					"name" : "linear_sensor_msgs__rosidl_typesupport_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "linear_sensor_msgs__rosidl_typesupport_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-linear_sensor_msgs__rosidl_typesupport_c__pyext-08a0f409dc49adaf9407.json",
+					"name" : "linear_sensor_msgs__rosidl_typesupport_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "linear_sensor_msgs__rosidl_typesupport_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-linear_sensor_msgs__rosidl_typesupport_cpp-08372fe5212d553efaf7.json",
+					"name" : "linear_sensor_msgs__rosidl_typesupport_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "linear_sensor_msgs__rosidl_typesupport_fastrtps_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-linear_sensor_msgs__rosidl_typesupport_fastrtps_c-2e998123f25e085e851a.json",
+					"name" : "linear_sensor_msgs__rosidl_typesupport_fastrtps_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "linear_sensor_msgs__rosidl_typesupport_fastrtps_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-linear_sensor_msgs__rosidl_typesupport_fastrtps_c__pyext-8ca6bb1da9d8e911fff2.json",
+					"name" : "linear_sensor_msgs__rosidl_typesupport_fastrtps_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "linear_sensor_msgs__rosidl_typesupport_fastrtps_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-linear_sensor_msgs__rosidl_typesupport_fastrtps_cpp-c13174bb8aca283eafd4.json",
+					"name" : "linear_sensor_msgs__rosidl_typesupport_fastrtps_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "linear_sensor_msgs__rosidl_typesupport_introspection_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-linear_sensor_msgs__rosidl_typesupport_introspection_c-f40484a09984623ab0e8.json",
+					"name" : "linear_sensor_msgs__rosidl_typesupport_introspection_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "linear_sensor_msgs__rosidl_typesupport_introspection_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-linear_sensor_msgs__rosidl_typesupport_introspection_c__pyext-cdaf03568cb9bb1f9fac.json",
+					"name" : "linear_sensor_msgs__rosidl_typesupport_introspection_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "linear_sensor_msgs__rosidl_typesupport_introspection_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-linear_sensor_msgs__rosidl_typesupport_introspection_cpp-81f864600fc9088d4e10.json",
+					"name" : "linear_sensor_msgs__rosidl_typesupport_introspection_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "linear_sensor_msgs_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-linear_sensor_msgs_uninstall-38abaa0bc5bc4ff8213c.json",
+					"name" : "linear_sensor_msgs_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-86f2b1e2a6cd602e4e25.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/grz/trolley_auto_drive_image/code/build/linear_sensor_msgs",
+		"source" : "/home/grz/trolley_auto_drive_image/code/src/linear_sensor_msgs"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 0
+	}
+}

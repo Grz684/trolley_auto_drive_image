@@ -1,0 +1,4 @@
+source;share/linear_sensor_msgs/local_setup.bash
+source;share/linear_sensor_msgs/local_setup.dsv
+source;share/linear_sensor_msgs/local_setup.sh
+source;share/linear_sensor_msgs/local_setup.zsh

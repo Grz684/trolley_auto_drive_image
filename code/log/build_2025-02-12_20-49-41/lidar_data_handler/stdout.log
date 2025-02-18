@@ -1,0 +1,25 @@
+running develop
+running egg_info
+creating lidar_data_handler.egg-info
+writing lidar_data_handler.egg-info/PKG-INFO
+writing dependency_links to lidar_data_handler.egg-info/dependency_links.txt
+writing entry points to lidar_data_handler.egg-info/entry_points.txt
+writing requirements to lidar_data_handler.egg-info/requires.txt
+writing top-level names to lidar_data_handler.egg-info/top_level.txt
+writing manifest file 'lidar_data_handler.egg-info/SOURCES.txt'
+reading manifest file 'lidar_data_handler.egg-info/SOURCES.txt'
+writing manifest file 'lidar_data_handler.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/site.py
+Creating /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar-data-handler.egg-link (link to .)
+Installing lidar_data_handler script to /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/lidar_data_handler
+
+Installed /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler
+running symlink_data
+creating /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/share/ament_index
+creating /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/share/ament_index/resource_index
+creating /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/share/ament_index/resource_index/packages
+symbolically linking /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/resource/lidar_data_handler -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/share/ament_index/resource_index/packages
+symbolically linking /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/package.xml -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/share/lidar_data_handler
+creating /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/share/lidar_data_handler/launch
+symbolically linking /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/launch/trolley_auto_drive_launch.py -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/share/lidar_data_handler/launch

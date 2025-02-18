@@ -7,7 +7,7 @@ class ModeStateMachine:
         self.state = 0
 
     def transition_to_forward(self):
-        if self.state == 0:
+        if self.state != 1:
             self.state = 1
 
             return True
@@ -16,7 +16,7 @@ class ModeStateMachine:
             return False
 
     def transition_to_backward(self):
-        if self.state == 0:
+        if self.state != -1:
             self.state = -1
 
             return True
