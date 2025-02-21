@@ -684,9 +684,6 @@ class LidarDataHandler(Node):
         if self.check_sensor_when_drive_timer is not None:
             self.check_sensor_when_drive_timer.cancel()
 
-        if self.check_sensor_when_error_timer is not None:
-            self.check_sensor_when_error_timer.cancel()
-
         # if self.check_timer is not None:
         #     self.check_timer.cancel()
         # 停止一切驱动输出

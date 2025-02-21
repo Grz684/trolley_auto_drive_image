@@ -1,0 +1,4 @@
+Invoking command in '/home/grz/trolley_auto_drive_image/code/build/linear_sensor_msgs': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/grz/trolley_auto_drive_image/code/build/linear_sensor_msgs -- -j4 -l4
+Invoked command in '/home/grz/trolley_auto_drive_image/code/build/linear_sensor_msgs' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/grz/trolley_auto_drive_image/code/build/linear_sensor_msgs -- -j4 -l4
+Invoking command in '/home/grz/trolley_auto_drive_image/code/build/linear_sensor_msgs': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /home/grz/trolley_auto_drive_image/code/build/linear_sensor_msgs
+Invoked command in '/home/grz/trolley_auto_drive_image/code/build/linear_sensor_msgs' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /home/grz/trolley_auto_drive_image/code/build/linear_sensor_msgs
