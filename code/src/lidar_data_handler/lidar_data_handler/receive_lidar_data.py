@@ -338,7 +338,7 @@ class LidarDataHandler(Node):
                     # 前进或后退模式
                     if control_f_input_state.value == self.active_state or control_b_input_state.value == self.active_state:
                         # 打开雷达罩子
-                        # self.open_lidar_mask()
+                        self.open_lidar_mask()
                         # 是否开启电机有待观察
                         logger.info("电机待启动")
                         self.motor_activate = True
@@ -371,7 +371,7 @@ class LidarDataHandler(Node):
                         # 关闭雷达罩子时保证左右油缸静止
                         self.control_left_oil_cylinder(0)
                         self.control_right_oil_cylinder(0)
-                        # self.close_lidar_mask()
+                        self.close_lidar_mask()
 
                         # 更新停止状态下传感器最后更新时间
                         # self.sensor_last_update['left_angle'] = time.time()
