@@ -1,0 +1,26 @@
+[1.291s] Invoking command in '/home/grz/trolley_auto_drive_image/code/build/linear_displacement_sensor': PYTHONPATH=/home/grz/trolley_auto_drive_image/code/build/linear_displacement_sensor/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/grz/trolley_auto_drive_image/code/install/linear_displacement_sensor/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/grz/trolley_auto_drive_image/code/build/linear_displacement_sensor/build --no-deps symlink_data
+[1.630s] running develop
+[1.809s] running egg_info
+[1.809s] creating linear_displacement_sensor.egg-info
+[1.810s] writing linear_displacement_sensor.egg-info/PKG-INFO
+[1.810s] writing dependency_links to linear_displacement_sensor.egg-info/dependency_links.txt
+[1.810s] writing entry points to linear_displacement_sensor.egg-info/entry_points.txt
+[1.810s] writing requirements to linear_displacement_sensor.egg-info/requires.txt
+[1.811s] writing top-level names to linear_displacement_sensor.egg-info/top_level.txt
+[1.814s] writing manifest file 'linear_displacement_sensor.egg-info/SOURCES.txt'
+[1.889s] reading manifest file 'linear_displacement_sensor.egg-info/SOURCES.txt'
+[1.890s] writing manifest file 'linear_displacement_sensor.egg-info/SOURCES.txt'
+[1.973s] running build_ext
+[1.974s] Creating /home/grz/trolley_auto_drive_image/code/install/linear_displacement_sensor/lib/python3.8/site-packages/site.py
+[1.979s] Creating /home/grz/trolley_auto_drive_image/code/install/linear_displacement_sensor/lib/python3.8/site-packages/linear-displacement-sensor.egg-link (link to .)
+[1.980s] Installing left_sensor script to /home/grz/trolley_auto_drive_image/code/install/linear_displacement_sensor/lib/linear_displacement_sensor
+[1.980s] Installing right_sensor script to /home/grz/trolley_auto_drive_image/code/install/linear_displacement_sensor/lib/linear_displacement_sensor
+[1.981s] 
+[1.981s] Installed /home/grz/trolley_auto_drive_image/code/build/linear_displacement_sensor
+[1.981s] running symlink_data
+[1.981s] creating /home/grz/trolley_auto_drive_image/code/install/linear_displacement_sensor/share/ament_index
+[1.981s] creating /home/grz/trolley_auto_drive_image/code/install/linear_displacement_sensor/share/ament_index/resource_index
+[1.982s] creating /home/grz/trolley_auto_drive_image/code/install/linear_displacement_sensor/share/ament_index/resource_index/packages
+[1.982s] symbolically linking /home/grz/trolley_auto_drive_image/code/build/linear_displacement_sensor/resource/linear_displacement_sensor -> /home/grz/trolley_auto_drive_image/code/install/linear_displacement_sensor/share/ament_index/resource_index/packages
+[1.982s] symbolically linking /home/grz/trolley_auto_drive_image/code/build/linear_displacement_sensor/package.xml -> /home/grz/trolley_auto_drive_image/code/install/linear_displacement_sensor/share/linear_displacement_sensor
+[2.064s] Invoked command in '/home/grz/trolley_auto_drive_image/code/build/linear_displacement_sensor' returned '0': PYTHONPATH=/home/grz/trolley_auto_drive_image/code/build/linear_displacement_sensor/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/grz/trolley_auto_drive_image/code/install/linear_displacement_sensor/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/grz/trolley_auto_drive_image/code/build/linear_displacement_sensor/build --no-deps symlink_data

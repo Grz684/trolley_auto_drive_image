@@ -1,0 +1,1111 @@
+[0.000000] (-) TimerEvent: {}
+[0.001182] (-) JobUnselected: {'identifier': 'lidar_data_handler'}
+[0.001252] (-) JobUnselected: {'identifier': 'linear_displacement_sensor'}
+[0.001389] (lidar_msgs) JobQueued: {'identifier': 'lidar_msgs', 'dependencies': OrderedDict()}
+[0.001487] (linear_sensor_msgs) JobQueued: {'identifier': 'linear_sensor_msgs', 'dependencies': OrderedDict()}
+[0.001570] (ros2_lidar) JobQueued: {'identifier': 'ros2_lidar', 'dependencies': OrderedDict([('lidar_msgs', '/home/grz/trolley_auto_drive_image/code/install/lidar_msgs')])}
+[0.001628] (lidar_msgs) JobStarted: {'identifier': 'lidar_msgs'}
+[0.014905] (linear_sensor_msgs) JobStarted: {'identifier': 'linear_sensor_msgs'}
+[0.027415] (lidar_msgs) JobProgress: {'identifier': 'lidar_msgs', 'progress': 'cmake'}
+[0.028090] (lidar_msgs) Command: {'cmd': ['/usr/bin/cmake', '/home/grz/trolley_auto_drive_image/code/src/ole2d_ros2_driver/lidar_msgs', '-DCMAKE_INSTALL_PREFIX=/home/grz/trolley_auto_drive_image/code/install/lidar_msgs'], 'cwd': '/home/grz/trolley_auto_drive_image/code/build/lidar_msgs', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'grz'), ('SSH_CLIENT', '10.111.248.87 43828 22'), ('LC_TIME', 'zh_CN.UTF-8'), ('XDG_SESSION_TYPE', 'tty'), ('GIT_ASKPASS', '/home/grz/.vscode-server/cli/servers/Stable-ddc367ed5c8936efe395cffeec279b04ffd7db78/server/extensions/git/dist/askpass.sh'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('BROWSER', '/home/grz/.vscode-server/cli/servers/Stable-ddc367ed5c8936efe395cffeec279b04ffd7db78/server/bin/helpers/browser.sh'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/grz'), ('OLDPWD', '/home/grz/trolley_auto_drive_image'), ('TERM_PROGRAM_VERSION', '1.98.2'), ('VSCODE_IPC_HOOK_CLI', '/run/user/1000/vscode-ipc-42e302a8-51fd-40c6-a133-14d9d50fd0bf.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/home/grz/.vscode-server/cli/servers/Stable-ddc367ed5c8936efe395cffeec279b04ffd7db78/server/extensions/git/dist/askpass-main.js'), ('LC_MONETARY', 'zh_CN.UTF-8'), ('VSCODE_GIT_ASKPASS_NODE', '/home/grz/.vscode-server/cli/servers/Stable-ddc367ed5c8936efe395cffeec279b04ffd7db78/server/node'), ('SSL_CERT_FILE', '/usr/lib/ssl/certs/ca-certificates.crt'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'grz'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', '7'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/foxy/bin:/home/grz/.vscode-server/cli/servers/Stable-ddc367ed5c8936efe395cffeec279b04ffd7db78/server/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('LC_ADDRESS', 'zh_CN.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('SSL_CERT_DIR', '/usr/lib/ssl/certs'), ('LANG', 'en_US.UTF-8'), ('LC_TELEPHONE', 'zh_CN.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-ce7cad993c.sock'), ('TERM_PROGRAM', 'vscode'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('LC_NAME', 'zh_CN.UTF-8'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'zh_CN.UTF-8'), ('LC_IDENTIFICATION', 'zh_CN.UTF-8'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('PWD', '/home/grz/trolley_auto_drive_image/code/build/lidar_msgs'), ('LC_ALL', 'en_US.UTF-8'), ('SSH_CONNECTION', '10.111.248.87 43828 10.111.248.241 22'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('LC_NUMERIC', 'zh_CN.UTF-8'), ('LC_PAPER', 'zh_CN.UTF-8'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[0.037189] (linear_sensor_msgs) JobProgress: {'identifier': 'linear_sensor_msgs', 'progress': 'cmake'}
+[0.039847] (linear_sensor_msgs) Command: {'cmd': ['/usr/bin/cmake', '/home/grz/trolley_auto_drive_image/code/src/linear_sensor_msgs', '-DCMAKE_INSTALL_PREFIX=/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs'], 'cwd': '/home/grz/trolley_auto_drive_image/code/build/linear_sensor_msgs', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'grz'), ('SSH_CLIENT', '10.111.248.87 43828 22'), ('LC_TIME', 'zh_CN.UTF-8'), ('XDG_SESSION_TYPE', 'tty'), ('GIT_ASKPASS', '/home/grz/.vscode-server/cli/servers/Stable-ddc367ed5c8936efe395cffeec279b04ffd7db78/server/extensions/git/dist/askpass.sh'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('BROWSER', '/home/grz/.vscode-server/cli/servers/Stable-ddc367ed5c8936efe395cffeec279b04ffd7db78/server/bin/helpers/browser.sh'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/grz'), ('OLDPWD', '/home/grz/trolley_auto_drive_image'), ('TERM_PROGRAM_VERSION', '1.98.2'), ('VSCODE_IPC_HOOK_CLI', '/run/user/1000/vscode-ipc-42e302a8-51fd-40c6-a133-14d9d50fd0bf.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/home/grz/.vscode-server/cli/servers/Stable-ddc367ed5c8936efe395cffeec279b04ffd7db78/server/extensions/git/dist/askpass-main.js'), ('LC_MONETARY', 'zh_CN.UTF-8'), ('VSCODE_GIT_ASKPASS_NODE', '/home/grz/.vscode-server/cli/servers/Stable-ddc367ed5c8936efe395cffeec279b04ffd7db78/server/node'), ('SSL_CERT_FILE', '/usr/lib/ssl/certs/ca-certificates.crt'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'grz'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', '7'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/foxy/bin:/home/grz/.vscode-server/cli/servers/Stable-ddc367ed5c8936efe395cffeec279b04ffd7db78/server/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('LC_ADDRESS', 'zh_CN.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('SSL_CERT_DIR', '/usr/lib/ssl/certs'), ('LANG', 'en_US.UTF-8'), ('LC_TELEPHONE', 'zh_CN.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-ce7cad993c.sock'), ('TERM_PROGRAM', 'vscode'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('LC_NAME', 'zh_CN.UTF-8'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'zh_CN.UTF-8'), ('LC_IDENTIFICATION', 'zh_CN.UTF-8'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('PWD', '/home/grz/trolley_auto_drive_image/code/build/linear_sensor_msgs'), ('LC_ALL', 'en_US.UTF-8'), ('SSH_CONNECTION', '10.111.248.87 43828 10.111.248.241 22'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('LC_NUMERIC', 'zh_CN.UTF-8'), ('LC_PAPER', 'zh_CN.UTF-8'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[0.099648] (-) TimerEvent: {}
+[0.200152] (-) TimerEvent: {}
+[0.209762] (linear_sensor_msgs) StdoutLine: {'line': b'-- The C compiler identification is GNU 9.4.0\n'}
+[0.210325] (lidar_msgs) StdoutLine: {'line': b'-- The C compiler identification is GNU 9.4.0\n'}
+[0.300287] (-) TimerEvent: {}
+[0.386825] (linear_sensor_msgs) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 9.4.0\n'}
+[0.388180] (lidar_msgs) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 9.4.0\n'}
+[0.397051] (lidar_msgs) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc\n'}
+[0.397417] (linear_sensor_msgs) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc\n'}
+[0.400376] (-) TimerEvent: {}
+[0.498688] (linear_sensor_msgs) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc -- works\n'}
+[0.499096] (lidar_msgs) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc -- works\n'}
+[0.500567] (lidar_msgs) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.500826] (-) TimerEvent: {}
+[0.501051] (linear_sensor_msgs) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.598499] (lidar_msgs) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.600832] (linear_sensor_msgs) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.601113] (-) TimerEvent: {}
+[0.616081] (lidar_msgs) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.616708] (lidar_msgs) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.618743] (linear_sensor_msgs) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.619372] (linear_sensor_msgs) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.621003] (lidar_msgs) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++\n'}
+[0.623429] (linear_sensor_msgs) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++\n'}
+[0.701298] (-) TimerEvent: {}
+[0.740150] (lidar_msgs) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ -- works\n'}
+[0.742364] (linear_sensor_msgs) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ -- works\n'}
+[0.742777] (lidar_msgs) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.744907] (linear_sensor_msgs) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.801383] (-) TimerEvent: {}
+[0.864030] (lidar_msgs) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.864737] (linear_sensor_msgs) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.881834] (lidar_msgs) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.882579] (lidar_msgs) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.882899] (linear_sensor_msgs) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.883820] (linear_sensor_msgs) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.887232] (linear_sensor_msgs) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[0.887633] (lidar_msgs) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[0.901509] (-) TimerEvent: {}
+[0.931283] (linear_sensor_msgs) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") \n'}
+[0.931658] (lidar_msgs) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") \n'}
+[0.931913] (lidar_msgs) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[0.932072] (linear_sensor_msgs) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[1.001609] (-) TimerEvent: {}
+[1.102295] (-) TimerEvent: {}
+[1.202733] (-) TimerEvent: {}
+[1.230139] (lidar_msgs) StdoutLine: {'line': b'-- Found builtin_interfaces: 1.0.0 (/opt/ros/foxy/share/builtin_interfaces/cmake)\n'}
+[1.230504] (linear_sensor_msgs) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)\n'}
+[1.275372] (lidar_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[1.286191] (lidar_msgs) StdoutLine: {'line': b'-- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)\n'}
+[1.302833] (-) TimerEvent: {}
+[1.345543] (linear_sensor_msgs) StdoutLine: {'line': b'-- Found std_msgs: 2.0.5 (/opt/ros/foxy/share/std_msgs/cmake)\n'}
+[1.388302] (linear_sensor_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[1.397679] (linear_sensor_msgs) StdoutLine: {'line': b'-- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)\n'}
+[1.402952] (-) TimerEvent: {}
+[1.405225] (lidar_msgs) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  \n'}
+[1.458234] (lidar_msgs) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/foxy/include  \n'}
+[1.503078] (-) TimerEvent: {}
+[1.511262] (linear_sensor_msgs) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  \n'}
+[1.553980] (linear_sensor_msgs) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/foxy/include  \n'}
+[1.578658] (lidar_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[1.603203] (-) TimerEvent: {}
+[1.626177] (lidar_msgs) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.0.1 (/opt/ros/foxy/share/rosidl_default_generators/cmake)\n'}
+[1.643933] (lidar_msgs) StdoutLine: {'line': b'-- Found std_msgs: 2.0.5 (/opt/ros/foxy/share/std_msgs/cmake)\n'}
+[1.664132] (linear_sensor_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[1.703329] (-) TimerEvent: {}
+[1.704043] (lidar_msgs) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found version "3.8.10") \n'}
+[1.737074] (linear_sensor_msgs) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.0.1 (/opt/ros/foxy/share/rosidl_default_generators/cmake)\n'}
+[1.784603] (linear_sensor_msgs) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found version "3.8.10") \n'}
+[1.803441] (-) TimerEvent: {}
+[1.904211] (-) TimerEvent: {}
+[1.947087] (linear_sensor_msgs) StdoutLine: {'line': b'-- Found ament_cmake_ros: 0.9.2 (/opt/ros/foxy/share/ament_cmake_ros/cmake)\n'}
+[1.975959] (lidar_msgs) StdoutLine: {'line': b'-- Found ament_cmake_ros: 0.9.2 (/opt/ros/foxy/share/ament_cmake_ros/cmake)\n'}
+[2.004348] (-) TimerEvent: {}
+[2.104746] (-) TimerEvent: {}
+[2.205156] (-) TimerEvent: {}
+[2.284351] (linear_sensor_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[2.292762] (lidar_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[2.305289] (-) TimerEvent: {}
+[2.385236] (linear_sensor_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[2.389835] (lidar_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[2.405392] (-) TimerEvent: {}
+[2.422310] (linear_sensor_msgs) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3.5") \n'}
+[2.424365] (linear_sensor_msgs) StdoutLine: {'line': b'-- Found python_cmake_module: 0.8.1 (/opt/ros/foxy/share/python_cmake_module/cmake)\n'}
+[2.427948] (lidar_msgs) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3.5") \n'}
+[2.429547] (lidar_msgs) StdoutLine: {'line': b'-- Found python_cmake_module: 0.8.1 (/opt/ros/foxy/share/python_cmake_module/cmake)\n'}
+[2.468277] (linear_sensor_msgs) StdoutLine: {'line': b'-- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.8.so (found suitable version "3.8.10", minimum required is "3.5") \n'}
+[2.468675] (linear_sensor_msgs) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[2.468848] (linear_sensor_msgs) StdoutLine: {'line': b'-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.8\n'}
+[2.469005] (linear_sensor_msgs) StdoutLine: {'line': b'-- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.8.so\n'}
+[2.469700] (lidar_msgs) StdoutLine: {'line': b'-- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.8.so (found suitable version "3.8.10", minimum required is "3.5") \n'}
+[2.470086] (lidar_msgs) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[2.470263] (lidar_msgs) StdoutLine: {'line': b'-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.8\n'}
+[2.470421] (lidar_msgs) StdoutLine: {'line': b'-- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.8.so\n'}
+[2.501496] (lidar_msgs) StdoutLine: {'line': b'-- Found PythonExtra: .so  \n'}
+[2.502104] (linear_sensor_msgs) StdoutLine: {'line': b'-- Found PythonExtra: .so  \n'}
+[2.505508] (-) TimerEvent: {}
+[2.599457] (linear_sensor_msgs) StdoutLine: {'line': b"-- Added test 'copyright' to check source files copyright and LICENSE\n"}
+[2.602287] (linear_sensor_msgs) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[2.604105] (linear_sensor_msgs) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[2.605600] (-) TimerEvent: {}
+[2.611094] (lidar_msgs) StdoutLine: {'line': b'-- Configuring done\n'}
+[2.614988] (linear_sensor_msgs) StdoutLine: {'line': b'-- Configuring done\n'}
+[2.685812] (linear_sensor_msgs) StdoutLine: {'line': b'-- Generating done\n'}
+[2.686374] (lidar_msgs) StdoutLine: {'line': b'-- Generating done\n'}
+[2.705743] (-) TimerEvent: {}
+[2.710154] (linear_sensor_msgs) StdoutLine: {'line': b'-- Build files have been written to: /home/grz/trolley_auto_drive_image/code/build/linear_sensor_msgs\n'}
+[2.710515] (lidar_msgs) StdoutLine: {'line': b'-- Build files have been written to: /home/grz/trolley_auto_drive_image/code/build/lidar_msgs\n'}
+[2.722590] (lidar_msgs) CommandEnded: {'returncode': 0}
+[2.723876] (lidar_msgs) JobProgress: {'identifier': 'lidar_msgs', 'progress': 'build'}
+[2.725404] (lidar_msgs) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/grz/trolley_auto_drive_image/code/build/lidar_msgs', '--', '-j4', '-l4'], 'cwd': '/home/grz/trolley_auto_drive_image/code/build/lidar_msgs', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'grz'), ('SSH_CLIENT', '10.111.248.87 43828 22'), ('LC_TIME', 'zh_CN.UTF-8'), ('XDG_SESSION_TYPE', 'tty'), ('GIT_ASKPASS', '/home/grz/.vscode-server/cli/servers/Stable-ddc367ed5c8936efe395cffeec279b04ffd7db78/server/extensions/git/dist/askpass.sh'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('BROWSER', '/home/grz/.vscode-server/cli/servers/Stable-ddc367ed5c8936efe395cffeec279b04ffd7db78/server/bin/helpers/browser.sh'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/grz'), ('OLDPWD', '/home/grz/trolley_auto_drive_image'), ('TERM_PROGRAM_VERSION', '1.98.2'), ('VSCODE_IPC_HOOK_CLI', '/run/user/1000/vscode-ipc-42e302a8-51fd-40c6-a133-14d9d50fd0bf.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/home/grz/.vscode-server/cli/servers/Stable-ddc367ed5c8936efe395cffeec279b04ffd7db78/server/extensions/git/dist/askpass-main.js'), ('LC_MONETARY', 'zh_CN.UTF-8'), ('VSCODE_GIT_ASKPASS_NODE', '/home/grz/.vscode-server/cli/servers/Stable-ddc367ed5c8936efe395cffeec279b04ffd7db78/server/node'), ('SSL_CERT_FILE', '/usr/lib/ssl/certs/ca-certificates.crt'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'grz'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', '7'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/foxy/bin:/home/grz/.vscode-server/cli/servers/Stable-ddc367ed5c8936efe395cffeec279b04ffd7db78/server/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('LC_ADDRESS', 'zh_CN.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('SSL_CERT_DIR', '/usr/lib/ssl/certs'), ('LANG', 'en_US.UTF-8'), ('LC_TELEPHONE', 'zh_CN.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-ce7cad993c.sock'), ('TERM_PROGRAM', 'vscode'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('LC_NAME', 'zh_CN.UTF-8'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'zh_CN.UTF-8'), ('LC_IDENTIFICATION', 'zh_CN.UTF-8'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('PWD', '/home/grz/trolley_auto_drive_image/code/build/lidar_msgs'), ('LC_ALL', 'en_US.UTF-8'), ('SSH_CONNECTION', '10.111.248.87 43828 10.111.248.241 22'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('LC_NUMERIC', 'zh_CN.UTF-8'), ('LC_PAPER', 'zh_CN.UTF-8'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[2.730893] (linear_sensor_msgs) CommandEnded: {'returncode': 0}
+[2.731798] (linear_sensor_msgs) JobProgress: {'identifier': 'linear_sensor_msgs', 'progress': 'build'}
+[2.732495] (linear_sensor_msgs) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/grz/trolley_auto_drive_image/code/build/linear_sensor_msgs', '--', '-j4', '-l4'], 'cwd': '/home/grz/trolley_auto_drive_image/code/build/linear_sensor_msgs', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'grz'), ('SSH_CLIENT', '10.111.248.87 43828 22'), ('LC_TIME', 'zh_CN.UTF-8'), ('XDG_SESSION_TYPE', 'tty'), ('GIT_ASKPASS', '/home/grz/.vscode-server/cli/servers/Stable-ddc367ed5c8936efe395cffeec279b04ffd7db78/server/extensions/git/dist/askpass.sh'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('BROWSER', '/home/grz/.vscode-server/cli/servers/Stable-ddc367ed5c8936efe395cffeec279b04ffd7db78/server/bin/helpers/browser.sh'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/grz'), ('OLDPWD', '/home/grz/trolley_auto_drive_image'), ('TERM_PROGRAM_VERSION', '1.98.2'), ('VSCODE_IPC_HOOK_CLI', '/run/user/1000/vscode-ipc-42e302a8-51fd-40c6-a133-14d9d50fd0bf.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/home/grz/.vscode-server/cli/servers/Stable-ddc367ed5c8936efe395cffeec279b04ffd7db78/server/extensions/git/dist/askpass-main.js'), ('LC_MONETARY', 'zh_CN.UTF-8'), ('VSCODE_GIT_ASKPASS_NODE', '/home/grz/.vscode-server/cli/servers/Stable-ddc367ed5c8936efe395cffeec279b04ffd7db78/server/node'), ('SSL_CERT_FILE', '/usr/lib/ssl/certs/ca-certificates.crt'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'grz'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', '7'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/foxy/bin:/home/grz/.vscode-server/cli/servers/Stable-ddc367ed5c8936efe395cffeec279b04ffd7db78/server/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('LC_ADDRESS', 'zh_CN.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('SSL_CERT_DIR', '/usr/lib/ssl/certs'), ('LANG', 'en_US.UTF-8'), ('LC_TELEPHONE', 'zh_CN.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-ce7cad993c.sock'), ('TERM_PROGRAM', 'vscode'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('LC_NAME', 'zh_CN.UTF-8'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'zh_CN.UTF-8'), ('LC_IDENTIFICATION', 'zh_CN.UTF-8'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('PWD', '/home/grz/trolley_auto_drive_image/code/build/linear_sensor_msgs'), ('LC_ALL', 'en_US.UTF-8'), ('SSH_CONNECTION', '10.111.248.87 43828 10.111.248.241 22'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('LC_NUMERIC', 'zh_CN.UTF-8'), ('LC_PAPER', 'zh_CN.UTF-8'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[2.790488] (lidar_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target lidar_msgs__cpp\x1b[0m\n'}
+[2.793453] (lidar_msgs) StdoutLine: {'line': b'[  2%] \x1b[34m\x1b[1mGenerating C code for ROS interfaces\x1b[0m\n'}
+[2.800365] (linear_sensor_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target linear_sensor_msgs__cpp\x1b[0m\n'}
+[2.800781] (linear_sensor_msgs) StdoutLine: {'line': b'[  3%] \x1b[34m\x1b[1mGenerating C code for ROS interfaces\x1b[0m\n'}
+[2.805867] (-) TimerEvent: {}
+[2.817367] (lidar_msgs) StdoutLine: {'line': b'[  5%] \x1b[34m\x1b[1mGenerating C++ code for ROS interfaces\x1b[0m\n'}
+[2.823210] (linear_sensor_msgs) StdoutLine: {'line': b'[  6%] \x1b[34m\x1b[1mGenerating C++ code for ROS interfaces\x1b[0m\n'}
+[2.905998] (-) TimerEvent: {}
+[3.006541] (-) TimerEvent: {}
+[3.106992] (-) TimerEvent: {}
+[3.207410] (-) TimerEvent: {}
+[3.307817] (-) TimerEvent: {}
+[3.408218] (-) TimerEvent: {}
+[3.474229] (linear_sensor_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target linear_sensor_msgs__rosidl_generator_c\x1b[0m\n'}
+[3.479689] (linear_sensor_msgs) StdoutLine: {'line': b'[  6%] Built target linear_sensor_msgs__cpp\n'}
+[3.506874] (linear_sensor_msgs) StdoutLine: {'line': b'[  9%] \x1b[34m\x1b[1mGenerating C++ type support dispatch for ROS interfaces\x1b[0m\n'}
+[3.508315] (-) TimerEvent: {}
+[3.513558] (linear_sensor_msgs) StdoutLine: {'line': b'[ 12%] \x1b[34m\x1b[1mGenerating C++ introspection for ROS interfaces\x1b[0m\n'}
+[3.537703] (linear_sensor_msgs) StdoutLine: {'line': b'[ 16%] \x1b[34m\x1b[1mGenerating C++ type support for eProsima Fast-RTPS\x1b[0m\n'}
+[3.555195] (linear_sensor_msgs) StdoutLine: {'line': b'[ 19%] \x1b[32mBuilding C object CMakeFiles/linear_sensor_msgs__rosidl_generator_c.dir/rosidl_generator_c/linear_sensor_msgs/msg/detail/linear_sensor_data__functions.c.o\x1b[0m\n'}
+[3.608434] (-) TimerEvent: {}
+[3.708872] (-) TimerEvent: {}
+[3.808485] (lidar_msgs) StdoutLine: {'line': b'[  5%] Built target lidar_msgs__cpp\n'}
+[3.808950] (-) TimerEvent: {}
+[3.813036] (linear_sensor_msgs) StdoutLine: {'line': b'[ 22%] \x1b[32m\x1b[1mLinking C shared library liblinear_sensor_msgs__rosidl_generator_c.so\x1b[0m\n'}
+[3.887202] (lidar_msgs) StdoutLine: {'line': b'[  7%] \x1b[34m\x1b[1mGenerating C++ type support for eProsima Fast-RTPS\x1b[0m\n'}
+[3.893462] (lidar_msgs) StdoutLine: {'line': b'[ 10%] \x1b[34m\x1b[1mGenerating C++ introspection for ROS interfaces\x1b[0m\n'}
+[3.909084] (-) TimerEvent: {}
+[3.969498] (lidar_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target lidar_msgs__rosidl_generator_c\x1b[0m\n'}
+[3.985466] (lidar_msgs) StdoutLine: {'line': b'[ 12%] \x1b[34m\x1b[1mGenerating C++ type support dispatch for ROS interfaces\x1b[0m\n'}
+[4.009205] (-) TimerEvent: {}
+[4.070150] (linear_sensor_msgs) StdoutLine: {'line': b'[ 22%] Built target linear_sensor_msgs__rosidl_generator_c\n'}
+[4.101420] (lidar_msgs) StdoutLine: {'line': b'[ 15%] \x1b[32mBuilding C object CMakeFiles/lidar_msgs__rosidl_generator_c.dir/rosidl_generator_c/lidar_msgs/srv/detail/get_metadata__functions.c.o\x1b[0m\n'}
+[4.109356] (-) TimerEvent: {}
+[4.137611] (linear_sensor_msgs) StdoutLine: {'line': b'[ 25%] \x1b[34m\x1b[1mGenerating C type support dispatch for ROS interfaces\x1b[0m\n'}
+[4.209473] (-) TimerEvent: {}
+[4.309936] (-) TimerEvent: {}
+[4.409469] (linear_sensor_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target linear_sensor_msgs__rosidl_typesupport_cpp\x1b[0m\n'}
+[4.410018] (-) TimerEvent: {}
+[4.435979] (lidar_msgs) StdoutLine: {'line': b'[ 17%] \x1b[32mBuilding C object CMakeFiles/lidar_msgs__rosidl_generator_c.dir/rosidl_generator_c/lidar_msgs/msg/detail/metadata__functions.c.o\x1b[0m\n'}
+[4.453087] (linear_sensor_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target linear_sensor_msgs__rosidl_typesupport_fastrtps_cpp\x1b[0m\n'}
+[4.484841] (linear_sensor_msgs) StdoutLine: {'line': b'[ 29%] \x1b[32mBuilding CXX object CMakeFiles/linear_sensor_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/linear_sensor_msgs/msg/linear_sensor_data__type_support.cpp.o\x1b[0m\n'}
+[4.510141] (-) TimerEvent: {}
+[4.530126] (linear_sensor_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target linear_sensor_msgs__rosidl_typesupport_introspection_cpp\x1b[0m\n'}
+[4.569466] (linear_sensor_msgs) StdoutLine: {'line': b'[ 32%] \x1b[32mBuilding CXX object CMakeFiles/linear_sensor_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/linear_sensor_msgs/msg/detail/dds_fastrtps/linear_sensor_data__type_support.cpp.o\x1b[0m\n'}
+[4.610279] (-) TimerEvent: {}
+[4.617655] (linear_sensor_msgs) StdoutLine: {'line': b'[ 35%] \x1b[32mBuilding CXX object CMakeFiles/linear_sensor_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/linear_sensor_msgs/msg/detail/linear_sensor_data__type_support.cpp.o\x1b[0m\n'}
+[4.665424] (lidar_msgs) StdoutLine: {'line': b'[ 20%] \x1b[32m\x1b[1mLinking C shared library liblidar_msgs__rosidl_generator_c.so\x1b[0m\n'}
+[4.710392] (-) TimerEvent: {}
+[4.810814] (-) TimerEvent: {}
+[4.849618] (lidar_msgs) StdoutLine: {'line': b'[ 20%] Built target lidar_msgs__rosidl_generator_c\n'}
+[4.910928] (-) TimerEvent: {}
+[4.943778] (lidar_msgs) StdoutLine: {'line': b'[ 23%] \x1b[34m\x1b[1mGenerating C type support dispatch for ROS interfaces\x1b[0m\n'}
+[5.011052] (-) TimerEvent: {}
+[5.111934] (-) TimerEvent: {}
+[5.191394] (linear_sensor_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target linear_sensor_msgs__rosidl_typesupport_c\x1b[0m\n'}
+[5.212059] (-) TimerEvent: {}
+[5.238824] (lidar_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target lidar_msgs__rosidl_typesupport_introspection_cpp\x1b[0m\n'}
+[5.273702] (linear_sensor_msgs) StdoutLine: {'line': b'[ 38%] \x1b[32mBuilding CXX object CMakeFiles/linear_sensor_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/linear_sensor_msgs/msg/linear_sensor_data__type_support.cpp.o\x1b[0m\n'}
+[5.276863] (lidar_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target lidar_msgs__rosidl_typesupport_cpp\x1b[0m\n'}
+[5.306877] (lidar_msgs) StdoutLine: {'line': b'[ 25%] \x1b[32mBuilding CXX object CMakeFiles/lidar_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/lidar_msgs/srv/detail/get_metadata__type_support.cpp.o\x1b[0m\n'}
+[5.312223] (-) TimerEvent: {}
+[5.397853] (lidar_msgs) StdoutLine: {'line': b'[ 28%] \x1b[32mBuilding CXX object CMakeFiles/lidar_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/lidar_msgs/srv/get_metadata__type_support.cpp.o\x1b[0m\n'}
+[5.412341] (-) TimerEvent: {}
+[5.436410] (linear_sensor_msgs) StdoutLine: {'line': b'[ 41%] \x1b[32m\x1b[1mLinking CXX shared library liblinear_sensor_msgs__rosidl_typesupport_c.so\x1b[0m\n'}
+[5.512484] (-) TimerEvent: {}
+[5.538570] (lidar_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target lidar_msgs__rosidl_typesupport_fastrtps_cpp\x1b[0m\n'}
+[5.552059] (linear_sensor_msgs) StdoutLine: {'line': b'[ 41%] Built target linear_sensor_msgs__rosidl_typesupport_c\n'}
+[5.575399] (linear_sensor_msgs) StdoutLine: {'line': b'[ 45%] \x1b[34m\x1b[1mGenerating C introspection for ROS interfaces\x1b[0m\n'}
+[5.602611] (lidar_msgs) StdoutLine: {'line': b'[ 30%] \x1b[32mBuilding CXX object CMakeFiles/lidar_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/lidar_msgs/srv/detail/dds_fastrtps/get_metadata__type_support.cpp.o\x1b[0m\n'}
+[5.612604] (-) TimerEvent: {}
+[5.713030] (-) TimerEvent: {}
+[5.813484] (-) TimerEvent: {}
+[5.913974] (-) TimerEvent: {}
+[6.014444] (-) TimerEvent: {}
+[6.114917] (-) TimerEvent: {}
+[6.206002] (linear_sensor_msgs) StdoutLine: {'line': b'[ 48%] \x1b[32m\x1b[1mLinking CXX shared library liblinear_sensor_msgs__rosidl_typesupport_cpp.so\x1b[0m\n'}
+[6.215072] (-) TimerEvent: {}
+[6.242488] (linear_sensor_msgs) StdoutLine: {'line': b'[ 51%] \x1b[32m\x1b[1mLinking CXX shared library liblinear_sensor_msgs__rosidl_typesupport_introspection_cpp.so\x1b[0m\n'}
+[6.315185] (-) TimerEvent: {}
+[6.379782] (lidar_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target lidar_msgs__rosidl_typesupport_c\x1b[0m\n'}
+[6.415341] (-) TimerEvent: {}
+[6.433939] (linear_sensor_msgs) StdoutLine: {'line': b'[ 51%] Built target linear_sensor_msgs__rosidl_typesupport_cpp\n'}
+[6.462514] (lidar_msgs) StdoutLine: {'line': b'[ 33%] \x1b[32mBuilding CXX object CMakeFiles/lidar_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/lidar_msgs/srv/get_metadata__type_support.cpp.o\x1b[0m\n'}
+[6.497213] (lidar_msgs) StdoutLine: {'line': b'[ 35%] \x1b[32mBuilding CXX object CMakeFiles/lidar_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/lidar_msgs/msg/detail/metadata__type_support.cpp.o\x1b[0m\n'}
+[6.515504] (-) TimerEvent: {}
+[6.555179] (linear_sensor_msgs) StdoutLine: {'line': b'[ 51%] Built target linear_sensor_msgs__rosidl_typesupport_introspection_cpp\n'}
+[6.615619] (-) TimerEvent: {}
+[6.649715] (lidar_msgs) StdoutLine: {'line': b'[ 38%] \x1b[32mBuilding CXX object CMakeFiles/lidar_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/lidar_msgs/msg/metadata__type_support.cpp.o\x1b[0m\n'}
+[6.715772] (-) TimerEvent: {}
+[6.755575] (lidar_msgs) StdoutLine: {'line': b'[ 41%] \x1b[32mBuilding CXX object CMakeFiles/lidar_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/lidar_msgs/msg/metadata__type_support.cpp.o\x1b[0m\n'}
+[6.776809] (linear_sensor_msgs) StdoutLine: {'line': b'[ 54%] \x1b[32m\x1b[1mLinking CXX shared library liblinear_sensor_msgs__rosidl_typesupport_fastrtps_cpp.so\x1b[0m\n'}
+[6.806776] (lidar_msgs) StdoutLine: {'line': b'[ 43%] \x1b[32m\x1b[1mLinking CXX shared library liblidar_msgs__rosidl_typesupport_c.so\x1b[0m\n'}
+[6.815905] (-) TimerEvent: {}
+[6.838652] (linear_sensor_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target linear_sensor_msgs__rosidl_typesupport_introspection_c\x1b[0m\n'}
+[6.916074] (-) TimerEvent: {}
+[6.923460] (linear_sensor_msgs) StdoutLine: {'line': b'[ 58%] \x1b[32mBuilding C object CMakeFiles/linear_sensor_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/linear_sensor_msgs/msg/detail/linear_sensor_data__type_support.c.o\x1b[0m\n'}
+[6.945949] (lidar_msgs) StdoutLine: {'line': b'[ 43%] Built target lidar_msgs__rosidl_typesupport_c\n'}
+[7.014451] (lidar_msgs) StdoutLine: {'line': b'[ 46%] \x1b[32mBuilding CXX object CMakeFiles/lidar_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/lidar_msgs/msg/detail/dds_fastrtps/metadata__type_support.cpp.o\x1b[0m\n'}
+[7.016205] (-) TimerEvent: {}
+[7.086733] (linear_sensor_msgs) StdoutLine: {'line': b'[ 61%] \x1b[32m\x1b[1mLinking C shared library liblinear_sensor_msgs__rosidl_typesupport_introspection_c.so\x1b[0m\n'}
+[7.116346] (-) TimerEvent: {}
+[7.156377] (linear_sensor_msgs) StdoutLine: {'line': b'[ 61%] Built target linear_sensor_msgs__rosidl_typesupport_fastrtps_cpp\n'}
+[7.216495] (-) TimerEvent: {}
+[7.218926] (linear_sensor_msgs) StdoutLine: {'line': b'[ 64%] \x1b[34m\x1b[1mGenerating C type support for eProsima Fast-RTPS\x1b[0m\n'}
+[7.282172] (lidar_msgs) StdoutLine: {'line': b'[ 48%] \x1b[34m\x1b[1mGenerating C introspection for ROS interfaces\x1b[0m\n'}
+[7.282741] (linear_sensor_msgs) StdoutLine: {'line': b'[ 64%] Built target linear_sensor_msgs__rosidl_typesupport_introspection_c\n'}
+[7.316605] (-) TimerEvent: {}
+[7.417069] (-) TimerEvent: {}
+[7.495165] (lidar_msgs) StdoutLine: {'line': b'[ 51%] \x1b[32m\x1b[1mLinking CXX shared library liblidar_msgs__rosidl_typesupport_introspection_cpp.so\x1b[0m\n'}
+[7.517199] (-) TimerEvent: {}
+[7.605823] (lidar_msgs) StdoutLine: {'line': b'[ 53%] \x1b[32m\x1b[1mLinking CXX shared library liblidar_msgs__rosidl_typesupport_cpp.so\x1b[0m\n'}
+[7.617364] (-) TimerEvent: {}
+[7.704819] (lidar_msgs) StdoutLine: {'line': b'[ 53%] Built target lidar_msgs__rosidl_typesupport_introspection_cpp\n'}
+[7.717467] (-) TimerEvent: {}
+[7.771191] (lidar_msgs) StdoutLine: {'line': b'[ 53%] Built target lidar_msgs__rosidl_typesupport_cpp\n'}
+[7.817580] (-) TimerEvent: {}
+[7.912900] (linear_sensor_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target linear_sensor_msgs__rosidl_typesupport_fastrtps_c\x1b[0m\n'}
+[7.917694] (-) TimerEvent: {}
+[7.946751] (linear_sensor_msgs) StdoutLine: {'line': b'[ 67%] \x1b[32mBuilding CXX object CMakeFiles/linear_sensor_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/linear_sensor_msgs/msg/detail/linear_sensor_data__type_support_c.cpp.o\x1b[0m\n'}
+[8.017840] (-) TimerEvent: {}
+[8.030900] (lidar_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target lidar_msgs__rosidl_typesupport_introspection_c\x1b[0m\n'}
+[8.057712] (lidar_msgs) StdoutLine: {'line': b'[ 56%] \x1b[32mBuilding C object CMakeFiles/lidar_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/lidar_msgs/srv/detail/get_metadata__type_support.c.o\x1b[0m\n'}
+[8.058543] (lidar_msgs) StdoutLine: {'line': b'[ 58%] \x1b[32mBuilding C object CMakeFiles/lidar_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/lidar_msgs/msg/detail/metadata__type_support.c.o\x1b[0m\n'}
+[8.117967] (-) TimerEvent: {}
+[8.119465] (lidar_msgs) StdoutLine: {'line': b'[ 61%] \x1b[32m\x1b[1mLinking CXX shared library liblidar_msgs__rosidl_typesupport_fastrtps_cpp.so\x1b[0m\n'}
+[8.132550] (lidar_msgs) StdoutLine: {'line': b'[ 64%] \x1b[32m\x1b[1mLinking C shared library liblidar_msgs__rosidl_typesupport_introspection_c.so\x1b[0m\n'}
+[8.197746] (lidar_msgs) StdoutLine: {'line': b'[ 64%] Built target lidar_msgs__rosidl_typesupport_introspection_c\n'}
+[8.218105] (-) TimerEvent: {}
+[8.275711] (lidar_msgs) StdoutLine: {'line': b'[ 64%] Built target lidar_msgs__rosidl_typesupport_fastrtps_cpp\n'}
+[8.290427] (lidar_msgs) StdoutLine: {'line': b'[ 66%] \x1b[34m\x1b[1mGenerating C type support for eProsima Fast-RTPS\x1b[0m\n'}
+[8.318209] (-) TimerEvent: {}
+[8.418633] (-) TimerEvent: {}
+[8.519061] (-) TimerEvent: {}
+[8.561356] (linear_sensor_msgs) StdoutLine: {'line': b'[ 70%] \x1b[32m\x1b[1mLinking CXX shared library liblinear_sensor_msgs__rosidl_typesupport_fastrtps_c.so\x1b[0m\n'}
+[8.619176] (-) TimerEvent: {}
+[8.719605] (-) TimerEvent: {}
+[8.720524] (linear_sensor_msgs) StdoutLine: {'line': b'[ 70%] Built target linear_sensor_msgs__rosidl_typesupport_fastrtps_c\n'}
+[8.736409] (linear_sensor_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target linear_sensor_msgs\x1b[0m\n'}
+[8.738465] (lidar_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target lidar_msgs__rosidl_typesupport_fastrtps_c\x1b[0m\n'}
+[8.751512] (linear_sensor_msgs) StdoutLine: {'line': b'[ 70%] Built target linear_sensor_msgs\n'}
+[8.767012] (lidar_msgs) StdoutLine: {'line': b'[ 69%] \x1b[32mBuilding CXX object CMakeFiles/lidar_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/lidar_msgs/srv/detail/get_metadata__type_support_c.cpp.o\x1b[0m\n'}
+[8.769895] (lidar_msgs) StdoutLine: {'line': b'[ 71%] \x1b[32mBuilding CXX object CMakeFiles/lidar_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/lidar_msgs/msg/detail/metadata__type_support_c.cpp.o\x1b[0m\n'}
+[8.770323] (linear_sensor_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target linear_sensor_msgs__py\x1b[0m\n'}
+[8.791362] (linear_sensor_msgs) StdoutLine: {'line': b'[ 74%] \x1b[34m\x1b[1mGenerating Python code for ROS interfaces\x1b[0m\n'}
+[8.819725] (-) TimerEvent: {}
+[8.920511] (-) TimerEvent: {}
+[9.021380] (-) TimerEvent: {}
+[9.125752] (-) TimerEvent: {}
+[9.226774] (-) TimerEvent: {}
+[9.327600] (-) TimerEvent: {}
+[9.427980] (-) TimerEvent: {}
+[9.528834] (-) TimerEvent: {}
+[9.545463] (lidar_msgs) StdoutLine: {'line': b'[ 74%] \x1b[32m\x1b[1mLinking CXX shared library liblidar_msgs__rosidl_typesupport_fastrtps_c.so\x1b[0m\n'}
+[9.628985] (-) TimerEvent: {}
+[9.655037] (linear_sensor_msgs) StdoutLine: {'line': b'[ 74%] Built target linear_sensor_msgs__py\n'}
+[9.675729] (linear_sensor_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target linear_sensor_msgs__python\x1b[0m\n'}
+[9.709996] (lidar_msgs) StdoutLine: {'line': b'[ 74%] Built target lidar_msgs__rosidl_typesupport_fastrtps_c\n'}
+[9.720515] (linear_sensor_msgs) StdoutLine: {'line': b'[ 77%] \x1b[32mBuilding C object CMakeFiles/linear_sensor_msgs__python.dir/rosidl_generator_py/linear_sensor_msgs/msg/_linear_sensor_data_s.c.o\x1b[0m\n'}
+[9.723927] (lidar_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target lidar_msgs\x1b[0m\n'}
+[9.729106] (-) TimerEvent: {}
+[9.739256] (lidar_msgs) StdoutLine: {'line': b'[ 74%] Built target lidar_msgs\n'}
+[9.753462] (lidar_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target lidar_msgs__py\x1b[0m\n'}
+[9.768200] (lidar_msgs) StdoutLine: {'line': b'[ 76%] \x1b[34m\x1b[1mGenerating Python code for ROS interfaces\x1b[0m\n'}
+[9.829234] (-) TimerEvent: {}
+[9.857138] (linear_sensor_msgs) StdoutLine: {'line': b'[ 80%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/linear_sensor_msgs/liblinear_sensor_msgs__python.so\x1b[0m\n'}
+[9.920432] (linear_sensor_msgs) StdoutLine: {'line': b'[ 80%] Built target linear_sensor_msgs__python\n'}
+[9.929393] (-) TimerEvent: {}
+[9.941110] (linear_sensor_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target linear_sensor_msgs__rosidl_typesupport_introspection_c__pyext\x1b[0m\n'}
+[9.941447] (linear_sensor_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target linear_sensor_msgs__rosidl_typesupport_c__pyext\x1b[0m\n'}
+[9.941646] (linear_sensor_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target linear_sensor_msgs__rosidl_typesupport_fastrtps_c__pyext\x1b[0m\n'}
+[9.989158] (linear_sensor_msgs) StdoutLine: {'line': b'[ 87%] \x1b[32mBuilding C object CMakeFiles/linear_sensor_msgs__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/linear_sensor_msgs/_linear_sensor_msgs_s.ep.rosidl_typesupport_introspection_c.c.o\x1b[0m\n'}
+[9.989528] (linear_sensor_msgs) StdoutLine: {'line': b'[ 87%] \x1b[32mBuilding C object CMakeFiles/linear_sensor_msgs__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/linear_sensor_msgs/_linear_sensor_msgs_s.ep.rosidl_typesupport_c.c.o\x1b[0m\n'}
+[9.992492] (linear_sensor_msgs) StdoutLine: {'line': b'[ 90%] \x1b[32mBuilding C object CMakeFiles/linear_sensor_msgs__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/linear_sensor_msgs/_linear_sensor_msgs_s.ep.rosidl_typesupport_fastrtps_c.c.o\x1b[0m\n'}
+[10.029502] (-) TimerEvent: {}
+[10.130185] (-) TimerEvent: {}
+[10.190856] (linear_sensor_msgs) StdoutLine: {'line': b'[ 93%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/linear_sensor_msgs/linear_sensor_msgs_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so\x1b[0m\n'}
+[10.192773] (linear_sensor_msgs) StdoutLine: {'line': b'[ 96%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/linear_sensor_msgs/linear_sensor_msgs_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so\x1b[0m\n'}
+[10.196069] (linear_sensor_msgs) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX shared library rosidl_generator_py/linear_sensor_msgs/linear_sensor_msgs_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so\x1b[0m\n'}
+[10.230332] (-) TimerEvent: {}
+[10.283996] (linear_sensor_msgs) StdoutLine: {'line': b'[100%] Built target linear_sensor_msgs__rosidl_typesupport_c__pyext\n'}
+[10.289786] (linear_sensor_msgs) StdoutLine: {'line': b'[100%] Built target linear_sensor_msgs__rosidl_typesupport_introspection_c__pyext\n'}
+[10.330453] (-) TimerEvent: {}
+[10.333810] (linear_sensor_msgs) StdoutLine: {'line': b'[100%] Built target linear_sensor_msgs__rosidl_typesupport_fastrtps_c__pyext\n'}
+[10.350531] (linear_sensor_msgs) CommandEnded: {'returncode': 0}
+[10.351772] (linear_sensor_msgs) JobProgress: {'identifier': 'linear_sensor_msgs', 'progress': 'install'}
+[10.366884] (linear_sensor_msgs) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/grz/trolley_auto_drive_image/code/build/linear_sensor_msgs'], 'cwd': '/home/grz/trolley_auto_drive_image/code/build/linear_sensor_msgs', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'grz'), ('SSH_CLIENT', '10.111.248.87 43828 22'), ('LC_TIME', 'zh_CN.UTF-8'), ('XDG_SESSION_TYPE', 'tty'), ('GIT_ASKPASS', '/home/grz/.vscode-server/cli/servers/Stable-ddc367ed5c8936efe395cffeec279b04ffd7db78/server/extensions/git/dist/askpass.sh'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('BROWSER', '/home/grz/.vscode-server/cli/servers/Stable-ddc367ed5c8936efe395cffeec279b04ffd7db78/server/bin/helpers/browser.sh'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/grz'), ('OLDPWD', '/home/grz/trolley_auto_drive_image'), ('TERM_PROGRAM_VERSION', '1.98.2'), ('VSCODE_IPC_HOOK_CLI', '/run/user/1000/vscode-ipc-42e302a8-51fd-40c6-a133-14d9d50fd0bf.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/home/grz/.vscode-server/cli/servers/Stable-ddc367ed5c8936efe395cffeec279b04ffd7db78/server/extensions/git/dist/askpass-main.js'), ('LC_MONETARY', 'zh_CN.UTF-8'), ('VSCODE_GIT_ASKPASS_NODE', '/home/grz/.vscode-server/cli/servers/Stable-ddc367ed5c8936efe395cffeec279b04ffd7db78/server/node'), ('SSL_CERT_FILE', '/usr/lib/ssl/certs/ca-certificates.crt'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'grz'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', '7'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/foxy/bin:/home/grz/.vscode-server/cli/servers/Stable-ddc367ed5c8936efe395cffeec279b04ffd7db78/server/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('LC_ADDRESS', 'zh_CN.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('SSL_CERT_DIR', '/usr/lib/ssl/certs'), ('LANG', 'en_US.UTF-8'), ('LC_TELEPHONE', 'zh_CN.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-ce7cad993c.sock'), ('TERM_PROGRAM', 'vscode'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('LC_NAME', 'zh_CN.UTF-8'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'zh_CN.UTF-8'), ('LC_IDENTIFICATION', 'zh_CN.UTF-8'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('PWD', '/home/grz/trolley_auto_drive_image/code/build/linear_sensor_msgs'), ('LC_ALL', 'en_US.UTF-8'), ('SSH_CONNECTION', '10.111.248.87 43828 10.111.248.241 22'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('LC_NUMERIC', 'zh_CN.UTF-8'), ('LC_PAPER', 'zh_CN.UTF-8'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[10.381833] (linear_sensor_msgs) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[10.382217] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/share/ament_index/resource_index/rosidl_interfaces/linear_sensor_msgs\n'}
+[10.382487] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/include/linear_sensor_msgs\n'}
+[10.382808] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/include/linear_sensor_msgs/msg\n'}
+[10.383053] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/include/linear_sensor_msgs/msg/rosidl_generator_c__visibility_control.h\n'}
+[10.383259] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/include/linear_sensor_msgs/msg/linear_sensor_data.h\n'}
+[10.383552] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/include/linear_sensor_msgs/msg/detail\n'}
+[10.383835] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/include/linear_sensor_msgs/msg/detail/linear_sensor_data__struct.h\n'}
+[10.384019] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/include/linear_sensor_msgs/msg/detail/linear_sensor_data__functions.h\n'}
+[10.384245] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/include/linear_sensor_msgs/msg/detail/linear_sensor_data__functions.c\n'}
+[10.384473] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/include/linear_sensor_msgs/msg/detail/linear_sensor_data__type_support.h\n'}
+[10.384649] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/share/linear_sensor_msgs/environment/library_path.sh\n'}
+[10.384870] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/share/linear_sensor_msgs/environment/library_path.dsv\n'}
+[10.385046] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib/liblinear_sensor_msgs__rosidl_generator_c.so\n'}
+[10.385311] (linear_sensor_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib/liblinear_sensor_msgs__rosidl_generator_c.so" to ""\n'}
+[10.385622] (linear_sensor_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/include/linear_sensor_msgs\n'}
+[10.385807] (linear_sensor_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/include/linear_sensor_msgs/msg\n'}
+[10.386044] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/include/linear_sensor_msgs/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[10.386265] (linear_sensor_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/include/linear_sensor_msgs/msg/detail\n'}
+[10.386434] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/include/linear_sensor_msgs/msg/detail/linear_sensor_data__rosidl_typesupport_fastrtps_c.h\n'}
+[10.386593] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib/liblinear_sensor_msgs__rosidl_typesupport_fastrtps_c.so\n'}
+[10.386804] (linear_sensor_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib/liblinear_sensor_msgs__rosidl_typesupport_fastrtps_c.so" to ""\n'}
+[10.387059] (linear_sensor_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/include/linear_sensor_msgs\n'}
+[10.387311] (linear_sensor_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/include/linear_sensor_msgs/msg\n'}
+[10.387528] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/include/linear_sensor_msgs/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[10.387711] (linear_sensor_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/include/linear_sensor_msgs/msg/detail\n'}
+[10.387924] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/include/linear_sensor_msgs/msg/detail/linear_sensor_data__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[10.388111] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/include/linear_sensor_msgs/msg/detail/dds_fastrtps\n'}
+[10.388320] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib/liblinear_sensor_msgs__rosidl_typesupport_fastrtps_cpp.so\n'}
+[10.388603] (linear_sensor_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib/liblinear_sensor_msgs__rosidl_typesupport_fastrtps_cpp.so" to ""\n'}
+[10.388847] (linear_sensor_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/include/linear_sensor_msgs\n'}
+[10.389055] (linear_sensor_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/include/linear_sensor_msgs/msg\n'}
+[10.389230] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/include/linear_sensor_msgs/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[10.389470] (linear_sensor_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/include/linear_sensor_msgs/msg/detail\n'}
+[10.389643] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/include/linear_sensor_msgs/msg/detail/linear_sensor_data__rosidl_typesupport_introspection_c.h\n'}
+[10.389818] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/include/linear_sensor_msgs/msg/detail/linear_sensor_data__type_support.c\n'}
+[10.390079] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib/liblinear_sensor_msgs__rosidl_typesupport_introspection_c.so\n'}
+[10.390265] (linear_sensor_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib/liblinear_sensor_msgs__rosidl_typesupport_introspection_c.so" to ""\n'}
+[10.390450] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib/liblinear_sensor_msgs__rosidl_typesupport_c.so\n'}
+[10.390727] (linear_sensor_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib/liblinear_sensor_msgs__rosidl_typesupport_c.so" to ""\n'}
+[10.391038] (linear_sensor_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/include/linear_sensor_msgs\n'}
+[10.391310] (linear_sensor_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/include/linear_sensor_msgs/msg\n'}
+[10.391582] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/include/linear_sensor_msgs/msg/rosidl_generator_cpp__visibility_control.hpp\n'}
+[10.391764] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/include/linear_sensor_msgs/msg/linear_sensor_data.hpp\n'}
+[10.392089] (linear_sensor_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/include/linear_sensor_msgs/msg/detail\n'}
+[10.392345] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/include/linear_sensor_msgs/msg/detail/linear_sensor_data__traits.hpp\n'}
+[10.392526] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/include/linear_sensor_msgs/msg/detail/linear_sensor_data__builder.hpp\n'}
+[10.392709] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/include/linear_sensor_msgs/msg/detail/linear_sensor_data__struct.hpp\n'}
+[10.392943] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/include/linear_sensor_msgs/msg/detail/linear_sensor_data__type_support.hpp\n'}
+[10.393139] (linear_sensor_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/include/linear_sensor_msgs\n'}
+[10.393396] (linear_sensor_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/include/linear_sensor_msgs/msg\n'}
+[10.393572] (linear_sensor_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/include/linear_sensor_msgs/msg/detail\n'}
+[10.393792] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/include/linear_sensor_msgs/msg/detail/linear_sensor_data__rosidl_typesupport_introspection_cpp.hpp\n'}
+[10.393952] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/include/linear_sensor_msgs/msg/detail/linear_sensor_data__type_support.cpp\n'}
+[10.394107] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib/liblinear_sensor_msgs__rosidl_typesupport_introspection_cpp.so\n'}
+[10.394357] (linear_sensor_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib/liblinear_sensor_msgs__rosidl_typesupport_introspection_cpp.so" to ""\n'}
+[10.394599] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib/liblinear_sensor_msgs__rosidl_typesupport_cpp.so\n'}
+[10.394773] (linear_sensor_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib/liblinear_sensor_msgs__rosidl_typesupport_cpp.so" to ""\n'}
+[10.394998] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/share/linear_sensor_msgs/environment/pythonpath.sh\n'}
+[10.395169] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/share/linear_sensor_msgs/environment/pythonpath.dsv\n'}
+[10.395324] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib/python3.8/site-packages/linear_sensor_msgs/__init__.py\n'}
+[10.430568] (-) TimerEvent: {}
+[10.438169] (linear_sensor_msgs) StdoutLine: {'line': b"Compiling '/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib/python3.8/site-packages/linear_sensor_msgs/__init__.py'...\n"}
+[10.445148] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib/python3.8/site-packages/linear_sensor_msgs/msg\n'}
+[10.445487] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib/python3.8/site-packages/linear_sensor_msgs/msg/_linear_sensor_data.py\n'}
+[10.445710] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib/python3.8/site-packages/linear_sensor_msgs/msg/__init__.py\n'}
+[10.445907] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib/python3.8/site-packages/linear_sensor_msgs/msg/_linear_sensor_data_s.c\n'}
+[10.446488] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib/python3.8/site-packages/linear_sensor_msgs/linear_sensor_msgs_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so\n'}
+[10.447597] (linear_sensor_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib/python3.8/site-packages/linear_sensor_msgs/linear_sensor_msgs_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so" to ""\n'}
+[10.448102] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib/python3.8/site-packages/linear_sensor_msgs/linear_sensor_msgs_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so\n'}
+[10.449116] (linear_sensor_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib/python3.8/site-packages/linear_sensor_msgs/linear_sensor_msgs_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so" to ""\n'}
+[10.449634] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib/python3.8/site-packages/linear_sensor_msgs/linear_sensor_msgs_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so\n'}
+[10.450679] (linear_sensor_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib/python3.8/site-packages/linear_sensor_msgs/linear_sensor_msgs_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so" to ""\n'}
+[10.450965] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib/liblinear_sensor_msgs__python.so\n'}
+[10.451744] (linear_sensor_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib/liblinear_sensor_msgs__python.so" to ""\n'}
+[10.452051] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/share/linear_sensor_msgs/msg/LinearSensorData.idl\n'}
+[10.452367] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/share/linear_sensor_msgs/msg/LinearSensorData.msg\n'}
+[10.452783] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/share/ament_index/resource_index/package_run_dependencies/linear_sensor_msgs\n'}
+[10.453176] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/share/ament_index/resource_index/parent_prefix_path/linear_sensor_msgs\n'}
+[10.453620] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/share/linear_sensor_msgs/environment/ament_prefix_path.sh\n'}
+[10.453947] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/share/linear_sensor_msgs/environment/ament_prefix_path.dsv\n'}
+[10.454264] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/share/linear_sensor_msgs/environment/path.sh\n'}
+[10.454571] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/share/linear_sensor_msgs/environment/path.dsv\n'}
+[10.454877] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/share/linear_sensor_msgs/local_setup.bash\n'}
+[10.455162] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/share/linear_sensor_msgs/local_setup.sh\n'}
+[10.455442] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/share/linear_sensor_msgs/local_setup.zsh\n'}
+[10.455734] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/share/linear_sensor_msgs/local_setup.dsv\n'}
+[10.456018] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/share/linear_sensor_msgs/package.dsv\n'}
+[10.456405] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/share/ament_index/resource_index/packages/linear_sensor_msgs\n'}
+[10.456874] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/share/linear_sensor_msgs/cmake/linear_sensor_msgs__rosidl_generator_cExport.cmake\n'}
+[10.457193] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/share/linear_sensor_msgs/cmake/linear_sensor_msgs__rosidl_generator_cExport-noconfig.cmake\n'}
+[10.457654] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/share/linear_sensor_msgs/cmake/linear_sensor_msgs__rosidl_typesupport_introspection_cExport.cmake\n'}
+[10.458005] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/share/linear_sensor_msgs/cmake/linear_sensor_msgs__rosidl_typesupport_introspection_cExport-noconfig.cmake\n'}
+[10.458395] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/share/linear_sensor_msgs/cmake/linear_sensor_msgs__rosidl_typesupport_cExport.cmake\n'}
+[10.458713] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/share/linear_sensor_msgs/cmake/linear_sensor_msgs__rosidl_typesupport_cExport-noconfig.cmake\n'}
+[10.459127] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/share/linear_sensor_msgs/cmake/linear_sensor_msgs__rosidl_generator_cppExport.cmake\n'}
+[10.459573] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/share/linear_sensor_msgs/cmake/linear_sensor_msgs__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[10.459913] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/share/linear_sensor_msgs/cmake/linear_sensor_msgs__rosidl_typesupport_introspection_cppExport-noconfig.cmake\n'}
+[10.460339] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/share/linear_sensor_msgs/cmake/linear_sensor_msgs__rosidl_typesupport_cppExport.cmake\n'}
+[10.460681] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/share/linear_sensor_msgs/cmake/linear_sensor_msgs__rosidl_typesupport_cppExport-noconfig.cmake\n'}
+[10.461005] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/share/linear_sensor_msgs/cmake/rosidl_cmake-extras.cmake\n'}
+[10.461325] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/share/linear_sensor_msgs/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[10.461647] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/share/linear_sensor_msgs/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[10.461966] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/share/linear_sensor_msgs/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[10.462275] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/share/linear_sensor_msgs/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[10.462579] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/share/linear_sensor_msgs/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[10.462871] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/share/linear_sensor_msgs/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[10.463178] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/share/linear_sensor_msgs/cmake/linear_sensor_msgsConfig.cmake\n'}
+[10.463390] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/share/linear_sensor_msgs/cmake/linear_sensor_msgsConfig-version.cmake\n'}
+[10.463683] (linear_sensor_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/share/linear_sensor_msgs/package.xml\n'}
+[10.467653] (linear_sensor_msgs) CommandEnded: {'returncode': 0}
+[10.522030] (linear_sensor_msgs) JobEnded: {'identifier': 'linear_sensor_msgs', 'rc': 0}
+[10.530679] (-) TimerEvent: {}
+[10.630980] (-) TimerEvent: {}
+[10.731293] (-) TimerEvent: {}
+[10.771913] (lidar_msgs) StdoutLine: {'line': b'[ 76%] Built target lidar_msgs__py\n'}
+[10.785744] (lidar_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target lidar_msgs__python\x1b[0m\n'}
+[10.816528] (lidar_msgs) StdoutLine: {'line': b'[ 82%] \x1b[32mBuilding C object CMakeFiles/lidar_msgs__python.dir/rosidl_generator_py/lidar_msgs/msg/_metadata_s.c.o\x1b[0m\n'}
+[10.816770] (lidar_msgs) StdoutLine: {'line': b'[ 82%] \x1b[32mBuilding C object CMakeFiles/lidar_msgs__python.dir/rosidl_generator_py/lidar_msgs/srv/_get_metadata_s.c.o\x1b[0m\n'}
+[10.831420] (-) TimerEvent: {}
+[10.931885] (-) TimerEvent: {}
+[10.951763] (lidar_msgs) StdoutLine: {'line': b'[ 84%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/lidar_msgs/liblidar_msgs__python.so\x1b[0m\n'}
+[11.012281] (lidar_msgs) StdoutLine: {'line': b'[ 84%] Built target lidar_msgs__python\n'}
+[11.027870] (lidar_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target lidar_msgs__rosidl_typesupport_introspection_c__pyext\x1b[0m\n'}
+[11.032004] (-) TimerEvent: {}
+[11.033438] (lidar_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target lidar_msgs__rosidl_typesupport_c__pyext\x1b[0m\n'}
+[11.033836] (lidar_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target lidar_msgs__rosidl_typesupport_fastrtps_c__pyext\x1b[0m\n'}
+[11.057945] (lidar_msgs) StdoutLine: {'line': b'[ 87%] \x1b[32mBuilding C object CMakeFiles/lidar_msgs__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/lidar_msgs/_lidar_msgs_s.ep.rosidl_typesupport_introspection_c.c.o\x1b[0m\n'}
+[11.069838] (lidar_msgs) StdoutLine: {'line': b'[ 89%] \x1b[32mBuilding C object CMakeFiles/lidar_msgs__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/lidar_msgs/_lidar_msgs_s.ep.rosidl_typesupport_c.c.o\x1b[0m\n'}
+[11.080717] (lidar_msgs) StdoutLine: {'line': b'[ 92%] \x1b[32mBuilding C object CMakeFiles/lidar_msgs__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/lidar_msgs/_lidar_msgs_s.ep.rosidl_typesupport_fastrtps_c.c.o\x1b[0m\n'}
+[11.132133] (-) TimerEvent: {}
+[11.194230] (lidar_msgs) StdoutLine: {'line': b'[ 94%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/lidar_msgs/lidar_msgs_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so\x1b[0m\n'}
+[11.232283] (-) TimerEvent: {}
+[11.252408] (lidar_msgs) StdoutLine: {'line': b'[ 94%] Built target lidar_msgs__rosidl_typesupport_introspection_c__pyext\n'}
+[11.270710] (lidar_msgs) StdoutLine: {'line': b'[ 97%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/lidar_msgs/lidar_msgs_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so\x1b[0m\n'}
+[11.286125] (lidar_msgs) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX shared library rosidl_generator_py/lidar_msgs/lidar_msgs_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so\x1b[0m\n'}
+[11.324387] (lidar_msgs) StdoutLine: {'line': b'[100%] Built target lidar_msgs__rosidl_typesupport_c__pyext\n'}
+[11.332410] (-) TimerEvent: {}
+[11.380761] (lidar_msgs) StdoutLine: {'line': b'[100%] Built target lidar_msgs__rosidl_typesupport_fastrtps_c__pyext\n'}
+[11.395547] (lidar_msgs) CommandEnded: {'returncode': 0}
+[11.396709] (lidar_msgs) JobProgress: {'identifier': 'lidar_msgs', 'progress': 'install'}
+[11.397209] (lidar_msgs) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/grz/trolley_auto_drive_image/code/build/lidar_msgs'], 'cwd': '/home/grz/trolley_auto_drive_image/code/build/lidar_msgs', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'grz'), ('SSH_CLIENT', '10.111.248.87 43828 22'), ('LC_TIME', 'zh_CN.UTF-8'), ('XDG_SESSION_TYPE', 'tty'), ('GIT_ASKPASS', '/home/grz/.vscode-server/cli/servers/Stable-ddc367ed5c8936efe395cffeec279b04ffd7db78/server/extensions/git/dist/askpass.sh'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('BROWSER', '/home/grz/.vscode-server/cli/servers/Stable-ddc367ed5c8936efe395cffeec279b04ffd7db78/server/bin/helpers/browser.sh'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/grz'), ('OLDPWD', '/home/grz/trolley_auto_drive_image'), ('TERM_PROGRAM_VERSION', '1.98.2'), ('VSCODE_IPC_HOOK_CLI', '/run/user/1000/vscode-ipc-42e302a8-51fd-40c6-a133-14d9d50fd0bf.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/home/grz/.vscode-server/cli/servers/Stable-ddc367ed5c8936efe395cffeec279b04ffd7db78/server/extensions/git/dist/askpass-main.js'), ('LC_MONETARY', 'zh_CN.UTF-8'), ('VSCODE_GIT_ASKPASS_NODE', '/home/grz/.vscode-server/cli/servers/Stable-ddc367ed5c8936efe395cffeec279b04ffd7db78/server/node'), ('SSL_CERT_FILE', '/usr/lib/ssl/certs/ca-certificates.crt'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'grz'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', '7'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/foxy/bin:/home/grz/.vscode-server/cli/servers/Stable-ddc367ed5c8936efe395cffeec279b04ffd7db78/server/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('LC_ADDRESS', 'zh_CN.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('SSL_CERT_DIR', '/usr/lib/ssl/certs'), ('LANG', 'en_US.UTF-8'), ('LC_TELEPHONE', 'zh_CN.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-ce7cad993c.sock'), ('TERM_PROGRAM', 'vscode'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('LC_NAME', 'zh_CN.UTF-8'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'zh_CN.UTF-8'), ('LC_IDENTIFICATION', 'zh_CN.UTF-8'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('PWD', '/home/grz/trolley_auto_drive_image/code/build/lidar_msgs'), ('LC_ALL', 'en_US.UTF-8'), ('SSH_CONNECTION', '10.111.248.87 43828 10.111.248.241 22'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('LC_NUMERIC', 'zh_CN.UTF-8'), ('LC_PAPER', 'zh_CN.UTF-8'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[11.412086] (lidar_msgs) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[11.412485] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/share/ament_index/resource_index/rosidl_interfaces/lidar_msgs\n'}
+[11.412715] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs\n'}
+[11.412921] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/srv\n'}
+[11.413082] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/srv/get_metadata.h\n'}
+[11.413235] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/srv/detail\n'}
+[11.413406] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/srv/detail/get_metadata__type_support.h\n'}
+[11.413615] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/srv/detail/get_metadata__functions.c\n'}
+[11.413775] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/srv/detail/get_metadata__functions.h\n'}
+[11.413983] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/srv/detail/get_metadata__struct.h\n'}
+[11.414170] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/msg\n'}
+[11.414331] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/msg/rosidl_generator_c__visibility_control.h\n'}
+[11.414493] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/msg/metadata.h\n'}
+[11.414591] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/msg/detail\n'}
+[11.414737] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/msg/detail/metadata__struct.h\n'}
+[11.414837] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/msg/detail/metadata__functions.h\n'}
+[11.414997] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/msg/detail/metadata__functions.c\n'}
+[11.415095] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/msg/detail/metadata__type_support.h\n'}
+[11.415195] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/share/lidar_msgs/environment/library_path.sh\n'}
+[11.415339] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/share/lidar_msgs/environment/library_path.dsv\n'}
+[11.415434] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib/liblidar_msgs__rosidl_generator_c.so\n'}
+[11.415755] (lidar_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib/liblidar_msgs__rosidl_generator_c.so" to ""\n'}
+[11.415910] (lidar_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs\n'}
+[11.416116] (lidar_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/srv\n'}
+[11.416308] (lidar_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/srv/detail\n'}
+[11.416469] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/srv/detail/get_metadata__rosidl_typesupport_fastrtps_c.h\n'}
+[11.416579] (lidar_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/msg\n'}
+[11.416738] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[11.416836] (lidar_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/msg/detail\n'}
+[11.416928] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/msg/detail/metadata__rosidl_typesupport_fastrtps_c.h\n'}
+[11.417019] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib/liblidar_msgs__rosidl_typesupport_fastrtps_c.so\n'}
+[11.417239] (lidar_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib/liblidar_msgs__rosidl_typesupport_fastrtps_c.so" to ""\n'}
+[11.417557] (lidar_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs\n'}
+[11.417867] (lidar_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/srv\n'}
+[11.418336] (lidar_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/srv/detail\n'}
+[11.418744] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/srv/detail/get_metadata__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[11.419075] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/srv/detail/dds_fastrtps\n'}
+[11.419280] (lidar_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/msg\n'}
+[11.419589] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[11.419805] (lidar_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/msg/detail\n'}
+[11.420000] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/msg/detail/metadata__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[11.420191] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/msg/detail/dds_fastrtps\n'}
+[11.420380] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib/liblidar_msgs__rosidl_typesupport_fastrtps_cpp.so\n'}
+[11.420698] (lidar_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib/liblidar_msgs__rosidl_typesupport_fastrtps_cpp.so" to ""\n'}
+[11.421226] (lidar_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs\n'}
+[11.421448] (lidar_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/srv\n'}
+[11.421677] (lidar_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/srv/detail\n'}
+[11.421916] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/srv/detail/get_metadata__rosidl_typesupport_introspection_c.h\n'}
+[11.422179] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/srv/detail/get_metadata__type_support.c\n'}
+[11.422381] (lidar_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/msg\n'}
+[11.422496] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[11.422631] (lidar_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/msg/detail\n'}
+[11.422826] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/msg/detail/metadata__type_support.c\n'}
+[11.422954] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/msg/detail/metadata__rosidl_typesupport_introspection_c.h\n'}
+[11.423067] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib/liblidar_msgs__rosidl_typesupport_introspection_c.so\n'}
+[11.423273] (lidar_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib/liblidar_msgs__rosidl_typesupport_introspection_c.so" to ""\n'}
+[11.423462] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib/liblidar_msgs__rosidl_typesupport_c.so\n'}
+[11.423945] (lidar_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib/liblidar_msgs__rosidl_typesupport_c.so" to ""\n'}
+[11.424118] (lidar_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs\n'}
+[11.424268] (lidar_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/srv\n'}
+[11.424439] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/srv/get_metadata.hpp\n'}
+[11.424592] (lidar_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/srv/detail\n'}
+[11.424742] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/srv/detail/get_metadata__traits.hpp\n'}
+[11.424964] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/srv/detail/get_metadata__type_support.hpp\n'}
+[11.425118] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/srv/detail/get_metadata__struct.hpp\n'}
+[11.425306] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/srv/detail/get_metadata__builder.hpp\n'}
+[11.425499] (lidar_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/msg\n'}
+[11.425682] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/msg/metadata.hpp\n'}
+[11.425785] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/msg/rosidl_generator_cpp__visibility_control.hpp\n'}
+[11.425987] (lidar_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/msg/detail\n'}
+[11.426145] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/msg/detail/metadata__builder.hpp\n'}
+[11.426358] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/msg/detail/metadata__struct.hpp\n'}
+[11.426503] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/msg/detail/metadata__traits.hpp\n'}
+[11.426646] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/msg/detail/metadata__type_support.hpp\n'}
+[11.426741] (lidar_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs\n'}
+[11.426889] (lidar_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/srv\n'}
+[11.426987] (lidar_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/srv/detail\n'}
+[11.427078] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/srv/detail/get_metadata__type_support.cpp\n'}
+[11.427168] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/srv/detail/get_metadata__rosidl_typesupport_introspection_cpp.hpp\n'}
+[11.427259] (lidar_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/msg\n'}
+[11.427358] (lidar_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/msg/detail\n'}
+[11.427517] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/msg/detail/metadata__rosidl_typesupport_introspection_cpp.hpp\n'}
+[11.427668] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/include/lidar_msgs/msg/detail/metadata__type_support.cpp\n'}
+[11.427765] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib/liblidar_msgs__rosidl_typesupport_introspection_cpp.so\n'}
+[11.427858] (lidar_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib/liblidar_msgs__rosidl_typesupport_introspection_cpp.so" to ""\n'}
+[11.427951] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib/liblidar_msgs__rosidl_typesupport_cpp.so\n'}
+[11.428092] (lidar_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib/liblidar_msgs__rosidl_typesupport_cpp.so" to ""\n'}
+[11.428242] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/share/lidar_msgs/environment/pythonpath.sh\n'}
+[11.428403] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/share/lidar_msgs/environment/pythonpath.dsv\n'}
+[11.428698] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib/python3.8/site-packages/lidar_msgs/__init__.py\n'}
+[11.432523] (-) TimerEvent: {}
+[11.467196] (lidar_msgs) StdoutLine: {'line': b"Compiling '/home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib/python3.8/site-packages/lidar_msgs/__init__.py'...\n"}
+[11.473770] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib/python3.8/site-packages/lidar_msgs/srv\n'}
+[11.474120] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib/python3.8/site-packages/lidar_msgs/srv/_get_metadata.py\n'}
+[11.474334] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib/python3.8/site-packages/lidar_msgs/srv/_get_metadata_s.c\n'}
+[11.474521] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib/python3.8/site-packages/lidar_msgs/srv/__init__.py\n'}
+[11.474711] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib/python3.8/site-packages/lidar_msgs/msg\n'}
+[11.474887] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib/python3.8/site-packages/lidar_msgs/msg/__init__.py\n'}
+[11.475034] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib/python3.8/site-packages/lidar_msgs/msg/_metadata.py\n'}
+[11.475200] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib/python3.8/site-packages/lidar_msgs/msg/_metadata_s.c\n'}
+[11.475562] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib/python3.8/site-packages/lidar_msgs/lidar_msgs_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so\n'}
+[11.476316] (lidar_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib/python3.8/site-packages/lidar_msgs/lidar_msgs_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so" to ""\n'}
+[11.476689] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib/python3.8/site-packages/lidar_msgs/lidar_msgs_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so\n'}
+[11.477483] (lidar_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib/python3.8/site-packages/lidar_msgs/lidar_msgs_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so" to ""\n'}
+[11.477819] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib/python3.8/site-packages/lidar_msgs/lidar_msgs_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so\n'}
+[11.478509] (lidar_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib/python3.8/site-packages/lidar_msgs/lidar_msgs_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so" to ""\n'}
+[11.478709] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib/liblidar_msgs__python.so\n'}
+[11.479245] (lidar_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib/liblidar_msgs__python.so" to ""\n'}
+[11.479455] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/share/lidar_msgs/srv/GetMetadata.idl\n'}
+[11.479762] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/share/lidar_msgs/msg/Metadata.idl\n'}
+[11.479970] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/share/lidar_msgs/srv/GetMetadata.srv\n'}
+[11.480185] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/share/lidar_msgs/srv/GetMetadata_Request.msg\n'}
+[11.480458] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/share/lidar_msgs/srv/GetMetadata_Response.msg\n'}
+[11.480686] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/share/lidar_msgs/msg/Metadata.msg\n'}
+[11.480999] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/share/ament_index/resource_index/package_run_dependencies/lidar_msgs\n'}
+[11.481285] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/share/ament_index/resource_index/parent_prefix_path/lidar_msgs\n'}
+[11.481558] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/share/lidar_msgs/environment/ament_prefix_path.sh\n'}
+[11.481818] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/share/lidar_msgs/environment/ament_prefix_path.dsv\n'}
+[11.482073] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/share/lidar_msgs/environment/path.sh\n'}
+[11.482323] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/share/lidar_msgs/environment/path.dsv\n'}
+[11.482593] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/share/lidar_msgs/local_setup.bash\n'}
+[11.482837] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/share/lidar_msgs/local_setup.sh\n'}
+[11.483042] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/share/lidar_msgs/local_setup.zsh\n'}
+[11.483261] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/share/lidar_msgs/local_setup.dsv\n'}
+[11.483445] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/share/lidar_msgs/package.dsv\n'}
+[11.483700] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/share/ament_index/resource_index/packages/lidar_msgs\n'}
+[11.484014] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/share/lidar_msgs/cmake/lidar_msgs__rosidl_generator_cExport.cmake\n'}
+[11.484229] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/share/lidar_msgs/cmake/lidar_msgs__rosidl_generator_cExport-noconfig.cmake\n'}
+[11.484509] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/share/lidar_msgs/cmake/lidar_msgs__rosidl_typesupport_introspection_cExport.cmake\n'}
+[11.484756] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/share/lidar_msgs/cmake/lidar_msgs__rosidl_typesupport_introspection_cExport-noconfig.cmake\n'}
+[11.485026] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/share/lidar_msgs/cmake/lidar_msgs__rosidl_typesupport_cExport.cmake\n'}
+[11.485228] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/share/lidar_msgs/cmake/lidar_msgs__rosidl_typesupport_cExport-noconfig.cmake\n'}
+[11.485511] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/share/lidar_msgs/cmake/lidar_msgs__rosidl_generator_cppExport.cmake\n'}
+[11.485795] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/share/lidar_msgs/cmake/lidar_msgs__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[11.486002] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/share/lidar_msgs/cmake/lidar_msgs__rosidl_typesupport_introspection_cppExport-noconfig.cmake\n'}
+[11.486261] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/share/lidar_msgs/cmake/lidar_msgs__rosidl_typesupport_cppExport.cmake\n'}
+[11.486494] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/share/lidar_msgs/cmake/lidar_msgs__rosidl_typesupport_cppExport-noconfig.cmake\n'}
+[11.486713] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/share/lidar_msgs/cmake/rosidl_cmake-extras.cmake\n'}
+[11.486928] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/share/lidar_msgs/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[11.487141] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/share/lidar_msgs/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[11.487366] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/share/lidar_msgs/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[11.487559] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/share/lidar_msgs/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[11.487751] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/share/lidar_msgs/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[11.487944] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/share/lidar_msgs/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[11.488138] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/share/lidar_msgs/cmake/lidar_msgsConfig.cmake\n'}
+[11.488293] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/share/lidar_msgs/cmake/lidar_msgsConfig-version.cmake\n'}
+[11.488462] (lidar_msgs) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/lidar_msgs/share/lidar_msgs/package.xml\n'}
+[11.491462] (lidar_msgs) CommandEnded: {'returncode': 0}
+[11.518243] (lidar_msgs) JobEnded: {'identifier': 'lidar_msgs', 'rc': 0}
+[11.519972] (ros2_lidar) JobStarted: {'identifier': 'ros2_lidar'}
+[11.529886] (ros2_lidar) JobProgress: {'identifier': 'ros2_lidar', 'progress': 'cmake'}
+[11.530534] (ros2_lidar) Command: {'cmd': ['/usr/bin/cmake', '/home/grz/trolley_auto_drive_image/code/src/ole2d_ros2_driver/ros2_lidar', '-DCMAKE_INSTALL_PREFIX=/home/grz/trolley_auto_drive_image/code/install/ros2_lidar'], 'cwd': '/home/grz/trolley_auto_drive_image/code/build/ros2_lidar', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'grz'), ('SSH_CLIENT', '10.111.248.87 43828 22'), ('LC_TIME', 'zh_CN.UTF-8'), ('XDG_SESSION_TYPE', 'tty'), ('GIT_ASKPASS', '/home/grz/.vscode-server/cli/servers/Stable-ddc367ed5c8936efe395cffeec279b04ffd7db78/server/extensions/git/dist/askpass.sh'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('BROWSER', '/home/grz/.vscode-server/cli/servers/Stable-ddc367ed5c8936efe395cffeec279b04ffd7db78/server/bin/helpers/browser.sh'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/grz'), ('OLDPWD', '/home/grz/trolley_auto_drive_image'), ('TERM_PROGRAM_VERSION', '1.98.2'), ('VSCODE_IPC_HOOK_CLI', '/run/user/1000/vscode-ipc-42e302a8-51fd-40c6-a133-14d9d50fd0bf.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/home/grz/.vscode-server/cli/servers/Stable-ddc367ed5c8936efe395cffeec279b04ffd7db78/server/extensions/git/dist/askpass-main.js'), ('LC_MONETARY', 'zh_CN.UTF-8'), ('VSCODE_GIT_ASKPASS_NODE', '/home/grz/.vscode-server/cli/servers/Stable-ddc367ed5c8936efe395cffeec279b04ffd7db78/server/node'), ('SSL_CERT_FILE', '/usr/lib/ssl/certs/ca-certificates.crt'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'grz'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', '7'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/foxy/bin:/home/grz/.vscode-server/cli/servers/Stable-ddc367ed5c8936efe395cffeec279b04ffd7db78/server/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('LC_ADDRESS', 'zh_CN.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('SSL_CERT_DIR', '/usr/lib/ssl/certs'), ('LANG', 'en_US.UTF-8'), ('LC_TELEPHONE', 'zh_CN.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-ce7cad993c.sock'), ('TERM_PROGRAM', 'vscode'), ('AMENT_PREFIX_PATH', '/home/grz/trolley_auto_drive_image/code/install/lidar_msgs:/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('LC_NAME', 'zh_CN.UTF-8'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'zh_CN.UTF-8'), ('LC_IDENTIFICATION', 'zh_CN.UTF-8'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('PWD', '/home/grz/trolley_auto_drive_image/code/build/ros2_lidar'), ('LC_ALL', 'en_US.UTF-8'), ('SSH_CONNECTION', '10.111.248.87 43828 10.111.248.241 22'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('LC_NUMERIC', 'zh_CN.UTF-8'), ('LC_PAPER', 'zh_CN.UTF-8'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/grz/trolley_auto_drive_image/code/install/lidar_msgs:/opt/ros/foxy')]), 'shell': False}
+[11.534236] (-) TimerEvent: {}
+[11.611553] (ros2_lidar) StdoutLine: {'line': b'-- The C compiler identification is GNU 9.4.0\n'}
+[11.634409] (-) TimerEvent: {}
+[11.680666] (ros2_lidar) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 9.4.0\n'}
+[11.686731] (ros2_lidar) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc\n'}
+[11.734512] (-) TimerEvent: {}
+[11.775345] (ros2_lidar) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc -- works\n'}
+[11.776608] (ros2_lidar) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[11.834632] (-) TimerEvent: {}
+[11.865903] (ros2_lidar) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[11.881525] (ros2_lidar) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[11.882125] (ros2_lidar) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[11.885500] (ros2_lidar) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++\n'}
+[11.934764] (-) TimerEvent: {}
+[11.988948] (ros2_lidar) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ -- works\n'}
+[11.990520] (ros2_lidar) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[12.034899] (-) TimerEvent: {}
+[12.094641] (ros2_lidar) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[12.111213] (ros2_lidar) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[12.112168] (ros2_lidar) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[12.114590] (ros2_lidar) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[12.135017] (-) TimerEvent: {}
+[12.149750] (ros2_lidar) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") \n'}
+[12.150274] (ros2_lidar) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[12.235141] (-) TimerEvent: {}
+[12.335478] (-) TimerEvent: {}
+[12.401835] (ros2_lidar) StdoutLine: {'line': b'-- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)\n'}
+[12.435612] (-) TimerEvent: {}
+[12.468403] (ros2_lidar) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[12.475868] (ros2_lidar) StdoutLine: {'line': b'-- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)\n'}
+[12.535752] (-) TimerEvent: {}
+[12.574069] (ros2_lidar) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  \n'}
+[12.611183] (ros2_lidar) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/foxy/include  \n'}
+[12.635890] (-) TimerEvent: {}
+[12.715031] (ros2_lidar) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[12.735999] (-) TimerEvent: {}
+[12.799740] (ros2_lidar) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)\n'}
+[12.803005] (ros2_lidar) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[12.805357] (ros2_lidar) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[12.836137] (-) TimerEvent: {}
+[12.905001] (ros2_lidar) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[12.905458] (ros2_lidar) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[12.936263] (-) TimerEvent: {}
+[13.003018] (ros2_lidar) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed\n'}
+[13.003339] (ros2_lidar) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads\n'}
+[13.036419] (-) TimerEvent: {}
+[13.085465] (ros2_lidar) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads - not found\n'}
+[13.085751] (ros2_lidar) StdoutLine: {'line': b'-- Looking for pthread_create in pthread\n'}
+[13.136556] (-) TimerEvent: {}
+[13.176155] (ros2_lidar) StdoutLine: {'line': b'-- Looking for pthread_create in pthread - found\n'}
+[13.177832] (ros2_lidar) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[13.236667] (-) TimerEvent: {}
+[13.337017] (-) TimerEvent: {}
+[13.408019] (ros2_lidar) StdoutLine: {'line': b'-- Found rclcpp_lifecycle: 2.4.3 (/opt/ros/foxy/share/rclcpp_lifecycle/cmake)\n'}
+[13.437144] (-) TimerEvent: {}
+[13.457531] (ros2_lidar) StdoutLine: {'line': b'-- Found rclcpp_components: 2.4.3 (/opt/ros/foxy/share/rclcpp_components/cmake)\n'}
+[13.537284] (-) TimerEvent: {}
+[13.553300] (ros2_lidar) StdoutLine: {'line': b'-- Found std_srvs: 2.0.5 (/opt/ros/foxy/share/std_srvs/cmake)\n'}
+[13.571036] (ros2_lidar) StdoutLine: {'line': b'-- Found sensor_msgs: 2.0.5 (/opt/ros/foxy/share/sensor_msgs/cmake)\n'}
+[13.637371] (-) TimerEvent: {}
+[13.737708] (-) TimerEvent: {}
+[13.753726] (ros2_lidar) StdoutLine: {'line': b'-- Found tf2_geometry_msgs: 0.13.14 (/opt/ros/foxy/share/tf2_geometry_msgs/cmake)\n'}
+[13.767146] (ros2_lidar) StdoutLine: {'line': b'-- Found eigen3_cmake_module: 0.1.1 (/opt/ros/foxy/share/eigen3_cmake_module/cmake)\n'}
+[13.772496] (ros2_lidar) StdoutLine: {'line': b'-- Found Eigen3: TRUE (found version "3.3.7") \n'}
+[13.837845] (-) TimerEvent: {}
+[13.938195] (-) TimerEvent: {}
+[14.038534] (-) TimerEvent: {}
+[14.138878] (-) TimerEvent: {}
+[14.239236] (-) TimerEvent: {}
+[14.263635] (ros2_lidar) StdoutLine: {'line': b'-- Found pcl_conversions: 2.2.1 (/opt/ros/foxy/share/pcl_conversions/cmake)\n'}
+[14.339367] (-) TimerEvent: {}
+[14.439731] (-) TimerEvent: {}
+[14.504821] (ros2_lidar) StdoutLine: {'line': b'-- Found lidar_msgs: 0.2.0 (/home/grz/trolley_auto_drive_image/code/install/lidar_msgs/share/lidar_msgs/cmake)\n'}
+[14.539852] (-) TimerEvent: {}
+[14.557293] (ros2_lidar) StdoutLine: {'line': b'-- Found laser_geometry: 2.2.0 (/opt/ros/foxy/share/laser_geometry/cmake)\n'}
+[14.580140] (ros2_lidar) StdoutLine: {'line': b"-- Checking for module 'eigen3'\n"}
+[14.599943] (ros2_lidar) StdoutLine: {'line': b'--   Found eigen3, version 3.3.7\n'}
+[14.639983] (-) TimerEvent: {}
+[14.650047] (ros2_lidar) StdoutLine: {'line': b'-- Found Eigen: /usr/include/eigen3 (Required is at least version "3.1") \n'}
+[14.650376] (ros2_lidar) StdoutLine: {'line': b'-- Eigen found (include: /usr/include/eigen3, version: 3.3.7)\n'}
+[14.718244] (ros2_lidar) StdoutLine: {'line': b'-- Found Boost: /usr/include (found suitable version "1.71.0", minimum required is "1.55.0") found components: system filesystem date_time iostreams regex \n'}
+[14.720089] (ros2_lidar) StdoutLine: {'line': b'-- looking for PCL_COMMON\n'}
+[14.721704] (ros2_lidar) StdoutLine: {'line': b'-- Found PCL_COMMON: /usr/lib/x86_64-linux-gnu/libpcl_common.so  \n'}
+[14.722553] (ros2_lidar) StdoutLine: {'line': b'-- Found PCL: pcl_common;/usr/lib/x86_64-linux-gnu/libboost_system.so;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;/usr/lib/x86_64-linux-gnu/libboost_iostreams.so;/usr/lib/x86_64-linux-gnu/libboost_regex.so  \n'}
+[14.740109] (-) TimerEvent: {}
+[14.782900] (ros2_lidar) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)\n'}
+[14.840232] (-) TimerEvent: {}
+[14.881025] (ros2_lidar) StdoutLine: {'line': b"-- Added test 'copyright' to check source files copyright and LICENSE\n"}
+[14.884051] (ros2_lidar) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[14.884719] (ros2_lidar) StdoutLine: {'line': b'-- Configured cppcheck include dirs: /home/grz/trolley_auto_drive_image/code/src/ole2d_ros2_driver/ros2_lidar/include\n'}
+[14.884864] (ros2_lidar) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[14.887521] (ros2_lidar) StdoutLine: {'line': b"-- Added test 'cpplint' to check C / C++ code against the Google style\n"}
+[14.887675] (ros2_lidar) StdoutLine: {'line': b'-- Configured cpplint exclude dirs and/or files: \n'}
+[14.888520] (ros2_lidar) StdoutLine: {'line': b"-- Added test 'flake8' to check Python code syntax and style conventions\n"}
+[14.889842] (ros2_lidar) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[14.890755] (ros2_lidar) StdoutLine: {'line': b"-- Added test 'pep257' to check Python code against some of the style conventions in PEP 257\n"}
+[14.893467] (ros2_lidar) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[14.893621] (ros2_lidar) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[14.894472] (ros2_lidar) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[14.901715] (ros2_lidar) StdoutLine: {'line': b'-- Configuring done\n'}
+[14.940352] (-) TimerEvent: {}
+[14.976860] (ros2_lidar) StdoutLine: {'line': b'-- Generating done\n'}
+[15.001769] (ros2_lidar) StdoutLine: {'line': b'-- Build files have been written to: /home/grz/trolley_auto_drive_image/code/build/ros2_lidar\n'}
+[15.019664] (ros2_lidar) CommandEnded: {'returncode': 0}
+[15.020702] (ros2_lidar) JobProgress: {'identifier': 'ros2_lidar', 'progress': 'build'}
+[15.021188] (ros2_lidar) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/grz/trolley_auto_drive_image/code/build/ros2_lidar', '--', '-j4', '-l4'], 'cwd': '/home/grz/trolley_auto_drive_image/code/build/ros2_lidar', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'grz'), ('SSH_CLIENT', '10.111.248.87 43828 22'), ('LC_TIME', 'zh_CN.UTF-8'), ('XDG_SESSION_TYPE', 'tty'), ('GIT_ASKPASS', '/home/grz/.vscode-server/cli/servers/Stable-ddc367ed5c8936efe395cffeec279b04ffd7db78/server/extensions/git/dist/askpass.sh'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('BROWSER', '/home/grz/.vscode-server/cli/servers/Stable-ddc367ed5c8936efe395cffeec279b04ffd7db78/server/bin/helpers/browser.sh'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/grz'), ('OLDPWD', '/home/grz/trolley_auto_drive_image'), ('TERM_PROGRAM_VERSION', '1.98.2'), ('VSCODE_IPC_HOOK_CLI', '/run/user/1000/vscode-ipc-42e302a8-51fd-40c6-a133-14d9d50fd0bf.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/home/grz/.vscode-server/cli/servers/Stable-ddc367ed5c8936efe395cffeec279b04ffd7db78/server/extensions/git/dist/askpass-main.js'), ('LC_MONETARY', 'zh_CN.UTF-8'), ('VSCODE_GIT_ASKPASS_NODE', '/home/grz/.vscode-server/cli/servers/Stable-ddc367ed5c8936efe395cffeec279b04ffd7db78/server/node'), ('SSL_CERT_FILE', '/usr/lib/ssl/certs/ca-certificates.crt'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'grz'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', '7'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/foxy/bin:/home/grz/.vscode-server/cli/servers/Stable-ddc367ed5c8936efe395cffeec279b04ffd7db78/server/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('LC_ADDRESS', 'zh_CN.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('SSL_CERT_DIR', '/usr/lib/ssl/certs'), ('LANG', 'en_US.UTF-8'), ('LC_TELEPHONE', 'zh_CN.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-ce7cad993c.sock'), ('TERM_PROGRAM', 'vscode'), ('AMENT_PREFIX_PATH', '/home/grz/trolley_auto_drive_image/code/install/lidar_msgs:/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('LC_NAME', 'zh_CN.UTF-8'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'zh_CN.UTF-8'), ('LC_IDENTIFICATION', 'zh_CN.UTF-8'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('PWD', '/home/grz/trolley_auto_drive_image/code/build/ros2_lidar'), ('LC_ALL', 'en_US.UTF-8'), ('SSH_CONNECTION', '10.111.248.87 43828 10.111.248.241 22'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('LC_NUMERIC', 'zh_CN.UTF-8'), ('LC_PAPER', 'zh_CN.UTF-8'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/grz/trolley_auto_drive_image/code/install/lidar_msgs:/opt/ros/foxy')]), 'shell': False}
+[15.040521] (-) TimerEvent: {}
+[15.083043] (ros2_lidar) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target lidar_driver_core\x1b[0m\n'}
+[15.140679] (-) TimerEvent: {}
+[15.241091] (-) TimerEvent: {}
+[15.341525] (-) TimerEvent: {}
+[15.441978] (-) TimerEvent: {}
+[15.454793] (ros2_lidar) StdoutLine: {'line': b'[ 14%] \x1b[32mBuilding CXX object CMakeFiles/lidar_driver_core.dir/src/lidar_driver.cpp.o\x1b[0m\n'}
+[15.455273] (ros2_lidar) StdoutLine: {'line': b'[ 28%] \x1b[32mBuilding CXX object CMakeFiles/lidar_driver_core.dir/src/lifecycle_interface.cpp.o\x1b[0m\n'}
+[15.456034] (ros2_lidar) StdoutLine: {'line': b'[ 42%] \x1b[32mBuilding CXX object CMakeFiles/lidar_driver_core.dir/src/driver_types.cpp.o\x1b[0m\n'}
+[15.469577] (ros2_lidar) StdoutLine: {'line': b'[ 57%] \x1b[32mBuilding CXX object CMakeFiles/lidar_driver_core.dir/src/OS1/OS1_sensor.cpp.o\x1b[0m\n'}
+[15.542104] (-) TimerEvent: {}
+[15.642560] (-) TimerEvent: {}
+[15.742992] (-) TimerEvent: {}
+[15.843436] (-) TimerEvent: {}
+[15.944074] (-) TimerEvent: {}
+[16.044899] (-) TimerEvent: {}
+[16.145864] (-) TimerEvent: {}
+[16.246629] (-) TimerEvent: {}
+[16.347321] (-) TimerEvent: {}
+[16.448022] (-) TimerEvent: {}
+[16.548720] (-) TimerEvent: {}
+[16.649425] (-) TimerEvent: {}
+[16.750181] (-) TimerEvent: {}
+[16.850903] (-) TimerEvent: {}
+[16.951322] (-) TimerEvent: {}
+[17.051747] (-) TimerEvent: {}
+[17.152233] (-) TimerEvent: {}
+[17.252715] (-) TimerEvent: {}
+[17.353190] (-) TimerEvent: {}
+[17.453682] (-) TimerEvent: {}
+[17.554182] (-) TimerEvent: {}
+[17.654652] (-) TimerEvent: {}
+[17.755094] (-) TimerEvent: {}
+[17.855518] (-) TimerEvent: {}
+[17.955942] (-) TimerEvent: {}
+[18.056369] (-) TimerEvent: {}
+[18.156782] (-) TimerEvent: {}
+[18.257225] (-) TimerEvent: {}
+[18.357690] (-) TimerEvent: {}
+[18.458127] (-) TimerEvent: {}
+[18.558578] (-) TimerEvent: {}
+[18.659056] (-) TimerEvent: {}
+[18.759512] (-) TimerEvent: {}
+[18.859947] (-) TimerEvent: {}
+[18.960382] (-) TimerEvent: {}
+[19.060825] (-) TimerEvent: {}
+[19.161287] (-) TimerEvent: {}
+[19.261764] (-) TimerEvent: {}
+[19.362216] (-) TimerEvent: {}
+[19.462666] (-) TimerEvent: {}
+[19.563175] (-) TimerEvent: {}
+[19.663697] (-) TimerEvent: {}
+[19.764677] (-) TimerEvent: {}
+[19.865524] (-) TimerEvent: {}
+[19.965867] (-) TimerEvent: {}
+[20.066216] (-) TimerEvent: {}
+[20.166571] (-) TimerEvent: {}
+[20.267034] (-) TimerEvent: {}
+[20.367471] (-) TimerEvent: {}
+[20.468287] (-) TimerEvent: {}
+[20.568939] (-) TimerEvent: {}
+[20.669811] (-) TimerEvent: {}
+[20.770199] (-) TimerEvent: {}
+[20.870950] (-) TimerEvent: {}
+[20.971683] (-) TimerEvent: {}
+[21.072477] (-) TimerEvent: {}
+[21.173226] (-) TimerEvent: {}
+[21.273982] (-) TimerEvent: {}
+[21.374576] (-) TimerEvent: {}
+[21.475334] (-) TimerEvent: {}
+[21.576050] (-) TimerEvent: {}
+[21.676655] (-) TimerEvent: {}
+[21.777380] (-) TimerEvent: {}
+[21.878128] (-) TimerEvent: {}
+[21.978985] (-) TimerEvent: {}
+[22.079807] (-) TimerEvent: {}
+[22.180174] (-) TimerEvent: {}
+[22.280613] (-) TimerEvent: {}
+[22.381089] (-) TimerEvent: {}
+[22.481677] (-) TimerEvent: {}
+[22.582228] (-) TimerEvent: {}
+[22.682798] (-) TimerEvent: {}
+[22.783289] (-) TimerEvent: {}
+[22.883739] (-) TimerEvent: {}
+[22.984220] (-) TimerEvent: {}
+[23.084639] (-) TimerEvent: {}
+[23.185075] (-) TimerEvent: {}
+[23.285587] (-) TimerEvent: {}
+[23.386027] (-) TimerEvent: {}
+[23.486466] (-) TimerEvent: {}
+[23.586903] (-) TimerEvent: {}
+[23.687333] (-) TimerEvent: {}
+[23.787771] (-) TimerEvent: {}
+[23.888223] (-) TimerEvent: {}
+[23.988699] (-) TimerEvent: {}
+[24.089154] (-) TimerEvent: {}
+[24.189598] (-) TimerEvent: {}
+[24.290079] (-) TimerEvent: {}
+[24.390547] (-) TimerEvent: {}
+[24.490987] (-) TimerEvent: {}
+[24.591422] (-) TimerEvent: {}
+[24.691873] (-) TimerEvent: {}
+[24.792306] (-) TimerEvent: {}
+[24.892747] (-) TimerEvent: {}
+[24.993190] (-) TimerEvent: {}
+[25.093671] (-) TimerEvent: {}
+[25.194129] (-) TimerEvent: {}
+[25.294592] (-) TimerEvent: {}
+[25.395044] (-) TimerEvent: {}
+[25.495485] (-) TimerEvent: {}
+[25.595924] (-) TimerEvent: {}
+[25.696392] (-) TimerEvent: {}
+[25.796809] (-) TimerEvent: {}
+[25.897221] (-) TimerEvent: {}
+[25.997637] (-) TimerEvent: {}
+[26.098042] (-) TimerEvent: {}
+[26.198449] (-) TimerEvent: {}
+[26.298856] (-) TimerEvent: {}
+[26.399291] (-) TimerEvent: {}
+[26.499805] (-) TimerEvent: {}
+[26.600319] (-) TimerEvent: {}
+[26.700840] (-) TimerEvent: {}
+[26.801360] (-) TimerEvent: {}
+[26.901801] (-) TimerEvent: {}
+[27.002227] (-) TimerEvent: {}
+[27.102707] (-) TimerEvent: {}
+[27.203184] (-) TimerEvent: {}
+[27.303624] (-) TimerEvent: {}
+[27.404085] (-) TimerEvent: {}
+[27.504564] (-) TimerEvent: {}
+[27.605019] (-) TimerEvent: {}
+[27.705507] (-) TimerEvent: {}
+[27.806252] (-) TimerEvent: {}
+[27.907098] (-) TimerEvent: {}
+[28.007958] (-) TimerEvent: {}
+[28.108803] (-) TimerEvent: {}
+[28.209647] (-) TimerEvent: {}
+[28.310379] (-) TimerEvent: {}
+[28.411119] (-) TimerEvent: {}
+[28.511993] (-) TimerEvent: {}
+[28.613604] (-) TimerEvent: {}
+[28.714046] (-) TimerEvent: {}
+[28.814827] (-) TimerEvent: {}
+[28.915698] (-) TimerEvent: {}
+[29.016482] (-) TimerEvent: {}
+[29.117244] (-) TimerEvent: {}
+[29.218114] (-) TimerEvent: {}
+[29.318996] (-) TimerEvent: {}
+[29.419823] (-) TimerEvent: {}
+[29.520638] (-) TimerEvent: {}
+[29.621390] (-) TimerEvent: {}
+[29.722164] (-) TimerEvent: {}
+[29.822656] (-) TimerEvent: {}
+[29.923417] (-) TimerEvent: {}
+[30.024294] (-) TimerEvent: {}
+[30.125049] (-) TimerEvent: {}
+[30.225926] (-) TimerEvent: {}
+[30.330443] (-) TimerEvent: {}
+[30.431118] (-) TimerEvent: {}
+[30.531848] (-) TimerEvent: {}
+[30.632333] (-) TimerEvent: {}
+[30.732848] (-) TimerEvent: {}
+[30.833368] (-) TimerEvent: {}
+[30.933823] (-) TimerEvent: {}
+[31.034241] (-) TimerEvent: {}
+[31.134595] (-) TimerEvent: {}
+[31.234980] (-) TimerEvent: {}
+[31.335401] (-) TimerEvent: {}
+[31.435835] (-) TimerEvent: {}
+[31.536243] (-) TimerEvent: {}
+[31.636712] (-) TimerEvent: {}
+[31.737160] (-) TimerEvent: {}
+[31.837591] (-) TimerEvent: {}
+[31.938021] (-) TimerEvent: {}
+[32.038414] (-) TimerEvent: {}
+[32.138800] (-) TimerEvent: {}
+[32.239198] (-) TimerEvent: {}
+[32.339594] (-) TimerEvent: {}
+[32.439958] (-) TimerEvent: {}
+[32.540326] (-) TimerEvent: {}
+[32.640693] (-) TimerEvent: {}
+[32.741043] (-) TimerEvent: {}
+[32.841385] (-) TimerEvent: {}
+[32.941740] (-) TimerEvent: {}
+[33.042116] (-) TimerEvent: {}
+[33.142519] (-) TimerEvent: {}
+[33.242907] (-) TimerEvent: {}
+[33.343316] (-) TimerEvent: {}
+[33.443690] (-) TimerEvent: {}
+[33.544027] (-) TimerEvent: {}
+[33.644379] (-) TimerEvent: {}
+[33.744755] (-) TimerEvent: {}
+[33.845116] (-) TimerEvent: {}
+[33.945498] (-) TimerEvent: {}
+[34.045865] (-) TimerEvent: {}
+[34.146249] (-) TimerEvent: {}
+[34.246638] (-) TimerEvent: {}
+[34.347027] (-) TimerEvent: {}
+[34.447403] (-) TimerEvent: {}
+[34.547781] (-) TimerEvent: {}
+[34.648167] (-) TimerEvent: {}
+[34.748551] (-) TimerEvent: {}
+[34.848919] (-) TimerEvent: {}
+[34.949286] (-) TimerEvent: {}
+[35.049626] (-) TimerEvent: {}
+[35.149983] (-) TimerEvent: {}
+[35.250333] (-) TimerEvent: {}
+[35.350693] (-) TimerEvent: {}
+[35.451036] (-) TimerEvent: {}
+[35.551417] (-) TimerEvent: {}
+[35.651777] (-) TimerEvent: {}
+[35.752144] (-) TimerEvent: {}
+[35.852491] (-) TimerEvent: {}
+[35.952840] (-) TimerEvent: {}
+[36.053194] (-) TimerEvent: {}
+[36.153542] (-) TimerEvent: {}
+[36.253886] (-) TimerEvent: {}
+[36.354250] (-) TimerEvent: {}
+[36.454645] (-) TimerEvent: {}
+[36.555070] (-) TimerEvent: {}
+[36.655502] (-) TimerEvent: {}
+[36.755944] (-) TimerEvent: {}
+[36.856368] (-) TimerEvent: {}
+[36.936710] (ros2_lidar) StdoutLine: {'line': b'[ 71%] \x1b[32m\x1b[1mLinking CXX shared library liblidar_driver_core.so\x1b[0m\n'}
+[36.956507] (-) TimerEvent: {}
+[37.056953] (-) TimerEvent: {}
+[37.157482] (-) TimerEvent: {}
+[37.258010] (-) TimerEvent: {}
+[37.358468] (-) TimerEvent: {}
+[37.458912] (-) TimerEvent: {}
+[37.559415] (-) TimerEvent: {}
+[37.659849] (-) TimerEvent: {}
+[37.714744] (ros2_lidar) StdoutLine: {'line': b'[ 71%] Built target lidar_driver_core\n'}
+[37.728536] (ros2_lidar) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target lidar_driver\x1b[0m\n'}
+[37.759968] (-) TimerEvent: {}
+[37.840319] (ros2_lidar) StdoutLine: {'line': b'[ 85%] \x1b[32mBuilding CXX object CMakeFiles/lidar_driver.dir/src/main.cpp.o\x1b[0m\n'}
+[37.860089] (-) TimerEvent: {}
+[37.960535] (-) TimerEvent: {}
+[38.060976] (-) TimerEvent: {}
+[38.161431] (-) TimerEvent: {}
+[38.261819] (-) TimerEvent: {}
+[38.362204] (-) TimerEvent: {}
+[38.462618] (-) TimerEvent: {}
+[38.563022] (-) TimerEvent: {}
+[38.663439] (-) TimerEvent: {}
+[38.763860] (-) TimerEvent: {}
+[38.864275] (-) TimerEvent: {}
+[38.964655] (-) TimerEvent: {}
+[39.065047] (-) TimerEvent: {}
+[39.165651] (-) TimerEvent: {}
+[39.266056] (-) TimerEvent: {}
+[39.366454] (-) TimerEvent: {}
+[39.466852] (-) TimerEvent: {}
+[39.567266] (-) TimerEvent: {}
+[39.667707] (-) TimerEvent: {}
+[39.768142] (-) TimerEvent: {}
+[39.868562] (-) TimerEvent: {}
+[39.968998] (-) TimerEvent: {}
+[40.069436] (-) TimerEvent: {}
+[40.169980] (-) TimerEvent: {}
+[40.270789] (-) TimerEvent: {}
+[40.371245] (-) TimerEvent: {}
+[40.471705] (-) TimerEvent: {}
+[40.572149] (-) TimerEvent: {}
+[40.672599] (-) TimerEvent: {}
+[40.773049] (-) TimerEvent: {}
+[40.873618] (-) TimerEvent: {}
+[40.974135] (-) TimerEvent: {}
+[41.074656] (-) TimerEvent: {}
+[41.175133] (-) TimerEvent: {}
+[41.275608] (-) TimerEvent: {}
+[41.376061] (-) TimerEvent: {}
+[41.476521] (-) TimerEvent: {}
+[41.576957] (-) TimerEvent: {}
+[41.677390] (-) TimerEvent: {}
+[41.777832] (-) TimerEvent: {}
+[41.878275] (-) TimerEvent: {}
+[41.978691] (-) TimerEvent: {}
+[42.079389] (-) TimerEvent: {}
+[42.179811] (-) TimerEvent: {}
+[42.280219] (-) TimerEvent: {}
+[42.380649] (-) TimerEvent: {}
+[42.481085] (-) TimerEvent: {}
+[42.581569] (-) TimerEvent: {}
+[42.682004] (-) TimerEvent: {}
+[42.782439] (-) TimerEvent: {}
+[42.882878] (-) TimerEvent: {}
+[42.983317] (-) TimerEvent: {}
+[43.083746] (-) TimerEvent: {}
+[43.184190] (-) TimerEvent: {}
+[43.284615] (-) TimerEvent: {}
+[43.385026] (-) TimerEvent: {}
+[43.485471] (-) TimerEvent: {}
+[43.585925] (-) TimerEvent: {}
+[43.686335] (-) TimerEvent: {}
+[43.786754] (-) TimerEvent: {}
+[43.887177] (-) TimerEvent: {}
+[43.987600] (-) TimerEvent: {}
+[44.088044] (-) TimerEvent: {}
+[44.188474] (-) TimerEvent: {}
+[44.288909] (-) TimerEvent: {}
+[44.389377] (-) TimerEvent: {}
+[44.489798] (-) TimerEvent: {}
+[44.590202] (-) TimerEvent: {}
+[44.690613] (-) TimerEvent: {}
+[44.791047] (-) TimerEvent: {}
+[44.891510] (-) TimerEvent: {}
+[44.992010] (-) TimerEvent: {}
+[45.092495] (-) TimerEvent: {}
+[45.193008] (-) TimerEvent: {}
+[45.293547] (-) TimerEvent: {}
+[45.394011] (-) TimerEvent: {}
+[45.494435] (-) TimerEvent: {}
+[45.594872] (-) TimerEvent: {}
+[45.695283] (-) TimerEvent: {}
+[45.795691] (-) TimerEvent: {}
+[45.896119] (-) TimerEvent: {}
+[45.996543] (-) TimerEvent: {}
+[46.096960] (-) TimerEvent: {}
+[46.197364] (-) TimerEvent: {}
+[46.297757] (-) TimerEvent: {}
+[46.398152] (-) TimerEvent: {}
+[46.457467] (ros2_lidar) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable lidar_driver\x1b[0m\n'}
+[46.498283] (-) TimerEvent: {}
+[46.598778] (-) TimerEvent: {}
+[46.699280] (-) TimerEvent: {}
+[46.799804] (-) TimerEvent: {}
+[46.896319] (ros2_lidar) StdoutLine: {'line': b'[100%] Built target lidar_driver\n'}
+[46.899903] (-) TimerEvent: {}
+[46.911273] (ros2_lidar) CommandEnded: {'returncode': 0}
+[46.912449] (ros2_lidar) JobProgress: {'identifier': 'ros2_lidar', 'progress': 'install'}
+[46.914780] (ros2_lidar) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/grz/trolley_auto_drive_image/code/build/ros2_lidar'], 'cwd': '/home/grz/trolley_auto_drive_image/code/build/ros2_lidar', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'grz'), ('SSH_CLIENT', '10.111.248.87 43828 22'), ('LC_TIME', 'zh_CN.UTF-8'), ('XDG_SESSION_TYPE', 'tty'), ('GIT_ASKPASS', '/home/grz/.vscode-server/cli/servers/Stable-ddc367ed5c8936efe395cffeec279b04ffd7db78/server/extensions/git/dist/askpass.sh'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('BROWSER', '/home/grz/.vscode-server/cli/servers/Stable-ddc367ed5c8936efe395cffeec279b04ffd7db78/server/bin/helpers/browser.sh'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/grz'), ('OLDPWD', '/home/grz/trolley_auto_drive_image'), ('TERM_PROGRAM_VERSION', '1.98.2'), ('VSCODE_IPC_HOOK_CLI', '/run/user/1000/vscode-ipc-42e302a8-51fd-40c6-a133-14d9d50fd0bf.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/home/grz/.vscode-server/cli/servers/Stable-ddc367ed5c8936efe395cffeec279b04ffd7db78/server/extensions/git/dist/askpass-main.js'), ('LC_MONETARY', 'zh_CN.UTF-8'), ('VSCODE_GIT_ASKPASS_NODE', '/home/grz/.vscode-server/cli/servers/Stable-ddc367ed5c8936efe395cffeec279b04ffd7db78/server/node'), ('SSL_CERT_FILE', '/usr/lib/ssl/certs/ca-certificates.crt'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'grz'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', '7'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/foxy/bin:/home/grz/.vscode-server/cli/servers/Stable-ddc367ed5c8936efe395cffeec279b04ffd7db78/server/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('LC_ADDRESS', 'zh_CN.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('SSL_CERT_DIR', '/usr/lib/ssl/certs'), ('LANG', 'en_US.UTF-8'), ('LC_TELEPHONE', 'zh_CN.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-ce7cad993c.sock'), ('TERM_PROGRAM', 'vscode'), ('AMENT_PREFIX_PATH', '/home/grz/trolley_auto_drive_image/code/install/lidar_msgs:/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('LC_NAME', 'zh_CN.UTF-8'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'zh_CN.UTF-8'), ('LC_IDENTIFICATION', 'zh_CN.UTF-8'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('PWD', '/home/grz/trolley_auto_drive_image/code/build/ros2_lidar'), ('LC_ALL', 'en_US.UTF-8'), ('SSH_CONNECTION', '10.111.248.87 43828 10.111.248.241 22'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('LC_NUMERIC', 'zh_CN.UTF-8'), ('LC_PAPER', 'zh_CN.UTF-8'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/grz/trolley_auto_drive_image/code/install/lidar_msgs:/opt/ros/foxy')]), 'shell': False}
+[46.928981] (ros2_lidar) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[46.929410] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/lib/ros2_lidar/lidar_driver\n'}
+[46.930240] (ros2_lidar) StdoutLine: {'line': b'-- Set runtime path of "/home/grz/trolley_auto_drive_image/code/install/ros2_lidar/lib/ros2_lidar/lidar_driver" to ""\n'}
+[46.930590] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/lib/liblidar_driver_core.so\n'}
+[46.935360] (ros2_lidar) StdoutLine: {'line': b'-- Set runtime path of "/home/grz/trolley_auto_drive_image/code/install/ros2_lidar/lib/liblidar_driver_core.so" to ""\n'}
+[46.935837] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include/\n'}
+[46.936072] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar\n'}
+[46.936295] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/OS1\n'}
+[46.936539] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/OS1/OS1_util.hpp\n'}
+[46.936763] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/OS1/OS1_sensor.hpp\n'}
+[46.936981] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/OS1/OS1_packet.hpp\n'}
+[46.937207] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/OS1/processors\n'}
+[46.937499] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/OS1/processors/scan_processor.hpp\n'}
+[46.937770] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/OS1/processors/image_processor.hpp\n'}
+[46.938080] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/OS1/processors/pointcloud_processor.hpp\n'}
+[46.938288] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/OS1/processors/imu_processor.hpp\n'}
+[46.938501] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/OS1/OS1.hpp\n'}
+[46.938707] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/OS1/processor_factories.hpp\n'}
+[46.938973] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/driver_types.hpp\n'}
+[46.939224] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/exception.hpp\n'}
+[46.939438] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/image_os.hpp\n'}
+[46.939650] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/conversions.hpp\n'}
+[46.939861] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/interfaces\n'}
+[46.940076] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/interfaces/metadata.hpp\n'}
+[46.940288] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/interfaces/lifecycle_interface.hpp\n'}
+[46.940525] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/interfaces/data_processor_interface.hpp\n'}
+[46.940765] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/interfaces/sensor_interface.hpp\n'}
+[46.940982] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/interfaces/configuration.hpp\n'}
+[46.941163] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/scan_os.hpp\n'}
+[46.941561] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/string_utils.hpp\n'}
+[46.941835] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/point_os.hpp\n'}
+[46.942084] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/lidar_driver.hpp\n'}
+[46.942289] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/launch\n'}
+[46.942494] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/launch/ole2dv2_front_launch.py\n'}
+[46.942740] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/launch/ole2dv2_back_launch.py\n'}
+[46.942953] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/launch/ole3dv2_launch.py\n'}
+[46.943172] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/launch/os1_launch.py\n'}
+[46.943384] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/params\n'}
+[46.943566] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/params/os1.yaml\n'}
+[46.943784] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/params/ole2dv2_back.yaml\n'}
+[46.943967] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/params/ole3dv2.yaml\n'}
+[46.944175] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/params/ole2dv2_front.yaml\n'}
+[46.944354] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/environment/library_path.sh\n'}
+[46.944557] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/environment/library_path.dsv\n'}
+[46.944719] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ament_index/resource_index/package_run_dependencies/ros2_lidar\n'}
+[46.945006] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ament_index/resource_index/parent_prefix_path/ros2_lidar\n'}
+[46.945237] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/environment/ament_prefix_path.sh\n'}
+[46.945552] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/environment/ament_prefix_path.dsv\n'}
+[46.945827] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/environment/path.sh\n'}
+[46.946107] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/environment/path.dsv\n'}
+[46.946382] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/local_setup.bash\n'}
+[46.946656] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/local_setup.sh\n'}
+[46.946929] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/local_setup.zsh\n'}
+[46.947210] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/local_setup.dsv\n'}
+[46.947479] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/package.dsv\n'}
+[46.947815] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ament_index/resource_index/packages/ros2_lidar\n'}
+[46.948141] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ament_index/resource_index/rclcpp_components/ros2_lidar\n'}
+[46.948461] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[46.948739] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[46.949023] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[46.949325] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/cmake/ros2_lidarConfig.cmake\n'}
+[46.949597] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/cmake/ros2_lidarConfig-version.cmake\n'}
+[46.949838] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/package.xml\n'}
+[46.952516] (ros2_lidar) CommandEnded: {'returncode': 0}
+[46.974332] (ros2_lidar) JobEnded: {'identifier': 'ros2_lidar', 'rc': 0}
+[46.975508] (-) EventReactorShutdown: {}
