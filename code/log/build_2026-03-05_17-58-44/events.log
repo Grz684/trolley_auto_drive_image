@@ -1,0 +1,253 @@
+[0.000000] (-) TimerEvent: {}
+[0.000386] (-) JobUnselected: {'identifier': 'lidar_data_handler'}
+[0.000871] (-) JobUnselected: {'identifier': 'lidar_msgs'}
+[0.000933] (-) JobUnselected: {'identifier': 'linear_displacement_sensor'}
+[0.000979] (-) JobUnselected: {'identifier': 'linear_sensor_msgs'}
+[0.001025] (ros2_lidar) JobQueued: {'identifier': 'ros2_lidar', 'dependencies': OrderedDict([('lidar_msgs', '/home/grz/trolley_auto_drive_image/code/install/lidar_msgs')])}
+[0.001081] (ros2_lidar) JobStarted: {'identifier': 'ros2_lidar'}
+[0.029112] (ros2_lidar) JobProgress: {'identifier': 'ros2_lidar', 'progress': 'cmake'}
+[0.031630] (ros2_lidar) JobProgress: {'identifier': 'ros2_lidar', 'progress': 'build'}
+[0.033467] (ros2_lidar) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/grz/trolley_auto_drive_image/code/build/ros2_lidar', '--', '-j4', '-l4'], 'cwd': '/home/grz/trolley_auto_drive_image/code/build/ros2_lidar', 'env': OrderedDict([('PYTHON_BASIC_REPL', '1'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'grz'), ('SSH_CLIENT', '10.111.248.207 9213 22'), ('LC_TIME', 'zh_CN.UTF-8'), ('XDG_SESSION_TYPE', 'tty'), ('GIT_ASKPASS', '/home/grz/.vscode-server/cli/servers/Stable-585eba7c0c34fd6b30faac7c62a42050bfbc0086/server/extensions/git/dist/askpass.sh'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('BROWSER', '/home/grz/.vscode-server/cli/servers/Stable-585eba7c0c34fd6b30faac7c62a42050bfbc0086/server/bin/helpers/browser.sh'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/grz'), ('OLDPWD', '/home/grz/trolley_auto_drive_image/code/src'), ('TERM_PROGRAM_VERSION', '1.108.1'), ('VSCODE_IPC_HOOK_CLI', '/run/user/1000/vscode-ipc-766bde2b-c493-461c-95fb-51ab7415436b.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/home/grz/.vscode-server/cli/servers/Stable-585eba7c0c34fd6b30faac7c62a42050bfbc0086/server/extensions/git/dist/askpass-main.js'), ('LC_MONETARY', 'zh_CN.UTF-8'), ('VSCODE_GIT_ASKPASS_NODE', '/home/grz/.vscode-server/cli/servers/Stable-585eba7c0c34fd6b30faac7c62a42050bfbc0086/server/node'), ('SSL_CERT_FILE', '/usr/lib/ssl/certs/ca-certificates.crt'), ('VSCODE_PYTHON_AUTOACTIVATE_GUARD', '1'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'grz'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', '4'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/grz/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/home/grz/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/home/grz/.vscode-server/cli/servers/Stable-585eba7c0c34fd6b30faac7c62a42050bfbc0086/server/bin/remote-cli:/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('LC_ADDRESS', 'zh_CN.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('SSL_CERT_DIR', '/usr/lib/ssl/certs'), ('LANG', 'en_US.UTF-8'), ('PYTHONSTARTUP', '/home/grz/.vscode-server/data/User/workspaceStorage/6e2bb5c3d42b7f3f4bb79d32cbc46231/ms-python.python/pythonrc.py'), ('LC_TELEPHONE', 'zh_CN.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-de34ed2d2a.sock'), ('TERM_PROGRAM', 'vscode'), ('AMENT_PREFIX_PATH', '/home/grz/trolley_auto_drive_image/code/install/lidar_msgs:/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('LC_NAME', 'zh_CN.UTF-8'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'zh_CN.UTF-8'), ('LC_IDENTIFICATION', 'zh_CN.UTF-8'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('PWD', '/home/grz/trolley_auto_drive_image/code/build/ros2_lidar'), ('LC_ALL', 'en_US.UTF-8'), ('SSH_CONNECTION', '10.111.248.207 9213 10.111.248.63 22'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('LC_NUMERIC', 'zh_CN.UTF-8'), ('LC_PAPER', 'zh_CN.UTF-8'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/grz/trolley_auto_drive_image/code/install/lidar_msgs:/opt/ros/foxy')]), 'shell': False}
+[0.099519] (-) TimerEvent: {}
+[0.200036] (-) TimerEvent: {}
+[0.256690] (ros2_lidar) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target lidar_driver_core\x1b[0m\n'}
+[0.300162] (-) TimerEvent: {}
+[0.400582] (-) TimerEvent: {}
+[0.434244] (ros2_lidar) StdoutLine: {'line': b'[ 14%] \x1b[32mBuilding CXX object CMakeFiles/lidar_driver_core.dir/src/lidar_driver.cpp.o\x1b[0m\n'}
+[0.500703] (-) TimerEvent: {}
+[0.601119] (-) TimerEvent: {}
+[0.701570] (-) TimerEvent: {}
+[0.802025] (-) TimerEvent: {}
+[0.902439] (-) TimerEvent: {}
+[1.002853] (-) TimerEvent: {}
+[1.103284] (-) TimerEvent: {}
+[1.203732] (-) TimerEvent: {}
+[1.304170] (-) TimerEvent: {}
+[1.404640] (-) TimerEvent: {}
+[1.505147] (-) TimerEvent: {}
+[1.605542] (-) TimerEvent: {}
+[1.705953] (-) TimerEvent: {}
+[1.806339] (-) TimerEvent: {}
+[1.906740] (-) TimerEvent: {}
+[2.007140] (-) TimerEvent: {}
+[2.107544] (-) TimerEvent: {}
+[2.207996] (-) TimerEvent: {}
+[2.308491] (-) TimerEvent: {}
+[2.408893] (-) TimerEvent: {}
+[2.509338] (-) TimerEvent: {}
+[2.609706] (-) TimerEvent: {}
+[2.710176] (-) TimerEvent: {}
+[2.810640] (-) TimerEvent: {}
+[2.911086] (-) TimerEvent: {}
+[3.011456] (-) TimerEvent: {}
+[3.111882] (-) TimerEvent: {}
+[3.212295] (-) TimerEvent: {}
+[3.312736] (-) TimerEvent: {}
+[3.413166] (-) TimerEvent: {}
+[3.513645] (-) TimerEvent: {}
+[3.614020] (-) TimerEvent: {}
+[3.714422] (-) TimerEvent: {}
+[3.814850] (-) TimerEvent: {}
+[3.915274] (-) TimerEvent: {}
+[4.015711] (-) TimerEvent: {}
+[4.116110] (-) TimerEvent: {}
+[4.216470] (-) TimerEvent: {}
+[4.316877] (-) TimerEvent: {}
+[4.417412] (-) TimerEvent: {}
+[4.517899] (-) TimerEvent: {}
+[4.618296] (-) TimerEvent: {}
+[4.718736] (-) TimerEvent: {}
+[4.819149] (-) TimerEvent: {}
+[4.919568] (-) TimerEvent: {}
+[5.020003] (-) TimerEvent: {}
+[5.120497] (-) TimerEvent: {}
+[5.220961] (-) TimerEvent: {}
+[5.321358] (-) TimerEvent: {}
+[5.421779] (-) TimerEvent: {}
+[5.522189] (-) TimerEvent: {}
+[5.622600] (-) TimerEvent: {}
+[5.723002] (-) TimerEvent: {}
+[5.823399] (-) TimerEvent: {}
+[5.923791] (-) TimerEvent: {}
+[6.024163] (-) TimerEvent: {}
+[6.124531] (-) TimerEvent: {}
+[6.224962] (-) TimerEvent: {}
+[6.325404] (-) TimerEvent: {}
+[6.425842] (-) TimerEvent: {}
+[6.526338] (-) TimerEvent: {}
+[6.626771] (-) TimerEvent: {}
+[6.727198] (-) TimerEvent: {}
+[6.827634] (-) TimerEvent: {}
+[6.928062] (-) TimerEvent: {}
+[7.028531] (-) TimerEvent: {}
+[7.128942] (-) TimerEvent: {}
+[7.229351] (-) TimerEvent: {}
+[7.329790] (-) TimerEvent: {}
+[7.430247] (-) TimerEvent: {}
+[7.530703] (-) TimerEvent: {}
+[7.631123] (-) TimerEvent: {}
+[7.731543] (-) TimerEvent: {}
+[7.831971] (-) TimerEvent: {}
+[7.932401] (-) TimerEvent: {}
+[8.032826] (-) TimerEvent: {}
+[8.133242] (-) TimerEvent: {}
+[8.233666] (-) TimerEvent: {}
+[8.334106] (-) TimerEvent: {}
+[8.434495] (-) TimerEvent: {}
+[8.534963] (-) TimerEvent: {}
+[8.635372] (-) TimerEvent: {}
+[8.735759] (-) TimerEvent: {}
+[8.836166] (-) TimerEvent: {}
+[8.936596] (-) TimerEvent: {}
+[9.037006] (-) TimerEvent: {}
+[9.137393] (-) TimerEvent: {}
+[9.237823] (-) TimerEvent: {}
+[9.338225] (-) TimerEvent: {}
+[9.438618] (-) TimerEvent: {}
+[9.539003] (-) TimerEvent: {}
+[9.639396] (-) TimerEvent: {}
+[9.739794] (-) TimerEvent: {}
+[9.840184] (-) TimerEvent: {}
+[9.940599] (-) TimerEvent: {}
+[10.041092] (-) TimerEvent: {}
+[10.141527] (-) TimerEvent: {}
+[10.241980] (-) TimerEvent: {}
+[10.342510] (-) TimerEvent: {}
+[10.443065] (-) TimerEvent: {}
+[10.543489] (-) TimerEvent: {}
+[10.643863] (-) TimerEvent: {}
+[10.744247] (-) TimerEvent: {}
+[10.844635] (-) TimerEvent: {}
+[10.945041] (-) TimerEvent: {}
+[11.045428] (-) TimerEvent: {}
+[11.145820] (-) TimerEvent: {}
+[11.246248] (-) TimerEvent: {}
+[11.346668] (-) TimerEvent: {}
+[11.447048] (-) TimerEvent: {}
+[11.547448] (-) TimerEvent: {}
+[11.647911] (-) TimerEvent: {}
+[11.748347] (-) TimerEvent: {}
+[11.848790] (-) TimerEvent: {}
+[11.949231] (-) TimerEvent: {}
+[12.049630] (-) TimerEvent: {}
+[12.150013] (-) TimerEvent: {}
+[12.250440] (-) TimerEvent: {}
+[12.350887] (-) TimerEvent: {}
+[12.451290] (-) TimerEvent: {}
+[12.551677] (-) TimerEvent: {}
+[12.652068] (-) TimerEvent: {}
+[12.752459] (-) TimerEvent: {}
+[12.852841] (-) TimerEvent: {}
+[12.953227] (-) TimerEvent: {}
+[13.053602] (-) TimerEvent: {}
+[13.153977] (-) TimerEvent: {}
+[13.254362] (-) TimerEvent: {}
+[13.354758] (-) TimerEvent: {}
+[13.455238] (-) TimerEvent: {}
+[13.555659] (-) TimerEvent: {}
+[13.656304] (-) TimerEvent: {}
+[13.756743] (-) TimerEvent: {}
+[13.857220] (-) TimerEvent: {}
+[13.957695] (-) TimerEvent: {}
+[14.058178] (-) TimerEvent: {}
+[14.158648] (-) TimerEvent: {}
+[14.259109] (-) TimerEvent: {}
+[14.359466] (-) TimerEvent: {}
+[14.459814] (-) TimerEvent: {}
+[14.560174] (-) TimerEvent: {}
+[14.660529] (-) TimerEvent: {}
+[14.760884] (-) TimerEvent: {}
+[14.861231] (-) TimerEvent: {}
+[14.961597] (-) TimerEvent: {}
+[15.061988] (-) TimerEvent: {}
+[15.162444] (-) TimerEvent: {}
+[15.262836] (-) TimerEvent: {}
+[15.363204] (-) TimerEvent: {}
+[15.463606] (-) TimerEvent: {}
+[15.520895] (ros2_lidar) StdoutLine: {'line': b'[ 28%] \x1b[32m\x1b[1mLinking CXX shared library liblidar_driver_core.so\x1b[0m\n'}
+[15.563748] (-) TimerEvent: {}
+[15.664298] (-) TimerEvent: {}
+[15.764818] (-) TimerEvent: {}
+[15.865422] (-) TimerEvent: {}
+[15.966022] (-) TimerEvent: {}
+[16.066468] (-) TimerEvent: {}
+[16.166944] (-) TimerEvent: {}
+[16.267373] (-) TimerEvent: {}
+[16.356020] (ros2_lidar) StdoutLine: {'line': b'[ 71%] Built target lidar_driver_core\n'}
+[16.367502] (-) TimerEvent: {}
+[16.413528] (ros2_lidar) StdoutLine: {'line': b'[ 85%] \x1b[32m\x1b[1mLinking CXX executable lidar_driver\x1b[0m\n'}
+[16.467717] (-) TimerEvent: {}
+[16.568295] (-) TimerEvent: {}
+[16.668962] (-) TimerEvent: {}
+[16.769516] (-) TimerEvent: {}
+[16.857969] (ros2_lidar) StdoutLine: {'line': b'[100%] Built target lidar_driver\n'}
+[16.869640] (-) TimerEvent: {}
+[16.874413] (ros2_lidar) CommandEnded: {'returncode': 0}
+[16.875960] (ros2_lidar) JobProgress: {'identifier': 'ros2_lidar', 'progress': 'install'}
+[16.891744] (ros2_lidar) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/grz/trolley_auto_drive_image/code/build/ros2_lidar'], 'cwd': '/home/grz/trolley_auto_drive_image/code/build/ros2_lidar', 'env': OrderedDict([('PYTHON_BASIC_REPL', '1'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'grz'), ('SSH_CLIENT', '10.111.248.207 9213 22'), ('LC_TIME', 'zh_CN.UTF-8'), ('XDG_SESSION_TYPE', 'tty'), ('GIT_ASKPASS', '/home/grz/.vscode-server/cli/servers/Stable-585eba7c0c34fd6b30faac7c62a42050bfbc0086/server/extensions/git/dist/askpass.sh'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('BROWSER', '/home/grz/.vscode-server/cli/servers/Stable-585eba7c0c34fd6b30faac7c62a42050bfbc0086/server/bin/helpers/browser.sh'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/grz'), ('OLDPWD', '/home/grz/trolley_auto_drive_image/code/src'), ('TERM_PROGRAM_VERSION', '1.108.1'), ('VSCODE_IPC_HOOK_CLI', '/run/user/1000/vscode-ipc-766bde2b-c493-461c-95fb-51ab7415436b.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/home/grz/.vscode-server/cli/servers/Stable-585eba7c0c34fd6b30faac7c62a42050bfbc0086/server/extensions/git/dist/askpass-main.js'), ('LC_MONETARY', 'zh_CN.UTF-8'), ('VSCODE_GIT_ASKPASS_NODE', '/home/grz/.vscode-server/cli/servers/Stable-585eba7c0c34fd6b30faac7c62a42050bfbc0086/server/node'), ('SSL_CERT_FILE', '/usr/lib/ssl/certs/ca-certificates.crt'), ('VSCODE_PYTHON_AUTOACTIVATE_GUARD', '1'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'grz'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', '4'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/grz/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/home/grz/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/home/grz/.vscode-server/cli/servers/Stable-585eba7c0c34fd6b30faac7c62a42050bfbc0086/server/bin/remote-cli:/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('LC_ADDRESS', 'zh_CN.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('SSL_CERT_DIR', '/usr/lib/ssl/certs'), ('LANG', 'en_US.UTF-8'), ('PYTHONSTARTUP', '/home/grz/.vscode-server/data/User/workspaceStorage/6e2bb5c3d42b7f3f4bb79d32cbc46231/ms-python.python/pythonrc.py'), ('LC_TELEPHONE', 'zh_CN.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-de34ed2d2a.sock'), ('TERM_PROGRAM', 'vscode'), ('AMENT_PREFIX_PATH', '/home/grz/trolley_auto_drive_image/code/install/lidar_msgs:/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('LC_NAME', 'zh_CN.UTF-8'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'zh_CN.UTF-8'), ('LC_IDENTIFICATION', 'zh_CN.UTF-8'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('PWD', '/home/grz/trolley_auto_drive_image/code/build/ros2_lidar'), ('LC_ALL', 'en_US.UTF-8'), ('SSH_CONNECTION', '10.111.248.207 9213 10.111.248.63 22'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('LC_NUMERIC', 'zh_CN.UTF-8'), ('LC_PAPER', 'zh_CN.UTF-8'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/grz/trolley_auto_drive_image/code/install/lidar_msgs:/opt/ros/foxy')]), 'shell': False}
+[16.905242] (ros2_lidar) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[16.905833] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/lib/ros2_lidar/lidar_driver\n'}
+[16.906955] (ros2_lidar) StdoutLine: {'line': b'-- Set runtime path of "/home/grz/trolley_auto_drive_image/code/install/ros2_lidar/lib/ros2_lidar/lidar_driver" to ""\n'}
+[16.907557] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/lib/liblidar_driver_core.so\n'}
+[16.913970] (ros2_lidar) StdoutLine: {'line': b'-- Set runtime path of "/home/grz/trolley_auto_drive_image/code/install/ros2_lidar/lib/liblidar_driver_core.so" to ""\n'}
+[16.914620] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include/\n'}
+[16.915066] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar\n'}
+[16.915424] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/OS1\n'}
+[16.915791] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/OS1/OS1_util.hpp\n'}
+[16.916041] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/OS1/OS1_sensor.hpp\n'}
+[16.916282] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/OS1/OS1_packet.hpp\n'}
+[16.916547] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/OS1/processors\n'}
+[16.916788] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/OS1/processors/scan_processor.hpp\n'}
+[16.917028] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/OS1/processors/image_processor.hpp\n'}
+[16.917275] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/OS1/processors/pointcloud_processor.hpp\n'}
+[16.917469] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/OS1/processors/imu_processor.hpp\n'}
+[16.917681] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/OS1/OS1.hpp\n'}
+[16.918015] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/OS1/processor_factories.hpp\n'}
+[16.918268] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/driver_types.hpp\n'}
+[16.918509] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/exception.hpp\n'}
+[16.918689] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/image_os.hpp\n'}
+[16.918852] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/conversions.hpp\n'}
+[16.919012] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/interfaces\n'}
+[16.919170] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/interfaces/metadata.hpp\n'}
+[16.919342] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/interfaces/lifecycle_interface.hpp\n'}
+[16.919501] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/interfaces/data_processor_interface.hpp\n'}
+[16.919658] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/interfaces/sensor_interface.hpp\n'}
+[16.919815] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/interfaces/configuration.hpp\n'}
+[16.920306] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/scan_os.hpp\n'}
+[16.921147] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/string_utils.hpp\n'}
+[16.922060] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/point_os.hpp\n'}
+[16.922271] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/lidar_driver.hpp\n'}
+[16.922436] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/launch\n'}
+[16.922622] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/launch/ole2dv2_front_launch.py\n'}
+[16.922971] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/launch/ole2dv2_back_launch.py\n'}
+[16.923237] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/launch/ole3dv2_launch.py\n'}
+[16.923590] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/launch/os1_launch.py\n'}
+[16.923753] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/params\n'}
+[16.924041] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/params/os1.yaml\n'}
+[16.924263] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/params/ole2dv2_back.yaml\n'}
+[16.924566] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/params/ole3dv2.yaml\n'}
+[16.924752] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/params/ole2dv2_front.yaml\n'}
+[16.924883] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/environment/library_path.sh\n'}
+[16.925398] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/environment/library_path.dsv\n'}
+[16.925558] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ament_index/resource_index/package_run_dependencies/ros2_lidar\n'}
+[16.925730] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ament_index/resource_index/parent_prefix_path/ros2_lidar\n'}
+[16.926049] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/environment/ament_prefix_path.sh\n'}
+[16.926164] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/environment/ament_prefix_path.dsv\n'}
+[16.926281] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/environment/path.sh\n'}
+[16.926715] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/environment/path.dsv\n'}
+[16.926943] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/local_setup.bash\n'}
+[16.927073] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/local_setup.sh\n'}
+[16.927174] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/local_setup.zsh\n'}
+[16.927560] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/local_setup.dsv\n'}
+[16.927725] (ros2_lidar) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/package.dsv\n'}
+[16.927951] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ament_index/resource_index/packages/ros2_lidar\n'}
+[16.928122] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ament_index/resource_index/rclcpp_components/ros2_lidar\n'}
+[16.928223] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[16.928332] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[16.928541] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[16.928704] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/cmake/ros2_lidarConfig.cmake\n'}
+[16.928863] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/cmake/ros2_lidarConfig-version.cmake\n'}
+[16.929100] (ros2_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/package.xml\n'}
+[16.929215] (ros2_lidar) CommandEnded: {'returncode': 0}
+[16.965903] (ros2_lidar) JobEnded: {'identifier': 'ros2_lidar', 'rc': 0}
+[16.967417] (-) EventReactorShutdown: {}

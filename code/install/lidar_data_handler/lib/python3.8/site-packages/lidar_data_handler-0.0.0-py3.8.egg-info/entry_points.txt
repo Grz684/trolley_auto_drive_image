@@ -1,0 +1,3 @@
+[console_scripts]
+lidar_data_handler = lidar_data_handler.receive_lidar_data:main
+

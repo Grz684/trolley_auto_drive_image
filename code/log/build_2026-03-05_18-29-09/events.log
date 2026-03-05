@@ -1,0 +1,168 @@
+[0.000000] (-) TimerEvent: {}
+[0.000231] (-) JobUnselected: {'identifier': 'lidar_data_handler'}
+[0.000346] (-) JobUnselected: {'identifier': 'lidar_msgs'}
+[0.000488] (-) JobUnselected: {'identifier': 'linear_displacement_sensor'}
+[0.000571] (-) JobUnselected: {'identifier': 'linear_sensor_msgs'}
+[0.000698] (-) JobUnselected: {'identifier': 'olei_interfaces'}
+[0.000768] (-) JobUnselected: {'identifier': 'ros2_lidar'}
+[0.000826] (olei_driver) JobQueued: {'identifier': 'olei_driver', 'dependencies': OrderedDict([('olei_interfaces', '/home/grz/trolley_auto_drive_image/code/install/olei_interfaces')])}
+[0.000886] (olei_driver) JobStarted: {'identifier': 'olei_driver'}
+[0.018055] (olei_driver) JobProgress: {'identifier': 'olei_driver', 'progress': 'cmake'}
+[0.019911] (olei_driver) Command: {'cmd': ['/usr/bin/cmake', '/home/grz/trolley_auto_drive_image/code/src/ole2d_ros2_driver_new/olei_driver', '-DCMAKE_INSTALL_PREFIX=/home/grz/trolley_auto_drive_image/code/install/olei_driver'], 'cwd': '/home/grz/trolley_auto_drive_image/code/build/olei_driver', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'grz'), ('SSH_CLIENT', '10.111.248.207 9213 22'), ('LC_TIME', 'zh_CN.UTF-8'), ('XDG_SESSION_TYPE', 'tty'), ('GIT_ASKPASS', '/home/grz/.vscode-server/cli/servers/Stable-585eba7c0c34fd6b30faac7c62a42050bfbc0086/server/extensions/git/dist/askpass.sh'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/grz/trolley_auto_drive_image/code/install/olei_interfaces/lib:/home/grz/trolley_auto_drive_image/code/install/ros2_lidar/lib:/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib:/home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('BROWSER', '/home/grz/.vscode-server/cli/servers/Stable-585eba7c0c34fd6b30faac7c62a42050bfbc0086/server/bin/helpers/browser.sh'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/grz'), ('OLDPWD', '/home/grz/trolley_auto_drive_image/code/src'), ('TERM_PROGRAM_VERSION', '1.108.1'), ('VSCODE_IPC_HOOK_CLI', '/run/user/1000/vscode-ipc-ff43a12a-ced7-444d-b3e0-94f2718f5065.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/home/grz/.vscode-server/cli/servers/Stable-585eba7c0c34fd6b30faac7c62a42050bfbc0086/server/extensions/git/dist/askpass-main.js'), ('LC_MONETARY', 'zh_CN.UTF-8'), ('VSCODE_GIT_ASKPASS_NODE', '/home/grz/.vscode-server/cli/servers/Stable-585eba7c0c34fd6b30faac7c62a42050bfbc0086/server/node'), ('SSL_CERT_FILE', '/usr/lib/ssl/certs/ca-certificates.crt'), ('VSCODE_PYTHON_AUTOACTIVATE_GUARD', '1'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('COLCON_PREFIX_PATH', '/home/grz/trolley_auto_drive_image/code/install'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'grz'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', '4'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/grz/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/home/grz/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/home/grz/.vscode-server/cli/servers/Stable-585eba7c0c34fd6b30faac7c62a42050bfbc0086/server/bin/remote-cli:/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('LC_ADDRESS', 'zh_CN.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('SSL_CERT_DIR', '/usr/lib/ssl/certs'), ('LANG', 'en_US.UTF-8'), ('LC_TELEPHONE', 'zh_CN.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-4c22939ec7.sock'), ('TERM_PROGRAM', 'vscode'), ('AMENT_PREFIX_PATH', '/home/grz/trolley_auto_drive_image/code/install/ros2_lidar:/home/grz/trolley_auto_drive_image/code/install/olei_interfaces:/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs:/home/grz/trolley_auto_drive_image/code/install/linear_displacement_sensor:/home/grz/trolley_auto_drive_image/code/install/lidar_msgs:/home/grz/trolley_auto_drive_image/code/install/lidar_data_handler:/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('LC_NAME', 'zh_CN.UTF-8'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'zh_CN.UTF-8'), ('LC_IDENTIFICATION', 'zh_CN.UTF-8'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('PWD', '/home/grz/trolley_auto_drive_image/code/build/olei_driver'), ('LC_ALL', 'en_US.UTF-8'), ('SSH_CONNECTION', '10.111.248.207 9213 10.111.248.63 22'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/grz/trolley_auto_drive_image/code/install/olei_interfaces/lib/python3.8/site-packages:/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib/python3.8/site-packages:/home/grz/trolley_auto_drive_image/code/build/linear_displacement_sensor:/home/grz/trolley_auto_drive_image/code/install/linear_displacement_sensor/lib/python3.8/site-packages:/home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib/python3.8/site-packages:/home/grz/trolley_auto_drive_image/code/build/lidar_data_handler:/home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('LC_NUMERIC', 'zh_CN.UTF-8'), ('LC_PAPER', 'zh_CN.UTF-8'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/grz/trolley_auto_drive_image/code/install/olei_interfaces:/home/grz/trolley_auto_drive_image/code/install/ros2_lidar:/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs:/home/grz/trolley_auto_drive_image/code/install/lidar_msgs:/home/grz/trolley_auto_drive_image/code/install/linear_displacement_sensor:/home/grz/trolley_auto_drive_image/code/install/lidar_data_handler:/opt/ros/foxy')]), 'shell': False}
+[0.047554] (olei_driver) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[0.089440] (olei_driver) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[0.098618] (-) TimerEvent: {}
+[0.199060] (-) TimerEvent: {}
+[0.299480] (-) TimerEvent: {}
+[0.356765] (olei_driver) StdoutLine: {'line': b'-- Found olei_interfaces: 2.0.0 (/home/grz/trolley_auto_drive_image/code/install/olei_interfaces/share/olei_interfaces/cmake)\n'}
+[0.384689] (olei_driver) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.389476] (olei_driver) StdoutLine: {'line': b'-- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)\n'}
+[0.399603] (-) TimerEvent: {}
+[0.499961] (-) TimerEvent: {}
+[0.559153] (olei_driver) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.594680] (olei_driver) StdoutLine: {'line': b'-- Found laser_geometry: 2.2.0 (/opt/ros/foxy/share/laser_geometry/cmake)\n'}
+[0.600083] (-) TimerEvent: {}
+[0.601219] (olei_driver) StdoutLine: {'line': b'-- Found pcl_conversions: 2.2.1 (/opt/ros/foxy/share/pcl_conversions/cmake)\n'}
+[0.700280] (-) TimerEvent: {}
+[0.800763] (-) TimerEvent: {}
+[0.901229] (-) TimerEvent: {}
+[1.001614] (-) TimerEvent: {}
+[1.087829] (olei_driver) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)\n'}
+[1.090102] (olei_driver) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[1.101744] (-) TimerEvent: {}
+[1.202136] (-) TimerEvent: {}
+[1.302502] (-) TimerEvent: {}
+[1.323023] (olei_driver) StdoutLine: {'line': b'-- Found pcl_ros: 2.2.1 (/opt/ros/foxy/share/pcl_ros/cmake)\n'}
+[1.402621] (-) TimerEvent: {}
+[1.466425] (olei_driver) StdoutLine: {'line': b'-- Found Eigen3: TRUE (found version "3.3.7") \n'}
+[1.502748] (-) TimerEvent: {}
+[1.603158] (-) TimerEvent: {}
+[1.703527] (-) TimerEvent: {}
+[1.803892] (-) TimerEvent: {}
+[1.904262] (-) TimerEvent: {}
+[2.004655] (-) TimerEvent: {}
+[2.077616] (olei_driver) StdoutLine: {'line': b"-- Checking for module 'eigen3'\n"}
+[2.100968] (olei_driver) StdoutLine: {'line': b'--   Found eigen3, version 3.3.7\n'}
+[2.104788] (-) TimerEvent: {}
+[2.155339] (olei_driver) StdoutLine: {'line': b'-- Found Eigen: /usr/include/eigen3 (Required is at least version "3.1") \n'}
+[2.155820] (olei_driver) StdoutLine: {'line': b'-- Eigen found (include: /usr/include/eigen3, version: 3.3.7)\n'}
+[2.204907] (-) TimerEvent: {}
+[2.256043] (olei_driver) StdoutLine: {'line': b"-- Checking for module 'flann'\n"}
+[2.301467] (olei_driver) StdoutLine: {'line': b'--   Found flann, version 1.9.1\n'}
+[2.305020] (-) TimerEvent: {}
+[2.366335] (olei_driver) StdoutLine: {'line': b'-- Found FLANN: /usr/lib/x86_64-linux-gnu/libflann_cpp.so  \n'}
+[2.405150] (-) TimerEvent: {}
+[2.501662] (olei_driver) StdoutLine: {'line': b'-- The imported target "vtkParseOGLExt" references the file\n'}
+[2.501932] (olei_driver) StdoutLine: {'line': b'   "/usr/bin/vtkParseOGLExt-7.1"\n'}
+[2.502050] (olei_driver) StdoutLine: {'line': b'but this file does not exist.  Possible reasons include:\n'}
+[2.502194] (olei_driver) StdoutLine: {'line': b'* The file was deleted, renamed, or moved to another location.\n'}
+[2.502306] (olei_driver) StdoutLine: {'line': b'* An install or uninstall procedure did not complete successfully.\n'}
+[2.502407] (olei_driver) StdoutLine: {'line': b'* The installation package was faulty and contained\n'}
+[2.502506] (olei_driver) StdoutLine: {'line': b'   "/usr/lib/cmake/vtk-7.1/VTKTargets.cmake"\n'}
+[2.502603] (olei_driver) StdoutLine: {'line': b'but not all the files it references.\n'}
+[2.502700] (olei_driver) StdoutLine: {'line': b'\n'}
+[2.503964] (olei_driver) StdoutLine: {'line': b'-- The imported target "vtkRenderingPythonTkWidgets" references the file\n'}
+[2.504113] (olei_driver) StdoutLine: {'line': b'   "/usr/lib/x86_64-linux-gnu/libvtkRenderingPythonTkWidgets.so"\n'}
+[2.504225] (olei_driver) StdoutLine: {'line': b'but this file does not exist.  Possible reasons include:\n'}
+[2.504353] (olei_driver) StdoutLine: {'line': b'* The file was deleted, renamed, or moved to another location.\n'}
+[2.504535] (olei_driver) StdoutLine: {'line': b'* An install or uninstall procedure did not complete successfully.\n'}
+[2.504732] (olei_driver) StdoutLine: {'line': b'* The installation package was faulty and contained\n'}
+[2.504925] (olei_driver) StdoutLine: {'line': b'   "/usr/lib/cmake/vtk-7.1/VTKTargets.cmake"\n'}
+[2.505108] (olei_driver) StdoutLine: {'line': b'but not all the files it references.\n'}
+[2.505232] (-) TimerEvent: {}
+[2.505383] (olei_driver) StdoutLine: {'line': b'\n'}
+[2.505737] (olei_driver) StdoutLine: {'line': b'-- The imported target "vtk" references the file\n'}
+[2.505868] (olei_driver) StdoutLine: {'line': b'   "/usr/bin/vtk"\n'}
+[2.505975] (olei_driver) StdoutLine: {'line': b'but this file does not exist.  Possible reasons include:\n'}
+[2.506092] (olei_driver) StdoutLine: {'line': b'* The file was deleted, renamed, or moved to another location.\n'}
+[2.506318] (olei_driver) StdoutLine: {'line': b'* An install or uninstall procedure did not complete successfully.\n'}
+[2.506428] (olei_driver) StdoutLine: {'line': b'* The installation package was faulty and contained\n'}
+[2.506527] (olei_driver) StdoutLine: {'line': b'   "/usr/lib/cmake/vtk-7.1/VTKTargets.cmake"\n'}
+[2.506626] (olei_driver) StdoutLine: {'line': b'but not all the files it references.\n'}
+[2.506722] (olei_driver) StdoutLine: {'line': b'\n'}
+[2.506818] (olei_driver) StdoutLine: {'line': b'-- The imported target "pvtk" references the file\n'}
+[2.506915] (olei_driver) StdoutLine: {'line': b'   "/usr/bin/pvtk"\n'}
+[2.507022] (olei_driver) StdoutLine: {'line': b'but this file does not exist.  Possible reasons include:\n'}
+[2.507122] (olei_driver) StdoutLine: {'line': b'* The file was deleted, renamed, or moved to another location.\n'}
+[2.507219] (olei_driver) StdoutLine: {'line': b'* An install or uninstall procedure did not complete successfully.\n'}
+[2.507316] (olei_driver) StdoutLine: {'line': b'* The installation package was faulty and contained\n'}
+[2.507411] (olei_driver) StdoutLine: {'line': b'   "/usr/lib/cmake/vtk-7.1/VTKTargets.cmake"\n'}
+[2.507507] (olei_driver) StdoutLine: {'line': b'but not all the files it references.\n'}
+[2.507603] (olei_driver) StdoutLine: {'line': b'\n'}
+[2.548024] (olei_driver) StdoutLine: {'line': b"-- Checking for module 'libusb-1.0'\n"}
+[2.552789] (olei_driver) StdoutLine: {'line': b"--   No package 'libusb-1.0' found\n"}
+[2.560318] (olei_driver) StdoutLine: {'line': b'-- Could NOT find USB_10 (missing: USB_10_LIBRARY USB_10_INCLUDE_DIR) \n'}
+[2.560800] (olei_driver) StdoutLine: {'line': b'-- OpenNI disabled because libusb-1.0 not found.\n'}
+[2.569032] (olei_driver) StdoutLine: {'line': b"-- Checking for module 'libusb-1.0'\n"}
+[2.573980] (olei_driver) StdoutLine: {'line': b"--   No package 'libusb-1.0' found\n"}
+[2.579827] (olei_driver) StdoutLine: {'line': b'-- Could NOT find USB_10 (missing: USB_10_LIBRARY USB_10_INCLUDE_DIR) \n'}
+[2.580574] (olei_driver) StdoutLine: {'line': b'-- OpenNI 2 disabled because libusb-1.0 not found.\n'}
+[2.601984] (olei_driver) StdoutLine: {'line': b'-- LIBUSB_1_LIBRARY (missing: LIBUSB_1_INCLUDE_DIR) \n'}
+[2.605440] (-) TimerEvent: {}
+[2.610234] (olei_driver) StdoutLine: {'line': b"-- Checking for module 'libusb-1.0'\n"}
+[2.615223] (olei_driver) StdoutLine: {'line': b"--   No package 'libusb-1.0' found\n"}
+[2.620706] (olei_driver) StdoutLine: {'line': b'-- Could NOT find USB_10 (missing: USB_10_LIBRARY USB_10_INCLUDE_DIR) \n'}
+[2.621118] (olei_driver) StdoutLine: {'line': b'-- OpenNI disabled because libusb-1.0 not found.\n'}
+[2.628281] (olei_driver) StdoutLine: {'line': b"-- Checking for module 'libusb-1.0'\n"}
+[2.633211] (olei_driver) StdoutLine: {'line': b"--   No package 'libusb-1.0' found\n"}
+[2.639179] (olei_driver) StdoutLine: {'line': b'-- Could NOT find USB_10 (missing: USB_10_LIBRARY USB_10_INCLUDE_DIR) \n'}
+[2.639532] (olei_driver) StdoutLine: {'line': b'-- OpenNI 2 disabled because libusb-1.0 not found.\n'}
+[2.686459] (olei_driver) StdoutLine: {'line': b'-- Found Qhull: optimized;/usr/lib/x86_64-linux-gnu/libqhull.so;debug;/usr/lib/x86_64-linux-gnu/libqhull.so  \n'}
+[2.686793] (olei_driver) StdoutLine: {'line': b'-- QHULL found (include: /usr/include, lib: optimized;/usr/lib/x86_64-linux-gnu/libqhull.so;debug;/usr/lib/x86_64-linux-gnu/libqhull.so)\n'}
+[2.694020] (olei_driver) StdoutLine: {'line': b"-- Checking for module 'libusb-1.0'\n"}
+[2.698572] (olei_driver) StdoutLine: {'line': b"--   No package 'libusb-1.0' found\n"}
+[2.703913] (olei_driver) StdoutLine: {'line': b'-- Could NOT find USB_10 (missing: USB_10_LIBRARY USB_10_INCLUDE_DIR) \n'}
+[2.704209] (olei_driver) StdoutLine: {'line': b'-- OpenNI disabled because libusb-1.0 not found.\n'}
+[2.705508] (-) TimerEvent: {}
+[2.724827] (olei_driver) StdoutLine: {'line': b'-- Found PCL_COMMON: /usr/lib/x86_64-linux-gnu/libpcl_common.so  \n'}
+[2.727615] (olei_driver) StdoutLine: {'line': b'-- Found PCL_KDTREE: /usr/lib/x86_64-linux-gnu/libpcl_kdtree.so  \n'}
+[2.730198] (olei_driver) StdoutLine: {'line': b'-- Found PCL_OCTREE: /usr/lib/x86_64-linux-gnu/libpcl_octree.so  \n'}
+[2.732913] (olei_driver) StdoutLine: {'line': b'-- Found PCL_SEARCH: /usr/lib/x86_64-linux-gnu/libpcl_search.so  \n'}
+[2.736601] (olei_driver) StdoutLine: {'line': b'-- Found PCL_SAMPLE_CONSENSUS: /usr/lib/x86_64-linux-gnu/libpcl_sample_consensus.so  \n'}
+[2.738939] (olei_driver) StdoutLine: {'line': b'-- Found PCL_FILTERS: /usr/lib/x86_64-linux-gnu/libpcl_filters.so  \n'}
+[2.740048] (olei_driver) StdoutLine: {'line': b'-- Found PCL_2D: /usr/include/pcl-1.10  \n'}
+[2.741016] (olei_driver) StdoutLine: {'line': b'-- Found PCL_GEOMETRY: /usr/include/pcl-1.10  \n'}
+[2.743197] (olei_driver) StdoutLine: {'line': b'-- Found PCL_IO: /usr/lib/x86_64-linux-gnu/libpcl_io.so  \n'}
+[2.745487] (olei_driver) StdoutLine: {'line': b'-- Found PCL_FEATURES: /usr/lib/x86_64-linux-gnu/libpcl_features.so  \n'}
+[2.747871] (olei_driver) StdoutLine: {'line': b'-- Found PCL_ML: /usr/lib/x86_64-linux-gnu/libpcl_ml.so  \n'}
+[2.749976] (olei_driver) StdoutLine: {'line': b'-- Found PCL_SEGMENTATION: /usr/lib/x86_64-linux-gnu/libpcl_segmentation.so  \n'}
+[2.752439] (olei_driver) StdoutLine: {'line': b'-- Found PCL_VISUALIZATION: /usr/lib/x86_64-linux-gnu/libpcl_visualization.so  \n'}
+[2.754730] (olei_driver) StdoutLine: {'line': b'-- Found PCL_SURFACE: /usr/lib/x86_64-linux-gnu/libpcl_surface.so  \n'}
+[2.757090] (olei_driver) StdoutLine: {'line': b'-- Found PCL_REGISTRATION: /usr/lib/x86_64-linux-gnu/libpcl_registration.so  \n'}
+[2.759719] (olei_driver) StdoutLine: {'line': b'-- Found PCL_KEYPOINTS: /usr/lib/x86_64-linux-gnu/libpcl_keypoints.so  \n'}
+[2.762368] (olei_driver) StdoutLine: {'line': b'-- Found PCL_TRACKING: /usr/lib/x86_64-linux-gnu/libpcl_tracking.so  \n'}
+[2.765127] (olei_driver) StdoutLine: {'line': b'-- Found PCL_RECOGNITION: /usr/lib/x86_64-linux-gnu/libpcl_recognition.so  \n'}
+[2.767919] (olei_driver) StdoutLine: {'line': b'-- Found PCL_STEREO: /usr/lib/x86_64-linux-gnu/libpcl_stereo.so  \n'}
+[2.770414] (olei_driver) StdoutLine: {'line': b'-- Found PCL_APPS: /usr/lib/x86_64-linux-gnu/libpcl_apps.so  \n'}
+[2.772471] (olei_driver) StdoutLine: {'line': b'-- Found PCL_IN_HAND_SCANNER: /usr/include/pcl-1.10  \n'}
+[2.775461] (olei_driver) StdoutLine: {'line': b'-- Found PCL_POINT_CLOUD_EDITOR: /usr/include/pcl-1.10  \n'}
+[2.778069] (olei_driver) StdoutLine: {'line': b'-- Found PCL_OUTOFCORE: /usr/lib/x86_64-linux-gnu/libpcl_outofcore.so  \n'}
+[2.780390] (olei_driver) StdoutLine: {'line': b'-- Found PCL_PEOPLE: /usr/lib/x86_64-linux-gnu/libpcl_people.so  \n'}
+[2.805640] (-) TimerEvent: {}
+[2.906013] (-) TimerEvent: {}
+[3.006350] (-) TimerEvent: {}
+[3.106686] (-) TimerEvent: {}
+[3.113731] (olei_driver) StdoutLine: {'line': b'-- Found Boost: /usr/include (found version "1.71.0") found components: thread system chrono date_time atomic \n'}
+[3.131604] (olei_driver) StderrLine: {'line': b'CMake Error at CMakeLists.txt:21 (find_package):\n'}
+[3.132035] (olei_driver) StderrLine: {'line': b'  By not providing "Findyaml-cpp.cmake" in CMAKE_MODULE_PATH this project has\n'}
+[3.132292] (olei_driver) StderrLine: {'line': b'  asked CMake to find a package configuration file provided by "yaml-cpp",\n'}
+[3.132517] (olei_driver) StderrLine: {'line': b'  but CMake did not find one.\n'}
+[3.132714] (olei_driver) StderrLine: {'line': b'\n'}
+[3.132900] (olei_driver) StderrLine: {'line': b'  Could not find a package configuration file provided by "yaml-cpp" with any\n'}
+[3.133109] (olei_driver) StderrLine: {'line': b'  of the following names:\n'}
+[3.133305] (olei_driver) StderrLine: {'line': b'\n'}
+[3.133497] (olei_driver) StderrLine: {'line': b'    yaml-cppConfig.cmake\n'}
+[3.133678] (olei_driver) StderrLine: {'line': b'    yaml-cpp-config.cmake\n'}
+[3.133858] (olei_driver) StderrLine: {'line': b'\n'}
+[3.134058] (olei_driver) StderrLine: {'line': b'  Add the installation prefix of "yaml-cpp" to CMAKE_PREFIX_PATH or set\n'}
+[3.134273] (olei_driver) StderrLine: {'line': b'  "yaml-cpp_DIR" to a directory containing one of the above files.  If\n'}
+[3.134473] (olei_driver) StderrLine: {'line': b'  "yaml-cpp" provides a separate development package or SDK, be sure it has\n'}
+[3.134651] (olei_driver) StderrLine: {'line': b'  been installed.\n'}
+[3.134821] (olei_driver) StderrLine: {'line': b'\n'}
+[3.134992] (olei_driver) StderrLine: {'line': b'\n'}
+[3.136441] (olei_driver) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[3.136685] (olei_driver) StdoutLine: {'line': b'See also "/home/grz/trolley_auto_drive_image/code/build/olei_driver/CMakeFiles/CMakeOutput.log".\n'}
+[3.136868] (olei_driver) StdoutLine: {'line': b'See also "/home/grz/trolley_auto_drive_image/code/build/olei_driver/CMakeFiles/CMakeError.log".\n'}
+[3.154298] (olei_driver) CommandEnded: {'returncode': 1}
+[3.191035] (olei_driver) JobEnded: {'identifier': 'olei_driver', 'rc': 1}
+[3.202091] (-) EventReactorShutdown: {}

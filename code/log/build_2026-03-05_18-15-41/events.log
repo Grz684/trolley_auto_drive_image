@@ -1,0 +1,367 @@
+[0.000000] (-) TimerEvent: {}
+[0.000368] (-) JobUnselected: {'identifier': 'lidar_data_handler'}
+[0.000642] (-) JobUnselected: {'identifier': 'lidar_msgs'}
+[0.000742] (-) JobUnselected: {'identifier': 'linear_displacement_sensor'}
+[0.000865] (-) JobUnselected: {'identifier': 'linear_sensor_msgs'}
+[0.000905] (-) JobUnselected: {'identifier': 'olei_driver'}
+[0.000936] (-) JobUnselected: {'identifier': 'ros2_lidar'}
+[0.001007] (olei_interfaces) JobQueued: {'identifier': 'olei_interfaces', 'dependencies': OrderedDict()}
+[0.001074] (olei_interfaces) JobStarted: {'identifier': 'olei_interfaces'}
+[0.012442] (olei_interfaces) JobProgress: {'identifier': 'olei_interfaces', 'progress': 'cmake'}
+[0.013398] (olei_interfaces) Command: {'cmd': ['/usr/bin/cmake', '/home/grz/trolley_auto_drive_image/code/src/ole2d_ros2_driver_new/olei_interfaces', '-DCMAKE_INSTALL_PREFIX=/home/grz/trolley_auto_drive_image/code/install/olei_interfaces'], 'cwd': '/home/grz/trolley_auto_drive_image/code/build/olei_interfaces', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'grz'), ('SSH_CLIENT', '10.111.248.207 9213 22'), ('LC_TIME', 'zh_CN.UTF-8'), ('XDG_SESSION_TYPE', 'tty'), ('GIT_ASKPASS', '/home/grz/.vscode-server/cli/servers/Stable-585eba7c0c34fd6b30faac7c62a42050bfbc0086/server/extensions/git/dist/askpass.sh'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('BROWSER', '/home/grz/.vscode-server/cli/servers/Stable-585eba7c0c34fd6b30faac7c62a42050bfbc0086/server/bin/helpers/browser.sh'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/grz'), ('OLDPWD', '/home/grz/trolley_auto_drive_image/code/src'), ('TERM_PROGRAM_VERSION', '1.108.1'), ('VSCODE_IPC_HOOK_CLI', '/run/user/1000/vscode-ipc-ff43a12a-ced7-444d-b3e0-94f2718f5065.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/home/grz/.vscode-server/cli/servers/Stable-585eba7c0c34fd6b30faac7c62a42050bfbc0086/server/extensions/git/dist/askpass-main.js'), ('LC_MONETARY', 'zh_CN.UTF-8'), ('VSCODE_GIT_ASKPASS_NODE', '/home/grz/.vscode-server/cli/servers/Stable-585eba7c0c34fd6b30faac7c62a42050bfbc0086/server/node'), ('SSL_CERT_FILE', '/usr/lib/ssl/certs/ca-certificates.crt'), ('VSCODE_PYTHON_AUTOACTIVATE_GUARD', '1'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'grz'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', '4'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/grz/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/home/grz/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/home/grz/.vscode-server/cli/servers/Stable-585eba7c0c34fd6b30faac7c62a42050bfbc0086/server/bin/remote-cli:/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('LC_ADDRESS', 'zh_CN.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('SSL_CERT_DIR', '/usr/lib/ssl/certs'), ('LANG', 'en_US.UTF-8'), ('LC_TELEPHONE', 'zh_CN.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-4c22939ec7.sock'), ('TERM_PROGRAM', 'vscode'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('LC_NAME', 'zh_CN.UTF-8'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'zh_CN.UTF-8'), ('LC_IDENTIFICATION', 'zh_CN.UTF-8'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('PWD', '/home/grz/trolley_auto_drive_image/code/build/olei_interfaces'), ('LC_ALL', 'en_US.UTF-8'), ('SSH_CONNECTION', '10.111.248.207 9213 10.111.248.63 22'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('LC_NUMERIC', 'zh_CN.UTF-8'), ('LC_PAPER', 'zh_CN.UTF-8'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[0.099278] (-) TimerEvent: {}
+[0.138658] (olei_interfaces) StdoutLine: {'line': b'-- The C compiler identification is GNU 9.4.0\n'}
+[0.199385] (-) TimerEvent: {}
+[0.218671] (olei_interfaces) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 9.4.0\n'}
+[0.230979] (olei_interfaces) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc\n'}
+[0.299549] (-) TimerEvent: {}
+[0.334101] (olei_interfaces) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc -- works\n'}
+[0.336435] (olei_interfaces) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.399674] (-) TimerEvent: {}
+[0.429702] (olei_interfaces) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.446507] (olei_interfaces) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.447258] (olei_interfaces) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.451797] (olei_interfaces) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++\n'}
+[0.499801] (-) TimerEvent: {}
+[0.559059] (olei_interfaces) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ -- works\n'}
+[0.561437] (olei_interfaces) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.599917] (-) TimerEvent: {}
+[0.673001] (olei_interfaces) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.689312] (olei_interfaces) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.690094] (olei_interfaces) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.693067] (olei_interfaces) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[0.700030] (-) TimerEvent: {}
+[0.729443] (olei_interfaces) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") \n'}
+[0.729818] (olei_interfaces) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[0.800146] (-) TimerEvent: {}
+[0.900609] (-) TimerEvent: {}
+[1.000962] (-) TimerEvent: {}
+[1.034011] (olei_interfaces) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.0.1 (/opt/ros/foxy/share/rosidl_default_generators/cmake)\n'}
+[1.040112] (olei_interfaces) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[1.050208] (olei_interfaces) StdoutLine: {'line': b'-- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)\n'}
+[1.101068] (-) TimerEvent: {}
+[1.190061] (olei_interfaces) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  \n'}
+[1.201194] (-) TimerEvent: {}
+[1.233520] (olei_interfaces) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/foxy/include  \n'}
+[1.301342] (-) TimerEvent: {}
+[1.358473] (olei_interfaces) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[1.401496] (-) TimerEvent: {}
+[1.433997] (olei_interfaces) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found version "3.8.10") \n'}
+[1.501613] (-) TimerEvent: {}
+[1.602020] (-) TimerEvent: {}
+[1.624481] (olei_interfaces) StdoutLine: {'line': b'-- Found ament_cmake_ros: 0.9.2 (/opt/ros/foxy/share/ament_cmake_ros/cmake)\n'}
+[1.702179] (-) TimerEvent: {}
+[1.763662] (olei_interfaces) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[1.775141] (olei_interfaces) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[1.802298] (-) TimerEvent: {}
+[1.810847] (olei_interfaces) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3.5") \n'}
+[1.812568] (olei_interfaces) StdoutLine: {'line': b'-- Found python_cmake_module: 0.8.1 (/opt/ros/foxy/share/python_cmake_module/cmake)\n'}
+[1.852386] (olei_interfaces) StdoutLine: {'line': b'-- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.8.so (found suitable version "3.8.10", minimum required is "3.5") \n'}
+[1.852916] (olei_interfaces) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[1.853118] (olei_interfaces) StdoutLine: {'line': b'-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.8\n'}
+[1.853285] (olei_interfaces) StdoutLine: {'line': b'-- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.8.so\n'}
+[1.882349] (olei_interfaces) StdoutLine: {'line': b'-- Found PythonExtra: .so  \n'}
+[1.902426] (-) TimerEvent: {}
+[1.956354] (olei_interfaces) StdoutLine: {'line': b'-- Configuring done\n'}
+[2.002523] (-) TimerEvent: {}
+[2.006334] (olei_interfaces) StdoutLine: {'line': b'-- Generating done\n'}
+[2.022405] (olei_interfaces) StdoutLine: {'line': b'-- Build files have been written to: /home/grz/trolley_auto_drive_image/code/build/olei_interfaces\n'}
+[2.031092] (olei_interfaces) CommandEnded: {'returncode': 0}
+[2.032301] (olei_interfaces) JobProgress: {'identifier': 'olei_interfaces', 'progress': 'build'}
+[2.033370] (olei_interfaces) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/grz/trolley_auto_drive_image/code/build/olei_interfaces', '--', '-j4', '-l4'], 'cwd': '/home/grz/trolley_auto_drive_image/code/build/olei_interfaces', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'grz'), ('SSH_CLIENT', '10.111.248.207 9213 22'), ('LC_TIME', 'zh_CN.UTF-8'), ('XDG_SESSION_TYPE', 'tty'), ('GIT_ASKPASS', '/home/grz/.vscode-server/cli/servers/Stable-585eba7c0c34fd6b30faac7c62a42050bfbc0086/server/extensions/git/dist/askpass.sh'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('BROWSER', '/home/grz/.vscode-server/cli/servers/Stable-585eba7c0c34fd6b30faac7c62a42050bfbc0086/server/bin/helpers/browser.sh'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/grz'), ('OLDPWD', '/home/grz/trolley_auto_drive_image/code/src'), ('TERM_PROGRAM_VERSION', '1.108.1'), ('VSCODE_IPC_HOOK_CLI', '/run/user/1000/vscode-ipc-ff43a12a-ced7-444d-b3e0-94f2718f5065.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/home/grz/.vscode-server/cli/servers/Stable-585eba7c0c34fd6b30faac7c62a42050bfbc0086/server/extensions/git/dist/askpass-main.js'), ('LC_MONETARY', 'zh_CN.UTF-8'), ('VSCODE_GIT_ASKPASS_NODE', '/home/grz/.vscode-server/cli/servers/Stable-585eba7c0c34fd6b30faac7c62a42050bfbc0086/server/node'), ('SSL_CERT_FILE', '/usr/lib/ssl/certs/ca-certificates.crt'), ('VSCODE_PYTHON_AUTOACTIVATE_GUARD', '1'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'grz'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', '4'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/grz/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/home/grz/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/home/grz/.vscode-server/cli/servers/Stable-585eba7c0c34fd6b30faac7c62a42050bfbc0086/server/bin/remote-cli:/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('LC_ADDRESS', 'zh_CN.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('SSL_CERT_DIR', '/usr/lib/ssl/certs'), ('LANG', 'en_US.UTF-8'), ('LC_TELEPHONE', 'zh_CN.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-4c22939ec7.sock'), ('TERM_PROGRAM', 'vscode'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('LC_NAME', 'zh_CN.UTF-8'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'zh_CN.UTF-8'), ('LC_IDENTIFICATION', 'zh_CN.UTF-8'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('PWD', '/home/grz/trolley_auto_drive_image/code/build/olei_interfaces'), ('LC_ALL', 'en_US.UTF-8'), ('SSH_CONNECTION', '10.111.248.207 9213 10.111.248.63 22'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('LC_NUMERIC', 'zh_CN.UTF-8'), ('LC_PAPER', 'zh_CN.UTF-8'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[2.091473] (olei_interfaces) StdoutLine: {'line': b'[  2%] \x1b[34m\x1b[1mGenerating C code for ROS interfaces\x1b[0m\n'}
+[2.092040] (olei_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target olei_interfaces__cpp\x1b[0m\n'}
+[2.102671] (-) TimerEvent: {}
+[2.108736] (olei_interfaces) StdoutLine: {'line': b'[  5%] \x1b[34m\x1b[1mGenerating C++ code for ROS interfaces\x1b[0m\n'}
+[2.202802] (-) TimerEvent: {}
+[2.303237] (-) TimerEvent: {}
+[2.404187] (-) TimerEvent: {}
+[2.508170] (-) TimerEvent: {}
+[2.608678] (-) TimerEvent: {}
+[2.709142] (-) TimerEvent: {}
+[2.809735] (-) TimerEvent: {}
+[2.910394] (-) TimerEvent: {}
+[3.010803] (-) TimerEvent: {}
+[3.111240] (-) TimerEvent: {}
+[3.189456] (olei_interfaces) StdoutLine: {'line': b'[  5%] Built target olei_interfaces__cpp\n'}
+[3.211204] (olei_interfaces) StdoutLine: {'line': b'[ 10%] \x1b[34m\x1b[1mGenerating C++ introspection for ROS interfaces\x1b[0m\n'}
+[3.211597] (-) TimerEvent: {}
+[3.212141] (olei_interfaces) StdoutLine: {'line': b'[  7%] \x1b[34m\x1b[1mGenerating C++ type support for eProsima Fast-RTPS\x1b[0m\n'}
+[3.212441] (olei_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target olei_interfaces__rosidl_generator_c\x1b[0m\n'}
+[3.221694] (olei_interfaces) StdoutLine: {'line': b'[ 12%] \x1b[34m\x1b[1mGenerating C++ type support dispatch for ROS interfaces\x1b[0m\n'}
+[3.239242] (olei_interfaces) StdoutLine: {'line': b'[ 15%] \x1b[32mBuilding C object CMakeFiles/olei_interfaces__rosidl_generator_c.dir/rosidl_generator_c/olei_interfaces/msg/detail/vf_header__functions.c.o\x1b[0m\n'}
+[3.311723] (-) TimerEvent: {}
+[3.366568] (olei_interfaces) StdoutLine: {'line': b'[ 17%] \x1b[32mBuilding C object CMakeFiles/olei_interfaces__rosidl_generator_c.dir/rosidl_generator_c/olei_interfaces/msg/detail/v2_header__functions.c.o\x1b[0m\n'}
+[3.411843] (-) TimerEvent: {}
+[3.485125] (olei_interfaces) StdoutLine: {'line': b'[ 20%] \x1b[32m\x1b[1mLinking C shared library libolei_interfaces__rosidl_generator_c.so\x1b[0m\n'}
+[3.512045] (-) TimerEvent: {}
+[3.566072] (olei_interfaces) StdoutLine: {'line': b'[ 20%] Built target olei_interfaces__rosidl_generator_c\n'}
+[3.588389] (olei_interfaces) StdoutLine: {'line': b'[ 23%] \x1b[34m\x1b[1mGenerating C introspection for ROS interfaces\x1b[0m\n'}
+[3.612159] (-) TimerEvent: {}
+[3.712980] (-) TimerEvent: {}
+[3.813846] (-) TimerEvent: {}
+[3.914704] (-) TimerEvent: {}
+[4.015534] (-) TimerEvent: {}
+[4.116385] (-) TimerEvent: {}
+[4.217235] (-) TimerEvent: {}
+[4.318082] (-) TimerEvent: {}
+[4.418897] (-) TimerEvent: {}
+[4.519771] (-) TimerEvent: {}
+[4.620585] (-) TimerEvent: {}
+[4.721488] (-) TimerEvent: {}
+[4.822503] (-) TimerEvent: {}
+[4.858919] (olei_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target olei_interfaces__rosidl_typesupport_cpp\x1b[0m\n'}
+[4.904305] (olei_interfaces) StdoutLine: {'line': b'[ 25%] \x1b[32mBuilding CXX object CMakeFiles/olei_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/olei_interfaces/msg/vf_header__type_support.cpp.o\x1b[0m\n'}
+[4.922686] (-) TimerEvent: {}
+[4.992624] (olei_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target olei_interfaces__rosidl_typesupport_fastrtps_cpp\x1b[0m\n'}
+[5.006225] (olei_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target olei_interfaces__rosidl_typesupport_introspection_cpp\x1b[0m\n'}
+[5.022808] (-) TimerEvent: {}
+[5.040311] (olei_interfaces) StdoutLine: {'line': b'[ 28%] \x1b[32mBuilding CXX object CMakeFiles/olei_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/olei_interfaces/msg/detail/dds_fastrtps/vf_header__type_support.cpp.o\x1b[0m\n'}
+[5.060376] (olei_interfaces) StdoutLine: {'line': b'[ 30%] \x1b[32mBuilding CXX object CMakeFiles/olei_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/olei_interfaces/msg/detail/vf_header__type_support.cpp.o\x1b[0m\n'}
+[5.122933] (-) TimerEvent: {}
+[5.223391] (-) TimerEvent: {}
+[5.323847] (-) TimerEvent: {}
+[5.398432] (olei_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target olei_interfaces__rosidl_typesupport_introspection_c\x1b[0m\n'}
+[5.423981] (-) TimerEvent: {}
+[5.447107] (olei_interfaces) StdoutLine: {'line': b'[ 33%] \x1b[32mBuilding C object CMakeFiles/olei_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/olei_interfaces/msg/detail/vf_header__type_support.c.o\x1b[0m\n'}
+[5.524119] (-) TimerEvent: {}
+[5.527861] (olei_interfaces) StdoutLine: {'line': b'[ 35%] \x1b[32mBuilding C object CMakeFiles/olei_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/olei_interfaces/msg/detail/v2_header__type_support.c.o\x1b[0m\n'}
+[5.605053] (olei_interfaces) StdoutLine: {'line': b'[ 38%] \x1b[32m\x1b[1mLinking C shared library libolei_interfaces__rosidl_typesupport_introspection_c.so\x1b[0m\n'}
+[5.624279] (-) TimerEvent: {}
+[5.637646] (olei_interfaces) StdoutLine: {'line': b'[ 41%] \x1b[32mBuilding CXX object CMakeFiles/olei_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/olei_interfaces/msg/v2_header__type_support.cpp.o\x1b[0m\n'}
+[5.673373] (olei_interfaces) StdoutLine: {'line': b'[ 41%] Built target olei_interfaces__rosidl_typesupport_introspection_c\n'}
+[5.693274] (olei_interfaces) StdoutLine: {'line': b'[ 43%] \x1b[32mBuilding CXX object CMakeFiles/olei_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/olei_interfaces/msg/detail/dds_fastrtps/v2_header__type_support.cpp.o\x1b[0m\n'}
+[5.724406] (-) TimerEvent: {}
+[5.825031] (-) TimerEvent: {}
+[5.868219] (olei_interfaces) StdoutLine: {'line': b'[ 46%] \x1b[32mBuilding CXX object CMakeFiles/olei_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/olei_interfaces/msg/detail/v2_header__type_support.cpp.o\x1b[0m\n'}
+[5.925161] (-) TimerEvent: {}
+[6.025778] (-) TimerEvent: {}
+[6.126425] (-) TimerEvent: {}
+[6.157179] (olei_interfaces) StdoutLine: {'line': b'[ 48%] \x1b[34m\x1b[1mGenerating C type support dispatch for ROS interfaces\x1b[0m\n'}
+[6.226555] (-) TimerEvent: {}
+[6.327195] (-) TimerEvent: {}
+[6.427806] (-) TimerEvent: {}
+[6.438899] (olei_interfaces) StdoutLine: {'line': b'[ 51%] \x1b[32m\x1b[1mLinking CXX shared library libolei_interfaces__rosidl_typesupport_cpp.so\x1b[0m\n'}
+[6.528660] (-) TimerEvent: {}
+[6.551941] (olei_interfaces) StdoutLine: {'line': b'[ 51%] Built target olei_interfaces__rosidl_typesupport_cpp\n'}
+[6.628878] (-) TimerEvent: {}
+[6.643224] (olei_interfaces) StdoutLine: {'line': b'[ 53%] \x1b[32m\x1b[1mLinking CXX shared library libolei_interfaces__rosidl_typesupport_introspection_cpp.so\x1b[0m\n'}
+[6.728955] (-) TimerEvent: {}
+[6.777017] (olei_interfaces) StdoutLine: {'line': b'[ 53%] Built target olei_interfaces__rosidl_typesupport_introspection_cpp\n'}
+[6.829909] (-) TimerEvent: {}
+[6.843356] (olei_interfaces) StdoutLine: {'line': b'[ 56%] \x1b[32m\x1b[1mLinking CXX shared library libolei_interfaces__rosidl_typesupport_fastrtps_cpp.so\x1b[0m\n'}
+[6.930027] (-) TimerEvent: {}
+[6.987583] (olei_interfaces) StdoutLine: {'line': b'[ 56%] Built target olei_interfaces__rosidl_typesupport_fastrtps_cpp\n'}
+[7.003129] (olei_interfaces) StdoutLine: {'line': b'[ 58%] \x1b[34m\x1b[1mGenerating C type support for eProsima Fast-RTPS\x1b[0m\n'}
+[7.030133] (-) TimerEvent: {}
+[7.130787] (-) TimerEvent: {}
+[7.231429] (-) TimerEvent: {}
+[7.332114] (-) TimerEvent: {}
+[7.333477] (olei_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target olei_interfaces__rosidl_typesupport_c\x1b[0m\n'}
+[7.353723] (olei_interfaces) StdoutLine: {'line': b'[ 61%] \x1b[32mBuilding CXX object CMakeFiles/olei_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/olei_interfaces/msg/v2_header__type_support.cpp.o\x1b[0m\n'}
+[7.358360] (olei_interfaces) StdoutLine: {'line': b'[ 64%] \x1b[32mBuilding CXX object CMakeFiles/olei_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/olei_interfaces/msg/vf_header__type_support.cpp.o\x1b[0m\n'}
+[7.418368] (olei_interfaces) StdoutLine: {'line': b'[ 66%] \x1b[32m\x1b[1mLinking CXX shared library libolei_interfaces__rosidl_typesupport_c.so\x1b[0m\n'}
+[7.432232] (-) TimerEvent: {}
+[7.477937] (olei_interfaces) StdoutLine: {'line': b'[ 66%] Built target olei_interfaces__rosidl_typesupport_c\n'}
+[7.532356] (-) TimerEvent: {}
+[7.632750] (-) TimerEvent: {}
+[7.733129] (-) TimerEvent: {}
+[7.833477] (-) TimerEvent: {}
+[7.929978] (olei_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target olei_interfaces__rosidl_typesupport_fastrtps_c\x1b[0m\n'}
+[7.933578] (-) TimerEvent: {}
+[7.953799] (olei_interfaces) StdoutLine: {'line': b'[ 71%] \x1b[32mBuilding CXX object CMakeFiles/olei_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/olei_interfaces/msg/detail/vf_header__type_support_c.cpp.o\x1b[0m\n'}
+[7.954128] (olei_interfaces) StdoutLine: {'line': b'[ 71%] \x1b[32mBuilding CXX object CMakeFiles/olei_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/olei_interfaces/msg/detail/v2_header__type_support_c.cpp.o\x1b[0m\n'}
+[8.033717] (-) TimerEvent: {}
+[8.134141] (-) TimerEvent: {}
+[8.234721] (-) TimerEvent: {}
+[8.335762] (-) TimerEvent: {}
+[8.436191] (-) TimerEvent: {}
+[8.536667] (-) TimerEvent: {}
+[8.637177] (-) TimerEvent: {}
+[8.737656] (-) TimerEvent: {}
+[8.761077] (olei_interfaces) StdoutLine: {'line': b'[ 74%] \x1b[32m\x1b[1mLinking CXX shared library libolei_interfaces__rosidl_typesupport_fastrtps_c.so\x1b[0m\n'}
+[8.837793] (-) TimerEvent: {}
+[8.893606] (olei_interfaces) StdoutLine: {'line': b'[ 74%] Built target olei_interfaces__rosidl_typesupport_fastrtps_c\n'}
+[8.907729] (olei_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target olei_interfaces\x1b[0m\n'}
+[8.922116] (olei_interfaces) StdoutLine: {'line': b'[ 74%] Built target olei_interfaces\n'}
+[8.937287] (olei_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target olei_interfaces__py\x1b[0m\n'}
+[8.937875] (-) TimerEvent: {}
+[8.952818] (olei_interfaces) StdoutLine: {'line': b'[ 76%] \x1b[34m\x1b[1mGenerating Python code for ROS interfaces\x1b[0m\n'}
+[9.037988] (-) TimerEvent: {}
+[9.138440] (-) TimerEvent: {}
+[9.238821] (-) TimerEvent: {}
+[9.339218] (-) TimerEvent: {}
+[9.439585] (-) TimerEvent: {}
+[9.539988] (-) TimerEvent: {}
+[9.640348] (-) TimerEvent: {}
+[9.740703] (-) TimerEvent: {}
+[9.841052] (-) TimerEvent: {}
+[9.941400] (-) TimerEvent: {}
+[10.041739] (-) TimerEvent: {}
+[10.142118] (-) TimerEvent: {}
+[10.242556] (-) TimerEvent: {}
+[10.342898] (-) TimerEvent: {}
+[10.443242] (-) TimerEvent: {}
+[10.543612] (-) TimerEvent: {}
+[10.617053] (olei_interfaces) StdoutLine: {'line': b'[ 76%] Built target olei_interfaces__py\n'}
+[10.632095] (olei_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target olei_interfaces__python\x1b[0m\n'}
+[10.643726] (-) TimerEvent: {}
+[10.686043] (olei_interfaces) StdoutLine: {'line': b'[ 79%] \x1b[32mBuilding C object CMakeFiles/olei_interfaces__python.dir/rosidl_generator_py/olei_interfaces/msg/_vf_header_s.c.o\x1b[0m\n'}
+[10.687927] (olei_interfaces) StdoutLine: {'line': b'[ 82%] \x1b[32mBuilding C object CMakeFiles/olei_interfaces__python.dir/rosidl_generator_py/olei_interfaces/msg/_v2_header_s.c.o\x1b[0m\n'}
+[10.743881] (-) TimerEvent: {}
+[10.844759] (-) TimerEvent: {}
+[10.855593] (olei_interfaces) StdoutLine: {'line': b'[ 84%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/olei_interfaces/libolei_interfaces__python.so\x1b[0m\n'}
+[10.911710] (olei_interfaces) StdoutLine: {'line': b'[ 84%] Built target olei_interfaces__python\n'}
+[10.927057] (olei_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target olei_interfaces__rosidl_typesupport_introspection_c__pyext\x1b[0m\n'}
+[10.932127] (olei_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target olei_interfaces__rosidl_typesupport_c__pyext\x1b[0m\n'}
+[10.934369] (olei_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target olei_interfaces__rosidl_typesupport_fastrtps_c__pyext\x1b[0m\n'}
+[10.944919] (-) TimerEvent: {}
+[10.967203] (olei_interfaces) StdoutLine: {'line': b'[ 87%] \x1b[32mBuilding C object CMakeFiles/olei_interfaces__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/olei_interfaces/_olei_interfaces_s.ep.rosidl_typesupport_introspection_c.c.o\x1b[0m\n'}
+[10.980765] (olei_interfaces) StdoutLine: {'line': b'[ 89%] \x1b[32mBuilding C object CMakeFiles/olei_interfaces__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/olei_interfaces/_olei_interfaces_s.ep.rosidl_typesupport_c.c.o\x1b[0m\n'}
+[10.986681] (olei_interfaces) StdoutLine: {'line': b'[ 92%] \x1b[32mBuilding C object CMakeFiles/olei_interfaces__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/olei_interfaces/_olei_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c.o\x1b[0m\n'}
+[11.045050] (-) TimerEvent: {}
+[11.145824] (-) TimerEvent: {}
+[11.173996] (olei_interfaces) StdoutLine: {'line': b'[ 94%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/olei_interfaces/olei_interfaces_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so\x1b[0m\n'}
+[11.186282] (olei_interfaces) StdoutLine: {'line': b'[ 97%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/olei_interfaces/olei_interfaces_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so\x1b[0m\n'}
+[11.210753] (olei_interfaces) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX shared library rosidl_generator_py/olei_interfaces/olei_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so\x1b[0m\n'}
+[11.238854] (olei_interfaces) StdoutLine: {'line': b'[100%] Built target olei_interfaces__rosidl_typesupport_c__pyext\n'}
+[11.245967] (-) TimerEvent: {}
+[11.257505] (olei_interfaces) StdoutLine: {'line': b'[100%] Built target olei_interfaces__rosidl_typesupport_introspection_c__pyext\n'}
+[11.307269] (olei_interfaces) StdoutLine: {'line': b'[100%] Built target olei_interfaces__rosidl_typesupport_fastrtps_c__pyext\n'}
+[11.322762] (olei_interfaces) CommandEnded: {'returncode': 0}
+[11.324006] (olei_interfaces) JobProgress: {'identifier': 'olei_interfaces', 'progress': 'install'}
+[11.342154] (olei_interfaces) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/grz/trolley_auto_drive_image/code/build/olei_interfaces'], 'cwd': '/home/grz/trolley_auto_drive_image/code/build/olei_interfaces', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'grz'), ('SSH_CLIENT', '10.111.248.207 9213 22'), ('LC_TIME', 'zh_CN.UTF-8'), ('XDG_SESSION_TYPE', 'tty'), ('GIT_ASKPASS', '/home/grz/.vscode-server/cli/servers/Stable-585eba7c0c34fd6b30faac7c62a42050bfbc0086/server/extensions/git/dist/askpass.sh'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('BROWSER', '/home/grz/.vscode-server/cli/servers/Stable-585eba7c0c34fd6b30faac7c62a42050bfbc0086/server/bin/helpers/browser.sh'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/grz'), ('OLDPWD', '/home/grz/trolley_auto_drive_image/code/src'), ('TERM_PROGRAM_VERSION', '1.108.1'), ('VSCODE_IPC_HOOK_CLI', '/run/user/1000/vscode-ipc-ff43a12a-ced7-444d-b3e0-94f2718f5065.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/home/grz/.vscode-server/cli/servers/Stable-585eba7c0c34fd6b30faac7c62a42050bfbc0086/server/extensions/git/dist/askpass-main.js'), ('LC_MONETARY', 'zh_CN.UTF-8'), ('VSCODE_GIT_ASKPASS_NODE', '/home/grz/.vscode-server/cli/servers/Stable-585eba7c0c34fd6b30faac7c62a42050bfbc0086/server/node'), ('SSL_CERT_FILE', '/usr/lib/ssl/certs/ca-certificates.crt'), ('VSCODE_PYTHON_AUTOACTIVATE_GUARD', '1'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'grz'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', '4'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/grz/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/home/grz/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/home/grz/.vscode-server/cli/servers/Stable-585eba7c0c34fd6b30faac7c62a42050bfbc0086/server/bin/remote-cli:/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('LC_ADDRESS', 'zh_CN.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('SSL_CERT_DIR', '/usr/lib/ssl/certs'), ('LANG', 'en_US.UTF-8'), ('LC_TELEPHONE', 'zh_CN.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-4c22939ec7.sock'), ('TERM_PROGRAM', 'vscode'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('LC_NAME', 'zh_CN.UTF-8'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'zh_CN.UTF-8'), ('LC_IDENTIFICATION', 'zh_CN.UTF-8'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('PWD', '/home/grz/trolley_auto_drive_image/code/build/olei_interfaces'), ('LC_ALL', 'en_US.UTF-8'), ('SSH_CONNECTION', '10.111.248.207 9213 10.111.248.63 22'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('LC_NUMERIC', 'zh_CN.UTF-8'), ('LC_PAPER', 'zh_CN.UTF-8'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[11.346199] (-) TimerEvent: {}
+[11.358644] (olei_interfaces) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[11.358987] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/share/ament_index/resource_index/rosidl_interfaces/olei_interfaces\n'}
+[11.359191] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces\n'}
+[11.359382] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg\n'}
+[11.359568] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg/vf_header.h\n'}
+[11.359766] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg/rosidl_generator_c__visibility_control.h\n'}
+[11.359945] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg/v2_header.h\n'}
+[11.360133] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg/detail\n'}
+[11.360332] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg/detail/v2_header__functions.c\n'}
+[11.360529] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg/detail/vf_header__functions.c\n'}
+[11.360711] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg/detail/v2_header__functions.h\n'}
+[11.361103] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg/detail/vf_header__functions.h\n'}
+[11.361347] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg/detail/vf_header__type_support.h\n'}
+[11.361557] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg/detail/v2_header__type_support.h\n'}
+[11.361743] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg/detail/v2_header__struct.h\n'}
+[11.361957] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg/detail/vf_header__struct.h\n'}
+[11.366084] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/share/olei_interfaces/environment/library_path.sh\n'}
+[11.366335] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/share/olei_interfaces/environment/library_path.dsv\n'}
+[11.366545] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/lib/libolei_interfaces__rosidl_generator_c.so\n'}
+[11.366735] (olei_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/home/grz/trolley_auto_drive_image/code/install/olei_interfaces/lib/libolei_interfaces__rosidl_generator_c.so" to ""\n'}
+[11.366907] (olei_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces\n'}
+[11.367076] (olei_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg\n'}
+[11.367279] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[11.367462] (olei_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg/detail\n'}
+[11.367659] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg/detail/v2_header__rosidl_typesupport_fastrtps_c.h\n'}
+[11.367859] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg/detail/vf_header__rosidl_typesupport_fastrtps_c.h\n'}
+[11.368059] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/lib/libolei_interfaces__rosidl_typesupport_fastrtps_c.so\n'}
+[11.368264] (olei_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/home/grz/trolley_auto_drive_image/code/install/olei_interfaces/lib/libolei_interfaces__rosidl_typesupport_fastrtps_c.so" to ""\n'}
+[11.368446] (olei_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces\n'}
+[11.368641] (olei_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg\n'}
+[11.376061] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[11.376384] (olei_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg/detail\n'}
+[11.376684] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg/detail/vf_header__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[11.376975] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg/detail/v2_header__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[11.377196] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg/detail/dds_fastrtps\n'}
+[11.377518] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/lib/libolei_interfaces__rosidl_typesupport_fastrtps_cpp.so\n'}
+[11.377816] (olei_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/home/grz/trolley_auto_drive_image/code/install/olei_interfaces/lib/libolei_interfaces__rosidl_typesupport_fastrtps_cpp.so" to ""\n'}
+[11.378102] (olei_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces\n'}
+[11.378326] (olei_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg\n'}
+[11.378607] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[11.378824] (olei_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg/detail\n'}
+[11.379030] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg/detail/v2_header__type_support.c\n'}
+[11.379240] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg/detail/vf_header__type_support.c\n'}
+[11.379446] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg/detail/vf_header__rosidl_typesupport_introspection_c.h\n'}
+[11.379655] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg/detail/v2_header__rosidl_typesupport_introspection_c.h\n'}
+[11.379866] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/lib/libolei_interfaces__rosidl_typesupport_introspection_c.so\n'}
+[11.380078] (olei_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/home/grz/trolley_auto_drive_image/code/install/olei_interfaces/lib/libolei_interfaces__rosidl_typesupport_introspection_c.so" to ""\n'}
+[11.380289] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/lib/libolei_interfaces__rosidl_typesupport_c.so\n'}
+[11.380498] (olei_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/home/grz/trolley_auto_drive_image/code/install/olei_interfaces/lib/libolei_interfaces__rosidl_typesupport_c.so" to ""\n'}
+[11.380699] (olei_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces\n'}
+[11.380904] (olei_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg\n'}
+[11.381093] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg/v2_header.hpp\n'}
+[11.381289] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg/rosidl_generator_cpp__visibility_control.hpp\n'}
+[11.381477] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg/vf_header.hpp\n'}
+[11.381643] (olei_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg/detail\n'}
+[11.381811] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg/detail/vf_header__builder.hpp\n'}
+[11.381981] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg/detail/v2_header__builder.hpp\n'}
+[11.382149] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg/detail/v2_header__traits.hpp\n'}
+[11.382336] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg/detail/vf_header__struct.hpp\n'}
+[11.382522] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg/detail/v2_header__struct.hpp\n'}
+[11.382720] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg/detail/vf_header__type_support.hpp\n'}
+[11.382935] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg/detail/vf_header__traits.hpp\n'}
+[11.383139] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg/detail/v2_header__type_support.hpp\n'}
+[11.383339] (olei_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces\n'}
+[11.383525] (olei_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg\n'}
+[11.383723] (olei_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg/detail\n'}
+[11.383923] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg/detail/vf_header__type_support.cpp\n'}
+[11.384126] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg/detail/vf_header__rosidl_typesupport_introspection_cpp.hpp\n'}
+[11.384320] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg/detail/v2_header__type_support.cpp\n'}
+[11.384525] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/include/olei_interfaces/msg/detail/v2_header__rosidl_typesupport_introspection_cpp.hpp\n'}
+[11.384734] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/lib/libolei_interfaces__rosidl_typesupport_introspection_cpp.so\n'}
+[11.384979] (olei_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/home/grz/trolley_auto_drive_image/code/install/olei_interfaces/lib/libolei_interfaces__rosidl_typesupport_introspection_cpp.so" to ""\n'}
+[11.385191] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/lib/libolei_interfaces__rosidl_typesupport_cpp.so\n'}
+[11.385381] (olei_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/home/grz/trolley_auto_drive_image/code/install/olei_interfaces/lib/libolei_interfaces__rosidl_typesupport_cpp.so" to ""\n'}
+[11.385583] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/share/olei_interfaces/environment/pythonpath.sh\n'}
+[11.385784] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/share/olei_interfaces/environment/pythonpath.dsv\n'}
+[11.385990] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/lib/python3.8/site-packages/olei_interfaces/__init__.py\n'}
+[11.446201] (-) TimerEvent: {}
+[11.448030] (olei_interfaces) StdoutLine: {'line': b"Compiling '/home/grz/trolley_auto_drive_image/code/install/olei_interfaces/lib/python3.8/site-packages/olei_interfaces/__init__.py'...\n"}
+[11.455288] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/lib/python3.8/site-packages/olei_interfaces/msg\n'}
+[11.455848] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/lib/python3.8/site-packages/olei_interfaces/msg/_vf_header_s.c\n'}
+[11.456130] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/lib/python3.8/site-packages/olei_interfaces/msg/__init__.py\n'}
+[11.456495] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/lib/python3.8/site-packages/olei_interfaces/msg/_v2_header.py\n'}
+[11.456744] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/lib/python3.8/site-packages/olei_interfaces/msg/_vf_header.py\n'}
+[11.456973] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/lib/python3.8/site-packages/olei_interfaces/msg/_v2_header_s.c\n'}
+[11.457267] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/lib/python3.8/site-packages/olei_interfaces/olei_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so\n'}
+[11.458000] (olei_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/home/grz/trolley_auto_drive_image/code/install/olei_interfaces/lib/python3.8/site-packages/olei_interfaces/olei_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so" to ""\n'}
+[11.458443] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/lib/python3.8/site-packages/olei_interfaces/olei_interfaces_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so\n'}
+[11.459353] (olei_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/home/grz/trolley_auto_drive_image/code/install/olei_interfaces/lib/python3.8/site-packages/olei_interfaces/olei_interfaces_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so" to ""\n'}
+[11.459765] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/lib/python3.8/site-packages/olei_interfaces/olei_interfaces_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so\n'}
+[11.460625] (olei_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/home/grz/trolley_auto_drive_image/code/install/olei_interfaces/lib/python3.8/site-packages/olei_interfaces/olei_interfaces_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so" to ""\n'}
+[11.461002] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/lib/libolei_interfaces__python.so\n'}
+[11.461605] (olei_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/home/grz/trolley_auto_drive_image/code/install/olei_interfaces/lib/libolei_interfaces__python.so" to ""\n'}
+[11.461930] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/share/olei_interfaces/msg/VFHeader.idl\n'}
+[11.462231] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/share/olei_interfaces/msg/V2Header.idl\n'}
+[11.462548] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/share/olei_interfaces/msg/VFHeader.msg\n'}
+[11.462868] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/share/olei_interfaces/msg/V2Header.msg\n'}
+[11.463288] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/share/ament_index/resource_index/package_run_dependencies/olei_interfaces\n'}
+[11.463684] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/share/ament_index/resource_index/parent_prefix_path/olei_interfaces\n'}
+[11.464016] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/share/olei_interfaces/environment/ament_prefix_path.sh\n'}
+[11.464334] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/share/olei_interfaces/environment/ament_prefix_path.dsv\n'}
+[11.464893] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/share/olei_interfaces/environment/path.sh\n'}
+[11.465240] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/share/olei_interfaces/environment/path.dsv\n'}
+[11.465933] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/share/olei_interfaces/local_setup.bash\n'}
+[11.466203] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/share/olei_interfaces/local_setup.sh\n'}
+[11.466497] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/share/olei_interfaces/local_setup.zsh\n'}
+[11.467270] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/share/olei_interfaces/local_setup.dsv\n'}
+[11.467513] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/share/olei_interfaces/package.dsv\n'}
+[11.467778] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/share/ament_index/resource_index/packages/olei_interfaces\n'}
+[11.468069] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/share/olei_interfaces/cmake/olei_interfaces__rosidl_generator_cExport.cmake\n'}
+[11.468264] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/share/olei_interfaces/cmake/olei_interfaces__rosidl_generator_cExport-noconfig.cmake\n'}
+[11.468967] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/share/olei_interfaces/cmake/olei_interfaces__rosidl_typesupport_introspection_cExport.cmake\n'}
+[11.469208] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/share/olei_interfaces/cmake/olei_interfaces__rosidl_typesupport_introspection_cExport-noconfig.cmake\n'}
+[11.469476] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/share/olei_interfaces/cmake/olei_interfaces__rosidl_typesupport_cExport.cmake\n'}
+[11.470183] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/share/olei_interfaces/cmake/olei_interfaces__rosidl_typesupport_cExport-noconfig.cmake\n'}
+[11.470384] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/share/olei_interfaces/cmake/olei_interfaces__rosidl_generator_cppExport.cmake\n'}
+[11.470681] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/share/olei_interfaces/cmake/olei_interfaces__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[11.470981] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/share/olei_interfaces/cmake/olei_interfaces__rosidl_typesupport_introspection_cppExport-noconfig.cmake\n'}
+[11.471285] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/share/olei_interfaces/cmake/olei_interfaces__rosidl_typesupport_cppExport.cmake\n'}
+[11.471619] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/share/olei_interfaces/cmake/olei_interfaces__rosidl_typesupport_cppExport-noconfig.cmake\n'}
+[11.471945] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/share/olei_interfaces/cmake/rosidl_cmake-extras.cmake\n'}
+[11.472268] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/share/olei_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[11.472588] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/share/olei_interfaces/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[11.472941] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/share/olei_interfaces/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[11.473265] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/share/olei_interfaces/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[11.473590] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/share/olei_interfaces/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[11.473915] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/share/olei_interfaces/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[11.474240] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/share/olei_interfaces/cmake/olei_interfacesConfig.cmake\n'}
+[11.474548] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/share/olei_interfaces/cmake/olei_interfacesConfig-version.cmake\n'}
+[11.474854] (olei_interfaces) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_interfaces/share/olei_interfaces/package.xml\n'}
+[11.479279] (olei_interfaces) CommandEnded: {'returncode': 0}
+[11.538330] (olei_interfaces) JobEnded: {'identifier': 'olei_interfaces', 'rc': 0}
+[11.539577] (-) EventReactorShutdown: {}

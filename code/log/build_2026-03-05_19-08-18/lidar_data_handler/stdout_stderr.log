@@ -1,0 +1,100 @@
+running egg_info
+writing ../../build/lidar_data_handler/lidar_data_handler.egg-info/PKG-INFO
+writing dependency_links to ../../build/lidar_data_handler/lidar_data_handler.egg-info/dependency_links.txt
+writing entry points to ../../build/lidar_data_handler/lidar_data_handler.egg-info/entry_points.txt
+writing requirements to ../../build/lidar_data_handler/lidar_data_handler.egg-info/requires.txt
+writing top-level names to ../../build/lidar_data_handler/lidar_data_handler.egg-info/top_level.txt
+reading manifest file '../../build/lidar_data_handler/lidar_data_handler.egg-info/SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+writing manifest file '../../build/lidar_data_handler/lidar_data_handler.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs
+creating /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/linux
+creating /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/linux/x86_64
+copying lidar_data_handler/public/libs/linux/x86_64/librockmong.so -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/linux/x86_64
+copying lidar_data_handler/public/libs/linux/x86_64/libusb-1.0.so -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/linux/x86_64
+creating /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/linux/x86
+copying lidar_data_handler/public/libs/linux/x86/librockmong.so -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/linux/x86
+copying lidar_data_handler/public/libs/linux/x86/libusb-1.0.so -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/linux/x86
+creating /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/linux/armv7
+copying lidar_data_handler/public/libs/linux/armv7/librockmong.so -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/linux/armv7
+copying lidar_data_handler/public/libs/linux/armv7/libusb-1.0.so -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/linux/armv7
+creating /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/linux/aarch64
+copying lidar_data_handler/public/libs/linux/aarch64/librockmong.so -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/linux/aarch64
+copying lidar_data_handler/public/libs/linux/aarch64/libusb-1.0.so -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/linux/aarch64
+creating /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/windows
+creating /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/windows/x86_64
+copying lidar_data_handler/public/libs/windows/x86_64/librockmong.lib -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/windows/x86_64
+copying lidar_data_handler/public/libs/windows/x86_64/librockmong.dll -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/windows/x86_64
+copying lidar_data_handler/public/libs/windows/x86_64/libusb-1.0.dll -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/windows/x86_64
+creating /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/windows/x86
+copying lidar_data_handler/public/libs/windows/x86/librockmong.lib -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/windows/x86
+copying lidar_data_handler/public/libs/windows/x86/librockmong.dll -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/windows/x86
+copying lidar_data_handler/public/libs/windows/x86/libusb-1.0.dll -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/windows/x86
+creating /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/android
+creating /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/android/libs
+creating /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/android/libs/arm64-v8a
+copying lidar_data_handler/public/libs/android/libs/arm64-v8a/librockmong.so -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/android/libs/arm64-v8a
+copying lidar_data_handler/public/libs/android/libs/arm64-v8a/libusb1.0.so -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/android/libs/arm64-v8a
+creating /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/android/libs/armeabi-v7a
+copying lidar_data_handler/public/libs/android/libs/armeabi-v7a/librockmong.so -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/android/libs/armeabi-v7a
+copying lidar_data_handler/public/libs/android/libs/armeabi-v7a/libusb1.0.so -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/android/libs/armeabi-v7a
+creating /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/android/libs/x86
+copying lidar_data_handler/public/libs/android/libs/x86/librockmong.so -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/android/libs/x86
+copying lidar_data_handler/public/libs/android/libs/x86/libusb1.0.so -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/android/libs/x86
+creating /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/android/libs/x86_64
+copying lidar_data_handler/public/libs/android/libs/x86_64/librockmong.so -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/android/libs/x86_64
+copying lidar_data_handler/public/libs/android/libs/x86_64/libusb1.0.so -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/android/libs/x86_64
+creating /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/mac_os
+copying lidar_data_handler/public/libs/mac_os/librockmong.dylib -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/mac_os
+copying lidar_data_handler/public/libs/mac_os/libusb-1.0.0.dylib -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/mac_os
+running install
+running install_lib
+creating /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public/libs
+creating /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public/libs/android
+creating /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public/libs/android/libs
+creating /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public/libs/android/libs/arm64-v8a
+copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/android/libs/arm64-v8a/librockmong.so -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public/libs/android/libs/arm64-v8a
+copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/android/libs/arm64-v8a/libusb1.0.so -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public/libs/android/libs/arm64-v8a
+creating /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public/libs/android/libs/x86_64
+copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/android/libs/x86_64/librockmong.so -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public/libs/android/libs/x86_64
+copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/android/libs/x86_64/libusb1.0.so -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public/libs/android/libs/x86_64
+creating /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public/libs/android/libs/x86
+copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/android/libs/x86/librockmong.so -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public/libs/android/libs/x86
+copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/android/libs/x86/libusb1.0.so -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public/libs/android/libs/x86
+creating /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public/libs/android/libs/armeabi-v7a
+copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/android/libs/armeabi-v7a/librockmong.so -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public/libs/android/libs/armeabi-v7a
+copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/android/libs/armeabi-v7a/libusb1.0.so -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public/libs/android/libs/armeabi-v7a
+creating /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public/libs/windows
+creating /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public/libs/windows/x86_64
+copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/windows/x86_64/librockmong.lib -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public/libs/windows/x86_64
+copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/windows/x86_64/librockmong.dll -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public/libs/windows/x86_64
+copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/windows/x86_64/libusb-1.0.dll -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public/libs/windows/x86_64
+creating /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public/libs/windows/x86
+copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/windows/x86/librockmong.lib -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public/libs/windows/x86
+copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/windows/x86/librockmong.dll -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public/libs/windows/x86
+copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/windows/x86/libusb-1.0.dll -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public/libs/windows/x86
+creating /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public/libs/mac_os
+copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/mac_os/libusb-1.0.0.dylib -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public/libs/mac_os
+copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/mac_os/librockmong.dylib -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public/libs/mac_os
+creating /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public/libs/linux
+creating /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public/libs/linux/x86_64
+copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/linux/x86_64/librockmong.so -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public/libs/linux/x86_64
+copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/linux/x86_64/libusb-1.0.so -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public/libs/linux/x86_64
+creating /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public/libs/linux/x86
+copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/linux/x86/librockmong.so -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public/libs/linux/x86
+copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/linux/x86/libusb-1.0.so -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public/libs/linux/x86
+creating /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public/libs/linux/armv7
+copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/linux/armv7/librockmong.so -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public/libs/linux/armv7
+copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/linux/armv7/libusb-1.0.so -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public/libs/linux/armv7
+creating /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public/libs/linux/aarch64
+copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/linux/aarch64/librockmong.so -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public/libs/linux/aarch64
+copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/libs/linux/aarch64/libusb-1.0.so -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public/libs/linux/aarch64
+running install_data
+running install_egg_info
+removing '/home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler-0.0.0-py3.8.egg-info' (and everything under it)
+Copying ../../build/lidar_data_handler/lidar_data_handler.egg-info to /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler-0.0.0-py3.8.egg-info
+running install_scripts
+Installing lidar_data_handler script to /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/lidar_data_handler
+writing list of installed files to '/home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/install.log'

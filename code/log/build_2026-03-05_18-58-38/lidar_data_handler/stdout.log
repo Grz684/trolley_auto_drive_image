@@ -1,0 +1,60 @@
+running develop
+Removing /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar-data-handler.egg-link (link to .)
+running egg_info
+writing ../../build/lidar_data_handler/lidar_data_handler.egg-info/PKG-INFO
+writing dependency_links to ../../build/lidar_data_handler/lidar_data_handler.egg-info/dependency_links.txt
+writing entry points to ../../build/lidar_data_handler/lidar_data_handler.egg-info/entry_points.txt
+writing requirements to ../../build/lidar_data_handler/lidar_data_handler.egg-info/requires.txt
+writing top-level names to ../../build/lidar_data_handler/lidar_data_handler.egg-info/top_level.txt
+reading manifest file '../../build/lidar_data_handler/lidar_data_handler.egg-info/SOURCES.txt'
+writing manifest file '../../build/lidar_data_handler/lidar_data_handler.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build
+creating /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib
+creating /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler
+copying lidar_data_handler/try.py -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler
+copying lidar_data_handler/pid_controller.py -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler
+copying lidar_data_handler/pointcloud2_lidar_test.py -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler
+copying lidar_data_handler/__init__.py -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler
+copying lidar_data_handler/generate_heightfield.py -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler
+copying lidar_data_handler/mode_state_machine.py -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler
+copying lidar_data_handler/control_ui.py -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler
+copying lidar_data_handler/handle_lidar_data_utils.py -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler
+copying lidar_data_handler/pointcloud_lidar_test.py -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler
+copying lidar_data_handler/Ui_auto_drive.py -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler
+copying lidar_data_handler/receive_lidar_data.py -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler
+running install
+running install_lib
+creating /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler
+copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/try.py -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler
+copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/pid_controller.py -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler
+copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/pointcloud2_lidar_test.py -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler
+copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/__init__.py -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler
+copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/generate_heightfield.py -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler
+copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/mode_state_machine.py -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler
+copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/control_ui.py -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler
+copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/handle_lidar_data_utils.py -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler
+copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/pointcloud_lidar_test.py -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler
+copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/Ui_auto_drive.py -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler
+copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/receive_lidar_data.py -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler
+byte-compiling /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/try.py to try.cpython-38.pyc
+byte-compiling /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/pid_controller.py to pid_controller.cpython-38.pyc
+byte-compiling /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/pointcloud2_lidar_test.py to pointcloud2_lidar_test.cpython-38.pyc
+byte-compiling /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/__init__.py to __init__.cpython-38.pyc
+byte-compiling /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/generate_heightfield.py to generate_heightfield.cpython-38.pyc
+byte-compiling /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/mode_state_machine.py to mode_state_machine.cpython-38.pyc
+byte-compiling /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/control_ui.py to control_ui.cpython-38.pyc
+byte-compiling /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/handle_lidar_data_utils.py to handle_lidar_data_utils.cpython-38.pyc
+byte-compiling /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/pointcloud_lidar_test.py to pointcloud_lidar_test.cpython-38.pyc
+byte-compiling /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/Ui_auto_drive.py to Ui_auto_drive.cpython-38.pyc
+byte-compiling /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/receive_lidar_data.py to receive_lidar_data.cpython-38.pyc
+running install_data
+copying resource/lidar_data_handler -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/share/ament_index/resource_index/packages
+copying package.xml -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/share/lidar_data_handler
+copying launch/trolley_auto_drive_launch.py -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/share/lidar_data_handler/launch
+running install_egg_info
+Copying ../../build/lidar_data_handler/lidar_data_handler.egg-info to /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler-0.0.0-py3.8.egg-info
+running install_scripts
+Installing lidar_data_handler script to /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/lidar_data_handler
+writing list of installed files to '/home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/install.log'

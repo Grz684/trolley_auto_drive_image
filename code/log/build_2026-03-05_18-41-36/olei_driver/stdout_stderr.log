@@ -1,0 +1,59 @@
+[35m[1mScanning dependencies of target ros_main[0m
+[ 13%] [32mBuilding CXX object CMakeFiles/ros_main.dir/src/olei/olei_interface.cpp.o[0m
+[ 13%] [32mBuilding CXX object CMakeFiles/ros_main.dir/src/ros/lidar_publish.cpp.o[0m
+[ 20%] [32mBuilding CXX object CMakeFiles/ros_main.dir/src/ros/ros_main.cpp.o[0m
+[ 26%] [32m[1mLinking CXX executable ros_main[0m
+[100%] Built target ros_main
+-- Install configuration: ""
+-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/lib/olei_driver/ros_main
+-- Set runtime path of "/home/grz/trolley_auto_drive_image/code/install/olei_driver/lib/olei_driver/ros_main" to ""
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/launch
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/launch/vf.launch.py
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/config
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/config/vf_params.yaml
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/writer.h
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/queue
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/queue/LICENSE.md
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/queue/atomicops.h
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/queue/readerwriterqueue.h
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/ros
+-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/ros/lidar_publish.h
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/parser.h
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/olei
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/olei/olei_parser.h
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/olei/olei_writer.h
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/olei/olei_packet
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/olei/olei_packet/olei_version2_a.h
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/olei/olei_packet/olei_version2.h
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/olei/olei_packet/olei_vf_packet_c.h
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/olei/olei_packet/olei_packet.h
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/olei/olei_packet/olei_vf_packet.h
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/olei/olei_packet/olei_vf_packet_a.h
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/olei/olei_packet/olei_vf_packet_b.h
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/olei/olei_interface.h
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/olei/olei_packet_reader.h
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/communication
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/communication/tcp_transport.h
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/communication/transport.h
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/communication/transport_type.h
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/communication/udp_transport.h
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/pipeline.h
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/reader.h
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/handle_info.h
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/ament_index/resource_index/package_run_dependencies/olei_driver
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/ament_index/resource_index/parent_prefix_path/olei_driver
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/environment/ament_prefix_path.sh
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/environment/ament_prefix_path.dsv
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/environment/path.sh
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/environment/path.dsv
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/local_setup.bash
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/local_setup.sh
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/local_setup.zsh
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/local_setup.dsv
+-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/package.dsv
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/ament_index/resource_index/packages/olei_driver
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/cmake/ament_cmake_export_include_directories-extras.cmake
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/cmake/olei_driverConfig.cmake
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/cmake/olei_driverConfig-version.cmake
+-- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/package.xml

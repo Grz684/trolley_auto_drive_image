@@ -1,0 +1,7 @@
+{
+  "package_name": "olei_interfaces",
+  "non_idl_tuples": [
+    "/home/grz/trolley_auto_drive_image/code/src/ole2d_ros2_driver_new/olei_interfaces:msg/VFHeader.msg",
+    "/home/grz/trolley_auto_drive_image/code/src/ole2d_ros2_driver_new/olei_interfaces:msg/V2Header.msg"
+  ]
+}

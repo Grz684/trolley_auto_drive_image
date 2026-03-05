@@ -1,0 +1,90 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from olei_interfaces/msg/VFHeader.msg
+// generated code does not contain a copyright notice
+
+
+module olei_interfaces {
+  module msg {
+    struct VFHeader {
+      @verbatim (language="comment", text=
+        "Magic bytes, must be  0xFEAC (hex)")
+      uint16 magic;
+
+      @verbatim (language="comment", text=
+        "version, must be 0x0301 (hex)")
+      uint16 version;
+
+      @verbatim (language="comment", text=
+        "Overall packet size (header+payload)")
+      uint32 packet_size;
+
+      @verbatim (language="comment", text=
+        "Header size, defaults to 48 bytes")
+      uint16 header_size;
+
+      @verbatim (language="comment", text=
+        "Distance_ratio, defaults 1")
+      uint8 distance_ratio;
+
+      @verbatim (language="comment", text=
+        "Type of data, 0x00 : distance only 0x01 : distance and intensity 0x10 : angle and distance")
+      uint8 types;
+
+      @verbatim (language="comment", text=
+        "Sequence for scan (incremented for every scan, starting with 0, overflows)")
+      uint16 scan_number;
+
+      @verbatim (language="comment", text=
+        "Sequence number for packet (counting packets of a particular scan, starting with 1)")
+      uint16 packet_number;
+
+      @verbatim (language="comment", text=
+        "Raw timestamp of internal clock in NTP time format(decimal part)")
+      uint32 timestamp_decimal;
+
+      @verbatim (language="comment", text=
+        "Raw timestamp of internal clock in NTP time format(integer part)")
+      uint32 timestamp_integer;
+
+      @verbatim (language="comment", text=
+        "bit[0:14]:Rotating speed(turn/minute),bit[15]:direction")
+      uint16 scan_frequency;
+
+      @verbatim (language="comment", text=
+        "Total number of scan points (samples) within complete scan")
+      uint16 num_points_scan;
+
+      @verbatim (language="comment", text=
+        "Iutput status")
+      uint16 iutput_status;
+
+      @verbatim (language="comment", text=
+        "Output status")
+      uint16 output_status;
+
+      @verbatim (language="comment", text=
+        "Field status")
+      uint32 field_status;
+
+      @verbatim (language="comment", text=
+        "Index of scan start")
+      uint16 start_index;
+
+      @verbatim (language="comment", text=
+        "Index of scan end")
+      uint16 end_index;
+
+      @verbatim (language="comment", text=
+        "Index of first scan point within this packet")
+      uint16 first_index;
+
+      @verbatim (language="comment", text=
+        "Total number of scan points within this packet")
+      uint16 num_points_packet;
+
+      @verbatim (language="comment", text=
+        "Save")
+      uint32 status_flags;
+    };
+  };
+};

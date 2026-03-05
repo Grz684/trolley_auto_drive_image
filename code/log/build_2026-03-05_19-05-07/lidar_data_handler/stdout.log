@@ -1,0 +1,42 @@
+running egg_info
+writing ../../build/lidar_data_handler/lidar_data_handler.egg-info/PKG-INFO
+writing dependency_links to ../../build/lidar_data_handler/lidar_data_handler.egg-info/dependency_links.txt
+writing entry points to ../../build/lidar_data_handler/lidar_data_handler.egg-info/entry_points.txt
+writing requirements to ../../build/lidar_data_handler/lidar_data_handler.egg-info/requires.txt
+writing top-level names to ../../build/lidar_data_handler/lidar_data_handler.egg-info/top_level.txt
+reading manifest file '../../build/lidar_data_handler/lidar_data_handler.egg-info/SOURCES.txt'
+writing manifest file '../../build/lidar_data_handler/lidar_data_handler.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public
+copying lidar_data_handler/public/pwm.py -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public
+copying lidar_data_handler/public/adc.py -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public
+copying lidar_data_handler/public/__init__.py -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public
+copying lidar_data_handler/public/counter.py -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public
+copying lidar_data_handler/public/gpio.py -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public
+copying lidar_data_handler/public/usb_device.py -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public
+copying lidar_data_handler/public/librockmong.py -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public
+running install
+running install_lib
+creating /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public
+copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/pwm.py -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public
+copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/adc.py -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public
+copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/__init__.py -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public
+copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/counter.py -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public
+copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/gpio.py -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public
+copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/usb_device.py -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public
+copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/public/librockmong.py -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public
+byte-compiling /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public/pwm.py to pwm.cpython-38.pyc
+byte-compiling /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public/adc.py to adc.cpython-38.pyc
+byte-compiling /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public/__init__.py to __init__.cpython-38.pyc
+byte-compiling /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public/counter.py to counter.cpython-38.pyc
+byte-compiling /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public/gpio.py to gpio.cpython-38.pyc
+byte-compiling /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public/usb_device.py to usb_device.cpython-38.pyc
+byte-compiling /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/public/librockmong.py to librockmong.cpython-38.pyc
+running install_data
+running install_egg_info
+removing '/home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler-0.0.0-py3.8.egg-info' (and everything under it)
+Copying ../../build/lidar_data_handler/lidar_data_handler.egg-info to /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler-0.0.0-py3.8.egg-info
+running install_scripts
+Installing lidar_data_handler script to /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/lidar_data_handler
+writing list of installed files to '/home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/install.log'

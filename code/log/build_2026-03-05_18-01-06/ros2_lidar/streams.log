@@ -1,0 +1,73 @@
+[0.020s] Invoking command in '/home/grz/trolley_auto_drive_image/code/build/ros2_lidar': CMAKE_PREFIX_PATH=/home/grz/trolley_auto_drive_image/code/install/lidar_msgs:/home/grz/trolley_auto_drive_image/code/install/ros2_lidar:/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs:/home/grz/trolley_auto_drive_image/code/install/linear_displacement_sensor:/home/grz/trolley_auto_drive_image/code/install/lidar_data_handler:/opt/ros/foxy LD_LIBRARY_PATH=/home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib:/home/grz/trolley_auto_drive_image/code/install/ros2_lidar/lib:/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib PYTHONPATH=/home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib/python3.8/site-packages:/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib/python3.8/site-packages:/home/grz/trolley_auto_drive_image/code/build/linear_displacement_sensor:/home/grz/trolley_auto_drive_image/code/install/linear_displacement_sensor/lib/python3.8/site-packages:/home/grz/trolley_auto_drive_image/code/build/lidar_data_handler:/home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages /usr/bin/cmake --build /home/grz/trolley_auto_drive_image/code/build/ros2_lidar -- -j4 -l4
+[0.099s] [35m[1mScanning dependencies of target lidar_driver_core[0m
+[0.231s] [ 14%] [32mBuilding CXX object CMakeFiles/lidar_driver_core.dir/src/lidar_driver.cpp.o[0m
+[14.632s] [ 28%] [32m[1mLinking CXX shared library liblidar_driver_core.so[0m
+[15.375s] [ 71%] Built target lidar_driver_core
+[15.430s] [ 85%] [32m[1mLinking CXX executable lidar_driver[0m
+[15.890s] [100%] Built target lidar_driver
+[15.907s] Invoked command in '/home/grz/trolley_auto_drive_image/code/build/ros2_lidar' returned '0': CMAKE_PREFIX_PATH=/home/grz/trolley_auto_drive_image/code/install/lidar_msgs:/home/grz/trolley_auto_drive_image/code/install/ros2_lidar:/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs:/home/grz/trolley_auto_drive_image/code/install/linear_displacement_sensor:/home/grz/trolley_auto_drive_image/code/install/lidar_data_handler:/opt/ros/foxy LD_LIBRARY_PATH=/home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib:/home/grz/trolley_auto_drive_image/code/install/ros2_lidar/lib:/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib PYTHONPATH=/home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib/python3.8/site-packages:/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib/python3.8/site-packages:/home/grz/trolley_auto_drive_image/code/build/linear_displacement_sensor:/home/grz/trolley_auto_drive_image/code/install/linear_displacement_sensor/lib/python3.8/site-packages:/home/grz/trolley_auto_drive_image/code/build/lidar_data_handler:/home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages /usr/bin/cmake --build /home/grz/trolley_auto_drive_image/code/build/ros2_lidar -- -j4 -l4
+[15.926s] Invoking command in '/home/grz/trolley_auto_drive_image/code/build/ros2_lidar': CMAKE_PREFIX_PATH=/home/grz/trolley_auto_drive_image/code/install/lidar_msgs:/home/grz/trolley_auto_drive_image/code/install/ros2_lidar:/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs:/home/grz/trolley_auto_drive_image/code/install/linear_displacement_sensor:/home/grz/trolley_auto_drive_image/code/install/lidar_data_handler:/opt/ros/foxy LD_LIBRARY_PATH=/home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib:/home/grz/trolley_auto_drive_image/code/install/ros2_lidar/lib:/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib PYTHONPATH=/home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib/python3.8/site-packages:/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib/python3.8/site-packages:/home/grz/trolley_auto_drive_image/code/build/linear_displacement_sensor:/home/grz/trolley_auto_drive_image/code/install/linear_displacement_sensor/lib/python3.8/site-packages:/home/grz/trolley_auto_drive_image/code/build/lidar_data_handler:/home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages /usr/bin/cmake --install /home/grz/trolley_auto_drive_image/code/build/ros2_lidar
+[15.937s] -- Install configuration: ""
+[15.938s] -- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/lib/ros2_lidar/lidar_driver
+[15.939s] -- Set runtime path of "/home/grz/trolley_auto_drive_image/code/install/ros2_lidar/lib/ros2_lidar/lidar_driver" to ""
+[15.939s] -- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/lib/liblidar_driver_core.so
+[15.948s] -- Set runtime path of "/home/grz/trolley_auto_drive_image/code/install/ros2_lidar/lib/liblidar_driver_core.so" to ""
+[15.949s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include/
+[15.950s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar
+[15.950s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/OS1
+[15.950s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/OS1/OS1_util.hpp
+[15.951s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/OS1/OS1_sensor.hpp
+[15.951s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/OS1/OS1_packet.hpp
+[15.951s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/OS1/processors
+[15.951s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/OS1/processors/scan_processor.hpp
+[15.951s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/OS1/processors/image_processor.hpp
+[15.952s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/OS1/processors/pointcloud_processor.hpp
+[15.952s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/OS1/processors/imu_processor.hpp
+[15.952s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/OS1/OS1.hpp
+[15.952s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/OS1/processor_factories.hpp
+[15.952s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/driver_types.hpp
+[15.952s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/exception.hpp
+[15.953s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/image_os.hpp
+[15.953s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/conversions.hpp
+[15.953s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/interfaces
+[15.953s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/interfaces/metadata.hpp
+[15.953s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/interfaces/lifecycle_interface.hpp
+[15.953s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/interfaces/data_processor_interface.hpp
+[15.953s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/interfaces/sensor_interface.hpp
+[15.953s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/interfaces/configuration.hpp
+[15.953s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/scan_os.hpp
+[15.953s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/string_utils.hpp
+[15.954s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/point_os.hpp
+[15.954s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/include//ros2_lidar/lidar_driver.hpp
+[15.954s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/launch
+[15.954s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/launch/ole2dv2_front_launch.py
+[15.954s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/launch/ole2dv2_back_launch.py
+[15.954s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/launch/ole3dv2_launch.py
+[15.954s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/launch/os1_launch.py
+[15.954s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/params
+[15.954s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/params/os1.yaml
+[15.955s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/params/ole2dv2_back.yaml
+[15.955s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/params/ole3dv2.yaml
+[15.957s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/params/ole2dv2_front.yaml
+[15.957s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/environment/library_path.sh
+[15.957s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/environment/library_path.dsv
+[15.958s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ament_index/resource_index/package_run_dependencies/ros2_lidar
+[15.958s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ament_index/resource_index/parent_prefix_path/ros2_lidar
+[15.958s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/environment/ament_prefix_path.sh
+[15.959s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/environment/ament_prefix_path.dsv
+[15.959s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/environment/path.sh
+[15.960s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/environment/path.dsv
+[15.960s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/local_setup.bash
+[15.960s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/local_setup.sh
+[15.961s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/local_setup.zsh
+[15.961s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/local_setup.dsv
+[15.962s] -- Installing: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/package.dsv
+[15.962s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ament_index/resource_index/packages/ros2_lidar
+[15.962s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ament_index/resource_index/rclcpp_components/ros2_lidar
+[15.963s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/cmake/ament_cmake_export_include_directories-extras.cmake
+[15.963s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/cmake/ament_cmake_export_libraries-extras.cmake
+[15.964s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/cmake/ament_cmake_export_dependencies-extras.cmake
+[15.964s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/cmake/ros2_lidarConfig.cmake
+[15.965s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/cmake/ros2_lidarConfig-version.cmake
+[15.965s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/ros2_lidar/share/ros2_lidar/package.xml
+[15.966s] Invoked command in '/home/grz/trolley_auto_drive_image/code/build/ros2_lidar' returned '0': CMAKE_PREFIX_PATH=/home/grz/trolley_auto_drive_image/code/install/lidar_msgs:/home/grz/trolley_auto_drive_image/code/install/ros2_lidar:/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs:/home/grz/trolley_auto_drive_image/code/install/linear_displacement_sensor:/home/grz/trolley_auto_drive_image/code/install/lidar_data_handler:/opt/ros/foxy LD_LIBRARY_PATH=/home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib:/home/grz/trolley_auto_drive_image/code/install/ros2_lidar/lib:/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib PYTHONPATH=/home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib/python3.8/site-packages:/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib/python3.8/site-packages:/home/grz/trolley_auto_drive_image/code/build/linear_displacement_sensor:/home/grz/trolley_auto_drive_image/code/install/linear_displacement_sensor/lib/python3.8/site-packages:/home/grz/trolley_auto_drive_image/code/build/lidar_data_handler:/home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages /usr/bin/cmake --install /home/grz/trolley_auto_drive_image/code/build/ros2_lidar

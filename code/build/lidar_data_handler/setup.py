@@ -1,1 +1,0 @@
-/home/grz/trolley_auto_drive_image/code/src/lidar_data_handler/setup.py

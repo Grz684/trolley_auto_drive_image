@@ -1,0 +1,379 @@
+[0.000000] (-) TimerEvent: {}
+[0.001017] (-) JobUnselected: {'identifier': 'lidar_data_handler'}
+[0.001186] (-) JobUnselected: {'identifier': 'lidar_msgs'}
+[0.001727] (-) JobUnselected: {'identifier': 'linear_displacement_sensor'}
+[0.001792] (-) JobUnselected: {'identifier': 'linear_sensor_msgs'}
+[0.001831] (-) JobUnselected: {'identifier': 'olei_interfaces'}
+[0.001866] (-) JobUnselected: {'identifier': 'ros2_lidar'}
+[0.001933] (olei_driver) JobQueued: {'identifier': 'olei_driver', 'dependencies': OrderedDict([('olei_interfaces', '/home/grz/trolley_auto_drive_image/code/install/olei_interfaces')])}
+[0.001982] (olei_driver) JobStarted: {'identifier': 'olei_driver'}
+[0.019746] (olei_driver) JobProgress: {'identifier': 'olei_driver', 'progress': 'cmake'}
+[0.021595] (olei_driver) Command: {'cmd': ['/usr/bin/cmake', '/home/grz/trolley_auto_drive_image/code/src/ole2d_ros2_driver_new/olei_driver', '-DCMAKE_INSTALL_PREFIX=/home/grz/trolley_auto_drive_image/code/install/olei_driver'], 'cwd': '/home/grz/trolley_auto_drive_image/code/build/olei_driver', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'grz'), ('SSH_CLIENT', '10.111.248.207 9213 22'), ('LC_TIME', 'zh_CN.UTF-8'), ('XDG_SESSION_TYPE', 'tty'), ('GIT_ASKPASS', '/home/grz/.vscode-server/cli/servers/Stable-585eba7c0c34fd6b30faac7c62a42050bfbc0086/server/extensions/git/dist/askpass.sh'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/grz/trolley_auto_drive_image/code/install/olei_interfaces/lib:/home/grz/trolley_auto_drive_image/code/install/ros2_lidar/lib:/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib:/home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('BROWSER', '/home/grz/.vscode-server/cli/servers/Stable-585eba7c0c34fd6b30faac7c62a42050bfbc0086/server/bin/helpers/browser.sh'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/grz'), ('OLDPWD', '/home/grz/trolley_auto_drive_image/code/src'), ('TERM_PROGRAM_VERSION', '1.108.1'), ('VSCODE_IPC_HOOK_CLI', '/run/user/1000/vscode-ipc-ff43a12a-ced7-444d-b3e0-94f2718f5065.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/home/grz/.vscode-server/cli/servers/Stable-585eba7c0c34fd6b30faac7c62a42050bfbc0086/server/extensions/git/dist/askpass-main.js'), ('LC_MONETARY', 'zh_CN.UTF-8'), ('VSCODE_GIT_ASKPASS_NODE', '/home/grz/.vscode-server/cli/servers/Stable-585eba7c0c34fd6b30faac7c62a42050bfbc0086/server/node'), ('SSL_CERT_FILE', '/usr/lib/ssl/certs/ca-certificates.crt'), ('VSCODE_PYTHON_AUTOACTIVATE_GUARD', '1'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('COLCON_PREFIX_PATH', '/home/grz/trolley_auto_drive_image/code/install'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'grz'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', '4'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/grz/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/home/grz/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/home/grz/.vscode-server/cli/servers/Stable-585eba7c0c34fd6b30faac7c62a42050bfbc0086/server/bin/remote-cli:/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('LC_ADDRESS', 'zh_CN.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('SSL_CERT_DIR', '/usr/lib/ssl/certs'), ('LANG', 'en_US.UTF-8'), ('LC_TELEPHONE', 'zh_CN.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-4c22939ec7.sock'), ('TERM_PROGRAM', 'vscode'), ('AMENT_PREFIX_PATH', '/home/grz/trolley_auto_drive_image/code/install/ros2_lidar:/home/grz/trolley_auto_drive_image/code/install/olei_interfaces:/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs:/home/grz/trolley_auto_drive_image/code/install/linear_displacement_sensor:/home/grz/trolley_auto_drive_image/code/install/lidar_msgs:/home/grz/trolley_auto_drive_image/code/install/lidar_data_handler:/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('LC_NAME', 'zh_CN.UTF-8'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'zh_CN.UTF-8'), ('LC_IDENTIFICATION', 'zh_CN.UTF-8'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('PWD', '/home/grz/trolley_auto_drive_image/code/build/olei_driver'), ('LC_ALL', 'en_US.UTF-8'), ('SSH_CONNECTION', '10.111.248.207 9213 10.111.248.63 22'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/grz/trolley_auto_drive_image/code/install/olei_interfaces/lib/python3.8/site-packages:/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib/python3.8/site-packages:/home/grz/trolley_auto_drive_image/code/build/linear_displacement_sensor:/home/grz/trolley_auto_drive_image/code/install/linear_displacement_sensor/lib/python3.8/site-packages:/home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib/python3.8/site-packages:/home/grz/trolley_auto_drive_image/code/build/lidar_data_handler:/home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('LC_NUMERIC', 'zh_CN.UTF-8'), ('LC_PAPER', 'zh_CN.UTF-8'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/grz/trolley_auto_drive_image/code/install/olei_interfaces:/home/grz/trolley_auto_drive_image/code/install/ros2_lidar:/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs:/home/grz/trolley_auto_drive_image/code/install/lidar_msgs:/home/grz/trolley_auto_drive_image/code/install/linear_displacement_sensor:/home/grz/trolley_auto_drive_image/code/install/lidar_data_handler:/opt/ros/foxy')]), 'shell': False}
+[0.048668] (olei_driver) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[0.088696] (olei_driver) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[0.099346] (-) TimerEvent: {}
+[0.199964] (-) TimerEvent: {}
+[0.300409] (-) TimerEvent: {}
+[0.359443] (olei_driver) StdoutLine: {'line': b'-- Found olei_interfaces: 2.0.0 (/home/grz/trolley_auto_drive_image/code/install/olei_interfaces/share/olei_interfaces/cmake)\n'}
+[0.387738] (olei_driver) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.395367] (olei_driver) StdoutLine: {'line': b'-- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)\n'}
+[0.400611] (-) TimerEvent: {}
+[0.501064] (-) TimerEvent: {}
+[0.558921] (olei_driver) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.592956] (olei_driver) StdoutLine: {'line': b'-- Found laser_geometry: 2.2.0 (/opt/ros/foxy/share/laser_geometry/cmake)\n'}
+[0.600306] (olei_driver) StdoutLine: {'line': b'-- Found pcl_conversions: 2.2.1 (/opt/ros/foxy/share/pcl_conversions/cmake)\n'}
+[0.601144] (-) TimerEvent: {}
+[0.701529] (-) TimerEvent: {}
+[0.801929] (-) TimerEvent: {}
+[0.902346] (-) TimerEvent: {}
+[1.002813] (-) TimerEvent: {}
+[1.073695] (olei_driver) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)\n'}
+[1.076331] (olei_driver) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[1.102921] (-) TimerEvent: {}
+[1.203274] (-) TimerEvent: {}
+[1.303655] (-) TimerEvent: {}
+[1.313747] (olei_driver) StdoutLine: {'line': b'-- Found pcl_ros: 2.2.1 (/opt/ros/foxy/share/pcl_ros/cmake)\n'}
+[1.403779] (-) TimerEvent: {}
+[1.504209] (-) TimerEvent: {}
+[1.604622] (-) TimerEvent: {}
+[1.704988] (-) TimerEvent: {}
+[1.805366] (-) TimerEvent: {}
+[1.905760] (-) TimerEvent: {}
+[2.006139] (-) TimerEvent: {}
+[2.014670] (olei_driver) StdoutLine: {'line': b'-- Eigen found (include: /usr/include/eigen3, version: 3.3.7)\n'}
+[2.106271] (-) TimerEvent: {}
+[2.138386] (olei_driver) StdoutLine: {'line': b'-- The imported target "vtkParseOGLExt" references the file\n'}
+[2.138707] (olei_driver) StdoutLine: {'line': b'   "/usr/bin/vtkParseOGLExt-7.1"\n'}
+[2.138894] (olei_driver) StdoutLine: {'line': b'but this file does not exist.  Possible reasons include:\n'}
+[2.139063] (olei_driver) StdoutLine: {'line': b'* The file was deleted, renamed, or moved to another location.\n'}
+[2.139228] (olei_driver) StdoutLine: {'line': b'* An install or uninstall procedure did not complete successfully.\n'}
+[2.139389] (olei_driver) StdoutLine: {'line': b'* The installation package was faulty and contained\n'}
+[2.139548] (olei_driver) StdoutLine: {'line': b'   "/usr/lib/cmake/vtk-7.1/VTKTargets.cmake"\n'}
+[2.139708] (olei_driver) StdoutLine: {'line': b'but not all the files it references.\n'}
+[2.139866] (olei_driver) StdoutLine: {'line': b'\n'}
+[2.140190] (olei_driver) StdoutLine: {'line': b'-- The imported target "vtkRenderingPythonTkWidgets" references the file\n'}
+[2.140368] (olei_driver) StdoutLine: {'line': b'   "/usr/lib/x86_64-linux-gnu/libvtkRenderingPythonTkWidgets.so"\n'}
+[2.140545] (olei_driver) StdoutLine: {'line': b'but this file does not exist.  Possible reasons include:\n'}
+[2.140718] (olei_driver) StdoutLine: {'line': b'* The file was deleted, renamed, or moved to another location.\n'}
+[2.140882] (olei_driver) StdoutLine: {'line': b'* An install or uninstall procedure did not complete successfully.\n'}
+[2.141042] (olei_driver) StdoutLine: {'line': b'* The installation package was faulty and contained\n'}
+[2.141204] (olei_driver) StdoutLine: {'line': b'   "/usr/lib/cmake/vtk-7.1/VTKTargets.cmake"\n'}
+[2.141360] (olei_driver) StdoutLine: {'line': b'but not all the files it references.\n'}
+[2.141630] (olei_driver) StdoutLine: {'line': b'\n'}
+[2.141800] (olei_driver) StdoutLine: {'line': b'-- The imported target "vtk" references the file\n'}
+[2.142072] (olei_driver) StdoutLine: {'line': b'   "/usr/bin/vtk"\n'}
+[2.143129] (olei_driver) StdoutLine: {'line': b'but this file does not exist.  Possible reasons include:\n'}
+[2.143326] (olei_driver) StdoutLine: {'line': b'* The file was deleted, renamed, or moved to another location.\n'}
+[2.143495] (olei_driver) StdoutLine: {'line': b'* An install or uninstall procedure did not complete successfully.\n'}
+[2.143659] (olei_driver) StdoutLine: {'line': b'* The installation package was faulty and contained\n'}
+[2.143820] (olei_driver) StdoutLine: {'line': b'   "/usr/lib/cmake/vtk-7.1/VTKTargets.cmake"\n'}
+[2.143982] (olei_driver) StdoutLine: {'line': b'but not all the files it references.\n'}
+[2.144140] (olei_driver) StdoutLine: {'line': b'\n'}
+[2.144299] (olei_driver) StdoutLine: {'line': b'-- The imported target "pvtk" references the file\n'}
+[2.144456] (olei_driver) StdoutLine: {'line': b'   "/usr/bin/pvtk"\n'}
+[2.144706] (olei_driver) StdoutLine: {'line': b'but this file does not exist.  Possible reasons include:\n'}
+[2.144980] (olei_driver) StdoutLine: {'line': b'* The file was deleted, renamed, or moved to another location.\n'}
+[2.145224] (olei_driver) StdoutLine: {'line': b'* An install or uninstall procedure did not complete successfully.\n'}
+[2.145467] (olei_driver) StdoutLine: {'line': b'* The installation package was faulty and contained\n'}
+[2.145708] (olei_driver) StdoutLine: {'line': b'   "/usr/lib/cmake/vtk-7.1/VTKTargets.cmake"\n'}
+[2.145948] (olei_driver) StdoutLine: {'line': b'but not all the files it references.\n'}
+[2.146210] (olei_driver) StdoutLine: {'line': b'\n'}
+[2.171410] (olei_driver) StdoutLine: {'line': b"-- Checking for module 'libusb-1.0'\n"}
+[2.175531] (olei_driver) StdoutLine: {'line': b"--   No package 'libusb-1.0' found\n"}
+[2.180976] (olei_driver) StdoutLine: {'line': b'-- Could NOT find USB_10 (missing: USB_10_LIBRARY USB_10_INCLUDE_DIR) \n'}
+[2.181292] (olei_driver) StdoutLine: {'line': b'-- OpenNI disabled because libusb-1.0 not found.\n'}
+[2.187968] (olei_driver) StdoutLine: {'line': b"-- Checking for module 'libusb-1.0'\n"}
+[2.192292] (olei_driver) StdoutLine: {'line': b"--   No package 'libusb-1.0' found\n"}
+[2.197447] (olei_driver) StdoutLine: {'line': b'-- Could NOT find USB_10 (missing: USB_10_LIBRARY USB_10_INCLUDE_DIR) \n'}
+[2.197710] (olei_driver) StdoutLine: {'line': b'-- OpenNI 2 disabled because libusb-1.0 not found.\n'}
+[2.206412] (-) TimerEvent: {}
+[2.218777] (olei_driver) StdoutLine: {'line': b'-- LIBUSB_1_LIBRARY (missing: LIBUSB_1_INCLUDE_DIR) \n'}
+[2.225263] (olei_driver) StdoutLine: {'line': b"-- Checking for module 'libusb-1.0'\n"}
+[2.229341] (olei_driver) StdoutLine: {'line': b"--   No package 'libusb-1.0' found\n"}
+[2.234297] (olei_driver) StdoutLine: {'line': b'-- Could NOT find USB_10 (missing: USB_10_LIBRARY USB_10_INCLUDE_DIR) \n'}
+[2.234629] (olei_driver) StdoutLine: {'line': b'-- OpenNI disabled because libusb-1.0 not found.\n'}
+[2.240986] (olei_driver) StdoutLine: {'line': b"-- Checking for module 'libusb-1.0'\n"}
+[2.245640] (olei_driver) StdoutLine: {'line': b"--   No package 'libusb-1.0' found\n"}
+[2.250542] (olei_driver) StdoutLine: {'line': b'-- Could NOT find USB_10 (missing: USB_10_LIBRARY USB_10_INCLUDE_DIR) \n'}
+[2.250829] (olei_driver) StdoutLine: {'line': b'-- OpenNI 2 disabled because libusb-1.0 not found.\n'}
+[2.269028] (olei_driver) StdoutLine: {'line': b'-- QHULL found (include: /usr/include, lib: optimized;/usr/lib/x86_64-linux-gnu/libqhull.so;debug;/usr/lib/x86_64-linux-gnu/libqhull.so)\n'}
+[2.276196] (olei_driver) StdoutLine: {'line': b"-- Checking for module 'libusb-1.0'\n"}
+[2.280750] (olei_driver) StdoutLine: {'line': b"--   No package 'libusb-1.0' found\n"}
+[2.285977] (olei_driver) StdoutLine: {'line': b'-- Could NOT find USB_10 (missing: USB_10_LIBRARY USB_10_INCLUDE_DIR) \n'}
+[2.286203] (olei_driver) StdoutLine: {'line': b'-- OpenNI disabled because libusb-1.0 not found.\n'}
+[2.306515] (-) TimerEvent: {}
+[2.406852] (-) TimerEvent: {}
+[2.507228] (-) TimerEvent: {}
+[2.607602] (-) TimerEvent: {}
+[2.648468] (olei_driver) StdoutLine: {'line': b'-- Found PkgConfig: /usr/bin/pkg-config (found version "0.29.1") \n'}
+[2.650771] (olei_driver) StdoutLine: {'line': b"-- Checking for module 'curlpp'\n"}
+[2.675947] (olei_driver) StdoutLine: {'line': b'--   Found curlpp, version \n'}
+[2.707727] (-) TimerEvent: {}
+[2.808140] (-) TimerEvent: {}
+[2.836879] (olei_driver) StdoutLine: {'line': b'-- Configuring done\n'}
+[2.898799] (olei_driver) StdoutLine: {'line': b'-- Generating done\n'}
+[2.908295] (-) TimerEvent: {}
+[2.911898] (olei_driver) StdoutLine: {'line': b'-- Build files have been written to: /home/grz/trolley_auto_drive_image/code/build/olei_driver\n'}
+[2.929313] (olei_driver) CommandEnded: {'returncode': 0}
+[2.930772] (olei_driver) JobProgress: {'identifier': 'olei_driver', 'progress': 'build'}
+[2.934244] (olei_driver) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/grz/trolley_auto_drive_image/code/build/olei_driver', '--', '-j4', '-l4'], 'cwd': '/home/grz/trolley_auto_drive_image/code/build/olei_driver', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'grz'), ('SSH_CLIENT', '10.111.248.207 9213 22'), ('LC_TIME', 'zh_CN.UTF-8'), ('XDG_SESSION_TYPE', 'tty'), ('GIT_ASKPASS', '/home/grz/.vscode-server/cli/servers/Stable-585eba7c0c34fd6b30faac7c62a42050bfbc0086/server/extensions/git/dist/askpass.sh'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/grz/trolley_auto_drive_image/code/install/olei_interfaces/lib:/home/grz/trolley_auto_drive_image/code/install/ros2_lidar/lib:/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib:/home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('BROWSER', '/home/grz/.vscode-server/cli/servers/Stable-585eba7c0c34fd6b30faac7c62a42050bfbc0086/server/bin/helpers/browser.sh'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/grz'), ('OLDPWD', '/home/grz/trolley_auto_drive_image/code/src'), ('TERM_PROGRAM_VERSION', '1.108.1'), ('VSCODE_IPC_HOOK_CLI', '/run/user/1000/vscode-ipc-ff43a12a-ced7-444d-b3e0-94f2718f5065.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/home/grz/.vscode-server/cli/servers/Stable-585eba7c0c34fd6b30faac7c62a42050bfbc0086/server/extensions/git/dist/askpass-main.js'), ('LC_MONETARY', 'zh_CN.UTF-8'), ('VSCODE_GIT_ASKPASS_NODE', '/home/grz/.vscode-server/cli/servers/Stable-585eba7c0c34fd6b30faac7c62a42050bfbc0086/server/node'), ('SSL_CERT_FILE', '/usr/lib/ssl/certs/ca-certificates.crt'), ('VSCODE_PYTHON_AUTOACTIVATE_GUARD', '1'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('COLCON_PREFIX_PATH', '/home/grz/trolley_auto_drive_image/code/install'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'grz'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', '4'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/grz/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/home/grz/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/home/grz/.vscode-server/cli/servers/Stable-585eba7c0c34fd6b30faac7c62a42050bfbc0086/server/bin/remote-cli:/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('LC_ADDRESS', 'zh_CN.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('SSL_CERT_DIR', '/usr/lib/ssl/certs'), ('LANG', 'en_US.UTF-8'), ('LC_TELEPHONE', 'zh_CN.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-4c22939ec7.sock'), ('TERM_PROGRAM', 'vscode'), ('AMENT_PREFIX_PATH', '/home/grz/trolley_auto_drive_image/code/install/ros2_lidar:/home/grz/trolley_auto_drive_image/code/install/olei_interfaces:/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs:/home/grz/trolley_auto_drive_image/code/install/linear_displacement_sensor:/home/grz/trolley_auto_drive_image/code/install/lidar_msgs:/home/grz/trolley_auto_drive_image/code/install/lidar_data_handler:/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('LC_NAME', 'zh_CN.UTF-8'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'zh_CN.UTF-8'), ('LC_IDENTIFICATION', 'zh_CN.UTF-8'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('PWD', '/home/grz/trolley_auto_drive_image/code/build/olei_driver'), ('LC_ALL', 'en_US.UTF-8'), ('SSH_CONNECTION', '10.111.248.207 9213 10.111.248.63 22'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/grz/trolley_auto_drive_image/code/install/olei_interfaces/lib/python3.8/site-packages:/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib/python3.8/site-packages:/home/grz/trolley_auto_drive_image/code/build/linear_displacement_sensor:/home/grz/trolley_auto_drive_image/code/install/linear_displacement_sensor/lib/python3.8/site-packages:/home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib/python3.8/site-packages:/home/grz/trolley_auto_drive_image/code/build/lidar_data_handler:/home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('LC_NUMERIC', 'zh_CN.UTF-8'), ('LC_PAPER', 'zh_CN.UTF-8'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/grz/trolley_auto_drive_image/code/install/olei_interfaces:/home/grz/trolley_auto_drive_image/code/install/ros2_lidar:/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs:/home/grz/trolley_auto_drive_image/code/install/lidar_msgs:/home/grz/trolley_auto_drive_image/code/install/linear_displacement_sensor:/home/grz/trolley_auto_drive_image/code/install/lidar_data_handler:/opt/ros/foxy')]), 'shell': False}
+[2.997022] (olei_driver) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target ros_main\x1b[0m\n'}
+[3.008426] (-) TimerEvent: {}
+[3.108798] (olei_driver) StdoutLine: {'line': b'[  6%] \x1b[32mBuilding CXX object CMakeFiles/ros_main.dir/src/olei/olei_packet_reader.cpp.o\x1b[0m\n'}
+[3.109204] (-) TimerEvent: {}
+[3.109624] (olei_driver) StdoutLine: {'line': b'[ 13%] \x1b[32mBuilding CXX object CMakeFiles/ros_main.dir/src/olei/olei_interface.cpp.o\x1b[0m\n'}
+[3.109876] (olei_driver) StdoutLine: {'line': b'[ 20%] \x1b[32mBuilding CXX object CMakeFiles/ros_main.dir/src/olei/olei_packet/olei_packet.cpp.o\x1b[0m\n'}
+[3.127272] (olei_driver) StdoutLine: {'line': b'[ 26%] \x1b[32mBuilding CXX object CMakeFiles/ros_main.dir/src/pipeline.cpp.o\x1b[0m\n'}
+[3.209365] (-) TimerEvent: {}
+[3.309866] (-) TimerEvent: {}
+[3.410270] (-) TimerEvent: {}
+[3.520683] (-) TimerEvent: {}
+[3.621135] (-) TimerEvent: {}
+[3.721613] (-) TimerEvent: {}
+[3.822076] (-) TimerEvent: {}
+[3.922602] (-) TimerEvent: {}
+[4.023069] (-) TimerEvent: {}
+[4.123560] (-) TimerEvent: {}
+[4.224029] (-) TimerEvent: {}
+[4.324507] (-) TimerEvent: {}
+[4.368334] (olei_driver) StdoutLine: {'line': b'[ 33%] \x1b[32mBuilding CXX object CMakeFiles/ros_main.dir/src/olei/olei_packet/olei_vf_packet.cpp.o\x1b[0m\n'}
+[4.424626] (-) TimerEvent: {}
+[4.525234] (-) TimerEvent: {}
+[4.625876] (-) TimerEvent: {}
+[4.726543] (-) TimerEvent: {}
+[4.780694] (olei_driver) StdoutLine: {'line': b'[ 40%] \x1b[32mBuilding CXX object CMakeFiles/ros_main.dir/src/olei/olei_packet/olei_vf_packet_a.cpp.o\x1b[0m\n'}
+[4.828325] (-) TimerEvent: {}
+[4.929398] (-) TimerEvent: {}
+[5.030093] (-) TimerEvent: {}
+[5.130732] (-) TimerEvent: {}
+[5.232111] (-) TimerEvent: {}
+[5.333107] (-) TimerEvent: {}
+[5.433981] (-) TimerEvent: {}
+[5.534868] (-) TimerEvent: {}
+[5.550937] (olei_driver) StdoutLine: {'line': b'[ 46%] \x1b[32mBuilding CXX object CMakeFiles/ros_main.dir/src/olei/olei_packet/olei_vf_packet_b.cpp.o\x1b[0m\n'}
+[5.635012] (-) TimerEvent: {}
+[5.735661] (-) TimerEvent: {}
+[5.836275] (-) TimerEvent: {}
+[5.937724] (-) TimerEvent: {}
+[6.038656] (-) TimerEvent: {}
+[6.089456] (olei_driver) StdoutLine: {'line': b'[ 53%] \x1b[32mBuilding CXX object CMakeFiles/ros_main.dir/src/olei/olei_packet/olei_vf_packet_c.cpp.o\x1b[0m\n'}
+[6.138793] (-) TimerEvent: {}
+[6.239433] (-) TimerEvent: {}
+[6.340266] (-) TimerEvent: {}
+[6.440909] (-) TimerEvent: {}
+[6.541529] (-) TimerEvent: {}
+[6.642203] (-) TimerEvent: {}
+[6.742905] (-) TimerEvent: {}
+[6.815406] (olei_driver) StdoutLine: {'line': b'[ 60%] \x1b[32mBuilding CXX object CMakeFiles/ros_main.dir/src/olei/olei_packet/olei_version2_a.cpp.o\x1b[0m\n'}
+[6.843058] (-) TimerEvent: {}
+[6.943893] (-) TimerEvent: {}
+[7.044629] (-) TimerEvent: {}
+[7.145431] (-) TimerEvent: {}
+[7.246107] (-) TimerEvent: {}
+[7.346805] (-) TimerEvent: {}
+[7.402851] (olei_driver) StdoutLine: {'line': b'[ 66%] \x1b[32mBuilding CXX object CMakeFiles/ros_main.dir/src/olei/olei_packet/olei_version2.cpp.o\x1b[0m\n'}
+[7.446938] (-) TimerEvent: {}
+[7.547572] (-) TimerEvent: {}
+[7.648220] (-) TimerEvent: {}
+[7.748926] (-) TimerEvent: {}
+[7.849617] (-) TimerEvent: {}
+[7.950244] (-) TimerEvent: {}
+[8.050937] (-) TimerEvent: {}
+[8.151670] (-) TimerEvent: {}
+[8.252377] (-) TimerEvent: {}
+[8.290254] (olei_driver) StdoutLine: {'line': b'[ 73%] \x1b[32mBuilding CXX object CMakeFiles/ros_main.dir/src/communication/udp_transport.cpp.o\x1b[0m\n'}
+[8.352507] (-) TimerEvent: {}
+[8.435448] (olei_driver) StdoutLine: {'line': b'[ 80%] \x1b[32mBuilding CXX object CMakeFiles/ros_main.dir/src/communication/tcp_transport.cpp.o\x1b[0m\n'}
+[8.452633] (-) TimerEvent: {}
+[8.553243] (-) TimerEvent: {}
+[8.650924] (olei_driver) StdoutLine: {'line': b'[ 86%] \x1b[32mBuilding CXX object CMakeFiles/ros_main.dir/src/ros/lidar_publish.cpp.o\x1b[0m\n'}
+[8.653376] (-) TimerEvent: {}
+[8.754070] (-) TimerEvent: {}
+[8.854709] (-) TimerEvent: {}
+[8.955339] (-) TimerEvent: {}
+[9.055979] (-) TimerEvent: {}
+[9.156625] (-) TimerEvent: {}
+[9.257261] (-) TimerEvent: {}
+[9.357933] (-) TimerEvent: {}
+[9.458642] (-) TimerEvent: {}
+[9.559319] (-) TimerEvent: {}
+[9.659967] (-) TimerEvent: {}
+[9.760626] (-) TimerEvent: {}
+[9.861288] (-) TimerEvent: {}
+[9.961965] (-) TimerEvent: {}
+[10.062620] (-) TimerEvent: {}
+[10.163250] (-) TimerEvent: {}
+[10.263941] (-) TimerEvent: {}
+[10.364706] (-) TimerEvent: {}
+[10.465399] (-) TimerEvent: {}
+[10.566033] (-) TimerEvent: {}
+[10.666769] (-) TimerEvent: {}
+[10.767463] (-) TimerEvent: {}
+[10.868121] (-) TimerEvent: {}
+[10.968785] (-) TimerEvent: {}
+[11.069403] (-) TimerEvent: {}
+[11.170044] (-) TimerEvent: {}
+[11.270688] (-) TimerEvent: {}
+[11.371336] (-) TimerEvent: {}
+[11.472002] (-) TimerEvent: {}
+[11.572632] (-) TimerEvent: {}
+[11.673316] (-) TimerEvent: {}
+[11.773957] (-) TimerEvent: {}
+[11.874621] (-) TimerEvent: {}
+[11.975255] (-) TimerEvent: {}
+[12.075922] (-) TimerEvent: {}
+[12.176606] (-) TimerEvent: {}
+[12.277268] (-) TimerEvent: {}
+[12.377935] (-) TimerEvent: {}
+[12.478593] (-) TimerEvent: {}
+[12.579385] (-) TimerEvent: {}
+[12.680048] (-) TimerEvent: {}
+[12.780699] (-) TimerEvent: {}
+[12.881360] (-) TimerEvent: {}
+[12.982031] (-) TimerEvent: {}
+[13.082949] (-) TimerEvent: {}
+[13.183953] (-) TimerEvent: {}
+[13.284837] (-) TimerEvent: {}
+[13.385718] (-) TimerEvent: {}
+[13.486629] (-) TimerEvent: {}
+[13.587621] (-) TimerEvent: {}
+[13.688639] (-) TimerEvent: {}
+[13.740287] (olei_driver) StdoutLine: {'line': b'[ 93%] \x1b[32mBuilding CXX object CMakeFiles/ros_main.dir/src/ros/ros_main.cpp.o\x1b[0m\n'}
+[13.788757] (-) TimerEvent: {}
+[13.889605] (-) TimerEvent: {}
+[13.990453] (-) TimerEvent: {}
+[14.092885] (-) TimerEvent: {}
+[14.193709] (-) TimerEvent: {}
+[14.294381] (-) TimerEvent: {}
+[14.395041] (-) TimerEvent: {}
+[14.495723] (-) TimerEvent: {}
+[14.596408] (-) TimerEvent: {}
+[14.697122] (-) TimerEvent: {}
+[14.797783] (-) TimerEvent: {}
+[14.898268] (-) TimerEvent: {}
+[14.998950] (-) TimerEvent: {}
+[15.099745] (-) TimerEvent: {}
+[15.200278] (-) TimerEvent: {}
+[15.300752] (-) TimerEvent: {}
+[15.401229] (-) TimerEvent: {}
+[15.501761] (-) TimerEvent: {}
+[15.602392] (-) TimerEvent: {}
+[15.703289] (-) TimerEvent: {}
+[15.804257] (-) TimerEvent: {}
+[15.904956] (-) TimerEvent: {}
+[16.005568] (-) TimerEvent: {}
+[16.106011] (-) TimerEvent: {}
+[16.206552] (-) TimerEvent: {}
+[16.307070] (-) TimerEvent: {}
+[16.407674] (-) TimerEvent: {}
+[16.508117] (-) TimerEvent: {}
+[16.608627] (-) TimerEvent: {}
+[16.709125] (-) TimerEvent: {}
+[16.809618] (-) TimerEvent: {}
+[16.910103] (-) TimerEvent: {}
+[17.010586] (-) TimerEvent: {}
+[17.111071] (-) TimerEvent: {}
+[17.211612] (-) TimerEvent: {}
+[17.312098] (-) TimerEvent: {}
+[17.412636] (-) TimerEvent: {}
+[17.513032] (-) TimerEvent: {}
+[17.613373] (-) TimerEvent: {}
+[17.713735] (-) TimerEvent: {}
+[17.814106] (-) TimerEvent: {}
+[17.914498] (-) TimerEvent: {}
+[18.014910] (-) TimerEvent: {}
+[18.115270] (-) TimerEvent: {}
+[18.215643] (-) TimerEvent: {}
+[18.316010] (-) TimerEvent: {}
+[18.416380] (-) TimerEvent: {}
+[18.516758] (-) TimerEvent: {}
+[18.617127] (-) TimerEvent: {}
+[18.717621] (-) TimerEvent: {}
+[18.818110] (-) TimerEvent: {}
+[18.918679] (-) TimerEvent: {}
+[19.019123] (-) TimerEvent: {}
+[19.119565] (-) TimerEvent: {}
+[19.220048] (-) TimerEvent: {}
+[19.320472] (-) TimerEvent: {}
+[19.420941] (-) TimerEvent: {}
+[19.521362] (-) TimerEvent: {}
+[19.621754] (-) TimerEvent: {}
+[19.722164] (-) TimerEvent: {}
+[19.822543] (-) TimerEvent: {}
+[19.922935] (-) TimerEvent: {}
+[19.928956] (olei_driver) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable ros_main\x1b[0m\n'}
+[20.023063] (-) TimerEvent: {}
+[20.123456] (-) TimerEvent: {}
+[20.224074] (-) TimerEvent: {}
+[20.324683] (-) TimerEvent: {}
+[20.425400] (-) TimerEvent: {}
+[20.525829] (-) TimerEvent: {}
+[20.626275] (-) TimerEvent: {}
+[20.726727] (-) TimerEvent: {}
+[20.827240] (-) TimerEvent: {}
+[20.927676] (-) TimerEvent: {}
+[21.028511] (-) TimerEvent: {}
+[21.129050] (-) TimerEvent: {}
+[21.229511] (-) TimerEvent: {}
+[21.329843] (-) TimerEvent: {}
+[21.385248] (olei_driver) StdoutLine: {'line': b'[100%] Built target ros_main\n'}
+[21.401416] (olei_driver) CommandEnded: {'returncode': 0}
+[21.402662] (olei_driver) JobProgress: {'identifier': 'olei_driver', 'progress': 'install'}
+[21.419765] (olei_driver) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/grz/trolley_auto_drive_image/code/build/olei_driver'], 'cwd': '/home/grz/trolley_auto_drive_image/code/build/olei_driver', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'grz'), ('SSH_CLIENT', '10.111.248.207 9213 22'), ('LC_TIME', 'zh_CN.UTF-8'), ('XDG_SESSION_TYPE', 'tty'), ('GIT_ASKPASS', '/home/grz/.vscode-server/cli/servers/Stable-585eba7c0c34fd6b30faac7c62a42050bfbc0086/server/extensions/git/dist/askpass.sh'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/grz/trolley_auto_drive_image/code/install/olei_interfaces/lib:/home/grz/trolley_auto_drive_image/code/install/ros2_lidar/lib:/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib:/home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('BROWSER', '/home/grz/.vscode-server/cli/servers/Stable-585eba7c0c34fd6b30faac7c62a42050bfbc0086/server/bin/helpers/browser.sh'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/grz'), ('OLDPWD', '/home/grz/trolley_auto_drive_image/code/src'), ('TERM_PROGRAM_VERSION', '1.108.1'), ('VSCODE_IPC_HOOK_CLI', '/run/user/1000/vscode-ipc-ff43a12a-ced7-444d-b3e0-94f2718f5065.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/home/grz/.vscode-server/cli/servers/Stable-585eba7c0c34fd6b30faac7c62a42050bfbc0086/server/extensions/git/dist/askpass-main.js'), ('LC_MONETARY', 'zh_CN.UTF-8'), ('VSCODE_GIT_ASKPASS_NODE', '/home/grz/.vscode-server/cli/servers/Stable-585eba7c0c34fd6b30faac7c62a42050bfbc0086/server/node'), ('SSL_CERT_FILE', '/usr/lib/ssl/certs/ca-certificates.crt'), ('VSCODE_PYTHON_AUTOACTIVATE_GUARD', '1'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('COLCON_PREFIX_PATH', '/home/grz/trolley_auto_drive_image/code/install'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'grz'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', '4'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/grz/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/home/grz/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/home/grz/.vscode-server/cli/servers/Stable-585eba7c0c34fd6b30faac7c62a42050bfbc0086/server/bin/remote-cli:/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('LC_ADDRESS', 'zh_CN.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('SSL_CERT_DIR', '/usr/lib/ssl/certs'), ('LANG', 'en_US.UTF-8'), ('LC_TELEPHONE', 'zh_CN.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-4c22939ec7.sock'), ('TERM_PROGRAM', 'vscode'), ('AMENT_PREFIX_PATH', '/home/grz/trolley_auto_drive_image/code/install/ros2_lidar:/home/grz/trolley_auto_drive_image/code/install/olei_interfaces:/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs:/home/grz/trolley_auto_drive_image/code/install/linear_displacement_sensor:/home/grz/trolley_auto_drive_image/code/install/lidar_msgs:/home/grz/trolley_auto_drive_image/code/install/lidar_data_handler:/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('LC_NAME', 'zh_CN.UTF-8'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'zh_CN.UTF-8'), ('LC_IDENTIFICATION', 'zh_CN.UTF-8'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('PWD', '/home/grz/trolley_auto_drive_image/code/build/olei_driver'), ('LC_ALL', 'en_US.UTF-8'), ('SSH_CONNECTION', '10.111.248.207 9213 10.111.248.63 22'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/grz/trolley_auto_drive_image/code/install/olei_interfaces/lib/python3.8/site-packages:/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib/python3.8/site-packages:/home/grz/trolley_auto_drive_image/code/build/linear_displacement_sensor:/home/grz/trolley_auto_drive_image/code/install/linear_displacement_sensor/lib/python3.8/site-packages:/home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib/python3.8/site-packages:/home/grz/trolley_auto_drive_image/code/build/lidar_data_handler:/home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('LC_NUMERIC', 'zh_CN.UTF-8'), ('LC_PAPER', 'zh_CN.UTF-8'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/grz/trolley_auto_drive_image/code/install/olei_interfaces:/home/grz/trolley_auto_drive_image/code/install/ros2_lidar:/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs:/home/grz/trolley_auto_drive_image/code/install/lidar_msgs:/home/grz/trolley_auto_drive_image/code/install/linear_displacement_sensor:/home/grz/trolley_auto_drive_image/code/install/lidar_data_handler:/opt/ros/foxy')]), 'shell': False}
+[21.430006] (-) TimerEvent: {}
+[21.434280] (olei_driver) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[21.435053] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/lib/olei_driver/ros_main\n'}
+[21.438511] (olei_driver) StdoutLine: {'line': b'-- Set runtime path of "/home/grz/trolley_auto_drive_image/code/install/olei_driver/lib/olei_driver/ros_main" to ""\n'}
+[21.439106] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/launch\n'}
+[21.439368] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/launch/vf.launch.py\n'}
+[21.439545] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/config\n'}
+[21.439668] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/config/vf_params.yaml\n'}
+[21.442156] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include\n'}
+[21.442564] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/writer.h\n'}
+[21.442797] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/queue\n'}
+[21.443004] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/queue/LICENSE.md\n'}
+[21.443205] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/queue/atomicops.h\n'}
+[21.443406] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/queue/readerwriterqueue.h\n'}
+[21.443605] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/ros\n'}
+[21.443802] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/ros/lidar_publish.h\n'}
+[21.443998] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/parser.h\n'}
+[21.444195] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/olei\n'}
+[21.444391] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/olei/olei_parser.h\n'}
+[21.444604] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/olei/olei_writer.h\n'}
+[21.444798] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/olei/olei_packet\n'}
+[21.444994] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/olei/olei_packet/olei_version2_a.h\n'}
+[21.445189] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/olei/olei_packet/olei_version2.h\n'}
+[21.445384] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/olei/olei_packet/olei_vf_packet_c.h\n'}
+[21.445585] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/olei/olei_packet/olei_packet.h\n'}
+[21.445779] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/olei/olei_packet/olei_vf_packet.h\n'}
+[21.445988] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/olei/olei_packet/olei_vf_packet_a.h\n'}
+[21.446185] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/olei/olei_packet/olei_vf_packet_b.h\n'}
+[21.448633] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/olei/olei_interface.h\n'}
+[21.449068] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/olei/olei_packet_reader.h\n'}
+[21.449247] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/communication\n'}
+[21.449413] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/communication/tcp_transport.h\n'}
+[21.449574] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/communication/transport.h\n'}
+[21.449735] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/communication/transport_type.h\n'}
+[21.449895] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/communication/udp_transport.h\n'}
+[21.450116] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/pipeline.h\n'}
+[21.450572] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/reader.h\n'}
+[21.450812] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/handle_info.h\n'}
+[21.452312] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/ament_index/resource_index/package_run_dependencies/olei_driver\n'}
+[21.452997] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/ament_index/resource_index/parent_prefix_path/olei_driver\n'}
+[21.453241] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/environment/ament_prefix_path.sh\n'}
+[21.453477] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/environment/ament_prefix_path.dsv\n'}
+[21.453755] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/environment/path.sh\n'}
+[21.454062] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/environment/path.dsv\n'}
+[21.454261] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/local_setup.bash\n'}
+[21.454392] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/local_setup.sh\n'}
+[21.454567] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/local_setup.zsh\n'}
+[21.454778] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/local_setup.dsv\n'}
+[21.454934] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/package.dsv\n'}
+[21.455049] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/ament_index/resource_index/packages/olei_driver\n'}
+[21.455547] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[21.456111] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/cmake/olei_driverConfig.cmake\n'}
+[21.456243] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/cmake/olei_driverConfig-version.cmake\n'}
+[21.456475] (olei_driver) StdoutLine: {'line': b'-- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/package.xml\n'}
+[21.456693] (olei_driver) CommandEnded: {'returncode': 0}
+[21.482894] (olei_driver) JobEnded: {'identifier': 'olei_driver', 'rc': 0}
+[21.483987] (-) EventReactorShutdown: {}

@@ -1,0 +1,20 @@
+back_lidar_node:
+  ros__parameters:
+    transport: "udp"
+    scanner_ip: "192.168.68.101"
+    port: "2369"
+    version: 3
+    start_angle: -135
+    end_angle: 135
+    range_min: 0.03
+    range_max: 50.0
+    inverted: false
+    ntp: false
+    max_num_points_scan: 0
+    packet_type: "B" #ABC
+    scan_topic: "/back_lidar/scan"
+    # cloud_topic: "/back_lidar/scan_cloud"
+    frame_id: "back_laser_link"
+    watchdogtimeout: 60000
+    watchdog: true
+    use_system_default_qos: true

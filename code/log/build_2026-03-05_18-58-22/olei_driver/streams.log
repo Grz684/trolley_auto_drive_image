@@ -1,0 +1,59 @@
+[0.022s] Invoking command in '/home/grz/trolley_auto_drive_image/code/build/olei_driver': CMAKE_PREFIX_PATH=/home/grz/trolley_auto_drive_image/code/install/olei_interfaces:/home/grz/trolley_auto_drive_image/code/install/olei_driver:/home/grz/trolley_auto_drive_image/code/install/ros2_lidar:/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs:/home/grz/trolley_auto_drive_image/code/install/lidar_msgs:/home/grz/trolley_auto_drive_image/code/install/linear_displacement_sensor:/home/grz/trolley_auto_drive_image/code/install/lidar_data_handler:/opt/ros/foxy LD_LIBRARY_PATH=/home/grz/trolley_auto_drive_image/code/install/olei_interfaces/lib:/home/grz/trolley_auto_drive_image/code/install/ros2_lidar/lib:/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib:/home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib /usr/bin/cmake --build /home/grz/trolley_auto_drive_image/code/build/olei_driver -- -j4 -l4
+[0.133s] [100%] Built target ros_main
+[0.150s] Invoked command in '/home/grz/trolley_auto_drive_image/code/build/olei_driver' returned '0': CMAKE_PREFIX_PATH=/home/grz/trolley_auto_drive_image/code/install/olei_interfaces:/home/grz/trolley_auto_drive_image/code/install/olei_driver:/home/grz/trolley_auto_drive_image/code/install/ros2_lidar:/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs:/home/grz/trolley_auto_drive_image/code/install/lidar_msgs:/home/grz/trolley_auto_drive_image/code/install/linear_displacement_sensor:/home/grz/trolley_auto_drive_image/code/install/lidar_data_handler:/opt/ros/foxy LD_LIBRARY_PATH=/home/grz/trolley_auto_drive_image/code/install/olei_interfaces/lib:/home/grz/trolley_auto_drive_image/code/install/ros2_lidar/lib:/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib:/home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib /usr/bin/cmake --build /home/grz/trolley_auto_drive_image/code/build/olei_driver -- -j4 -l4
+[0.169s] Invoking command in '/home/grz/trolley_auto_drive_image/code/build/olei_driver': CMAKE_PREFIX_PATH=/home/grz/trolley_auto_drive_image/code/install/olei_interfaces:/home/grz/trolley_auto_drive_image/code/install/olei_driver:/home/grz/trolley_auto_drive_image/code/install/ros2_lidar:/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs:/home/grz/trolley_auto_drive_image/code/install/lidar_msgs:/home/grz/trolley_auto_drive_image/code/install/linear_displacement_sensor:/home/grz/trolley_auto_drive_image/code/install/lidar_data_handler:/opt/ros/foxy LD_LIBRARY_PATH=/home/grz/trolley_auto_drive_image/code/install/olei_interfaces/lib:/home/grz/trolley_auto_drive_image/code/install/ros2_lidar/lib:/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib:/home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib /usr/bin/cmake --install /home/grz/trolley_auto_drive_image/code/build/olei_driver
+[0.181s] -- Install configuration: ""
+[0.181s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/lib/olei_driver/ros_main
+[0.182s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/launch
+[0.182s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/launch/vf.launch.py
+[0.183s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/config
+[0.183s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/config/vf_params.yaml
+[0.183s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/config/back_lidar.yaml
+[0.183s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/config/front_lidar.yaml
+[0.183s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include
+[0.184s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/writer.h
+[0.184s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/queue
+[0.184s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/queue/LICENSE.md
+[0.184s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/queue/atomicops.h
+[0.184s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/queue/readerwriterqueue.h
+[0.185s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/ros
+[0.185s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/ros/lidar_publish.h
+[0.185s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/parser.h
+[0.185s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/olei
+[0.185s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/olei/olei_parser.h
+[0.185s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/olei/olei_writer.h
+[0.186s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/olei/olei_packet
+[0.186s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/olei/olei_packet/olei_version2_a.h
+[0.186s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/olei/olei_packet/olei_version2.h
+[0.186s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/olei/olei_packet/olei_vf_packet_c.h
+[0.187s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/olei/olei_packet/olei_packet.h
+[0.187s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/olei/olei_packet/olei_vf_packet.h
+[0.187s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/olei/olei_packet/olei_vf_packet_a.h
+[0.187s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/olei/olei_packet/olei_vf_packet_b.h
+[0.187s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/olei/olei_interface.h
+[0.188s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/olei/olei_packet_reader.h
+[0.188s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/communication
+[0.189s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/communication/tcp_transport.h
+[0.190s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/communication/transport.h
+[0.190s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/communication/transport_type.h
+[0.191s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/communication/udp_transport.h
+[0.191s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/pipeline.h
+[0.191s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/reader.h
+[0.191s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/include/handle_info.h
+[0.192s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/ament_index/resource_index/package_run_dependencies/olei_driver
+[0.192s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/ament_index/resource_index/parent_prefix_path/olei_driver
+[0.192s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/environment/ament_prefix_path.sh
+[0.193s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/environment/ament_prefix_path.dsv
+[0.193s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/environment/path.sh
+[0.193s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/environment/path.dsv
+[0.193s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/local_setup.bash
+[0.194s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/local_setup.sh
+[0.194s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/local_setup.zsh
+[0.194s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/local_setup.dsv
+[0.194s] -- Installing: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/package.dsv
+[0.195s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/ament_index/resource_index/packages/olei_driver
+[0.195s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/cmake/ament_cmake_export_include_directories-extras.cmake
+[0.195s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/cmake/olei_driverConfig.cmake
+[0.195s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/cmake/olei_driverConfig-version.cmake
+[0.196s] -- Up-to-date: /home/grz/trolley_auto_drive_image/code/install/olei_driver/share/olei_driver/package.xml
+[0.196s] Invoked command in '/home/grz/trolley_auto_drive_image/code/build/olei_driver' returned '0': CMAKE_PREFIX_PATH=/home/grz/trolley_auto_drive_image/code/install/olei_interfaces:/home/grz/trolley_auto_drive_image/code/install/olei_driver:/home/grz/trolley_auto_drive_image/code/install/ros2_lidar:/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs:/home/grz/trolley_auto_drive_image/code/install/lidar_msgs:/home/grz/trolley_auto_drive_image/code/install/linear_displacement_sensor:/home/grz/trolley_auto_drive_image/code/install/lidar_data_handler:/opt/ros/foxy LD_LIBRARY_PATH=/home/grz/trolley_auto_drive_image/code/install/olei_interfaces/lib:/home/grz/trolley_auto_drive_image/code/install/ros2_lidar/lib:/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib:/home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib /usr/bin/cmake --install /home/grz/trolley_auto_drive_image/code/build/olei_driver

@@ -1,0 +1,64 @@
+[0.958s] Invoking command in '/home/grz/trolley_auto_drive_image/code/build/lidar_data_handler': PYTHONPATH=/home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --uninstall --editable --build-directory /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build
+[1.281s] running develop
+[1.459s] Removing /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar-data-handler.egg-link (link to .)
+[1.495s] Invoked command in '/home/grz/trolley_auto_drive_image/code/build/lidar_data_handler' returned '0': PYTHONPATH=/home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --uninstall --editable --build-directory /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build
+[1.499s] Invoking command in '/home/grz/trolley_auto_drive_image/code/src/lidar_data_handler': PYTHONPATH=/home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/lidar_data_handler build --build-base /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build install --record /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/install.log --single-version-externally-managed install_data --force
+[1.795s] running egg_info
+[1.796s] writing ../../build/lidar_data_handler/lidar_data_handler.egg-info/PKG-INFO
+[1.796s] writing dependency_links to ../../build/lidar_data_handler/lidar_data_handler.egg-info/dependency_links.txt
+[1.796s] writing entry points to ../../build/lidar_data_handler/lidar_data_handler.egg-info/entry_points.txt
+[1.797s] writing requirements to ../../build/lidar_data_handler/lidar_data_handler.egg-info/requires.txt
+[1.797s] writing top-level names to ../../build/lidar_data_handler/lidar_data_handler.egg-info/top_level.txt
+[1.850s] reading manifest file '../../build/lidar_data_handler/lidar_data_handler.egg-info/SOURCES.txt'
+[1.851s] writing manifest file '../../build/lidar_data_handler/lidar_data_handler.egg-info/SOURCES.txt'
+[1.851s] running build
+[1.852s] running build_py
+[1.852s] creating /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build
+[1.852s] creating /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib
+[1.852s] creating /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler
+[1.852s] copying lidar_data_handler/try.py -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler
+[1.853s] copying lidar_data_handler/pid_controller.py -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler
+[1.853s] copying lidar_data_handler/pointcloud2_lidar_test.py -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler
+[1.853s] copying lidar_data_handler/__init__.py -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler
+[1.854s] copying lidar_data_handler/generate_heightfield.py -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler
+[1.854s] copying lidar_data_handler/mode_state_machine.py -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler
+[1.854s] copying lidar_data_handler/control_ui.py -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler
+[1.854s] copying lidar_data_handler/handle_lidar_data_utils.py -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler
+[1.855s] copying lidar_data_handler/pointcloud_lidar_test.py -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler
+[1.855s] copying lidar_data_handler/Ui_auto_drive.py -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler
+[1.855s] copying lidar_data_handler/receive_lidar_data.py -> /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler
+[1.855s] running install
+[1.856s] running install_lib
+[1.858s] creating /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler
+[1.858s] copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/try.py -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler
+[1.858s] copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/pid_controller.py -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler
+[1.859s] copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/pointcloud2_lidar_test.py -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler
+[1.859s] copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/__init__.py -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler
+[1.859s] copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/generate_heightfield.py -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler
+[1.860s] copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/mode_state_machine.py -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler
+[1.861s] copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/control_ui.py -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler
+[1.861s] copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/handle_lidar_data_utils.py -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler
+[1.861s] copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/pointcloud_lidar_test.py -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler
+[1.861s] copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/Ui_auto_drive.py -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler
+[1.861s] copying /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build/lib/lidar_data_handler/receive_lidar_data.py -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler
+[1.861s] byte-compiling /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/try.py to try.cpython-38.pyc
+[1.864s] byte-compiling /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/pid_controller.py to pid_controller.cpython-38.pyc
+[1.865s] byte-compiling /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/pointcloud2_lidar_test.py to pointcloud2_lidar_test.cpython-38.pyc
+[1.866s] byte-compiling /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/__init__.py to __init__.cpython-38.pyc
+[1.866s] byte-compiling /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/generate_heightfield.py to generate_heightfield.cpython-38.pyc
+[1.867s] byte-compiling /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/mode_state_machine.py to mode_state_machine.cpython-38.pyc
+[1.868s] byte-compiling /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/control_ui.py to control_ui.cpython-38.pyc
+[1.870s] byte-compiling /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/handle_lidar_data_utils.py to handle_lidar_data_utils.cpython-38.pyc
+[1.874s] byte-compiling /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/pointcloud_lidar_test.py to pointcloud_lidar_test.cpython-38.pyc
+[1.875s] byte-compiling /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/Ui_auto_drive.py to Ui_auto_drive.cpython-38.pyc
+[1.877s] byte-compiling /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler/receive_lidar_data.py to receive_lidar_data.cpython-38.pyc
+[1.884s] running install_data
+[1.884s] copying resource/lidar_data_handler -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/share/ament_index/resource_index/packages
+[1.884s] copying package.xml -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/share/lidar_data_handler
+[1.885s] copying launch/trolley_auto_drive_launch.py -> /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/share/lidar_data_handler/launch
+[1.886s] running install_egg_info
+[1.888s] Copying ../../build/lidar_data_handler/lidar_data_handler.egg-info to /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler-0.0.0-py3.8.egg-info
+[1.890s] running install_scripts
+[1.915s] Installing lidar_data_handler script to /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/lidar_data_handler
+[1.916s] writing list of installed files to '/home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/install.log'
+[1.952s] Invoked command in '/home/grz/trolley_auto_drive_image/code/src/lidar_data_handler' returned '0': PYTHONPATH=/home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/lidar_data_handler build --build-base /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build install --record /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/install.log --single-version-externally-managed install_data --force

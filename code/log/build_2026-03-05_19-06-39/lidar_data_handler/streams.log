@@ -1,0 +1,21 @@
+[0.911s] Invoking command in '/home/grz/trolley_auto_drive_image/code/src/lidar_data_handler': PYTHONPATH=/home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/lidar_data_handler build --build-base /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build install --record /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/install.log --single-version-externally-managed install_data
+[1.218s] running egg_info
+[1.219s] writing ../../build/lidar_data_handler/lidar_data_handler.egg-info/PKG-INFO
+[1.219s] writing dependency_links to ../../build/lidar_data_handler/lidar_data_handler.egg-info/dependency_links.txt
+[1.220s] writing entry points to ../../build/lidar_data_handler/lidar_data_handler.egg-info/entry_points.txt
+[1.220s] writing requirements to ../../build/lidar_data_handler/lidar_data_handler.egg-info/requires.txt
+[1.220s] writing top-level names to ../../build/lidar_data_handler/lidar_data_handler.egg-info/top_level.txt
+[1.272s] reading manifest file '../../build/lidar_data_handler/lidar_data_handler.egg-info/SOURCES.txt'
+[1.274s] writing manifest file '../../build/lidar_data_handler/lidar_data_handler.egg-info/SOURCES.txt'
+[1.274s] running build
+[1.275s] running build_py
+[1.276s] running install
+[1.278s] running install_lib
+[1.281s] running install_data
+[1.281s] running install_egg_info
+[1.284s] removing '/home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler-0.0.0-py3.8.egg-info' (and everything under it)
+[1.284s] Copying ../../build/lidar_data_handler/lidar_data_handler.egg-info to /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages/lidar_data_handler-0.0.0-py3.8.egg-info
+[1.286s] running install_scripts
+[1.314s] Installing lidar_data_handler script to /home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/lidar_data_handler
+[1.315s] writing list of installed files to '/home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/install.log'
+[1.348s] Invoked command in '/home/grz/trolley_auto_drive_image/code/src/lidar_data_handler' returned '0': PYTHONPATH=/home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/grz/trolley_auto_drive_image/code/install/lidar_data_handler/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/lidar_data_handler build --build-base /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/build install --record /home/grz/trolley_auto_drive_image/code/build/lidar_data_handler/install.log --single-version-externally-managed install_data

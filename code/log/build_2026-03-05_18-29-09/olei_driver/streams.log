@@ -1,0 +1,125 @@
+[0.025s] Invoking command in '/home/grz/trolley_auto_drive_image/code/build/olei_driver': CMAKE_PREFIX_PATH=/home/grz/trolley_auto_drive_image/code/install/olei_interfaces:/home/grz/trolley_auto_drive_image/code/install/ros2_lidar:/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs:/home/grz/trolley_auto_drive_image/code/install/lidar_msgs:/home/grz/trolley_auto_drive_image/code/install/linear_displacement_sensor:/home/grz/trolley_auto_drive_image/code/install/lidar_data_handler:/opt/ros/foxy LD_LIBRARY_PATH=/home/grz/trolley_auto_drive_image/code/install/olei_interfaces/lib:/home/grz/trolley_auto_drive_image/code/install/ros2_lidar/lib:/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib:/home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib /usr/bin/cmake /home/grz/trolley_auto_drive_image/code/src/ole2d_ros2_driver_new/olei_driver -DCMAKE_INSTALL_PREFIX=/home/grz/trolley_auto_drive_image/code/install/olei_driver
+[0.047s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.089s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.356s] -- Found olei_interfaces: 2.0.0 (/home/grz/trolley_auto_drive_image/code/install/olei_interfaces/share/olei_interfaces/cmake)
+[0.384s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.389s] -- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[0.558s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.594s] -- Found laser_geometry: 2.2.0 (/opt/ros/foxy/share/laser_geometry/cmake)
+[0.601s] -- Found pcl_conversions: 2.2.1 (/opt/ros/foxy/share/pcl_conversions/cmake)
+[1.087s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[1.089s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.322s] -- Found pcl_ros: 2.2.1 (/opt/ros/foxy/share/pcl_ros/cmake)
+[1.466s] -- Found Eigen3: TRUE (found version "3.3.7") 
+[2.077s] -- Checking for module 'eigen3'
+[2.100s] --   Found eigen3, version 3.3.7
+[2.155s] -- Found Eigen: /usr/include/eigen3 (Required is at least version "3.1") 
+[2.155s] -- Eigen found (include: /usr/include/eigen3, version: 3.3.7)
+[2.255s] -- Checking for module 'flann'
+[2.301s] --   Found flann, version 1.9.1
+[2.366s] -- Found FLANN: /usr/lib/x86_64-linux-gnu/libflann_cpp.so  
+[2.501s] -- The imported target "vtkParseOGLExt" references the file
+[2.501s]    "/usr/bin/vtkParseOGLExt-7.1"
+[2.501s] but this file does not exist.  Possible reasons include:
+[2.501s] * The file was deleted, renamed, or moved to another location.
+[2.501s] * An install or uninstall procedure did not complete successfully.
+[2.502s] * The installation package was faulty and contained
+[2.502s]    "/usr/lib/cmake/vtk-7.1/VTKTargets.cmake"
+[2.502s] but not all the files it references.
+[2.502s] 
+[2.503s] -- The imported target "vtkRenderingPythonTkWidgets" references the file
+[2.503s]    "/usr/lib/x86_64-linux-gnu/libvtkRenderingPythonTkWidgets.so"
+[2.503s] but this file does not exist.  Possible reasons include:
+[2.504s] * The file was deleted, renamed, or moved to another location.
+[2.504s] * An install or uninstall procedure did not complete successfully.
+[2.504s] * The installation package was faulty and contained
+[2.504s]    "/usr/lib/cmake/vtk-7.1/VTKTargets.cmake"
+[2.504s] but not all the files it references.
+[2.505s] 
+[2.505s] -- The imported target "vtk" references the file
+[2.505s]    "/usr/bin/vtk"
+[2.505s] but this file does not exist.  Possible reasons include:
+[2.505s] * The file was deleted, renamed, or moved to another location.
+[2.505s] * An install or uninstall procedure did not complete successfully.
+[2.506s] * The installation package was faulty and contained
+[2.506s]    "/usr/lib/cmake/vtk-7.1/VTKTargets.cmake"
+[2.506s] but not all the files it references.
+[2.506s] 
+[2.506s] -- The imported target "pvtk" references the file
+[2.506s]    "/usr/bin/pvtk"
+[2.506s] but this file does not exist.  Possible reasons include:
+[2.506s] * The file was deleted, renamed, or moved to another location.
+[2.506s] * An install or uninstall procedure did not complete successfully.
+[2.506s] * The installation package was faulty and contained
+[2.507s]    "/usr/lib/cmake/vtk-7.1/VTKTargets.cmake"
+[2.507s] but not all the files it references.
+[2.507s] 
+[2.547s] -- Checking for module 'libusb-1.0'
+[2.552s] --   No package 'libusb-1.0' found
+[2.560s] -- Could NOT find USB_10 (missing: USB_10_LIBRARY USB_10_INCLUDE_DIR) 
+[2.560s] -- OpenNI disabled because libusb-1.0 not found.
+[2.568s] -- Checking for module 'libusb-1.0'
+[2.573s] --   No package 'libusb-1.0' found
+[2.579s] -- Could NOT find USB_10 (missing: USB_10_LIBRARY USB_10_INCLUDE_DIR) 
+[2.580s] -- OpenNI 2 disabled because libusb-1.0 not found.
+[2.601s] -- LIBUSB_1_LIBRARY (missing: LIBUSB_1_INCLUDE_DIR) 
+[2.610s] -- Checking for module 'libusb-1.0'
+[2.615s] --   No package 'libusb-1.0' found
+[2.620s] -- Could NOT find USB_10 (missing: USB_10_LIBRARY USB_10_INCLUDE_DIR) 
+[2.620s] -- OpenNI disabled because libusb-1.0 not found.
+[2.628s] -- Checking for module 'libusb-1.0'
+[2.633s] --   No package 'libusb-1.0' found
+[2.639s] -- Could NOT find USB_10 (missing: USB_10_LIBRARY USB_10_INCLUDE_DIR) 
+[2.639s] -- OpenNI 2 disabled because libusb-1.0 not found.
+[2.686s] -- Found Qhull: optimized;/usr/lib/x86_64-linux-gnu/libqhull.so;debug;/usr/lib/x86_64-linux-gnu/libqhull.so  
+[2.686s] -- QHULL found (include: /usr/include, lib: optimized;/usr/lib/x86_64-linux-gnu/libqhull.so;debug;/usr/lib/x86_64-linux-gnu/libqhull.so)
+[2.693s] -- Checking for module 'libusb-1.0'
+[2.698s] --   No package 'libusb-1.0' found
+[2.703s] -- Could NOT find USB_10 (missing: USB_10_LIBRARY USB_10_INCLUDE_DIR) 
+[2.703s] -- OpenNI disabled because libusb-1.0 not found.
+[2.724s] -- Found PCL_COMMON: /usr/lib/x86_64-linux-gnu/libpcl_common.so  
+[2.727s] -- Found PCL_KDTREE: /usr/lib/x86_64-linux-gnu/libpcl_kdtree.so  
+[2.729s] -- Found PCL_OCTREE: /usr/lib/x86_64-linux-gnu/libpcl_octree.so  
+[2.732s] -- Found PCL_SEARCH: /usr/lib/x86_64-linux-gnu/libpcl_search.so  
+[2.736s] -- Found PCL_SAMPLE_CONSENSUS: /usr/lib/x86_64-linux-gnu/libpcl_sample_consensus.so  
+[2.738s] -- Found PCL_FILTERS: /usr/lib/x86_64-linux-gnu/libpcl_filters.so  
+[2.739s] -- Found PCL_2D: /usr/include/pcl-1.10  
+[2.740s] -- Found PCL_GEOMETRY: /usr/include/pcl-1.10  
+[2.742s] -- Found PCL_IO: /usr/lib/x86_64-linux-gnu/libpcl_io.so  
+[2.745s] -- Found PCL_FEATURES: /usr/lib/x86_64-linux-gnu/libpcl_features.so  
+[2.747s] -- Found PCL_ML: /usr/lib/x86_64-linux-gnu/libpcl_ml.so  
+[2.749s] -- Found PCL_SEGMENTATION: /usr/lib/x86_64-linux-gnu/libpcl_segmentation.so  
+[2.752s] -- Found PCL_VISUALIZATION: /usr/lib/x86_64-linux-gnu/libpcl_visualization.so  
+[2.754s] -- Found PCL_SURFACE: /usr/lib/x86_64-linux-gnu/libpcl_surface.so  
+[2.756s] -- Found PCL_REGISTRATION: /usr/lib/x86_64-linux-gnu/libpcl_registration.so  
+[2.759s] -- Found PCL_KEYPOINTS: /usr/lib/x86_64-linux-gnu/libpcl_keypoints.so  
+[2.762s] -- Found PCL_TRACKING: /usr/lib/x86_64-linux-gnu/libpcl_tracking.so  
+[2.764s] -- Found PCL_RECOGNITION: /usr/lib/x86_64-linux-gnu/libpcl_recognition.so  
+[2.767s] -- Found PCL_STEREO: /usr/lib/x86_64-linux-gnu/libpcl_stereo.so  
+[2.770s] -- Found PCL_APPS: /usr/lib/x86_64-linux-gnu/libpcl_apps.so  
+[2.772s] -- Found PCL_IN_HAND_SCANNER: /usr/include/pcl-1.10  
+[2.775s] -- Found PCL_POINT_CLOUD_EDITOR: /usr/include/pcl-1.10  
+[2.777s] -- Found PCL_OUTOFCORE: /usr/lib/x86_64-linux-gnu/libpcl_outofcore.so  
+[2.780s] -- Found PCL_PEOPLE: /usr/lib/x86_64-linux-gnu/libpcl_people.so  
+[3.113s] -- Found Boost: /usr/include (found version "1.71.0") found components: thread system chrono date_time atomic 
+[3.131s] CMake Error at CMakeLists.txt:21 (find_package):
+[3.131s]   By not providing "Findyaml-cpp.cmake" in CMAKE_MODULE_PATH this project has
+[3.132s]   asked CMake to find a package configuration file provided by "yaml-cpp",
+[3.132s]   but CMake did not find one.
+[3.132s] 
+[3.132s]   Could not find a package configuration file provided by "yaml-cpp" with any
+[3.132s]   of the following names:
+[3.133s] 
+[3.133s]     yaml-cppConfig.cmake
+[3.133s]     yaml-cpp-config.cmake
+[3.133s] 
+[3.133s]   Add the installation prefix of "yaml-cpp" to CMAKE_PREFIX_PATH or set
+[3.134s]   "yaml-cpp_DIR" to a directory containing one of the above files.  If
+[3.134s]   "yaml-cpp" provides a separate development package or SDK, be sure it has
+[3.134s]   been installed.
+[3.134s] 
+[3.134s] 
+[3.136s] -- Configuring incomplete, errors occurred!
+[3.136s] See also "/home/grz/trolley_auto_drive_image/code/build/olei_driver/CMakeFiles/CMakeOutput.log".
+[3.136s] See also "/home/grz/trolley_auto_drive_image/code/build/olei_driver/CMakeFiles/CMakeError.log".
+[3.154s] Invoked command in '/home/grz/trolley_auto_drive_image/code/build/olei_driver' returned '1': CMAKE_PREFIX_PATH=/home/grz/trolley_auto_drive_image/code/install/olei_interfaces:/home/grz/trolley_auto_drive_image/code/install/ros2_lidar:/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs:/home/grz/trolley_auto_drive_image/code/install/lidar_msgs:/home/grz/trolley_auto_drive_image/code/install/linear_displacement_sensor:/home/grz/trolley_auto_drive_image/code/install/lidar_data_handler:/opt/ros/foxy LD_LIBRARY_PATH=/home/grz/trolley_auto_drive_image/code/install/olei_interfaces/lib:/home/grz/trolley_auto_drive_image/code/install/ros2_lidar/lib:/home/grz/trolley_auto_drive_image/code/install/linear_sensor_msgs/lib:/home/grz/trolley_auto_drive_image/code/install/lidar_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib /usr/bin/cmake /home/grz/trolley_auto_drive_image/code/src/ole2d_ros2_driver_new/olei_driver -DCMAKE_INSTALL_PREFIX=/home/grz/trolley_auto_drive_image/code/install/olei_driver
