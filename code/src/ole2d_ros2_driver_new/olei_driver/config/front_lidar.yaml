@@ -13,6 +13,7 @@ front_lidar_node:
     max_num_points_scan: 0
     packet_type: "B" #ABC
     scan_topic: "/front_lidar/scan"
+    # cloud_topic是scan_topic后缀加_cloud
     # cloud_topic: "/front_lidar/scan_cloud"
     frame_id: "front_laser_link"
     watchdogtimeout: 60000
