@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.8)
 project(linear_sensor_msgs)
 
 # Default to C99
@@ -37,7 +37,8 @@ find_package(rosidl_default_generators REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/LinearSensorData.msg"
-  DEPENDENCIES std_msgs # Add packages that above messages depend on, in this case geometry_msgs for Sphere.msg
+  DEPENDENCIES std_msgs
 )
 
+ament_export_dependencies(rosidl_default_runtime)
 ament_package()

@@ -1,0 +1,9 @@
+__pycache__/
+*.py[cod]
+*$py.class
+
+code/build/
+code/install/
+code/log/
+
+.colcon/

@@ -3,6 +3,7 @@ import sys
 import threading
 import traceback
 import time
+import os
 import numpy as np
 from linear_sensor_msgs.msg import LinearSensorData
 from rclpy.executors import SingleThreadedExecutor
@@ -23,6 +24,7 @@ from .public.usb_device import *
 from .public.gpio import *
 from .control_ui import *
 from PyQt5.QtCore import QThread, pyqtSignal
+from PyQt5.QtGui import QFont
 import json
 import logging
 
@@ -31,6 +33,23 @@ logger = logging.getLogger(__name__)
 
 class DIO_Error(Exception):
     pass
+
+
+def pointcloud2_xy_array(msg):
+    points = pc2.read_points(msg, field_names=("x", "y"), skip_nans=True)
+    points = points if isinstance(points, np.ndarray) else np.asarray(list(points))
+
+    if points.size == 0:
+        return np.empty((0, 2), dtype=np.float32)
+
+    if points.dtype.names:
+        points = np.column_stack((points["x"], points["y"])).astype(np.float32, copy=False)
+        return points[np.isfinite(points).all(axis=1)]
+
+    points = np.asarray(points, dtype=np.float32)
+    points = points.reshape((-1, 2)) if points.ndim == 1 else points[:, :2]
+    return points[np.isfinite(points).all(axis=1)]
+
 
 class LidarDataHandlerThread(QThread):
     display_error = pyqtSignal(str)
@@ -41,6 +60,7 @@ class LidarDataHandlerThread(QThread):
         super().__init__()
         self._is_stopped = False
         self.lidar_data_handler = None
+        self.debug_mode = os.environ.get("TROLLEY_DEBUG_MODE", "").lower() in ("1", "true", "yes", "on")
         self.sn = 231202311
         self.run_indicator_channel = 15
         self.fault_indicator_channel = 14
@@ -50,7 +70,7 @@ class LidarDataHandlerThread(QThread):
     def initialize(self):
         try:
             rclpy.init()
-            self.lidar_data_handler = LidarDataHandler(self)
+            self.lidar_data_handler = LidarDataHandler(self, self.debug_mode)
         except DIO_Error as e:
             logger.error("Caught a DIO exception: %s", e)
             self.initializationError.emit("dio")
@@ -64,6 +84,9 @@ class LidarDataHandlerThread(QThread):
 
     def run(self):
         try:
+            if self.debug_mode:
+                rclpy.spin(self.lidar_data_handler)
+                return
             ret = IO_WritePin(self.sn, self.run_indicator_channel, self.active_state)
             if 0 > ret:
                 raise DIO_Error("运行指示灯初始化失败")
@@ -93,6 +116,8 @@ class LidarDataHandlerThread(QThread):
 
         finally:
             logger.info("停止所有驱动输出!!!")
+            if self.debug_mode or not self.lidar_data_handler:
+                return
             for i in range(16):
                 ret = IO_WritePin(self.lidar_data_handler.sn, i, self.lidar_data_handler.inactive_state)
                 if ret < 0:
@@ -110,10 +135,12 @@ class LidarDataHandlerThread(QThread):
             self.wait()
 
 class LidarDataHandler(Node):
-    def __init__(self, thread):
+    def __init__(self, thread, debug_mode=False):
         super().__init__('lidar_data_handler')
         self.config_file = 'settings.json'
         self.thread = thread
+        self.debug_mode = debug_mode
+        self.debug_remote_command = 0
 
         self.init_draw_count()
         self.sensors_health_count = 0
@@ -132,6 +159,17 @@ class LidarDataHandler(Node):
         self.timer_period_sec = 0.1
         self.timer = self.create_timer(self.timer_period_sec, self.set_motor)
         self.reset_publisher = self.create_publisher(Empty, 'reset_encoder', 10)
+        self.debug_motor_publisher = self.create_publisher(Int8, '/trolley/control/motor_cmd', 10)
+        self.debug_left_cylinder_publisher = self.create_publisher(Int8, '/trolley/control/left_oil_cylinder_cmd', 10)
+        self.debug_right_cylinder_publisher = self.create_publisher(Int8, '/trolley/control/right_oil_cylinder_cmd', 10)
+        if self.debug_mode:
+            self.debug_remote_subscription = self.create_subscription(
+                Int8,
+                '/trolley/debug_remote_cmd',
+                self.debug_remote_callback,
+                10
+            )
+            logger.info("Debug mode enabled: hardware IO and sensor drivers are bypassed.")
 
         self.init_pid_controller()
         self.init_channels()
@@ -190,9 +228,10 @@ class LidarDataHandler(Node):
             'right_angle',
             qos_profile=qos_profile_sensor_data
         )
-        self.all_sensors_ats = message_filters.ApproximateTimeSynchronizer([self.front_lidar_sub, self.back_lidar_sub, self.left_angle_sub, self.right_angle_sub], 10, self.timer_period_sec*2)
+        sync_slop = 1.0 if self.debug_mode else self.timer_period_sec * 2
+        self.all_sensors_ats = message_filters.ApproximateTimeSynchronizer([self.front_lidar_sub, self.back_lidar_sub, self.left_angle_sub, self.right_angle_sub], 30, sync_slop)
         self.all_sensors_ats.registerCallback(self.steer_when_drive)
-        self.linear_sensors_ats = message_filters.ApproximateTimeSynchronizer([self.left_angle_sub, self.right_angle_sub], 10, self.timer_period_sec*2)
+        self.linear_sensors_ats = message_filters.ApproximateTimeSynchronizer([self.left_angle_sub, self.right_angle_sub], 30, sync_slop)
         self.linear_sensors_ats.registerCallback(self.steer_when_stop)
         self.front_lidar_sub.registerCallback(self.error_state_front_lidar_callback)
         self.back_lidar_sub.registerCallback(self.error_state_back_lidar_callback)
@@ -243,6 +282,9 @@ class LidarDataHandler(Node):
         self.run_indicator_channel = 15
         self.fault_indicator_channel = 14
 
+        if self.debug_mode:
+            return
+
         # Scan device
         serial_numbers = (c_int * 20)()
         ret = UsbDevice_Scan(byref(serial_numbers))
@@ -257,15 +299,31 @@ class LidarDataHandler(Node):
         if self.mode_state_machine.state == 1 or self.mode_state_machine.state == -1:
             self.pid_controller = PIDController(self.kp, self.ki, self.kd, self.mode_state_machine.state)
 
+    def debug_remote_callback(self, msg):
+        if msg.data > 0:
+            self.debug_remote_command = 1
+        elif msg.data < 0:
+            self.debug_remote_command = -1
+        else:
+            self.debug_remote_command = 0
+
+    def publish_debug_output(self, publisher, value):
+        msg = Int8()
+        msg.data = int(value)
+        publisher.publish(msg)
+
     def control_left_oil_cylinder(self, direction):
+        if self.debug_mode:
+            self.publish_debug_output(self.debug_left_cylinder_publisher, direction)
+            return
         if direction == 1:
-            # 左油缸收缩
+            # 左油缸收缩，左侧左转
             ret1 = IO_WritePin(self.sn, self.cylinder_ll_output_channel, self.active_state)
             ret2 = IO_WritePin(self.sn, self.cylinder_lr_output_channel, self.inactive_state)
             if 0 > ret1 or 0 > ret2:
                 raise DIO_Error("Control Left Oil Cylinder Error")
         elif direction == -1:
-            # 左油缸拉伸
+            # 左油缸拉伸，左侧右转
             ret1 = IO_WritePin(self.sn, self.cylinder_ll_output_channel, self.inactive_state)
             ret2 = IO_WritePin(self.sn, self.cylinder_lr_output_channel, self.active_state)
             if 0 > ret1 or 0 > ret2:
@@ -277,6 +335,9 @@ class LidarDataHandler(Node):
                 raise DIO_Error("Control Left Oil Cylinder Error")
 
     def control_right_oil_cylinder(self, direction):
+        if self.debug_mode:
+            self.publish_debug_output(self.debug_right_cylinder_publisher, direction)
+            return
         if direction == 1:
             ret1 = IO_WritePin(self.sn, self.cylinder_rl_output_channel, self.active_state)
             ret2 = IO_WritePin(self.sn, self.cylinder_rr_output_channel, self.inactive_state)
@@ -294,6 +355,9 @@ class LidarDataHandler(Node):
                 raise DIO_Error("Control Right Oil Cylinder Error")
 
     def control_motor(self, mode):
+        if self.debug_mode:
+            self.publish_debug_output(self.debug_motor_publisher, mode)
+            return
         if mode == 1:
             ret1 = IO_WritePin(self.sn, self.motor_f_output_channel, self.active_state)
             ret2 = IO_WritePin(self.sn, self.motor_b_output_channel, self.inactive_state)
@@ -315,9 +379,15 @@ class LidarDataHandler(Node):
             control_b_input_state = c_int()
             control_f_input_state = c_int()
             control_stop_input_state = c_int()
-            ret1 = IO_ReadPin(self.sn, self.control_b_input_channel, byref(control_b_input_state))
-            ret2 = IO_ReadPin(self.sn, self.control_f_input_channel, byref(control_f_input_state))
-            ret3 = IO_ReadPin(self.sn, self.control_stop_input_channel, byref(control_stop_input_state))
+            if self.debug_mode:
+                ret1 = ret2 = ret3 = 0
+                control_b_input_state.value = self.active_state if self.debug_remote_command == -1 else self.inactive_state
+                control_f_input_state.value = self.active_state if self.debug_remote_command == 1 else self.inactive_state
+                control_stop_input_state.value = self.active_state if self.debug_remote_command == 0 else self.inactive_state
+            else:
+                ret1 = IO_ReadPin(self.sn, self.control_b_input_channel, byref(control_b_input_state))
+                ret2 = IO_ReadPin(self.sn, self.control_f_input_channel, byref(control_f_input_state))
+                ret3 = IO_ReadPin(self.sn, self.control_stop_input_channel, byref(control_stop_input_state))
             if 0 > ret1 or 0 > ret2 or 0 > ret3:
                 raise DIO_Error("Read Control Input Error")
             else:
@@ -429,6 +499,8 @@ class LidarDataHandler(Node):
                 self.error_state_flag = True
 
     def open_lidar_mask(self):
+        if self.debug_mode:
+            return
         logger.info("开启雷达罩子，给电3s")
         ret1 = IO_WritePin(self.sn, self.lidar_mask_open_channel, self.active_state)
         ret2 = IO_WritePin(self.sn, self.lidar_mask_close_channel, self.inactive_state)
@@ -441,6 +513,8 @@ class LidarDataHandler(Node):
             raise DIO_Error("Open Lidar Mask Error")
 
     def close_lidar_mask(self):
+        if self.debug_mode:
+            return
         logger.info("关闭雷达罩子，给电3s")
         ret1 = IO_WritePin(self.sn, self.lidar_mask_open_channel, self.inactive_state)
         ret2 = IO_WritePin(self.sn, self.lidar_mask_close_channel, self.active_state)
@@ -456,8 +530,8 @@ class LidarDataHandler(Node):
         if not self.error_state_flag and self.mode_state_machine.state != 0:
             left_angle_dis = left_angle_msg.data
             right_angle_dis = right_angle_msg.data
-            front_lidar_points = np.array(list(pc2.read_points(front_lidar_msg, field_names=("x", "y"), skip_nans=True)), dtype=np.float32)
-            back_lidar_points = np.array(list(pc2.read_points(back_lidar_msg, field_names=("x", "y"), skip_nans=True)), dtype=np.float32)
+            front_lidar_points = pointcloud2_xy_array(front_lidar_msg)
+            back_lidar_points = pointcloud2_xy_array(back_lidar_msg)
             if front_lidar_points.size == 0 or back_lidar_points.size == 0:
                 pass
             else:
@@ -585,7 +659,7 @@ class LidarDataHandler(Node):
         if self.error_state_flag:
             self.draw_front_lidar_count += 1
             if self.draw_front_lidar_count == 10:
-                front_lidar_points = np.array(list(pc2.read_points(msg, field_names=("x", "y"), skip_nans=True)), dtype=np.float32)
+                front_lidar_points = pointcloud2_xy_array(msg)
                 if front_lidar_points.size == 0:
                     pass
                 else:
@@ -607,7 +681,7 @@ class LidarDataHandler(Node):
         if self.error_state_flag:
             self.draw_back_lidar_count += 1
             if self.draw_back_lidar_count == 10:
-                back_lidar_points = np.array(list(pc2.read_points(msg, field_names=("x", "y"), skip_nans=True)), dtype=np.float32)
+                back_lidar_points = pointcloud2_xy_array(msg)
                 if back_lidar_points.size == 0:
                     pass
                 else:
@@ -687,6 +761,14 @@ class LidarDataHandler(Node):
         # if self.check_timer is not None:
         #     self.check_timer.cancel()
         # 停止一切驱动输出
+        if self.debug_mode:
+            self.control_motor(0)
+            self.control_left_oil_cylinder(0)
+            self.control_right_oil_cylinder(0)
+            data = {'target': 'main_program', 'main_program_state': 'debug sensor error'}
+            self.thread.plotUpdateSignal.emit(data)
+            self.thread.display_error.emit("sensor")
+            return
         for i in range(10):
             ret = IO_WritePin(self.sn, i, self.inactive_state)
             if ret<0:
@@ -767,6 +849,8 @@ class LidarDataHandler(Node):
 
 def main():
     app = QApplication(sys.argv)
+    app.setFont(QFont("Noto Sans CJK SC", 10))
+    app.setStyleSheet('* { font-family: "Noto Sans CJK SC"; }')
 
     lidar_data_handler_thread = LidarDataHandlerThread()
     window = MainWindow()
@@ -793,7 +877,12 @@ def main():
 
     signal.signal(signal.SIGINT, signal_handler)
 
-    window.showFullScreen()
+    if lidar_data_handler_thread.debug_mode:
+        window.setWindowTitle("Trolley Auto Drive Debug")
+        window.resize(1200, 800)
+        window.show()
+    else:
+        window.showFullScreen()
     exit_code = app.exec_()
     logger.info("退出qt事件循环")
     lidar_data_handler_thread.stop()
