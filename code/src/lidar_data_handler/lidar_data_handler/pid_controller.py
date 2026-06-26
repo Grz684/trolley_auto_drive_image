@@ -69,6 +69,33 @@ class PIDController:
 
         return target_angle
 
+    def get_centerline_adjustment(self, control_error):
+        return -control_error
+
+    def bang_handle_centerline_error(self, control_error):
+        adjustment = self.get_centerline_adjustment(control_error)
+        if abs(adjustment) < self.tolerate_adjustment:
+            target_angle = int(0)
+        elif adjustment < 0:
+            target_angle = int(-1)
+        else:
+            target_angle = int(1)
+
+        return target_angle
+
+    def pid_handle_centerline_error(self, control_error):
+        adjustment = self.get_centerline_adjustment(control_error)
+        if abs(adjustment) < self.tolerate_adjustment:
+            target_angle = 0
+        else:
+            target_angle = self.update(adjustment, self.dt)
+            if target_angle > 0 and target_angle > 50:
+                target_angle = 50
+            if target_angle < 0 and target_angle < -50:
+                target_angle = -50
+
+        return target_angle
+
     def pid_handle_drive_state(self, front_middle_diff, back_middle_diff):
         adjustment = self.get_adjustment(front_middle_diff, back_middle_diff)
         # target_angle与adjustment（修正量）同号

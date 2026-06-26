@@ -1,16 +1,36 @@
 import csv
 import math
+from dataclasses import dataclass
 
 import cv2
 import numpy as np
 # from matplotlib import pyplot as plt
 from scipy.optimize import minimize
 
+
+@dataclass
+class LidarEstimate:
+    raw_offset_m: float
+    front_distance_m: float
+    t_points: np.ndarray
+    t_refer_points: np.ndarray
+    average_y_upper_line: float
+    average_y_lower_line: float
+    average_x_upper_line: float
+    heading_angle_rad: float
+    quality: float
+    n_left: int
+    n_right: int
+    rmse: float
+
+
 class Utils:
     def __init__(self):
         self.draw_count = 0
         self.bias = 0.6  # 偏执范围，用来给最小外接矩形纠偏的
         self.front_wall_points_lower_bound = 30
+        self.min_wall_points_for_quality = 50
+        self.rmse_good_m = 0.08
         self.utils_debug = 0
         # self.draw = False
         # self.max_angle = 20
@@ -67,7 +87,17 @@ class Utils:
             print(f"the y_upper_line is: {average_y_upper_line}")
             print(f"the y_lower_line is: {average_y_lower_line}")
 
-        return average_y_upper_line, average_y_lower_line, average_x_upper_line
+        n_upper = y_upper_line.shape[0]
+        n_lower = y_lower_line.shape[0]
+        rmse = self.compute_fit_rmse(y_upper_line, average_y_upper_line, y_lower_line, average_y_lower_line)
+        fit_info = {
+            "n_left": n_upper,
+            "n_right": n_lower,
+            "rmse": rmse,
+            "quality": self.quality_from_fit(n_upper, n_lower, rmse)
+        }
+
+        return average_y_upper_line, average_y_lower_line, average_x_upper_line, fit_info
 
     @staticmethod
     def fit_line(points_array, axis, bound):
@@ -97,6 +127,50 @@ class Utils:
             raise ValueError("fit_line函数axis参数赋值错误")
 
         return fitted_line
+
+    @staticmethod
+    def normalize_line_angle(angle):
+        while angle > math.pi / 2:
+            angle -= math.pi
+        while angle < -math.pi / 2:
+            angle += math.pi
+        return angle
+
+    @staticmethod
+    def line_direction_angle(line):
+        A, B, _ = line
+        return Utils.normalize_line_angle(math.atan2(A, -B))
+
+    @staticmethod
+    def line_residuals(points_array, line):
+        if points_array.shape[0] == 0:
+            return np.array([], dtype=np.float64)
+        A, B, C = line
+        denominator = math.sqrt(A ** 2 + B ** 2)
+        if denominator == 0:
+            return np.array([], dtype=np.float64)
+        return (A * points_array[:, 0] + B * points_array[:, 1] + C) / denominator
+
+    @staticmethod
+    def compute_fit_rmse(y_upper_line, average_y_upper_line, y_lower_line, average_y_lower_line):
+        residuals = np.concatenate([
+            Utils.line_residuals(y_upper_line, average_y_upper_line),
+            Utils.line_residuals(y_lower_line, average_y_lower_line)
+        ])
+        if residuals.size == 0:
+            return float("inf")
+        return float(np.sqrt(np.mean(residuals ** 2)))
+
+    def quality_from_fit(self, n_left, n_right, rmse):
+        count_min = min(n_left, n_right)
+        count_max = max(n_left, n_right)
+        if count_max == 0 or not math.isfinite(rmse):
+            return 0.0
+
+        q_count = min(1.0, count_min / self.min_wall_points_for_quality)
+        q_residual = 1.0 / (1.0 + (rmse / self.rmse_good_m) ** 2)
+        q_balance = count_min / count_max
+        return float(q_count * q_residual * q_balance)
     
     @staticmethod
     def fit_two_lines(y_upper_line, y_lower_line):
@@ -219,7 +293,7 @@ class Utils:
         A, B, _ = positive_x
         
         # 计算旋转角度
-        theta = np.arctan(-A / B)  # 使用 arctan2 以便处理 A 或 B 为零的情况
+        theta = math.atan2(A, -B)
 
         # 旋转矩阵
         T = np.array([
@@ -367,6 +441,7 @@ class Utils:
             positive_x = line2
 
         # 参考点：原点和右上角点
+        base_heading_angle = self.line_direction_angle(positive_x)
         refer_points = np.array([(0, 0), upper_point])
 
         # 坐标系变换
@@ -375,8 +450,9 @@ class Utils:
         # t_box = self.transform_to_new_coords_matrix(box, original_point, positive_x)
 
         # 计算雷达坐标原点到左侧、右侧、前方墙壁的拟合距离
-        average_y_upper_line, average_y_lower_line, average_x_upper_line = self.segment_points_and_refit_line(
+        average_y_upper_line, average_y_lower_line, average_x_upper_line, fit_info = self.segment_points_and_refit_line(
             t_points, t_refer_points)
+        heading_angle = self.normalize_line_angle(base_heading_angle + math.atan(average_y_upper_line[0]))
         
         t_refer_points_2 = self.transform_to_new_coords_matrix(t_refer_points, t_refer_points[0], average_y_upper_line)
         t_points_2 = self.transform_to_new_coords_matrix(t_points, t_refer_points[0], average_y_upper_line)
@@ -393,7 +469,7 @@ class Utils:
         #                                average_x_upper_line)
         #     self.draw_count = 0
 
-        return t_points_2, t_refer_points_2, left_distance, right_distance, front_distance
+        return t_points_2, t_refer_points_2, left_distance, right_distance, front_distance, heading_angle, fit_info
 
     # @staticmethod
     # def draw_lidar_result(t_points, t_box, t_refer_points, average_y_upper_line, average_y_lower_line,
@@ -414,8 +490,9 @@ class Utils:
 
     #     # self.draw = False
 
-    def get_diff(self, coordinates):
-        t_points, t_refer_points, left_distance, right_distance, front_distance = self.get_tri_directional_distance(coordinates)
+    def get_estimate(self, coordinates):
+        t_points, t_refer_points, left_distance, right_distance, front_distance, heading_angle, fit_info = \
+            self.get_tri_directional_distance(coordinates)
         
         # if average_x_upper_line == -1:
         #     front_distance = -1
@@ -430,8 +507,26 @@ class Utils:
         average_y_lower = -right_distance
         average_x_upper = front_distance
 
-        return middle_diff, front_diff, t_points, t_refer_points, average_y_upper, \
-            average_y_lower, average_x_upper
+        return LidarEstimate(
+            raw_offset_m=middle_diff,
+            front_distance_m=front_diff,
+            t_points=t_points,
+            t_refer_points=t_refer_points,
+            average_y_upper_line=average_y_upper,
+            average_y_lower_line=average_y_lower,
+            average_x_upper_line=average_x_upper,
+            heading_angle_rad=heading_angle,
+            quality=fit_info["quality"],
+            n_left=fit_info["n_left"],
+            n_right=fit_info["n_right"],
+            rmse=fit_info["rmse"]
+        )
+
+    def get_diff(self, coordinates):
+        estimate = self.get_estimate(coordinates)
+
+        return estimate.raw_offset_m, estimate.front_distance_m, estimate.t_points, estimate.t_refer_points, \
+            estimate.average_y_upper_line, estimate.average_y_lower_line, estimate.average_x_upper_line
 
     def import_saved_data_and_sim(self, file_name):
         # 初始化一个空列表来存储坐标

@@ -4,6 +4,7 @@ import threading
 import traceback
 import time
 import os
+import math
 import numpy as np
 from linear_sensor_msgs.msg import LinearSensorData
 from rclpy.executors import SingleThreadedExecutor
@@ -256,6 +257,13 @@ class LidarDataHandler(Node):
         self.left_left_bound = 20
         self.left_right_bound = -20
 
+        self.heading_lookahead_m = 10.0
+        self.heading_disagreement_rad = math.radians(5.0)
+        self.heading_filter_alpha = 0.7
+        self.front_lidar_mount_angle_rad = 0.0
+        self.back_lidar_mount_angle_rad = 0.0
+        self.last_heading_error = None
+
         self.load_limits()
 
     def init_channels(self):
@@ -298,6 +306,7 @@ class LidarDataHandler(Node):
     def reset_pid_controller(self):
         if self.mode_state_machine.state == 1 or self.mode_state_machine.state == -1:
             self.pid_controller = PIDController(self.kp, self.ki, self.kd, self.mode_state_machine.state)
+            self.last_heading_error = None
 
     def debug_remote_callback(self, msg):
         if msg.data > 0:
@@ -526,6 +535,60 @@ class LidarDataHandler(Node):
         if 0 > ret1 or 0 > ret2:
             raise DIO_Error("Close Lidar Mask Error")
 
+    @staticmethod
+    def normalize_centerline_angle(angle):
+        while angle > math.pi / 2:
+            angle -= math.pi
+        while angle < -math.pi / 2:
+            angle += math.pi
+        return angle
+
+    def lidar_heading_to_vehicle_error(self, estimate, mount_angle_rad):
+        return -self.normalize_centerline_angle(estimate.heading_angle_rad + mount_angle_rad)
+
+    def fuse_heading_error(self, front_estimate, back_estimate):
+        front_heading = self.lidar_heading_to_vehicle_error(
+            front_estimate, self.front_lidar_mount_angle_rad)
+        back_heading = self.lidar_heading_to_vehicle_error(
+            back_estimate, self.back_lidar_mount_angle_rad)
+        front_quality = max(0.0, front_estimate.quality)
+        back_quality = max(0.0, back_estimate.quality)
+        heading_delta = abs(self.normalize_centerline_angle(front_heading - back_heading))
+
+        if heading_delta > self.heading_disagreement_rad:
+            fused_heading = front_heading if front_quality >= back_quality else back_heading
+        elif front_quality + back_quality > 0:
+            fused_heading = (
+                front_quality * front_heading + back_quality * back_heading
+            ) / (front_quality + back_quality)
+        else:
+            fused_heading = self.last_heading_error if self.last_heading_error is not None else 0.0
+
+        if self.last_heading_error is None:
+            filtered_heading = fused_heading
+        else:
+            alpha = self.heading_filter_alpha
+            filtered_heading = alpha * self.last_heading_error + (1.0 - alpha) * fused_heading
+
+        filtered_heading = self.normalize_centerline_angle(filtered_heading)
+        self.last_heading_error = filtered_heading
+        return filtered_heading, front_heading, back_heading
+
+    def compute_centerline_control_error(self, front_estimate, back_estimate):
+        front_offset = front_estimate.raw_offset_m
+        back_offset = -back_estimate.raw_offset_m
+        center_offset = (front_offset + back_offset) / 2
+        heading_error, front_heading, back_heading = self.fuse_heading_error(front_estimate, back_estimate)
+
+        if self.mode_state_machine.state == 1:
+            control_error = center_offset + self.heading_lookahead_m * heading_error
+        elif self.mode_state_machine.state == -1:
+            control_error = center_offset - self.heading_lookahead_m * heading_error
+        else:
+            control_error = 0.0
+
+        return control_error, center_offset, heading_error, front_offset, back_offset, front_heading, back_heading
+
     def steer_when_drive(self, front_lidar_msg, back_lidar_msg, left_angle_msg, right_angle_msg):
         if not self.error_state_flag and self.mode_state_machine.state != 0:
             left_angle_dis = left_angle_msg.data
@@ -543,10 +606,20 @@ class LidarDataHandler(Node):
                 logger.debug("-----------------------")
                 logger.debug("current mode:%s", self.mode_state_machine.state)
 
-                front_middle_diff, forward_front_diff, f_t_points, f_t_refer_points, f_average_y_upper_line, \
-                    f_average_y_lower_line, f_average_x_upper_line = self.utils.get_diff(front_lidar_points)
-                back_middle_diff, backward_front_diff, b_t_points, b_t_refer_points, b_average_y_upper_line, \
-                    b_average_y_lower_line, b_average_x_upper_line = self.utils.get_diff(back_lidar_points)
+                front_estimate = self.utils.get_estimate(front_lidar_points)
+                back_estimate = self.utils.get_estimate(back_lidar_points)
+                control_error, center_offset, heading_error, front_middle_diff, back_display_diff, \
+                    front_heading, back_heading = self.compute_centerline_control_error(front_estimate, back_estimate)
+                f_t_points = front_estimate.t_points
+                f_t_refer_points = front_estimate.t_refer_points
+                f_average_y_upper_line = front_estimate.average_y_upper_line
+                f_average_y_lower_line = front_estimate.average_y_lower_line
+                f_average_x_upper_line = front_estimate.average_x_upper_line
+                b_t_points = back_estimate.t_points
+                b_t_refer_points = back_estimate.t_refer_points
+                b_average_y_upper_line = back_estimate.average_y_upper_line
+                b_average_y_lower_line = back_estimate.average_y_lower_line
+                b_average_x_upper_line = back_estimate.average_x_upper_line
                 # 每秒绘图
                 self.draw_all_count += 1
                 if self.draw_all_count == 10:
@@ -564,18 +637,25 @@ class LidarDataHandler(Node):
 
                     self.draw_all_count = 0
                     
-                logger.debug("front_middle_diff:%s, back_middle_diff:%s", float(front_middle_diff), -float(back_middle_diff))
+                logger.debug(
+                    "front_offset:%s, back_offset:%s, center_offset:%s, heading_error_deg:%s, "
+                    "front_heading_deg:%s, back_heading_deg:%s, front_quality:%s, back_quality:%s, control_error:%s",
+                    float(front_middle_diff), float(back_display_diff), float(center_offset),
+                    math.degrees(float(heading_error)), math.degrees(float(front_heading)),
+                    math.degrees(float(back_heading)), float(front_estimate.quality),
+                    float(back_estimate.quality), float(control_error)
+                )
 
                 data = {'target': 'front_lidar_offset', 'offset': float(front_middle_diff)}
                 self.thread.plotUpdateSignal.emit(data)
 
-                data = {'target': 'back_lidar_offset', 'offset': -float(back_middle_diff)}
+                data = {'target': 'back_lidar_offset', 'offset': float(back_display_diff)}
                 self.thread.plotUpdateSignal.emit(data)
 
                 if self.use_pid:
-                    target_angle = self.pid_controller.pid_handle_drive_state(front_middle_diff, back_middle_diff)
+                    target_angle = self.pid_controller.pid_handle_centerline_error(control_error)
                 else:
-                    target_angle = self.pid_controller.bang_handle_drive_state(front_middle_diff, back_middle_diff)
+                    target_angle = self.pid_controller.bang_handle_centerline_error(control_error)
 
                 logger.debug("target_angle:%s, current_left_angle:%s, current_right_angle:%s", target_angle, left_angle_dis, right_angle_dis)
 
@@ -815,12 +895,20 @@ class LidarDataHandler(Node):
             with open(self.config_file, 'r') as f:
                 try:
                     limits = json.load(f)
-                    self.left_left_bound = limits['left_left_bound']
-                    self.right_left_bound = limits['right_left_bound']
-                    self.left_mid_bound = limits['left_mid_bound']
-                    self.right_mid_bound = limits['right_mid_bound']
-                    self.left_right_bound = limits['left_right_bound']
-                    self.right_right_bound = limits['right_right_bound']
+                    self.left_left_bound = limits.get('left_left_bound', self.left_left_bound)
+                    self.right_left_bound = limits.get('right_left_bound', self.right_left_bound)
+                    self.left_mid_bound = limits.get('left_mid_bound', self.left_mid_bound)
+                    self.right_mid_bound = limits.get('right_mid_bound', self.right_mid_bound)
+                    self.left_right_bound = limits.get('left_right_bound', self.left_right_bound)
+                    self.right_right_bound = limits.get('right_right_bound', self.right_right_bound)
+                    self.heading_lookahead_m = limits.get('heading_lookahead_m', self.heading_lookahead_m)
+                    self.heading_disagreement_rad = math.radians(
+                        limits.get('heading_disagreement_deg', math.degrees(self.heading_disagreement_rad)))
+                    self.heading_filter_alpha = limits.get('heading_filter_alpha', self.heading_filter_alpha)
+                    self.front_lidar_mount_angle_rad = math.radians(
+                        limits.get('front_lidar_mount_angle_deg', math.degrees(self.front_lidar_mount_angle_rad)))
+                    self.back_lidar_mount_angle_rad = math.radians(
+                        limits.get('back_lidar_mount_angle_deg', math.degrees(self.back_lidar_mount_angle_rad)))
 
                     data = {'target':'left_bridge_settings', 'settings':(self.left_left_bound, self.left_mid_bound, self.left_right_bound)}
                     self.thread.plotUpdateSignal.emit(data)
@@ -839,7 +927,12 @@ class LidarDataHandler(Node):
             'left_mid_bound': self.left_mid_bound,
             'right_mid_bound': self.right_mid_bound,
             'left_right_bound': self.left_right_bound,
-            'right_right_bound': self.right_right_bound
+            'right_right_bound': self.right_right_bound,
+            'heading_lookahead_m': self.heading_lookahead_m,
+            'heading_disagreement_deg': math.degrees(self.heading_disagreement_rad),
+            'heading_filter_alpha': self.heading_filter_alpha,
+            'front_lidar_mount_angle_deg': math.degrees(self.front_lidar_mount_angle_rad),
+            'back_lidar_mount_angle_deg': math.degrees(self.back_lidar_mount_angle_rad)
         }
         with open(self.config_file, 'w') as f:
             json.dump(limits, f)

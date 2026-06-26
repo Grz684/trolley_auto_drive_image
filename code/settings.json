@@ -1,1 +1,1 @@
-{"left_left_bound": 15, "right_left_bound": 15, "left_mid_bound": 0, "right_mid_bound": 0, "left_right_bound": -15, "right_right_bound": -15}
+{"left_left_bound": 15, "right_left_bound": 15, "left_mid_bound": 0, "right_mid_bound": 0, "left_right_bound": -15, "right_right_bound": -15, "heading_lookahead_m": 10.0, "heading_disagreement_deg": 5.0, "heading_filter_alpha": 0.7, "front_lidar_mount_angle_deg": 0.0, "back_lidar_mount_angle_deg": 0.0}
