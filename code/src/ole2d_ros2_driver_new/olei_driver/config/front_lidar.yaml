@@ -4,8 +4,8 @@ front_lidar_node:
     scanner_ip: "192.168.68.100"
     port: "2368"
     version: 3
-    start_angle: -135
-    end_angle: 135
+    start_angle: -90
+    end_angle: 90
     range_min: 0.03
     range_max: 50.0
     inverted: false

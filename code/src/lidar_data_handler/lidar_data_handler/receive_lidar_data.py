@@ -45,11 +45,13 @@ def pointcloud2_xy_array(msg):
 
     if points.dtype.names:
         points = np.column_stack((points["x"], points["y"])).astype(np.float32, copy=False)
-        return points[np.isfinite(points).all(axis=1)]
+        points = points[np.isfinite(points).all(axis=1)]
+        return points[points[:, 0] >= 0.0]
 
     points = np.asarray(points, dtype=np.float32)
     points = points.reshape((-1, 2)) if points.ndim == 1 else points[:, :2]
-    return points[np.isfinite(points).all(axis=1)]
+    points = points[np.isfinite(points).all(axis=1)]
+    return points[points[:, 0] >= 0.0]
 
 
 class LidarDataHandlerThread(QThread):
