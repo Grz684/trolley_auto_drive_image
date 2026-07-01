@@ -394,6 +394,37 @@ class Utils:
         return A, B, C
 
     @staticmethod
+    def orient_line_toward_positive_x(line):
+        """Make the directed line axis point toward the lidar's positive X."""
+        A, B, C = line
+        if A == 0 and B == 0:
+            raise ValueError("Invalid line equation coefficients: A and B cannot both be zero.")
+
+        # The directed vector represented by line_equation(p1, p2) is (-B, A).
+        if -B < 0:
+            return -A, -B, -C
+        return A, B, C
+
+    @staticmethod
+    def rectangle_reference_points(box, positive_x):
+        """Return the rear-right origin and a rear-left point in lidar coordinates."""
+        A, B, _ = positive_x
+        norm = math.sqrt(A ** 2 + B ** 2)
+        if norm == 0:
+            raise ValueError("Invalid line equation coefficients: A and B cannot both be zero.")
+
+        forward_axis = np.array([-B, A], dtype=np.float64) / norm
+        left_axis = np.array([-forward_axis[1], forward_axis[0]], dtype=np.float64)
+        forward_projection = box @ forward_axis
+        left_projection = box @ left_axis
+
+        # A rectangle contains all combinations of its min/max forward and left
+        # projections. These scores select the rear-right and rear-left corners.
+        original_point = box[np.argmin(forward_projection + left_projection)]
+        upper_point = box[np.argmin(forward_projection - left_projection)]
+        return original_point, upper_point
+
+    @staticmethod
     def adjust_data(points):
         adjust_points = []
         for x, y in points:
@@ -414,33 +445,19 @@ class Utils:
         line3 = self.line_equation(box[2], box[3])
         line4 = self.line_equation(box[3], box[0])
 
-        # assume x is front
-        is_line13_wall, is_line12_higher = self.select_wall_lines(line1, line2, line3, line4)
+        # The lidar's positive X is physically forward and positive Y is left.
+        # minAreaRect edges have no stable direction, so explicitly anchor the
+        # selected tunnel axis to positive X before building the local frame.
+        is_line13_wall, _ = self.select_wall_lines(line1, line2, line3, line4)
         if is_line13_wall:
-            # line1和line3是墙
-            if is_line12_higher:
-                # line1在上边（左）
-                original_point = min([box[2], box[3]], key=lambda point: point[0])
-                upper_point = box[0]
-            else:
-                # line3在上边
-                original_point = min([box[0], box[1]], key=lambda point: point[0])
-                upper_point = box[2]
             positive_x = line1
-
         else:
-            # line2和line4是墙
-            if is_line12_higher:
-                # line2在上边
-                original_point = min([box[3], box[0]], key=lambda point: point[0])
-                upper_point = max([box[1], box[2]], key=lambda point: point[0])
-            else:
-                # line4在上边
-                original_point = min([box[1], box[2]], key=lambda point: point[0])
-                upper_point = max([box[0], box[3]], key=lambda point: point[0])
             positive_x = line2
 
-        # 参考点：原点和右上角点
+        positive_x = self.orient_line_toward_positive_x(positive_x)
+        original_point, upper_point = self.rectangle_reference_points(box, positive_x)
+
+        # 参考点：雷达原点和矩形左侧点
         base_heading_angle = self.line_direction_angle(positive_x)
         refer_points = np.array([(0, 0), upper_point])
 
