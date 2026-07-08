@@ -11,31 +11,33 @@ import os
 
 
 def generate_launch_description():
-    share_dir = get_package_share_directory('olei_driver')
+    share_dir = get_package_share_directory('ros2_lidar')
     front_parameter_file = LaunchConfiguration('front_params_file')
     back_parameter_file = LaunchConfiguration('back_params_file')
 
     front_params_declare = DeclareLaunchArgument('front_params_file',
                                            default_value=os.path.join(
-                                               share_dir, 'config', 'front_lidar.yaml'),
+                                               share_dir, 'params', 'ole2dv2_front.yaml'),
                                            description='Path to the front lidar ROS2 parameters file.')
     back_params_declare = DeclareLaunchArgument('back_params_file',
                                            default_value=os.path.join(
-                                               share_dir, 'config', 'back_lidar.yaml'),
+                                               share_dir, 'params', 'ole2dv2_back.yaml'),
                                            description='Path to the back lidar ROS2 parameters file.')
 
-    front_lidar_driver_node = Node(package='olei_driver',
-                                executable='ros_main',
+    front_lidar_driver_node = Node(package='ros2_lidar',
+                                executable='lidar_driver',
                                 name='front_lidar_node',
                                 output='screen',
                                 parameters=[front_parameter_file],
+                                namespace='/front_lidar',
                                 )
     
-    back_lidar_driver_node = Node(package='olei_driver',
-                                executable='ros_main',
+    back_lidar_driver_node = Node(package='ros2_lidar',
+                                executable='lidar_driver',
                                 name='back_lidar_node',
                                 output='screen',
                                 parameters=[back_parameter_file],
+                                namespace='/back_lidar',
                                 )
     
     left_linear_sensor_node = Node(package='linear_displacement_sensor',

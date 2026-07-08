@@ -207,14 +207,14 @@ class LidarDataHandler(Node):
         self.front_lidar_sub = message_filters.Subscriber(
           self,
           PointCloud2,
-          '/front_lidar/scan_cloud',
+          '/front_lidar/cloud',
           qos_profile=qos_profile_sensor_data
         )
 
         self.back_lidar_sub = message_filters.Subscriber(
           self,
           PointCloud2,
-          '/back_lidar/scan_cloud',
+          '/back_lidar/cloud',
           qos_profile=qos_profile_sensor_data
         )
 
